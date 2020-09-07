@@ -1,0 +1,4 @@
+user-agent: *
+disallow: /umbraco
+sitemap: https://prizemaker.com/sitemap
+disallow:https://prizemaker.com/product/detail/5dfa725e055a6
