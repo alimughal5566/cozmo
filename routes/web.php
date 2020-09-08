@@ -393,3 +393,22 @@ Route::post('profile-update','HomeController@profile_upd');
 Route::get('/', function () {
     return view('layouts.master-frontend');
 });
+
+//property type
+
+Route::get('add-property-type','ProprtyTypeController@addPropertyType')->name('addPropertyType');
+Route::post('create-property-type','ProprtyTypeController@createPropertyType')->name('createPropertyType');
+Route::get('update-property-type/{id}','ProprtyTypeController@updatePropertyType')->name('updatePropertyType');
+Route::get('property-home-view','ProprtyTypeController@propertyHomeView')->name('propertyHomeView');
+Route::post('delete-property-type','ProprtyTypeController@deletePropertyType')->name('deletePropertyType');
+Route::post('store-update-property-type','ProprtyTypeController@storeUpdatePropertyType')->name('storeUpdatePropertyType');
+
+
+//property sale type
+
+Route::get('sale-home-view','ProprtyTypeController@saleHomeView')->name('saleHomeView');
+Route::get('add-sale-type','ProprtyTypeController@addSaleType')->name('addSaleType');
+Route::post('create-sale-type','ProprtyTypeController@createSaleType')->name('createSaleType');
+Route::get('update-sale-type/{id}','ProprtyTypeController@updateSaleType')->name('updateSaleType');
+Route::post('delete-sale-type','ProprtyTypeController@deleteSaleType')->name('deleteSaleType');
+Route::post('store-update-sale-type','ProprtyTypeController@storeUpdateSaleType')->name('storeUpdateSaleType');
