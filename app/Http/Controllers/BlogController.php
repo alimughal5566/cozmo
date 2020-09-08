@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog_category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -16,17 +17,18 @@ use Auth;
 
 class BlogController extends Controller
 {
-	public function __construct()
+
+
+    public function __construct()
 	{
+
 		$this->middleware('auth');
 		$this->middleware('AdminAccess');
 
-	}
-	public  function blogCategoryIndex(){
 
-	    $blog_category = DB::table('blog_categories')->get();
-	    return view('admin.blog_category.home' , compact('blog_category'));
+
     }
+
 	public function index()
 	{
 //		$blog = Blog::get();

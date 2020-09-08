@@ -123,7 +123,13 @@ Route::post('ticket/remove_from_cart','ProductController@remove_from_cart');
     Route::get('/de_activate/{id}', 'PackagesController@de_activate');
 
     //blog_category
-    Route::get('/blog_category/home', 'BlogController@blogCategoryIndex');
+    Route::get('/blog_category/home', 'Blog_categoryController@blogCategoryIndex')->name('blog_category.home');
+    Route::get('/blogCategory/add', 'Blog_categoryController@blogCategoryAdd');
+    Route::post('/blog_category/store', 'Blog_categoryController@blogCategoryStore');
+    Route::get('/blog_category/edit/{id}', 'Blog_categoryController@blogCategoryEdit');
+    Route::post('/blog_category/update', 'Blog_categoryController@blogCategoryUpdate');
+    Route::post('/blog_category/delete', 'Blog_categoryController@blogCategoryDestroy')->name('blogCategoryDestroy');
+
 
 //end of blog category
 

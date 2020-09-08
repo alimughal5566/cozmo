@@ -30,7 +30,7 @@
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                 <label class="form-control-label">Email</label>
-                                <input id="email"  type="email" class="form-control is-valid" name="email"  required >
+                                <input id="email"  type="email" class="form-control " name="email"  required >
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">

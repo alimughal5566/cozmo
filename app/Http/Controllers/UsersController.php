@@ -31,10 +31,14 @@ use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
-    public function __construct()
+    private $user;
+
+    public function __construct(User $user)
     {
         $this->middleware('auth');
         $this->middleware('AdminAccess');
+        $this->user=$user;
+
     }
 
     public function index()
@@ -43,10 +47,12 @@ class UsersController extends Controller
         //     return redirect("/");
         // }
         //where("user_role", 0)
-
-        $users = User::where('soft_delete', 0)->get();
-        $companies = DB::table('companies')->get();
+        $data=$this->user->indexUser();
+        //dd($data);
+       // dd($data);
         // $companies = Company::all();
+        $users = $data[0];
+        $companies = $data[1];
         return view('admin.users.home', compact("users" , "companies"));
     }
 
@@ -134,18 +140,22 @@ class UsersController extends Controller
 
     public function edit($id)
     {
-        $user = User::find($id);
-        $companies = DB::table('companies')->get();
+//        $user = User::find($id);
+//        $companies = DB::table('companies')->get();
        // dd($user);
 
+        $data=$this->user->editUser($id);
+        $user = $data[0];
+        $companies = $data[1];
         return view('admin.users.edit', compact("user","companies"));
     }
 
     public function create()
     {
         //return view('partners.form');
-        $companies = DB::table('companies')->get();
-        return view('admin.users.add', compact("user","companies"));
+        $data=$this->user->createUser();
+        $companies = $data;
+        return view('admin.users.add', compact("companies"));
     }
 
 
@@ -155,21 +165,21 @@ class UsersController extends Controller
         // echo "<pre>";
         // print_r($request->all());exit();
         // $file = Input::file('file');
+//dd($request);
+       $data=$this->user->updatedata($request);
 
-
-
-        $data = array(
-           "name" => $request->input('name'),
-            "email" => $request->input('email'),
-           "phone_number" => $request->input('phone_number'),
-           "state" => $request->input('state'),
-           "street_no" => $request->input('street_no'),
-           "city" => $request->input('city'),
-           "street_name" => $request->input('street_name'),
-            "password" => $request->input('password'),
-           "zip_code" => $request->input('zip_code'),
-           "company_id" => $request->input('company_id'),
-        );
+//        $data = array(
+//           "name" => $request->input('name'),
+//            "email" => $request->input('email'),
+//           "phone_number" => $request->input('phone_number'),
+//           "state" => $request->input('state'),
+//           "street_no" => $request->input('street_no'),
+//           "city" => $request->input('city'),
+//           "street_name" => $request->input('street_name'),
+//            "password" => $request->input('password'),
+//           "zip_code" => $request->input('zip_code'),
+//           "company_id" => $request->input('company_id'),
+//        );
 
 
 
@@ -196,93 +206,40 @@ class UsersController extends Controller
 
 
 //dd($request);
-        DB::table('users')->where('id', $request['id'])
-            ->update([
-                    "name" => $request->input('name'),
-                    // "email" => $request->input('email'),
-                    "phone_number" => $request->input('phone_number'),
-                    "state" => $request->input('state'),
-                    "street_no" => $request->input('street_no'),
-                    "city" => $request->input('city'),
-                    "street_name" => $request->input('street_name'),
-                    // "password" => $request->input('password'),
-                    "zip_code" => $request->input('zip_code'),
-                    "company_id" => $request->input('company_id'),
-                    "created_date" => $request->input('created_date'),
+//dd($data);
 
-            ]);
-
-
+if($data){
         Session::flash('success', Lang::get('general.success_message'));
         return redirect("users");
 
+
+}
+else{
+    Session::flash('Fail', 'Some Thing Went Wrong');
+    return redirect("users");
+}
     }
+
+
     public function store(Request $request)
     {
-        //dd($request);
-        // echo "<pre>";
-        // print_r($request->all());exit();
-        // $file = Input::file('file');
+//        dd($request);
+        $data=$this->user->savedata($request);
 
-
-
-        $data = array(
-            "name" => $request->input('name'),
-            "email" => $request->input('email'),
-            "phone_number" => $request->input('phone_number'),
-            "state" => $request->input('state'),
-            "street_no" => $request->input('street_no'),
-            "city" => $request->input('city'),
-            "street_name" => $request->input('street_name'),
-            "password" => $request->input('password'),
-            "zip_code" => $request->input('zip_code'),
-            "company_id" => $request->input('company_id'),
-        );
-
-
-
-//        if ($request->business_name)
-//        {
-//            $data['business_name'] = $request->business_name;
-//        }
-//
-//        if ($request->business_phone)
-//        {
-//            $data['business_phone'] = $request->business_phone;
-//        }
-//
-//        if ($request->business_facebook_url)
-//        {
-//            $data['business_facebook_url'] = $request->business_facebook_url;
-//        }
-//
-//        if ($request->business_twitter_url)
-//        {
-//            $data['business_twitter_url'] = $request->business_twitter_url;
-//        }
-
-
+        // dd($request);
 
 //dd($request);
-        DB::table('users')->where('id', $request['id'])
-            ->insert([
-                "name" => $request->input('name'),
-                // "email" => $request->input('email'),
-                "phone_number" => $request->input('phone_number'),
-                "state" => $request->input('state'),
-                "street_no" => $request->input('street_no'),
-                "city" => $request->input('city'),
-                "street_name" => $request->input('street_name'),
-                // "password" => $request->input('password'),
-                "zip_code" => $request->input('zip_code'),
-                "company_id" => $request->input('company_id'),
-                "created_date" => $request->input('created_date'),
 
-            ]);
-
-
+//        $data=$this->user->saveupdate($request);
+if($data){
         Session::flash('success', Lang::get('general.success_message'));
         return redirect("users");
+}
+else{
+    dd('Error');
+    Session::flash('Fail', 'Some Thing Went Wrong');
+
+}
 
     }
     public function change_status(Request $request)
@@ -294,6 +251,7 @@ class UsersController extends Controller
     }
     public function destroy(Request $request)
     {
+        dd($request);
 //        $id = $request->input("id");
 //
 //        DB::table('freecomps')->where('user_id',$id)->delete();
@@ -442,7 +400,6 @@ class UsersController extends Controller
     public function edit_testimonials(Request $request)
     {
         $winner_id = Input::get('team');
-
         if($request->hasfile('images')){
 
             $postData = $request->only('images');
