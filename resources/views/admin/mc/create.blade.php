@@ -10,7 +10,7 @@ width: 100% !important;
 }
 
 </style>
-<style> 
+<style>
 .switch {
   position: relative;
   display: inline-block;
@@ -18,7 +18,7 @@ width: 100% !important;
   height: 34px;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -106,8 +106,8 @@ input:checked + .slider:before {
         }
     </style>
      <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.css"/>
- 
-    <script type="text/javascript" src="//cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script> 
+
+    <script type="text/javascript" src="//cdn.datatables.net/v/bs4/dt-1.10.18/datatables.min.js"></script>
 
 <div class="app-title">
 	<ul class="app-breadcrumb breadcrumb">
@@ -120,10 +120,13 @@ input:checked + .slider:before {
 </div>
 <div class="row">
 <div class="col-md-12">
-	<form class="form-horizontal" method="POST" action="{{ route('mc.store') }}" enctype="multipart/form-data">
+
+
+
+    <form class="form-horizontal" method="POST" action="{{ route('mc.store') }}" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="tile">
-			
+
 			<h3 class="tile-title">New Multi Competition</h3>
 			@if(Session::has('success'))
 			<div class="alert alert-success">
@@ -134,7 +137,7 @@ input:checked + .slider:before {
 			<div class="alert alert-danger">{{ $error }}</div>
 			@endforeach
 			<div class="row">
-				
+
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label for="title">Title:</label>
@@ -148,7 +151,7 @@ input:checked + .slider:before {
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="row">
 
 				@foreach($competitions as $row)
@@ -156,7 +159,7 @@ input:checked + .slider:before {
 				<input type="hidden" name="compp_id[]" value="{{ $row->id}}">
 				@endif
 				@endforeach
-				
+
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label for="title">Select Competition:</label>
@@ -188,7 +191,7 @@ input:checked + .slider:before {
 						<label>Maximum Tickets</label>
 						<input   value="{{ $mc->max_tickets or old('max_tickets')}}" type="number" placeholder="Maximum Tickets" class="form-control" name="max_tickets" required="">
 					</div>
-					
+
 				</div>
 				<div class="col-sm-6">
 					<div class="form-group">
@@ -204,7 +207,7 @@ input:checked + .slider:before {
 						<input autocomplete="off" type="text" value="{{ $mc->end_date or  old('end_date')}}"  name="end_date" class="form-control datepicker" placeholder="Select Date" required="">
 					</div>
 
-					
+
 						<div>
 							<label class="aloo">Allow free ticket:</label>
 	<?php	if($mc == "" ) { ?>
@@ -214,7 +217,7 @@ input:checked + .slider:before {
   </label>
 <?php	} else { ?>
 <?php	if($mc->freeticket == 1 ) { ?>
-								
+
 								<label class="switch">
   <input name="status" type="checkbox" checked>
   <span class="slider"></span>
@@ -232,7 +235,7 @@ input:checked + .slider:before {
 					<div class="form-group">
 							<input type="file" name="file" id="file">
 					</div>
-					
+
 			</div> -->
 			<?php if($mc != '') { ?>
 			<div class="col-sm-6 p-0 col-md-3 col-lg-6">
@@ -249,10 +252,10 @@ input:checked + .slider:before {
 			<?php }  ?>
 
 			<!-- // video section // -->
-	
-		
-			
-			
+
+
+
+
 			<div class="col-sm-6">
 				@if(Auth::check() && Auth::user()->user_role == 1)
 				<div class="tile-footer my-btn text-left">
@@ -269,14 +272,20 @@ input:checked + .slider:before {
 			<?php } ?>
 				</div>
 				@endif
-			
+
 			</div>
 		</div>
 	</div>
 	<input type="hidden" name="id" value="{{ $mc->id or old('id') }}">
 	<input type="hidden" name="file" value="{{ $mc->image or ''}}">
 </form>
-<?php if ($mc){ ?> 
+
+
+
+
+
+
+    <?php if ($mc){ ?>
 <?php  $total_ticket = DB::table('tickets')->where('mc_id',$mc->id)->count();
        $sold_money = DB::table('tickets')->where('mc_id',$mc->id)->where('purchase_type',0)->where('status',1)->count();
        $sold_credit = DB::table('tickets')->where('mc_id',$mc->id)->where('purchase_type',1)->count();
@@ -320,7 +329,7 @@ input:checked + .slider:before {
 <div class="form-group">
 	<!--<label for="title">Select Competition:</label>-->
 
-	
+
 </div>
 </div>
 <table id="example" class="table table-bordered table-responsive table-striped" style="width: 100%;border-spacing: 2px;">
@@ -336,7 +345,7 @@ input:checked + .slider:before {
 	<th>Action</th>
 	<th>Comp img</th>
 	<th>name</th>
-	
+
 </tr>
 </thead>
 <tbody>
@@ -393,7 +402,7 @@ input:checked + .slider:before {
 				<div class="modal-footerbottom">
 					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
 				</div>
-				
+
 			</div>
 		</div>
 		<!--  model end/ -->
@@ -408,13 +417,13 @@ input:checked + .slider:before {
 	<?php }  else { ?>
 	<td></td>
 	<?php } } ?>
-	
+
 	<div id="myModal{{ $row->id }}" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content" style="margin-left: 7px;">
 				<div class="modal-header" style="    flex-direction: row-reverse;">
-					
+
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title" id="heading-color">Are You Ready Announced To Winner</h4>
 				</div>
@@ -427,7 +436,7 @@ input:checked + .slider:before {
 					<a href="#myModal1{{ $row->id }}" role="button" class="btn btn-primary" data-toggle="modal" id="btn-color">Continue</a>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -445,7 +454,7 @@ input:checked + .slider:before {
 						<!-- <input type="hidden" name="id" id="winnerid"> -->
 						<input type="hidden" name="user_id" value="{{ $row->user_id }}">
 						<input type="hidden" name="product_id" value="{{ $row->product_id }}">
-						
+
 						<input type="hidden" name="mc_id" value="{{ $row->mc_id }}">
 						<input type="hidden" name="paid_price" value="{{ $row->paid_price }}">
 						<input type="hidden" name="code" value="{{ $row->code }}">
@@ -471,7 +480,7 @@ input:checked + .slider:before {
 				</div>
 			</div>
 		</div>
-		
+
 		<?php
 		$id = $row->product_id;
 		$camp = DB::table('packages')->where('id',$id)->first();
@@ -525,17 +534,17 @@ input:checked + .slider:before {
                         var val = $.fn.dataTable.util.escapeRegex(
                             $(this).val()
                         );
- 
+
                         column
                             .search( val ? '^'+val+'$' : '', true, false )
                             .draw();
                     } );
- 
+
                 column.data().unique().sort().each( function ( d, j ) {
                     select.append( '<option value="'+d+'">'+d+'</option>' )
-                     
+
                 } );
-               
+
             } );
         },
         "order": [[ 0, "desc" ]]
@@ -587,9 +596,9 @@ $("#example td:nth-child("+9+")").html('');
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.0/css/jquery.dataTables.css">-->
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-			
-		
+
+
+
 		$(document).on('click','.delete_element',function() {
 			$(this).parents('.row.elments').remove();
 		});
@@ -703,7 +712,7 @@ $select = $('<select/>').appendTo('#add')
 			$('input[type="search"]').on( 'keyup change', function () {
 			var searchValue = $(this).val();
 			var columnSearch = $select.val();
-			
+
 			if(columnSearch == 'All'){
 				table.search(searchValue).draw();
 			} else {

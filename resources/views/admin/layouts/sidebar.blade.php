@@ -28,8 +28,10 @@
           {{--          --}}
 
 {{--          --}}
-        <li><a class="app-menu__item <?php if(Request::segment(1) == "product") echo "active"; ?>" href="{{url('product')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Properties</span></a></li>
-          <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "MultiCompetitions") echo "active"; ?>" href="{{url('MultiCompetitions')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Multi Competitions</span></a></li>-->
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "product") echo "active"; ?>" href="{{url('product')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Properties</span></a></li>
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "MultiCompetitions") echo "active"; ?>" href="{{url('MultiCompetitions')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Multi Competitions</span></a></li>
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "propertyHomeView") echo "active"; ?>" href="{{route('propertyHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Prperty Type</span></a></li>
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "saleHomeView") echo "active"; ?>" href="{{route('saleHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Prperty sale Type</span></a></li>
           <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "article") echo "active"; ?>" href="{{url('article')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Article Management</span></a></li>-->
           <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "article_comments") echo "active"; ?>" href="{{url('article_comments')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Article Comments</span></a></li>-->
           <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "writer") echo "active"; ?>" href="{{url('writer')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Article Writer</span></a></li>-->
