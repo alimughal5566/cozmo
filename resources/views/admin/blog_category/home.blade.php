@@ -36,7 +36,7 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item">Members Management</li>
+            <li class="breadcrumb-item">Blog Categories</li>
         </ul>
     </div>
 
@@ -49,11 +49,15 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <h3 class="tile-title">Members Management
-                    @if(Auth::check() )
-                        <a href="{{url('/users/add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> Add Agent</a>
+                    @if (session('Failed'))
+                    <div class="alert alert-success" style="width: 40%">
+                        {{ session('Failed') }}
+                    </div>
                 @endif
-                <!-- <a href="{{url('user/detail')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-eye"></i>User Detail</a> -->
+                <h3 class="tile-title text-center">Blog Categories
+                    @if(Auth::check() )
+                        <a href="{{route('blog_category.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> Add Blog Category</a>
+                @endif
                 </h3>
                 <div class="table-responsive">
 
@@ -97,7 +101,7 @@
                                 <td class="text-center">
                                     <div class="actions-btns dule-btns float-lg-right">
 
-                                        <a href="{{url('/blog_category/edit/' . $row->id)}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ url('/blog_category/edit/' . $row->id)}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
                                         <a href="javascript:void(0)"   data-id="{{$row->id}}" class="btn btn-sm btn-danger delete removePartner"><i class="fa fa-trash"></i></a>
 
 

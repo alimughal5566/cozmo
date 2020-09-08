@@ -18,7 +18,7 @@
 
             <div class="tile">
                 <h3 class="tile-title">Edit Blog Category</h3>
-                <form class="form-horizontal" method="POST" action="{{ url('/blog_category/store') }}" enctype="multipart/form-data">
+                <form class="form-horizontal" method="POST" action="{{ route('blog_category.update') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="row">
@@ -34,20 +34,17 @@
                                 <label class="form-control-label">Image</label>
 
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="image" id="" required>
-                                    <label class="custom-file-label" for="">Choose Image...</label>
+
+                                    <input type="file" class="custom-file-input" name="image" id="validatedInputGroupCustomFile" required>
+                                    <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose Image...</label>
                                 </div>
-
                             </div>
-                            </div>
-
-
-
-                        {{--                        <input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">--}}
+                        </div>
+                        <input id="file" type="hidden" class="form-control" name="id" value="{{$blog_category->id}}">
 
                         @if(Auth::check())
                             <div class="tile-footer text-right " style="float: right !important;">
-                                <a href="{{url('/blog_category/home')}}" class="btn btn-default">@lang('general.cancel')</a>
+                                <a href="{{route('blog_category.home')}}" class="btn btn-default">@lang('general.cancel')</a>
                                 <button type="submit" class="btn btn-primary">@lang('general.save')</button>
                             </div>
                         @endif
