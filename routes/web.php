@@ -122,6 +122,17 @@ Route::post('ticket/remove_from_cart','ProductController@remove_from_cart');
     Route::get('/activate/{id}', 'PackagesController@activate');
     Route::get('/de_activate/{id}', 'PackagesController@de_activate');
 
+//blog portion
+Route::get('/blogs', 'BlogController@index')->name('blog.admin');
+Route::get('/blog/create', 'BlogController@create')->name('blog.create');
+Route::post('/blog/store', 'BlogController@store')->name('blog.store');
+Route::get('/blog/edit/{id}', 'BlogController@edit')->name('blog.edit');
+Route::post('/blog/update', 'BlogController@update')->name('blog.update');
+Route::post('/blog/delete', 'BlogController@destroy')->name('blog.destroy');
+Route::get('/blog/apply_sorting_number/{number}/{blog_id}', 'BlogController@apply_sorting_number');
+//end blog portion
+
+
     //blog_category
     Route::get('/blog_category/home', 'Blog_categoryController@blogCategoryIndex')->name('blog_category.home');
     Route::get('/blogCategory/add', 'Blog_categoryController@blogCategoryAdd')->name('blog_category.add');
@@ -133,15 +144,28 @@ Route::post('ticket/remove_from_cart','ProductController@remove_from_cart');
 
 //end of blog category
 
-    //blog portion
-    Route::get('/blogs', 'BlogController@index')->name('blog.admin');
-    Route::get('/blog/create', 'BlogController@create')->name('blog.create');
-    Route::post('/blog/store', 'BlogController@store')->name('blog.store');
-    Route::get('/blog/edit/{id}', 'BlogController@edit')->name('blog.edit');
-    Route::post('/blog/update', 'BlogController@update')->name('blog.update');
-    Route::post('/blog/delete', 'BlogController@destroy')->name('blog.destroy');
-    Route::get('/blog/apply_sorting_number/{number}/{blog_id}', 'BlogController@apply_sorting_number');
-    //end blog portion
+
+    //Rental Price History
+    Route::get('/rental_price_history', 'Rental_price_historyController@index')->name('rentalPriceHistoryHomeView');
+    Route::get('/rental_price_history/add', 'Rental_price_historyController@rentalAdd')->name('rentalPriceHistory.add');
+    Route::post('/rental_price_history/store', 'Rental_price_historyController@rentalStore')->name('rentalPriceHistory.store');
+    Route::get('/rental_price_history/edit/{id}', 'Rental_price_historyController@rentalEdit')->name('rentalPriceHistory.edit');
+    Route::post('/rental_price_history/update', 'Rental_price_historyController@rentalUpdate')->name('rentalPriceHistory.update');
+    Route::post('/rental_price_history/delete', 'Rental_price_historyController@rentalDestroy')->name('rentalPriceHistory.destroy');
+
+//End of Rental Price of history
+
+//departments
+Route::get('/departments', 'DepartmentController@index')->name('departmentsHomeView');
+Route::get('/departments/add', 'DepartmentController@departmentAdd')->name('department.add');
+Route::post('/departments/store', 'DepartmentController@departmentStore')->name('department.store');
+Route::get('/departments/edit/{id}', 'DepartmentController@departmentEdit')->name('department.edit');
+Route::post('/departments/update', 'DepartmentController@departmentUpdate')->name('department.update');
+Route::post('/departments/delete', 'DepartmentController@departmentDestroy')->name('department.destroy');
+
+//
+
+
     //start faqs
 
     Route::post('/freecomp/delete', 'ProductController@destroyfreecompshow');

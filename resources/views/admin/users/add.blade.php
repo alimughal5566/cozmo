@@ -8,23 +8,23 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item"><a href="{{url('/users')}}">Agents Management</a>
+            <li class="breadcrumb-item"><a href="{{url('/users')}}">All Agents</a>
             </li>
-            <li class="breadcrumb-item">Update</li>
+            <li class="breadcrumb-item">Add Agents</li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
 
             <div class="tile">
-                <h3 class="tile-title">Edit Agents</h3>
+                <h3 class="tile-title">Add Agent</h3>
                 <form class="form-horizontal" method="POST" action="{{ url('users/store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                 <label class="form-control-label">Name</label>
-                                <input id="name" type="text" class="form-control is-invalid" name="name" required autofocus>
+                                <input id="name" type="text" class="form-control " name="name" required autofocus>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
@@ -36,7 +36,7 @@
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                 <label class="form-control-label">Password</label>
-                                <input id="email"  type="password" class="form-control is-valid" name="password"  required >
+                                <input id="email"  type="password" class="form-control " name="password"  required >
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
@@ -131,18 +131,21 @@
 
                         {{--					</div>--}}
 {{--                        <input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">--}}
-                        @if(Auth::check())
-                            <div class="tile-footer text-right " style="float: right !important;">
-                                <a href="{{url('users')}}" class="btn btn-default">@lang('general.cancel')</a>
-                                <button type="submit" class="btn btn-primary">@lang('general.save')</button>
-                            </div>
-                        @endif
+
                     </div>
+                    @if(Auth::check())
+                        <div class="tile-footer text-right " >
+                            <a href="{{url('users')}}" class="btn btn-default">@lang('general.cancel')</a>
+                            <button type="submit" class="btn btn-primary">@lang('general.save')</button>
+                        </div>
+                    @endif
                 </form>
+
             </div>
 
         </div>
     </div>
+
 
 @endsection
 

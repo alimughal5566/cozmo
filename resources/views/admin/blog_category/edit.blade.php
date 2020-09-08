@@ -8,9 +8,9 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item"><a href="{{url('/users')}}">Edit Blog Category</a>
+            <li class="breadcrumb-item"><a href="{{route('blog_category.home')}}">All Blog Categories</a>
             </li>
-            <li class="breadcrumb-item">Update</li>
+            <li class="breadcrumb-item">Edit Blog Category</li>
         </ul>
     </div>
     <div class="row">
@@ -42,17 +42,19 @@
                         </div>
                         <input id="file" type="hidden" class="form-control" name="id" value="{{$blog_category->id}}">
 
-                        @if(Auth::check())
-                            <div class="tile-footer text-right " style="float: right !important;">
-                                <a href="{{route('blog_category.home')}}" class="btn btn-default">@lang('general.cancel')</a>
-                                <button type="submit" class="btn btn-primary">@lang('general.save')</button>
-                            </div>
-                        @endif
+
                     </div>
 
 
 
+                    @if(Auth::check())
+                        <div class="tile-footer text-right " >
+                            <a href="{{route('blog_category.home')}}" class="btn btn-default">@lang('general.cancel')</a>
+                            <button type="submit" class="btn btn-primary">@lang('general.save')</button>
+                        </div>
+                    @endif
                 </form>
+
             </div>
 
         </div>

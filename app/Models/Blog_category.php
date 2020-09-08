@@ -44,7 +44,7 @@ class Blog_category extends Model
        $data = DB::table('blog_categories')->where('id' , $request->id)->Update([
             'title' => $request->title,
             'image' => $name,
-            'date_updated' =>carbon::now() ,
+            'date_updated' => carbon::now(),
         ]);
 //        dd($data);
 //        $data = Blog_category:: Update([

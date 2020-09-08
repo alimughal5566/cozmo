@@ -8,9 +8,9 @@
 			</li>
 			<li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
 			</li>
-			<li class="breadcrumb-item"><a href="{{url('/users')}}">Agents Management</a>
+			<li class="breadcrumb-item"><a href="{{url('/users')}}">All Agents</a>
 			</li>
-			<li class="breadcrumb-item">Update</li>
+			<li class="breadcrumb-item">Edit Agent</li>
 		</ul>
 	</div>
 <div class="row">
@@ -24,7 +24,7 @@
 						<div class="col-sm-6 col-md-4">
 							<div class="form-group">
 								<label class="form-control-label">Name</label>
-								<input id="name" type="text" class="form-control is-invalid" name="name" value="{{ $user->name }}" required autofocus>
+								<input id="name" type="text" class="form-control " name="name" value="{{ $user->name }}" required autofocus>
 							</div>
 						</div>
 						<div class="col-sm-6 col-md-4">
@@ -136,14 +136,16 @@
 
 {{--					</div>--}}
 					<input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">
-					@if(Auth::check())
-					<div class="tile-footer text-right " style="float: right !important;">
-						<a href="{{url('users')}}" class="btn btn-default">@lang('general.cancel')</a>
-						<button type="submit" class="btn btn-primary">@lang('general.save')</button>
-					</div>
-					@endif
+
                     </div>
+                    @if(Auth::check())
+                        <div class="tile-footer text-right " >
+                            <a href="{{url('users')}}" class="btn btn-default">@lang('general.cancel')</a>
+                            <button type="submit" class="btn btn-primary">@lang('general.save')</button>
+                        </div>
+                    @endif
 				</form>
+
 			</div>
 
 	</div>

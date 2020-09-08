@@ -15,7 +15,7 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item">Members Management</li>
+            <li class="breadcrumb-item">Agents Management</li>
         </ul>
     </div>
 
@@ -28,7 +28,7 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                <h3 class="tile-title">Members Management
+                <h3 class="tile-title">Agents Management
                     @if(Auth::check() )
                         <a href="{{url('/users/add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> Add Agent</a>
                 @endif

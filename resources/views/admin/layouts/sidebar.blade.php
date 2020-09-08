@@ -19,11 +19,11 @@
         <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('users')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Agent Management</span></a></li>
 {{----}}
 {{--blogs          --}}
-          <li><a class="app-menu__item <?php if(Request::segment(1) == "Blog Category") echo "active"; ?>" href="{{url('/blog_category/home')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blogs</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "Blogs") echo "active"; ?>" href="#"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blogs</span></a></li>
 
           {{--          --}}
 {{--          Blogs Categories--}}
-          <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('/blog_category/home')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blog Category</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "/blog_category/home") echo "active"; ?>" href="{{url('/blog_category/home')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blog Category</span></a></li>
 
           {{--          --}}
 
@@ -32,7 +32,13 @@
          <li><a class="app-menu__item <?php if(Request::segment(1) == "MultiCompetitions") echo "active"; ?>" href="{{url('MultiCompetitions')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Multi Competitions</span></a></li>
          <li><a class="app-menu__item <?php if(Request::segment(1) == "propertyHomeView") echo "active"; ?>" href="{{route('propertyHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Prperty Type</span></a></li>
          <li><a class="app-menu__item <?php if(Request::segment(1) == "saleHomeView") echo "active"; ?>" href="{{route('saleHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Prperty sale Type</span></a></li>
-          <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "article") echo "active"; ?>" href="{{url('article')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Article Management</span></a></li>-->
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "Rental Price History") echo "active"; ?>" href="{{route('rentalPriceHistoryHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Rental Price History</span></a></li>
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "Departments") echo "active"; ?>" href="{{route('departmentsHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Departments</span></a></li>
+
+
+
+
+      <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "article") echo "active"; ?>" href="{{url('article')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Article Management</span></a></li>-->
           <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "article_comments") echo "active"; ?>" href="{{url('article_comments')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Article Comments</span></a></li>-->
           <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "writer") echo "active"; ?>" href="{{url('writer')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Article Writer</span></a></li>-->
 

@@ -8,16 +8,16 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item"><a href="{{url('/users')}}">Add Blog Category</a>
+            <li class="breadcrumb-item"><a href="{{route('blog_category.home')}}"> All Blog Categories</a>
             </li>
-            <li class="breadcrumb-item">Update</li>
+            <li class="breadcrumb-item">Add Blog Category</li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
 
             <div class="tile">
-                <h3 class="tile-title text-center">Add New <strong>Blog Category</strong></h3>
+                <h3 class="tile-title ">Add New Blog Category</h3>
                 <form class="form-horizontal" method="POST" action="{{ url('/blog_category/store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
@@ -42,15 +42,16 @@
 
                         {{--                        <input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">--}}
 
-                        @if(Auth::check())
-                            <div class="tile-footer text-right " style="float: right !important;">
-                                <a href="{{url('/blog_category/home')}}" class="btn btn-default">@lang('general.cancel')</a>
-                                <button type="submit" class="btn btn-primary">@lang('general.save')</button>
-                            </div>
-                        @endif
-                    </div>
 
+                    </div>
+                    @if(Auth::check())
+                        <div class="tile-footer text-right " >
+                            <a href="{{url('/blog_category/home')}}" class="btn btn-default">@lang('general.cancel')</a>
+                            <button type="submit" class="btn btn-primary">@lang('general.save')</button>
+                        </div>
+                    @endif
                 </form>
+
             </div>
 
         </div>
