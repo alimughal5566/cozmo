@@ -418,3 +418,21 @@ Route::post('create-sale-type','ProprtyTypeController@createSaleType')->name('cr
 Route::get('update-sale-type/{id}','ProprtyTypeController@updateSaleType')->name('updateSaleType');
 Route::post('delete-sale-type','ProprtyTypeController@deleteSaleType')->name('deleteSaleType');
 Route::post('store-update-sale-type','ProprtyTypeController@storeUpdateSaleType')->name('storeUpdateSaleType');
+
+//Resource Category
+
+Route::get('resource-category-home','ResourceController@resourceCategoryHome')->name('resourceCategoryHome');
+Route::get('add-resource-category','ResourceController@addResourceCategory')->name('addResourceCategory');
+Route::post('create-resource-category','ResourceController@createResourceCategory')->name('createResourceCategory');
+Route::get('update-resource-category/{id}','ResourceController@updateResourceCategory')->name('updateResourceCategory');
+Route::post('delete-resource-category','ResourceController@deleteResourceCategory')->name('deleteResourceCategory');
+Route::post('store-resource-category','ResourceController@storeResourceCategory')->name('storeResourceCategory');
+
+//Resources
+
+Route::get('resource-home','ResourceController@resourceHome')->name('resourceHome');
+Route::get('add-resources','ResourceController@addResources')->name('addResources');
+Route::post('create-resource','ResourceController@createResource')->name('createResource');
+Route::get('update-resource/{id}','ResourceController@updateResource')->name('updateResource');
+Route::post('delete-resource','ResourceController@deleteResource')->name('deleteResource');
+Route::post('store-resource','ResourceController@storeResource')->name('storeResource');
