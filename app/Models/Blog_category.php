@@ -33,6 +33,30 @@ class Blog_category extends Model
         ]);
              return $data;
     }
+
+    public  function blogCategoryUpdatedata($request){
+//        dd($request);
+        if($files=$request->file('image')) {
+            $name = $files->getClientOriginalName();
+            $files->move('images\cozmo', $name);
+        }
+
+       $data = DB::table('blog_categories')->where('id' , $request->id)->Update([
+            'title' => $request->title,
+            'image' => $name,
+            'date_updated' => carbon::now(),
+        ]);
+//        dd($data);
+//        $data = Blog_category:: Update([
+//            'title' => $request['title'],
+//            'image' => $name,
+//            'date_created' =>carbon::now() ,
+//        ]);
+        return $data;
+    }
+
+
+
     public function blogCategoryEditData($id){
         $data = Blog_category::find($id);
 //        dd($data);

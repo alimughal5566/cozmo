@@ -31,6 +31,7 @@ class Blog_categoryController extends Controller
     public function blogCategoryAdd(){
        return view('admin.blog_category.add');
     }
+
     public function blogCategoryStore(Request $request){
 //        dd($request);
 if ($request->hasFile('image')){
@@ -51,23 +52,40 @@ else{
     return redirect()->route('blog_category.home');
 }
 
-
-
-
     }
     public function blogCategoryEdit($id){
         $data=$this->blog_cat->blogCategoryEditData($id);
         $blog_category = $data;
+
+//        dd($blog_category);
 //        dd($data);
 //        dd($blog_category);
-        return view('admin.blog_category.edit' , compact("blog_category"));
+        return view('admin.blog_category.edit' , compact("blog_category" ));
+
     }
 
     public function blogCategoryUpdate(Request $request){
-     dd($request);
 //        dd($request);
-        $data=$this->blog_cat->blogCategoryStoredata($request);
+//        dd($request->id);
+        if ($request->hasFile('image')){
+//            dd('has file');
+            $data=$this->blog_cat->blogCategoryUpdatedata($request);
+//            dd($data);
+            if($data){
+                Session::flash('success', 'Successfully Updated Blog Category');
+                return redirect()->route('blog_category.home');
+            }
+            else{
+                Session::flash('Failed', 'Some Went Wrong');
+                return redirect()->route('blog_category.home');
+            }
 
+//    dd($request->file('image'));
+        }
+        else{
+            Session::flash('Failed', 'Some Went Wrong');
+            return redirect()->route('blog_category.home');
+        }
 //        return view('admin.blog_category.edit');
     }
 

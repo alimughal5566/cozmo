@@ -8,9 +8,9 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item"><a href="{{url('/users')}}">Edit Blog Category</a>
+            <li class="breadcrumb-item"><a href="{{route('blog_category.home')}}">All Blog Categories</a>
             </li>
-            <li class="breadcrumb-item">Update</li>
+            <li class="breadcrumb-item">Edit Blog Category</li>
         </ul>
     </div>
     <div class="row">
@@ -18,7 +18,7 @@
 
             <div class="tile">
                 <h3 class="tile-title">Edit Blog Category</h3>
-                <form class="form-horizontal" method="POST" action="{{ url('/blog_category/store') }}" enctype="multipart/form-data">
+                <form class="form-horizontal" method="POST" action="{{ route('blog_category.update') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
                     <div class="row">
@@ -34,28 +34,27 @@
                                 <label class="form-control-label">Image</label>
 
                                 <div class="custom-file">
-                                    <input type="file" class="custom-file-input" name="image" id="" required>
-                                    <label class="custom-file-label" for="">Choose Image...</label>
+
+                                    <input type="file" class="custom-file-input" name="image" id="validatedInputGroupCustomFile" required>
+                                    <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose Image...</label>
                                 </div>
-
                             </div>
-                            </div>
+                        </div>
+                        <input id="file" type="hidden" class="form-control" name="id" value="{{$blog_category->id}}">
 
 
-
-                        {{--                        <input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">--}}
-
-                        @if(Auth::check())
-                            <div class="tile-footer text-right " style="float: right !important;">
-                                <a href="{{url('/blog_category/home')}}" class="btn btn-default">@lang('general.cancel')</a>
-                                <button type="submit" class="btn btn-primary">@lang('general.save')</button>
-                            </div>
-                        @endif
                     </div>
 
 
 
+                    @if(Auth::check())
+                        <div class="tile-footer text-right " >
+                            <a href="{{route('blog_category.home')}}" class="btn btn-default">@lang('general.cancel')</a>
+                            <button type="submit" class="btn btn-primary">@lang('general.save')</button>
+                        </div>
+                    @endif
                 </form>
+
             </div>
 
         </div>

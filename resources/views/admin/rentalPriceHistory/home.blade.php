@@ -36,7 +36,7 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item">Blog Categories</li>
+            <li class="breadcrumb-item">Rental Price History</li>
         </ul>
     </div>
 
@@ -49,15 +49,15 @@
                         {{ session('success') }}
                     </div>
                 @endif
-                    @if (session('Failed'))
+                @if (session('Failed'))
                     <div class="alert alert-success" style="width: 40%">
                         {{ session('Failed') }}
                     </div>
                 @endif
-                <h3 class="tile-title ">Blog Categories
+                <h3 class="tile-title ">Rental Price History
                     @if(Auth::check() )
-                        <a href="{{route('blog_category.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> Add Blog Category</a>
-                @endif
+                        <a href="{{route('rentalPriceHistory.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> Add New Rental Price </a>
+                    @endif
                 </h3>
                 <div class="table-responsive">
 
@@ -65,17 +65,17 @@
                         <thead class="back_blue">
                         <tr>
                             <th style="display: none;">#Sr</th>
-                            <th>image</th>
-                            <th>Title</th>
+                            <th>Property</th>
+                            <th>Rent</th>
                             <th>Date Created</th>
-{{--                            <th>Date Updated</th>--}}
+                            {{--                            <th>Date Updated</th>--}}
 
                             <th width="130" class="text-center">Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php $counter = 1;?>
-                        @foreach($blog_category as $row)
+                        @foreach($data as $row)
 
                             <tr>
                                 <td style="display: none;"><?php echo $counter;?></td>
@@ -90,23 +90,25 @@
                                 {{--                                    @endforeach--}}
                                 {{--                                </td>--}}
 
+                                <td>
+                                    @foreach($property as $prop)
+                                        @if($prop->id == $row->property_id)
+                                            {{$prop->title}}
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td>{{$row->rent}}</td>
 
-                                <td>
-                                    <img class=" img-circle img-size-32 mr-2 round_img"  height="15%" src="/images/cozmo/{{$row->image}}" style="height: 30px">
-                                </td>
-                                <td>
-                                    {{$row->title}}
-                                </td>
-                                <td>{{ date('d-M-y', strtotime($row->date_created)) }}</td>
-{{--                                <td>{{ date('d-M-y', strtotime($row->date_updated)) }}</td>--}}
+                                <td>{{ date('d-M-y', strtotime($row->date_changed)) }}</td>
+                                {{--                                <td>{{ date('d-M-y', strtotime($row->date_updated)) }}</td>--}}
 
 
 
                                 <td class="text-center">
                                     <div class="actions-btns dule-btns float-lg-right">
 
-                                        <a href="{{ url('/blog_category/edit/' . $row->id)}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0)"   data-id="{{$row->id}}" class="btn btn-sm btn-danger delete removePartner"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ url('/rental_price_history/edit/' . $row->id)}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
+                                        <a href="javascript:void(0)"   data-id="{{$row->id}}" class="btn btn-sm btn-danger delete "><i class="fa fa-trash"></i></a>
 
 
                                     </div>
@@ -144,13 +146,13 @@
                         headers: {
                             'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )
                         },
-                        url: '<?php echo url("/blog_category/delete"); ?>',
+                        url: '<?php echo url("/rental_price_history/delete"); ?>',
                         data: form_data,
                         success: function ( msg ) {
                             swal( "@lang('Category Deleted Successfully')", '', 'success' )
                             setTimeout( function () {
                                 location.reload();
-                            }, 1000 );
+                            }, 900 );
                         }
                     } );
                 }
@@ -170,11 +172,11 @@
 
     <script>
 
-            $(document).ready(function() {
-                $('#example').DataTable( {
-                    "order": [[ 0, "desc" ]]
-                } );
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 0, "desc" ]]
             } );
+        } );
 
     </script>
 
