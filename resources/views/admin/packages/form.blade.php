@@ -372,7 +372,7 @@
 				<!--	@endif-->
 				<!--	</div>-->
 				<!--</div>-->
-				
+
 				<input type="button" class="btn-primary btn" id="add_attribs" value="Add More"/>
 
                 <!--<hr>-->
