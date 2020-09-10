@@ -69,7 +69,6 @@
                             <th>Rental Price</th>
                             <th>Property</th>
                             <th>Unique Number</th>
-                            {{--                            <th>Date Updated</th>--}}
 
                             <th width="130" class="text-center">Actions</th>
                         </tr>
@@ -81,15 +80,7 @@
                             <tr>
                                 <td style="display: none;"><?php echo $counter;?></td>
                                 <?php $counter++;?>
-                                {{--                                <td>{{$row->title}}</td>--}}
 
-                                {{--                                <td>--}}
-                                {{--                                    @foreach($companies as $comp)--}}
-                                {{--                                        @if($comp->id==$row->company_id)--}}
-                                {{--                                            {{$comp->title}}--}}
-                                {{--                                        @endif--}}
-                                {{--                                    @endforeach--}}
-                                {{--                                </td>--}}
 <td>{{$row->name}}</td>
 <td>{{$row->rental_price}}</td>
                                 <td>
@@ -100,9 +91,6 @@
                                     @endforeach
                                 </td>
                                 <td>{{ date('d-M-y', strtotime($row->date_created)) }}</td>
-                                {{--                                <td>{{ date('d-M-y', strtotime($row->date_updated)) }}</td>--}}
-
-
 
                                 <td class="text-center">
                                     <div class="actions-btns dule-btns float-lg-right">

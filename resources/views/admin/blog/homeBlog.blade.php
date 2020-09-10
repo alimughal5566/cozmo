@@ -58,15 +58,6 @@
                                 <?php $counter++;?>
                                 <td>{{$row->title}}</td>
 
-{{--                                <td>--}}
-{{--                                    @foreach($companies as $comp)--}}
-{{--                                        @if($comp->id==$row->company_id)--}}
-{{--                                            {{$comp->title}}--}}
-{{--                                        @endif--}}
-{{--                                    @endforeach--}}
-{{--                                </td>--}}
-
-
                                 <td class="text-center">
                                     <div class="actions-btns dule-btns float-lg-right">
 

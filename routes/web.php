@@ -460,3 +460,14 @@ Route::post('create-resource','ResourceController@createResource')->name('create
 Route::get('update-resource/{id}','ResourceController@updateResource')->name('updateResource');
 Route::post('delete-resource','ResourceController@deleteResource')->name('deleteResource');
 Route::post('store-resource','ResourceController@storeResource')->name('storeResource');
+
+//Company route
+
+Route::get('companies','HomeController@index_companies')->name('index_companies');
+Route::get('/companies/add', 'CompaniesController@companies');
+Route::post('/company/store', 'CompaniesController@store')->name('company.store');
+Route::get('/company/edit/{id}', 'CompaniesController@edit')->name('companies.edit');
+Route::post('/company/update', 'CompaniesController@update')->name('company.update');
+Route::get('/company/delete/{id}', 'CompaniesController@delete')->name('company.delete');
+
+

@@ -88,38 +88,6 @@
                                 <input id="zip_code" type="text" class="form-control" name="zip_code" required>
                             </div>
                         </div>
-
-
-
-                        {{--                                                @if ($user->is_business_profile != '0')--}}
-                        {{--						<div class="col-sm-6 col-md-4">--}}
-                        {{--							<div class="form-group">--}}
-                        {{--								<label class="form-control-label">Business Name</label>--}}
-                        {{--								<input id="text" type="text" class="form-control" name="business_name" value="{{ $user->business_name}}">--}}
-                        {{--							</div>--}}
-                        {{--						</div>--}}
-                        {{--						<div class="col-sm-6 col-md-4">--}}
-                        {{--							<div class="form-group">--}}
-                        {{--								<label class="form-control-label">Business Phone</label>--}}
-                        {{--								<input id="text" type="text" class="form-control" name="business_phone" value="{{ $user->business_phone}}">--}}
-                        {{--							</div>--}}
-                        {{--						</div>--}}
-                        {{--						<div class="col-sm-6 col-md-4">--}}
-                        {{--							<div class="form-group">--}}
-                        {{--								<label class="form-control-label">Business Facebook</label>--}}
-                        {{--								<input id="text" type="text" class="form-control" name="business_facebook_url" value="{{ $user->business_facebook_url}}">--}}
-                        {{--							</div>--}}
-                        {{--						</div>--}}
-                        {{--						<div class="col-sm-6 col-md-4">--}}
-                        {{--							<div class="form-group">--}}
-                        {{--								<label class="form-control-label">Business Twitter</label>--}}
-                        {{--								<input id="text" type="text" class="form-control" name="business_twitter_url" value="{{ $user->business_twitter_url}}">--}}
-                        {{--							</div>--}}
-                        {{--						</div>--}}
-                        {{--                                                @endif--}}
-
-
-
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                 <label class="form-control-label">Created date</label>
@@ -128,10 +96,6 @@
 
                             </div>
                         </div>
-
-                        {{--					</div>--}}
-{{--                        <input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">--}}
-
                     </div>
                     @if(Auth::check())
                         <div class="tile-footer text-right " >

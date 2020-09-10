@@ -36,12 +36,6 @@
 
                         <div class="col-sm-6 col-md-4 ">
                             <label for="comp">Blog Category</label>
-{{--                            <select name="company_id" class="form-control"  >--}}
-
-{{--                                @foreach ($companies as $comp)--}}
-{{--                                    <option value="{{ $comp->id }}">{{ $comp->title }}</option>--}}
-{{--                                @endforeach--}}
-{{--                            </select>--}}
                         </div>
 
 
@@ -59,47 +53,6 @@
 
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-                        {{--                                                @if ($user->is_business_profile != '0')--}}
-                        {{--						<div class="col-sm-6 col-md-4">--}}
-                        {{--							<div class="form-group">--}}
-                        {{--								<label class="form-control-label">Business Name</label>--}}
-                        {{--								<input id="text" type="text" class="form-control" name="business_name" value="{{ $user->business_name}}">--}}
-                        {{--							</div>--}}
-                        {{--						</div>--}}
-                        {{--						<div class="col-sm-6 col-md-4">--}}
-                        {{--							<div class="form-group">--}}
-                        {{--								<label class="form-control-label">Business Phone</label>--}}
-                        {{--								<input id="text" type="text" class="form-control" name="business_phone" value="{{ $user->business_phone}}">--}}
-                        {{--							</div>--}}
-                        {{--						</div>--}}
-                        {{--						<div class="col-sm-6 col-md-4">--}}
-                        {{--							<div class="form-group">--}}
-                        {{--								<label class="form-control-label">Business Facebook</label>--}}
-                        {{--								<input id="text" type="text" class="form-control" name="business_facebook_url" value="{{ $user->business_facebook_url}}">--}}
-                        {{--							</div>--}}
-                        {{--						</div>--}}
-                        {{--						<div class="col-sm-6 col-md-4">--}}
-                        {{--							<div class="form-group">--}}
-                        {{--								<label class="form-control-label">Business Twitter</label>--}}
-                        {{--								<input id="text" type="text" class="form-control" name="business_twitter_url" value="{{ $user->business_twitter_url}}">--}}
-                        {{--							</div>--}}
-                        {{--						</div>--}}
-                        {{--                                                @endif--}}
-
-
-
-
-                        {{--					</div>--}}
-{{--                        <input id="file" type="hidden" class="form-control" name="id" >--}}
                         @if(Auth::check())
                             <div class="tile-footer text-right " style="float: right !important;">
                                 <a href="{{url('/blogs')}}" class="btn btn-default">@lang('general.cancel')</a>
