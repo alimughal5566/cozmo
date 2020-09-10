@@ -103,6 +103,7 @@ class DepartmentController extends  Controller
         //Daud controller
         $id = $request->input("id");
         DB::table('departments')->where("id", $id)->delete();
+//        return view('')
 
 
     }

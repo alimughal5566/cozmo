@@ -6,32 +6,42 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class Blog_category extends Model
+
+class Blog extends Model
 {
-    protected $fillable = [
-        'image', 'title',
-    ];
+    public function indexBlog(){
 
-    public function indexBlogCategory(){
-
-         $blog_category = DB::table('blog_categories')->get();
-        // dd($blog_category);
-        return $blog_category;
+//        $blog_category = DB::table('blog_categories')->get();
+//        // dd($blog_category);
+//        return $blog_category;
+        $pod = DB::table('blog')->get();
+        foreach ($pod as $data){
+            $data->blog_category=DB::table('blog_categories')->where('id',$data->blog_category_id)->pluck('title')->first();
+        }
+        return $pod ;
 
     }
-    public  function blogCategoryStoredata($request){
+    public function blogAdd(){
+        $data =   DB::table('blog_categories')->get();
+        return $data;
+    }
+    public  function blogStoredata($request){
 //        dd($request);
         if($files=$request->file('image')) {
             $name = $files->getClientOriginalName();
             $files->move(public_path('images\cozmo'), $name);
         }
-      $data =   DB::table('blog_categories')->insert([
-            'title' => $request['title'],
+        $data =   DB::table('blog')->insert([
+            'title' => $request->title,
+            'type' => $request->type,
+            'blog_category_id' => $request->blog_category_id,
+            'content' => $request->content,
             'image' => $name,
             'date_created' =>carbon::now() ,
 
         ]);
-             return $data;
+        return $data;
+//        dd($data);
     }
 
     public  function blogCategoryUpdatedata($request){
@@ -41,7 +51,7 @@ class Blog_category extends Model
             $files->move('images\cozmo', $name);
         }
 
-       $data = DB::table('blog_categories')->where('id' , $request->id)->Update([
+        $data = DB::table('blog_categories')->where('id' , $request->id)->Update([
             'title' => $request->title,
             'image' => $name,
             'date_updated' => carbon::now(),
@@ -63,7 +73,6 @@ class Blog_category extends Model
         return $data;
 
     }
-
 
 
 
