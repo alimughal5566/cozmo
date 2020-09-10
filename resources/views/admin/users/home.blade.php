@@ -74,7 +74,7 @@
                                     <div class="actions-btns dule-btns float-lg-right">
 
                                         <a href="{{url('users/edit/' . $row->id)}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
-                                        <a href="javascript:void(0)" data-id="{{$row->id}}" class="btn btn-sm btn-danger removePartner"><i class="fa fa-trash"></i></a>
+                                        <a href="javascript:void(0)" data-id="{{$row->id}}" class="btn btn-sm btn-danger delete "><i class="fa fa-trash"></i></a>
 
 
                                     </div>
@@ -88,23 +88,158 @@
         </div>
     </div>
 
+{{--    <script type="text/javascript">--}}
+{{--        $( "body" ).on( "click", ".removePartner", function () {--}}
+{{--            var task_id = $( this ).attr( "data-id" );--}}
+{{--            var form_data = {--}}
+{{--                id: task_id--}}
+{{--            };--}}
+{{--            swal( {--}}
+{{--                    title: "@lang('users.delete_user')",--}}
+{{--                    text: "@lang('users.delete_user_msg')",--}}
+{{--                    type: 'info',--}}
+{{--                    showCancelButton: true,--}}
+{{--                    confirmButtonColor: '#F79426',--}}
+{{--                    cancelButtonColor: '#d33',--}}
+{{--                    confirmButtonText: 'Yes',--}}
+{{--                    showLoaderOnConfirm: true--}}
+{{--                },--}}
+{{--                function () {--}}
+{{--                    $.ajax( {--}}
+{{--                        type: 'POST',--}}
+{{--                        headers: {--}}
+{{--                            'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )--}}
+{{--                        },--}}
+{{--                        url: '<?php echo url("users/delete"); ?>',--}}
+{{--                        data: form_data,--}}
+{{--                        success: function ( msg ) {--}}
+{{--                            swal({--}}
+{{--                                title: "Response",--}}
+{{--                                text: msg,--}}
+{{--                                type: 'info',--}}
+{{--                            });--}}
+{{--                            setTimeout( function () {--}}
+{{--                                location.reload();--}}
+{{--                            }, 2000 );--}}
+{{--                        }--}}
+{{--                    } );--}}
+{{--                } );--}}
+
+{{--        } );--}}
+{{--        $( "body" ).on( "click", "#change_status", function () {--}}
+{{--            var id = parseInt( $( this ).attr( "data-id" ) );--}}
+{{--            var status = parseInt( $( this ).attr( "data-status" ) );--}}
+{{--            if ( status == 0 || status== 2 ) {--}}
+{{--                var s = 1--}}
+{{--            } else if ( status == 1 ) {--}}
+{{--                s = 0--}}
+{{--            }--}}
+{{--            var form_data = {--}}
+{{--                id: id,--}}
+{{--                status: s--}}
+{{--            };--}}
+{{--            swal( {--}}
+{{--                    title: "@lang('users.change_status')",--}}
+{{--                    text: "@lang('users.change_status_msg')",--}}
+{{--                    type: 'info',--}}
+{{--                    showCancelButton: true,--}}
+{{--                    confirmButtonColor: '#F79426',--}}
+{{--                    cancelButtonColor: '#d33',--}}
+{{--                    confirmButtonText: 'Yes',--}}
+{{--                    showLoaderOnConfirm: true--}}
+{{--                },--}}
+{{--                function () {--}}
+{{--                    $.ajax( {--}}
+{{--                        type: 'POST',--}}
+{{--                        headers: {--}}
+{{--                            'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )--}}
+{{--                        },--}}
+{{--                        url: '<?php echo url("users/change_status"); ?>',--}}
+{{--                        data: form_data,--}}
+{{--                        success: function ( msg ) {--}}
+{{--                            swal( "@lang('users.success_change')", '', 'success' )--}}
+{{--                            setTimeout( function () {--}}
+{{--                                location.reload();--}}
+{{--                            }, 2000 );--}}
+{{--                        }--}}
+{{--                    } );--}}
+{{--                } );--}}
+
+
+{{--        } );--}}
+
+{{--        $(document).ready(function() {--}}
+
+{{--            $('.approve-b-req').click(function(){--}}
+
+{{--                var uid = $(this).attr('uid');--}}
+{{--                var response;--}}
+
+{{--                $.ajax({--}}
+{{--                    url:'{{url("approve_business_request")}}',--}}
+{{--                    data:{'uid':uid, '_token': '{{@csrf_token()}}'},--}}
+{{--                    method: 'POST',--}}
+{{--                    success:function (response) {--}}
+{{--                        if (response.status == 'success') {--}}
+{{--                            swal('Success', response.msg, 'success');--}}
+{{--                            location.reload();--}}
+{{--                        }--}}
+{{--                    }--}}
+{{--                });--}}
+{{--            });--}}
+
+{{--            $('.reject-b-req, .cancel-b-req').click(function(){--}}
+
+{{--                var uid = $(this).attr('uid');--}}
+{{--                var op;--}}
+{{--                var response;--}}
+
+{{--                if ($(this).hasClass('reject-b-req')) {--}}
+{{--                    op = '3';--}}
+{{--                }--}}
+{{--                else if ($(this).hasClass('cancel-b-req')) {--}}
+{{--                    op = '4';--}}
+{{--                }--}}
+
+{{--                $.ajax({--}}
+{{--                    url:'{{url("reject_business_request")}}',--}}
+{{--                    data:{'uid':uid, '_token': '{{@csrf_token()}}', 'op':op},--}}
+{{--                    method: 'POST',--}}
+{{--                    success:function (response) {--}}
+{{--                        if (response.status == 'success') {--}}
+{{--                            swal('Success', response.msg, 'success');--}}
+{{--                            location.reload();--}}
+{{--                        }--}}
+{{--                    }--}}
+{{--                });--}}
+
+{{--            });--}}
+
+{{--            $(document).ready(function() {--}}
+{{--                $('#example').DataTable( {--}}
+{{--                    "order": [[ 0, "desc" ]]--}}
+{{--                } );--}}
+{{--            } );--}}
+{{--        } );--}}
+{{--    </script>--}}
+    <script src="{{url('backend/sweetalerts/sweetalert2.all.js')}}"></script>
     <script type="text/javascript">
-        $( "body" ).on( "click", ".removePartner", function () {
+        $( "body" ).on( "click", ".delete", function () {
             var task_id = $( this ).attr( "data-id" );
             var form_data = {
                 id: task_id
             };
-            swal( {
-                    title: "@lang('users.delete_user')",
-                    text: "@lang('users.delete_user_msg')",
-                    type: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: '#F79426',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes',
-                    showLoaderOnConfirm: true
-                },
-                function () {
+            swal({
+                title: "Do you want to delete this Category",
+                //text: "@lang('category.delete_category_msg')",
+                type: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#F79426',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                showLoaderOnConfirm: true
+            }).then( ( result ) => {
+                if ( result.value == true ) {
                     $.ajax( {
                         type: 'POST',
                         headers: {
@@ -113,116 +248,16 @@
                         url: '<?php echo url("users/delete"); ?>',
                         data: form_data,
                         success: function ( msg ) {
-                            swal({
-                                title: "Response",
-                                text: msg,
-                                type: 'info',
-                            });
+                            swal( "@lang('Category Deleted Successfully')", '', 'success' )
                             setTimeout( function () {
                                 location.reload();
-                            }, 2000 );
+                            }, 900 );
                         }
                     } );
-                } );
-
-        } );
-        $( "body" ).on( "click", "#change_status", function () {
-            var id = parseInt( $( this ).attr( "data-id" ) );
-            var status = parseInt( $( this ).attr( "data-status" ) );
-            if ( status == 0 || status== 2 ) {
-                var s = 1
-            } else if ( status == 1 ) {
-                s = 0
-            }
-            var form_data = {
-                id: id,
-                status: s
-            };
-            swal( {
-                    title: "@lang('users.change_status')",
-                    text: "@lang('users.change_status_msg')",
-                    type: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: '#F79426',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes',
-                    showLoaderOnConfirm: true
-                },
-                function () {
-                    $.ajax( {
-                        type: 'POST',
-                        headers: {
-                            'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )
-                        },
-                        url: '<?php echo url("users/change_status"); ?>',
-                        data: form_data,
-                        success: function ( msg ) {
-                            swal( "@lang('users.success_change')", '', 'success' )
-                            setTimeout( function () {
-                                location.reload();
-                            }, 2000 );
-                        }
-                    } );
-                } );
-
-
-        } );
-
-        $(document).ready(function() {
-
-            $('.approve-b-req').click(function(){
-
-                var uid = $(this).attr('uid');
-                var response;
-
-                $.ajax({
-                    url:'{{url("approve_business_request")}}',
-                    data:{'uid':uid, '_token': '{{@csrf_token()}}'},
-                    method: 'POST',
-                    success:function (response) {
-                        if (response.status == 'success') {
-                            swal('Success', response.msg, 'success');
-                            location.reload();
-                        }
-                    }
-                });
-            });
-
-            $('.reject-b-req, .cancel-b-req').click(function(){
-
-                var uid = $(this).attr('uid');
-                var op;
-                var response;
-
-                if ($(this).hasClass('reject-b-req')) {
-                    op = '3';
                 }
-                else if ($(this).hasClass('cancel-b-req')) {
-                    op = '4';
-                }
-
-                $.ajax({
-                    url:'{{url("reject_business_request")}}',
-                    data:{'uid':uid, '_token': '{{@csrf_token()}}', 'op':op},
-                    method: 'POST',
-                    success:function (response) {
-                        if (response.status == 'success') {
-                            swal('Success', response.msg, 'success');
-                            location.reload();
-                        }
-                    }
-                });
-
-            });
-
-            $(document).ready(function() {
-                $('#example').DataTable( {
-                    "order": [[ 0, "desc" ]]
-                } );
             } );
         } );
     </script>
-
     <style>
         .sweet-alert h2 {
             font-size: 1.3rem !important;
@@ -232,5 +267,18 @@
             margin: 30px auto 35px !important;
         }
     </style>
+
+
+    <script>
+
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 0, "desc" ]]
+            } );
+        } );
+
+    </script>
+
+
 
 @endsection

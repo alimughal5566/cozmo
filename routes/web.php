@@ -123,13 +123,14 @@ Route::post('ticket/remove_from_cart','ProductController@remove_from_cart');
     Route::get('/de_activate/{id}', 'PackagesController@de_activate');
 
 //blog portion
-Route::get('/blogs', 'BlogController@index')->name('blog.admin');
-Route::get('/blog/create', 'BlogController@create')->name('blog.create');
-Route::post('/blog/store', 'BlogController@store')->name('blog.store');
-Route::get('/blog/edit/{id}', 'BlogController@edit')->name('blog.edit');
-Route::post('/blog/update', 'BlogController@update')->name('blog.update');
-Route::post('/blog/delete', 'BlogController@destroy')->name('blog.destroy');
-Route::get('/blog/apply_sorting_number/{number}/{blog_id}', 'BlogController@apply_sorting_number');
+Route::get('/blogs', 'BlogController@index')->name('blogHomeView');
+Route::get('/blog/add', 'BlogController@blogAdd')->name('blog.add');
+Route::post('/blog/store', 'BlogController@blogStore')->name('blog.store');
+Route::get('/blog/edit/{id}', 'BlogController@blogEdit')->name('blog.edit');
+Route::post('/blog/update', 'BlogController@blogUpdate')->name('blog.update');
+Route::post('/blog/delete', 'BlogController@blogDestroy')->name('blog.destroy');
+//Route::get('/blog/apply_sorting_number/{number}/{blog_id}', 'BlogController@apply_sorting_number');
+
 //end blog portion
 
 
@@ -164,6 +165,16 @@ Route::post('/departments/update', 'DepartmentController@departmentUpdate')->nam
 Route::post('/departments/delete', 'DepartmentController@departmentDestroy')->name('department.destroy');
 
 //
+//Property open Days
+Route::get('/property_open_days', 'Property_open_daysController@index')->name('propertyOpenDaysHomeView');
+Route::get('/property_open_days/add', 'Property_open_daysController@dayAdd')->name('propertyOpenDays.add');
+Route::post('/property_open_days/store', 'Property_open_daysController@dayStore')->name('propertyOpenDays.store');
+Route::get('/property_open_days/edit/{id}', 'Property_open_daysController@dayEdit')->name('propertyOpenDays.edit');
+Route::post('/property_open_days/update', 'Property_open_daysController@dayUpdate')->name('propertyOpenDays.update');
+Route::post('/property_open_days/delete', 'Property_open_daysController@dayDestroy')->name('propertyOpenDays.destroy');
+
+
+//end of property open days
 
 
     //start faqs

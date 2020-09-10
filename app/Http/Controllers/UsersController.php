@@ -251,7 +251,7 @@ else{
     }
     public function destroy(Request $request)
     {
-        dd($request);
+//        dd($request);
 //        $id = $request->input("id");
 //
 //        DB::table('freecomps')->where('user_id',$id)->delete();
@@ -259,34 +259,9 @@ else{
 //        DB::table('users')->where('id',$id)->delete();
 
         //soft delete code
-        $user_id = $request->input("id");
-        $user = DB::table('users')->where('id', $user_id)->first();
-
-        $cart_data = DB::table('cart')->where('user_id', $user->id)->get();
-        if(sizeof($cart_data) > 0){
-            echo "User have tickets in his cart against Competition, You cannot delete.";exit;
-        }
-        $coupon_data = DB::table('coupon_data')->where('user_id', $user->id)->get();
-        if(sizeof($coupon_data) > 0){
-            echo "User have used a coupon against Competition, You cannot delete.";exit;
-        }
-        $free_com_data = DB::table('freecomps')->where('user_id', $user->id)->first();
-        if(isset($free_com_data)){
-            echo "User have a free ticket against this Competition, You cannot delete.";exit;
-        }
-        $tickets_data = DB::table('tickets')->where('user_id', $user->id)->get();
-        if(sizeof($tickets_data) > 0){
-            echo "User have purchased tickets against Competition, You cannot delete.";exit;
-        }
-
-        // passes all checks so hard delete in related tables
-        // soft delete competition
-        $user_email = User::find($user_id);
-        DB::table('user_activity')->where('user_email',$user_email->email)->update(['soft_delete'=>1]);
-        $response = DB::table('users')->where('id', $user_id)->update(['soft_delete' => 1, 'soft_delete_at' => date('Y-m-d H:i:s')]);
-        if($response){
-            echo "Successfully Deleted.";exit;
-        }
+//
+        $id = $request->input("id");
+        User::where("id", $id)->delete();
 
     }
 
