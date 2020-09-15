@@ -127,6 +127,9 @@ Route::get('/blogs', 'BlogController@index')->name('blogHomeView');
 Route::get('/blog/add', 'BlogController@blogAdd')->name('blog.add');
 Route::post('/blog/store', 'BlogController@blogStore')->name('blog.store');
 Route::get('/blog/edit/{id}', 'BlogController@blogEdit')->name('blog.edit');
+Route::get('/blog/removeFeature/{id}', 'BlogController@removeFeature')->name('blog.removeFeature');
+Route::get('/blog/setToMainFeature/{id}', 'BlogController@setToMainFeature')->name('blog.setMainFeature');
+Route::get('/blog/setToFeature/{id}', 'BlogController@setToFeature')->name('blog.setFeature');
 Route::post('/blog/update', 'BlogController@blogUpdate')->name('blog.update');
 Route::post('/blog/delete', 'BlogController@blogDestroy')->name('blog.destroy');
 //Route::get('/blog/apply_sorting_number/{number}/{blog_id}', 'BlogController@apply_sorting_number');
@@ -431,9 +434,7 @@ Route::get('/profile-view','HomeController@profile_view');
 Route::post('profile-update','HomeController@profile_upd');
 
 
-Route::get('/', function () {
-    return view('layouts.master-frontend');
-});
+
 
 //property type
 
@@ -471,3 +472,33 @@ Route::post('create-resource','ResourceController@createResource')->name('create
 Route::get('update-resource/{id}','ResourceController@updateResource')->name('updateResource');
 Route::post('delete-resource','ResourceController@deleteResource')->name('deleteResource');
 Route::post('store-resource','ResourceController@storeResource')->name('storeResource');
+
+
+// FrontEnd
+
+   // Front End Blog Portion
+Route::get('/UserBlog', 'frontend\BlogController@index')->name('UserblogHomeView');
+
+
+
+   // End of BLog Portion
+
+Route::get('/', function () {
+    return view('frontend.home');
+});
+
+
+
+
+Route::get('/UserRental', function () {
+    return view('frontend.rentals');
+});
+Route::get('/UserSales', function () {
+    return view('frontend.home');
+});
+Route::get('/UserBuilding', function () {
+    return view('frontend.building');
+});
+
+
+//

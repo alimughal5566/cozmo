@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use App\Models\Blog_category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
@@ -36,7 +37,11 @@ class BlogController extends Controller
 	public function index()
 	{
 //		$blog = Blog::get();
+
        $blg = $this->blogg->indexBlog();
+//       dd($blg);
+//       dd($blg);
+//        dd($blg);
         return view('admin.blog.home',compact('blg'));
 
 	}
@@ -49,6 +54,22 @@ class BlogController extends Controller
 	public function blogStore(Request $request)
 	{
 //	    dd($request);
+        if($request->featured == '1'){
+             $check=DB::table('blog')->where('feature_flag' ,'=','1')->count();
+             if($check==1){
+                 Session::flash('Failed', 'You Can Add Only One Main Featured Blog ');
+                 return redirect()->route('blogHomeView');
+             }
+        }
+        if($request->featured == '2'){
+             $check=DB::table('blog')->where('feature_flag' ,'=','2')->count();
+//             dd($check);
+             if($check>=2){
+//                 dd('less than 3');
+                 Session::flash('Failed', 'You Can Add Only 2  Featured Blogs  ');
+                 return redirect()->route('blogHomeView');
+             }
+        }
         if ($request->hasFile('image')){
 //            $data=$this->blog_cat->blogStoredata($request);
             $data = $this->blogg->blogStoredata($request);
@@ -79,12 +100,77 @@ class BlogController extends Controller
 
 	public function blogUpdate(Request $request)
 	{
-		// print_r($request->all());exit();
-
+		dd($request);
 
 
 	}
+	public function removeFeature($id){
+        $data = DB::table('blog')->find($id);
+        if ($data->feature_flag == 1 || $data->feature_flag == 2){
+//            dd('updating Data');
+           $result = DB::table('blog')->where('id' , $id)->Update([
+              'feature_flag' => '0',
+                'date_updated' => carbon::now(),
+            ]);
+           if($result){
+               Session::flash('success', 'Successfully Removed Blog From Featured ');
+               return redirect()->route('blogHomeView');
+           }
+           else{
+               Session::flash('Failed', 'Something Went Wrong ');
+               return redirect()->route('blogHomeView');
+           }
+//           dd($result);
+        }
+    }
+    public function setToMainFeature($id){
+        $check=DB::table('blog')->where('feature_flag' ,'=','1')->count();
+        if($check==1){
+            Session::flash('Failed', 'You Can Add Only One Main Featured Blog ');
+            return redirect()->route('blogHomeView');
+        }
+        else{
 
+            $result = DB::table('blog')->where('id' , $id)->Update([
+                'feature_flag' => '1',
+                'date_updated' => carbon::now(),
+            ]);
+            if($result){
+                Session::flash('success', ' Blog Set to Main Featured ');
+                return redirect()->route('blogHomeView');
+            }
+            else{
+                Session::flash('Failed', 'Something Went Wrong ');
+                return redirect()->route('blogHomeView');
+            }
+
+        }
+    }
+
+    public function setToFeature($id){
+        $check=DB::table('blog')->where('feature_flag' ,'=','2')->count();
+        if($check>=2){
+            Session::flash('Failed', 'You Can Add Only Two Featured Blog ');
+            return redirect()->route('blogHomeView');
+        }
+        else{
+
+            $result = DB::table('blog')->where('id' , $id)->Update([
+                'feature_flag' => '2',
+                'date_updated' => carbon::now(),
+            ]);
+            if($result){
+                Session::flash('success', ' Blog Set to Featured ');
+                return redirect()->route('blogHomeView');
+            }
+            else{
+                Session::flash('Failed', 'Something Went Wrong ');
+                return redirect()->route('blogHomeView');
+            }
+
+        }
+
+    }
 	public function blogDestroy(Request $request)
 	{
 //	    dd($request);
@@ -93,6 +179,7 @@ class BlogController extends Controller
 
 	   DB::table('blog')->where("id" , $id)->delete();
 	}
+
 
 //    public function apply_sorting_number($number, $blog_id)
 //    {
