@@ -50,11 +50,11 @@
                     </div>
                 @endif
                 @if (session('Failed'))
-                    <div class="alert alert-success" style="width: 40%">
+                    <div class="alert alert-danger" style="width: 100%">
                         {{ session('Failed') }}
                     </div>
                 @endif
-                <h3 class="tile-title ">Blog Categories
+                <h3 class="tile-title ">Blogs
                     @if(Auth::check() )
                         <a href="{{route('blog.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> Add Blog </a>
                     @endif
@@ -70,6 +70,9 @@
                             <th>Type</th>
                             <th>Blog Category</th>
                             <th>Content</th>
+                            <th>Featured Settings</th>
+
+{{--                            <th>Feature Settings</th>--}}
                             <th>Date Created</th>
                             {{--                            <th>Date Updated</th>--}}
 
@@ -80,7 +83,8 @@
                         <?php $counter = 1;?>
                         @foreach($blg as $row)
 
-                            <tr>
+                            <tr @if($row->feature_flag == 1)style="background: gold"@elseif($row->feature_flag == 2)style="background: lightgray"  @endif  >
+
                                 <td style=""><?php echo $counter;?></td>
                                 <?php $counter++;?>
                                 {{--                                <td>{{$row->title}}</td>--}}
@@ -111,7 +115,21 @@
 
 
                                 <td>{{ date('d-M-y', strtotime($row->date_created)) }}</td>
+                                <td>
+                                   @if($row->feature_flag == 2)
+                                    <a href="{{ url('/blog/removeFeature/' . $row->id)}}" class="btn btn-sm btn-danger" style="float: left;">Remove From Featured</a>
+                                    @endif
+                                    @if($row->feature_flag == 1)
+                                    <a href="{{ url('/blog/removeFeature/' . $row->id)}}" class="btn btn-sm btn-danger" style="float: left;">Remove From Featured</a>
+                                    @endif
+                                       @if($row->feature_flag !=1 && $row->feature_flag <2 )
+                                           @if($blg->main_featured_count != 1 || $blg->featured_count <2 )
+                                           <a href="{{ url('/blog/setToMainFeature/' . $row->id)}}" class="btn btn-sm btn-warning" style="float: left;">Set To Main Feature</a>
+                                           <a href="{{ url('/blog/setToFeature/' . $row->id)}}" class="btn btn-sm btn-info mt-2" style="float: left;"> Set To Feature</a>
+                                        @endif
+                                           @endif
 
+                                </td>
 
 
                                 <td class="text-center">
@@ -184,7 +202,7 @@
 
         $(document).ready(function() {
             $('#example').DataTable( {
-                "order": [[ 0, "desc" ]]
+                "order": [[ 0, "asc" ]]
             } );
         } );
 

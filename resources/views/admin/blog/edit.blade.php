@@ -53,6 +53,32 @@
                                 <input required id="image"  type="file" value="{{$blogg->image}}" placeholder="image" class="form-control" name="image">
                             </div>
                         </div>
+
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="title" style="width: 100%">Normal Blog</label>
+                                <input type="checkbox"   name="featured" value="0" id="normal" checked   class="example"  data-onstyle="danger">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="title" style="width: 100%">Feature</label>
+                                <input type="checkbox" name="featured" id="feature" class="example"  value="2"  data-onstyle="success">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="title" style="width: 100%">Main Feature</label>
+                                <input type="checkbox"   name="featured"  id="mainfeature"  value="1" class="example"  data-onstyle="warning">
+                            </div>
+                        </div>
+
+
                         <div class="col-lg-12" >
                             <div class="form-group">
                                 <label>Content</label>
@@ -81,6 +107,12 @@
 
         </div>
     </div>
+    <script>
+        $('input.example').on('change', function() {
+            $('input.example').not(this).prop('checked', false);
+        });
+
+    </script>
     <script src="//cdn.ckeditor.com/4.13.1/full-all/ckeditor.js"></script>
     <script>
         $(document).ready(function() {

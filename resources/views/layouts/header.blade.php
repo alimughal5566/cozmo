@@ -1,381 +1,811 @@
-<?php
-$cart_check = 1;
-if(Auth::check()){
-    $cart_check_res = \App\Cart::where('user_id', Auth::user()->id)->first();
-    if($cart_check_res){
-        $cart_check = 0;
-    }
-    $data=get_user_cart(Auth::user()->id);
-} else{
-    if(!isset($_COOKIE['random_user_id'])){
-        $data=get_user_cart(0);
-    }else{
-        $cart_check_res = \App\Cart::where('user_id', $_COOKIE['random_user_id'])->first();
-        if($cart_check_res){
-            $cart_check = 0;
-        }
-        $data=get_user_cart($_COOKIE['random_user_id']);
-    }
-}
 
-?>
-<?php $curr=Config::get("constants.currency"); ?>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<style>
- .dropbtn {
-  display: block;
-    position: relative;
-    color: #fff;
-    /* padding: 10px 12px; */
-    padding: 10px 30px;
-    transition: 0.3s;
-    font-size: 14px;
-    font-weight: 600;
-    font-family: "Open Sans", sans-serif;
-    text-transform: uppercase;
-    background: transparent;
-}
-.dropbtn:after {
-    display: inline-block;
-    margin-left: .255em;
-    vertical-align: .255em;
-    content: "";
-    border-top: .3em solid;
-    border-right: .3em solid transparent;
-    border-bottom: 0;
-    border-left: .3em solid transparent;
-}
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
+    <div id="site-shadow" class="SiteBlock-shadow"></div>
+    <header class="HeaderBlock jsHeader ">
 
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-.modal-header , .modal-footer {
-    border: 0 !important;
-}
-/* Links inside the dropdown */
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  border-bottom: 1px solid;
-  margin-top: 5px;
-}
-.sun-btn button {
-        width: 100% !important;
-    border-radius: 0;
-    margin: 0;
-}
-.modal-footer {
-    padding-top : 0 !important;
-    padding-bottom: 0 !important;
-}
-.checkbox label {
-    display : flex;
-}
-.moda-body {
-    padding-bottom : 0 !important;
-}
-.dropdown-content a:hover {
-    border-radius: 0 !important;
-    background: #03a9f4;
-    color: #fff;
-}
-.dropdown-content a:hover .dropdown-content {
-    background: transparent !important;
-    box-shadow: none !important;
-}
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-      background-color: #03a9f4;
-    border-radius: 23px;
+        <div class="Header jsHeader">
 
-}
-.modal {
-    z-index: 9999999999 !important;
-}
-</style>
-    <div class="container-fluid first-header">
-      <div class="sub-header">
-        <div class="main-top">
-          <div class="logo">
-            <a href="/"><img src="images/logo1.png"></a> 
-          </div>
-          <div class="contact-icons">
-            <div class="loc">
-              <!-- <img src="images/location.png">
-              <p class="location-p"> 322 Villing Aven<br>
-              London sub 330</p>
-              
-              <img src="images/helpline.png">
-              <p class=""> Helpline
-                <br>
-              +92-4522156-45</p> -->
-              <div class="search_icon_fixed"> <i class="fa fa-search"></i> </div>
-              <button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>
+            <a href="#" class="MenuMobileButton MenuMobileButton--hideDesktop u-noBorder u-noMargin" data-toggle="menu">
+                <span class="MenuMobileButton-icon"></span>
+            </a><div style="display: none;"><a href="#" id="ubbfccwz" rel="file"></a></div>
+
+            <div class="Container">
+                <div class="Header-logoDesktop">
+                    <a href="#" class="Logo">
+                        <img class="Logo-image" src="{{asset('assets/masterFrontend/img/lgo.png   ')}}">
+                    </a>
+                </div>
+
+                <div class="Header-mWebBox jsMobileNavbar">
+                    <nav class="navbar navbar-default visible-xs-block visible-sm-block navbar-fixed-top jsMobileNavbar u-width--full">
+                        <div class="container-fluid hide-print">
+                            <div class="Logo">
+                                <a href="#">
+                                    <img class="Logo-image" src="{{asset('assets/masterFrontend/img/lgo.png')}}">
+                                </a>
+                            </div>
+
+
+                            <ul class="nav navbar-nav navbar-right">
+
+                            </ul>
+
+
+                        </div>
+                    </nav>
+
+
+                </div>
+
+                <ul class="Header-nav">
+                    <li class="Header-navListItem">
+                        <a href="#"
+                           class="Header-navText">
+                            Work With Us
+                        </a>
+                    </li>
+                    <li class="Header-navListItem">
+          <span class="Header-navText jsGoogleOneTap"  data-toggle="modal" data-target=".animate" data-ui-class="a-zoomDown">
+            Sign In / Register
+          </span>
+
+                    </li>
+                </ul>
             </div>
-          </div>
         </div>
-        
-      </div>
-    </div>
 
 
-      <header id="header">
-        <div class="custom_container">
-          <nav id="nav-menu-container">
-            <ul class="nav-menu">
-              <li><a href="/">Home</a></li>
-              <li><a href="/events">Events</a></li>
-              <li><a href="#">MEMber area</a></li>
-              <li><a href="/mailing_list">join mailing list</a></li>
-              <li><a href="/contact_us">Contact us</a></li>
-              @if(Auth::check())
-                @if(Auth::user()->user_role!=0)
-                  <li><a href="{{ url('dashboard') }}">Administrator</a></li>
-                @endif
-                
-                <?php 
+        <div id="site-menu" class="SiteBlock-menu">
 
-                $dt = new DateTime();
-                $date = $dt->format('Y-m-d H:i:s');
-                $id = Auth::user()->id;
-                DB::table('users')->where('id',$id)->update(['last_login' => $date]);
+            <div class="MainNav">
+                <div class="Container">
+                    <ul class="MainNav-list isHoverable">
+                        <li class="MainNav-listItem isTrackingMenuItem" data-trending-id="1461204" data-type="Sales">
+                            <a class="MainNav-text" data-toggle="nav_popup" href="{{url('/UserSales')}}">Sales</a>
+                            <div class="MainNav-popup">
+                                <div class="Container">
+                                    <div class="MainNav-popupColumn">
+                                        <h6 class="MainNav-popupTitle">
+                                            Areas
+                                        </h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales" class="MainNav-popupColumnLink" href="#">Manhattan</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales" class="MainNav-popupColumnLink" href="#">Brooklyn</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales" class="MainNav-popupColumnLink" href="#">Queens</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales" class="MainNav-popupColumnLink" href="#">Bronx</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales" class="MainNav-popupColumnLink" href="#">Staten Island</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales" class="MainNav-popupColumnLink" href="#">New Jersey</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales" class="MainNav-popupColumnLink" href="#">All NYC + NJ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--last">
+                                        <h6 class="MainNav-popupTitle">Popular neighborhoods</h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Upper East Side
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Tribeca
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Williamsburg
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Brooklyn Heights
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Park Slope
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Ditmas Park
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Hoboken
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Jersey City
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Sales"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    View All
+                                                </a>
+                                            </li>
+                                        </ul>
 
-                 ?>
-                 
-                <li>
-                      <div class="dropdown">
-                          <button class="dropbtn">{{Auth::user()->name}}</button>
-                          <div class="dropdown-content">
-                            <a href="/profile-view">Profile</a>
-                            <a href="{{ url('logout') }}">Logout</a>
-                          </div>
-                        </div>
-                  </li>
-                @else
-                
-                <li class="my_click" onclick="document.getElementById('id01').style.display='block'"><a href="#">Login</a></li>
-                
-                <!--<li class="my_click" data-toggle="modal" data-target="#login_modal"><a href="#">Login</a></li>-->
-                
-                
-                
-                <!--<li class="my_click" onclick="document.getElementById('id02').style.display='block'"><a href="#">Register</a></li>-->
-                <!--<li class="get-started my_click set_brdr" onclick="document.getElementById('id02').style.display='block'"><a href="#">Become a member</a> </li>-->
-                <li class="get-started my_click set_brdr"><a href="#" data-toggle="modal" data-target="#signup_modal">Become a member</a> </li>
-              @endif
-            </ul>
-          </nav>
-        </div>
-      </header>
-     
-     <div class="modal fade" id="login_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-        <div class="modal-header" align="center">
-          <img class="img-circle" id="img_logo" src="images/logo1.png">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <i class="fa fa-window-close" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--ads">
 
-          </button>
-        </div>
-                
-                <!-- Begin # DIV Form -->
-                <div id="div-forms">
-                
-                    <!-- Begin # Login Form -->
-                    <form id="login-form" action="/home/login">
-                    <div class="modal-body">
-                <div id="div-login-msg">
-                                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
-                                <span id="text-login-msg">Type your username and password.</span>
+                                        <div class="MostViewedItem">
+                                            <div class="MostViewedItem-imgBox">
+                                                <a data-gtm-header-listing-id="1465122" data-gtm-header-listing-type="sale" href="#"><img alt="125 East 12th #5H" class="MostViewedItem-img" src="{{asset('assets/masterFrontend/img/apartment.png')}}" /></a>
+                                            </div>
+                                            <div class="MostViewedItem-content">
+                                                <a class="MostViewedItem-titleLink" data-gtm-header-listing-id="1465122" data-gtm-header-listing-type="sale" href="#">125 East 12th #5H</a>
+                                                <div>
+
+        <span class="MostViewedItem-price">
+          $1,780,000
+        </span>
+                                                    <span class="MostViewedItem-for">
+          for sale
+        </span>
+                                                </div>
+
+                                                <div>2 beds<span class='MostViewedItem-bullet'>&bullet;</span>2 baths</div>
+                                                <div>Condo in <a href="#">East Village</a></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
-                <input id="login_username" class="form-control" type="text" placeholder="UserEmail" required="" name="email">
-                <input id="login_password" class="form-control" type="password" placeholder="Password" required="" name="password">
-                            <div class="checkbox">
-                                <label>
-                                    <input type="checkbox"> Remember me
-                                </label>
+                        </li>
+                        <li class="MainNav-listItem isTrackingMenuItem"
+                            data-trending-id="3025820"
+                            data-type="Rentals">
+                            <a class="MainNav-text" data-toggle="nav_popup" href="{{url('/UserRental')}}">Rentals</a>
+                            <div class="MainNav-popup">
+                                <div class="Container">
+                                    <div class="MainNav-popupColumn">
+                                        <h6 class="MainNav-popupTitle">
+                                            Areas
+                                        </h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Manhattan</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Brooklyn</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Queens</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Bronx</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Staten Island</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">New Jersey</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">All NYC + NJ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--last">
+                                        <h6 class="MainNav-popupTitle">Popular neighborhoods</h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Tribeca
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Upper East Side
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Upper West Side
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    East Village
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Williamsburg
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Astoria
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"    class="MainNav-popupColumnLink">
+                                                    Hoboken
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Jersey City
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Rentals"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    View All
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--ads">
+
+                                        <div class="MostViewedItem">
+                                            <div class="MostViewedItem-imgBox">
+                                                <a data-gtm-header-listing-id="2986137" data-gtm-header-listing-type="rental" href="#"><img alt="50 Franklin Street" class="MostViewedItem-img" src="{{asset('assets/masterFrontend/img/apartment.png')}}" /></a>
+                                            </div>
+                                            <div class="MostViewedItem-content">
+                                                <a class="MostViewedItem-titleLink" data-gtm-header-listing-id="2986137" data-gtm-header-listing-type="rental" href="#">50 Franklin Street</a>
+                                                <div>
+                                                    <span>↓</span>
+                                                    <span class="MostViewedItem-price">
+          $4,350
+        </span>
+                                                    <span class="MostViewedItem-for">
+          for rent
+        </span>
+                                                </div>
+
+                                                <div>Furnished<span class='MostViewedItem-bullet'>&bullet;</span>1 bed<span class='MostViewedItem-bullet'>&bullet;</span>1 bath<span class='MostViewedItem-bullet'>&bullet;</span>719 ft&sup2;</div>
+                                                <div>Condo in <a href="#">Tribeca</a></div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
-                  </div>
-                <div class="modal-footer">
-                            <div class="sun-btn">
-                                <button type="submit" class="btn btn-primary btn-lg btn-block submit-btns">Login</button>
+                        </li>
+                        <li class="MainNav-listItem isTrackingMenuItem"
+                            data-trending-id="110"
+                            data-type="Buildings">
+                            <a class="MainNav-text" data-toggle="nav_popup" href="{{url('/UserBuilding')}}">Buildings</a>
+                            <div class="MainNav-popup">
+                                <div class="Container">
+                                    <div class="MainNav-popupColumn">
+                                        <h6 class="MainNav-popupTitle">Browse</h6>
+                                        <ul class="MainNav-popupList MainNav-popupList--paddingBottom">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    New Developments
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h6 class="MainNav-popupTitle">
+                                            Areas
+                                        </h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Manhattan
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Brooklyn
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Queens
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Bronx
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Staten Island
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" href="#">New Jersey</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Buildings" href="#">All NYC + NJ</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn">
+                                        <h6 class="MainNav-popupTitle">Popular buildings</h6>
+
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    15 Hudson Yards
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    The Rheingold
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    432 Park Avenue
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    PLG
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    11 Hoyt
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    111 Murray Street
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    American Copper Buildings
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    50 West Street
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    View All
+                                                </a>
+                                            </li>
+                                        </ul>
+
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--lastShort">
+                                        <h6 class="MainNav-popupTitle">New developments</h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    15 Hudson Yards
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    21 West End Ave
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Madison Square Park Tower
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    1 West End
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    365 Bond
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    The Margo
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    88 Lexington Avenue
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Oosten
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Buildings"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    View All
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--adsShort">
+                                        <div class="MostViewedItem">
+                                            <div class="MostViewedItem-img">
+                                                <a href="#"><img srcset="{{asset('assets/masterFrontend/img/apartment.png')}}" alt="new developments" src="{{asset('assets/masterFrontend/img/apartment.png')}}" /></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                  <div class="model-last-btns">
-                                <button id="login_lost_btn" type="button" class="btn btn-link" data-toggle="modal" data-target="#forgot_modal">Lost Password?</button>
-                                <button id="login_register_btn" type="button" class="btn btn-link" data-toggle="modal" data-target="#signup_modal">Register</button>
+                        </li>
+                        <li class="MainNav-listItem isTrackingMenuItem" data-type="Resourses">
+                            <span class="MainNav-text" data-toggle="nav_popup">Resources</span>
+                            <div class="MainNav-popup">
+                                <div class="Container">
+                                    <div class="MainNav-popupColumn">
+                                        <h6 class="MainNav-popupTitle">Browse</h6>
+                                        <ul class="MainNav-popupList MainNav-popupList--paddingBottom">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    No-fee Apartments
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Pet-Friendly Rentals
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <h6 class="MainNav-popupTitle">Guides</h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Resources" href="#">NYC Real Estate Guides</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Resources" href="#">Neighborhood Guides</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Resources" href="#">Moving to NYC Guide</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn">
+                                        <h6 class="MainNav-popupTitle">Mortgage</h6>
+                                        <ul class="MainNav-popupList MainNav-popupList--paddingBottom">
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Resources" rel="nofollow" href="#">Mortgage Rates</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Resources" href="#">Mortgage Calculator</a>
+                                            </li>
+                                        </ul>
+                                        <h6 class="MainNav-popupTitle">Tools</h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    CoZmo-web Forums
+                                                </a>
+                                            </li>
+                                            <li name="open_house_planner" class="MainNav-popupListItem">
+                                                <a data-modal-class="modal-signin" data-gtm-login-required="true" data-gtm-rendered-from="site_nav" data-gtm-origin="open_house" data-gtm-track="resources-menu" data-gtm-header-menu="Resources" class="MainNav-popupColumnLink" data-toggle="modal" data-modal-source="/nyc/user/register_dialog?return_to=%2Fnyc%2Fopen_house_planner&origin=open_house" href="#">Open House Planner</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Agent Resource Center
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a href="#">
+                                                    Data Dashboard
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--lastShort">
+                                        <h6 class="MainNav-popupTitle">Market Data</h6>
+                                        <ul class="MainNav-popupList MainNav-popupList--paddingBottom">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Market Reports
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a onclick="window.gon.state.analyticsData = {&#39;source&#39;:&#39;comparables_report&#39;};window.gon.state.triggerScenario(&#39;EmailCapture&#39;, { redirectTo: &#39;/my/comparables&#39; });" data-modal-class="modal-signin" data-gtm-login-required="true" data-gtm-rendered-from="site_nav" data-gtm-origin="comparables_report" data-gtm-track="resources-menu" data-gtm-header-menu="Resources" class="MainNav-popupColumnLink" href="#">Comparables Reports</a>
+                                            </li>
+                                        </ul>
+                                        <h6 class="MainNav-popupTitle">Q&A</h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    Should You Rent or Buy?
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    What are Maintenance Fees
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    How Much Rent Can You Afford?
+                                                </a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a data-gtm-header-menu="Resources"
+                                                   href="#"
+                                                   class="MainNav-popupColumnLink">
+                                                    How to Find a Roommate
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--adsShort">
+                                        <a class="MainNav-popupColumnLink" data-gtm-header-menu="Resources" data-gtm-header-resource-ad="true" href="#"><img srcset="" src="{{asset('assets/masterFrontend/img/apartment.png')}}" /></a>
+                                    </div>
+                                </div>
                             </div>
+                        </li>
+                        <li class="MainNav-listItem isTrackingMenuItem" data-type="Blog">
+                            <a class="MainNav-text" data-toggle="nav_popup" href="{{url('/UserBlog')}}">Blog</a>
+                            <div class="MainNav-popup">
+                                <div class="Container">
+                                    <div class="MainNav-popupColumn">
+                                        <h6 class="MainNav-popupTitle">Browse</h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">Trends &amp; Data</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">Good Deals</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">NYC Living</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">Tips &amp; Advice</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">NYC Guides</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--lastLong">
+                                        <h6 class="MainNav-popupTitle">The latest</h6>
+                                        <ul class="MainNav-popupList MainNav-popupList--paddingBottom">
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">5 Virtual Home Tours to Take From Your Sofa</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">Here&#39;s What $1.5M Gets You in NYC Right Now</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">NYC Apartments for $2400: What You Can Rent Right Now</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">A Stylish Kips Bay Duplex for $465K</a>
+                                            </li>
+                                        </ul>
+
+                                        <h6 class="MainNav-popupTitle">Most popular</h6>
+                                        <ul class="MainNav-popupList">
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">Finished Netflix? 15 Ideas for What New Yorkers Should Watch Next!</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">A Quintessential Prewar UWS 1BR Asks $2,650</a>
+                                            </li>
+                                            <li class="MainNav-popupListItem">
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Blog" href="#">Your Guide to NYC Laundry Services (Plus COVID Tips!)</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="MainNav-popupColumn MainNav-popupColumn--adsShort">
+                                        <a class="MainNav-popupColumnLink" data-gtm-header-menu="Resources" data-gtm-header-resource-ad="true" href="#"><img srcset="" src="{{asset('assets/masterFrontend/img/apartment.png')}}" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="MainNav-search">
+                        <form class="Search" onSubmit="SE.analytics.submitTextSearch(this)" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+                            <input type="text" name="search" placeholder="e.g. address, building, agent" class="Search-input DefaultField" />
+                            <button name="commit" type="submit" value="" class="fa fa-search Search-button"></button>
+                        </form>      </div>
                 </div>
+            </div>
+
+            <div class="MainNav MainNav--mWeb jsMenuMobile" id="navbar_block">
+                <div id="navbar_menu" class="MainNav-search">
+                    <form class="Search Search--mWebMenu" action="/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+                        <input type="text" name="search" id="search" placeholder="Search" class="Search-input Search-input--big DefaultField" />
+                        <button name="commit" type="submit" value="" class="Search-button Search-button--icon Search-button--big"></button>
                     </form>
-                    <!-- End # Login Form -->
-                    
-                    <!-- Begin | Lost Password Form -->
-                    
-                    <!-- End | Lost Password Form -->
-                    
-                    <!-- Begin | Register Form -->
-                    <!-- End | Register Form -->
-                    
+                    <ul class="MainNav-mainMenu">
+                        <li class="MainNav-mainMenuItem">
+                            <a class="MainNav-textMobile MainNav-textMobile--big" href="">Sales</a>
+                        </li>
+                        <li class="MainNav-mainMenuItem">
+                            <a class="MainNav-textMobile MainNav-textMobile--big" href="">Rentals</a>
+                        </li>
+                        <li class="MainNav-mainMenuItem">
+                            <a class="MainNav-textMobile MainNav-textMobile--big" href="#">Buildings</a>
+                        </li>
+                        <li class="MainNav-mainMenuItem">
+          <span class="MainNav-textMobile MainNav-textMobile--big isWithArrow" data-toggle="submenu">
+            Resources
+          </span>
+                            <div class="MainNav-subMenuPopup">
+                                <div class="MainNav-subMenuHeader">Main Menu</div>
+                                <h6 class="MainNav-subMenuTitle">Browse</h6>
+                                <ul class="MainNav-subMenuList">
+                                    <li>
+                                        <a href="#" class="MainNav-textMobile MainNav-textMobile--small">
+                                            CoZmo-web Blog
+                                        </a>
+                                    </li>
+                                </ul>
+                                <h6 class="MainNav-subMenuTitle">Guides</h6>
+                                <ul class="MainNav-subMenuList">
+                                    <li>
+                                        <a class="MainNav-textMobile MainNav-textMobile--small" href="#">NYC Real Estate Guides</a>
+                                    </li>
+                                    <li>
+                                        <a class="MainNav-textMobile MainNav-textMobile--small" href="#">Neighborhood Guides</a>
+                                    </li>
+                                    <li>
+                                        <a class="MainNav-textMobile MainNav-textMobile--small" href="#">Moving to NYC Guide</a>
+                                    </li>
+                                </ul>
+                                <h6 class="MainNav-subMenuTitle">Tools</h6>
+                                <ul class="MainNav-subMenuList">
+                                    <li>
+                                        <a class="MainNav-textMobile MainNav-textMobile--small" href="#">Market Reports</a>
+                                    </li>
+                                    <li>
+                                        <a onclick="window.gon.state.analyticsData = {&#39;source&#39;:&#39;comparables_report&#39;};window.gon.state.triggerScenario(&#39;EmailCapture&#39;, { redirectTo: &#39;/my/comparables&#39; });" class="MainNav-textMobile MainNav-textMobile--small" data-modal-class="modal-signin" data-gtm-login-required="true" data-gtm-rendered-from="site_nav" data-gtm-origin="comparables_report" href="#">Comparables Reports</a>
+                                    </li>
+                                    <li>
+                                        <a class="MainNav-textMobile MainNav-textMobile--small" href="#">CoZmo-web Forums</a>
+                                    </li>
+                                    <li>
+                                        <a class="MainNav-textMobile MainNav-textMobile--small" href="#">Agent Resource Center</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"
+                                           class="MainNav-textMobile MainNav-textMobile--small">
+                                            Data Dashboard
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+
+
+                    </ul>
+
+
+                    <ul class="MainNav-signinMenu" id="singin-menu">
+                        <li>
+                            <a class="MainNav-textMobile MainNav-textMobile--signIn jsGoogleOneTap" onclick="window.gon.state.analyticsData = {&#39;source&#39;:&#39;nav&#39;}; window.gon.state.triggerScenario(&#39;EmailCapture&#39;); return false;" data-toggle="menu" href="#">Sign In / Register</a>
+                        </li>
+                    </ul>
+
                 </div>
-                <!-- End # DIV Form -->
-                
-      </div>
-  </div>
-</div>
+            </div>
 
-
-    <!-- Modal -->
-<div id="forgot_modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header" align="center">
-          <img class="img-circle" id="img_logo" src="images/logo1.png">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <i class="fa fa-window-close" aria-hidden="true"></i>
-
-          </button>
         </div>
 
-        <form id="lost-form">
-                          <div class="modal-body">
-                        <div id="div-lost-msg">
-                                        
-                                        <span id="text-lost-msg">Type your e-mail.</span>
-                                    </div>
-                        <input id="lost_email" class="form-control" type="text" placeholder="E-Mail" required="">
-                          </div>
-                        <div class="modal-footer">
-                                    <div class="sun-btn">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block submit-btns">Send</button>
-                                    </div>
-
-                        </div>
-                    </form>
+    </header>
+{{--    @include('layouts.flashmessage')--}}
 
 
-    </div>
-
-  </div>
-</div>
 
 
-    <div id="signup_modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header" align="center">
-          <img class="img-circle" id="img_logo" src="images/logo1.png">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <i class="fa fa-window-close" aria-hidden="true"></i>
-
-          </button>
-        </div>
-
-        <form id="register-form">
-                     <div class="modal-body">
-                        <div id="div-register-msg">
-                                        
-                                        <span id="text-register-msg">Register an account.</span>
-                                    </div>
-                        <input id="register_username" class="form-control" type="text" placeholder="Username" required="">
-                        <input id="register_email" class="form-control" type="text" placeholder="Enter Name" required="">
-                                    <input id="register_email" class="form-control" type="text" placeholder="Enter E-Mail" required="">
-                                    <input id="register_email" class="form-control" type="text" placeholder="Phone Number" required="">
-                                    <input id="register_password" class="form-control" type="password" placeholder="Repeat Password" required="">
-                                    <input id="register_password" class="form-control" type="password" placeholder="Enter Password" required="">
-                          </div>
-                        <div class="modal-footer">
-                                    <div class="sun-btn">
-                                        <button type="submit" class="btn btn-primary btn-lg btn-block submit-btns">Register</button>
-                                    </div>
-                                    <!--<div class="model-last-btns">-->
-                                    <!--     <p style="display: inline;border: 0;">Already have a account</p> <button id="register_login_btn" type="button" class="btn btn-link" data-toggle="modal" data-target="#login_modal">Log In</button>-->
-                                    <!--</div>-->
-                        </div>
-                    </form>
-
-    </div>
-
-  </div>
-</div>
-<!--<nav id="mobile-nav">-->
-<!--        <ul class="" style="touch-action: pan-y;" id="">-->
-<!--          <li><a href="index.html">Home</a></li>-->
-<!--          <li><a href="#">Events</a></li>-->
-<!--          <li><a href="#">MEMber area</a></li>-->
-<!--          <li><a href="#">join mailing list</a></li>-->
-<!--          <li class="set_brdr"><a href="contact.html">Contact us</a></li>-->
-<!--          <li class="get-started"><a data-toggle="modal" data-target="#login-modal" href="#">Become a member</a>  </li>-->
-<!--        </ul>-->
-<!--      </nav>-->
-      
-      
-        <script>
-              if ($('#nav-menu-container').length) {
-    var $mobile_nav = $('#nav-menu-container').clone().prop({
-      id: 'mobile-nav'
-    });
-    $mobile_nav.find('> ul').attr({
-      'class': '',
-      'id': ''
-    });
-    $('body').append($mobile_nav);
-    $('body').prepend('<button type="button" id="mobile-nav-toggle"><i class="fa fa-bars"></i></button>');
-    $('body').append('<div id="mobile-body-overly"></div>');
-    $('#mobile-nav').find('.menu-has-children').prepend('<i class="fa fa-chevron-down"></i>');
-
-    $(document).on('click', '.menu-has-children i', function(e) {
-      $(this).next().toggleClass('menu-item-active');
-      $(this).nextAll('ul').eq(0).slideToggle();
-      $(this).toggleClass("fa-chevron-up fa-chevron-down");
-    });
-
-    $(document).on('click', '#mobile-nav-toggle', function(e) {
-      $('body').toggleClass('mobile-nav-active');
-      $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-      $('#mobile-body-overly').toggle();
-    });
-
-    $(document).click(function(e) {
-      var container = $("#mobile-nav, #mobile-nav-toggle");
-      if (!container.is(e.target) && container.has(e.target).length === 0) {
-        if ($('body').hasClass('mobile-nav-active')) {
-          $('body').removeClass('mobile-nav-active');
-          $('#mobile-nav-toggle i').toggleClass('fa-times fa-bars');
-          $('#mobile-body-overly').fadeOut();
-        }
-      }
-    });
-  } else if ($("#mobile-nav, #mobile-nav-toggle").length) {
-    $("#mobile-nav, #mobile-nav-toggle").hide();
-  }
-
-        </script>
-      
-      
-@include('login')
-@include('signup')

@@ -10,15 +10,21 @@ use Illuminate\Support\Facades\DB;
 class Blog extends Model
 {
     public function indexBlog(){
-
+        $main_feature_count = 0;
+        $feature_count = 0;
 //        $blog_category = DB::table('blog_categories')->get();
 //        // dd($blog_category);
 //        return $blog_category;
-        $pod = DB::table('blog')->get();
+        $pod = DB::table('blog')->orderBy('feature_flag', 'desc')->get();
         foreach ($pod as $data){
+            if($data->feature_flag == 1){$main_feature_count++;}
+            if($data->feature_flag == 2){$feature_count++;}
             $data->blog_category=DB::table('blog_categories')->where('id',$data->blog_category_id)->pluck('title')->first();
         }
-        return $pod ;
+        $pod->main_featured_count = $main_feature_count;
+        $pod->featured_count = $feature_count;
+//        dd($pod->main_featured_count);
+        return $pod;
 
     }
     public function blogAdd(){
@@ -37,6 +43,7 @@ class Blog extends Model
             'blog_category_id' => $request->blog_category_id,
             'content' => $request->content,
             'image' => $name,
+            'feature_flag' =>$request->featured,
             'date_created' =>carbon::now() ,
 
         ]);
@@ -44,7 +51,7 @@ class Blog extends Model
 //        dd($data);
     }
 
-    public  function blogCategoryUpdatedata($request){
+    public  function blogUpdate($request){
 //        dd($request);
         if($files=$request->file('image')) {
             $name = $files->getClientOriginalName();

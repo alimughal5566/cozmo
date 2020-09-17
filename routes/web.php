@@ -472,6 +472,36 @@ Route::get('update-resource/{id}','ResourceController@updateResource')->name('up
 Route::post('delete-resource','ResourceController@deleteResource')->name('deleteResource');
 Route::post('store-resource','ResourceController@storeResource')->name('storeResource');
 
+
+// FrontEnd
+
+   // Front End Blog Portion
+Route::get('/UserBlog', 'frontend\BlogController@index')->name('UserblogHomeView');
+
+
+
+   // End of BLog Portion
+
+Route::get('/', function () {
+    return view('frontend.home');
+});
+
+
+
+
+Route::get('/UserRental', function () {
+    return view('frontend.rentals');
+});
+Route::get('/UserSales', function () {
+    return view('frontend.home');
+});
+Route::get('/UserBuilding', function () {
+    return view('frontend.building');
+});
+
+
+//
+
 //Company route
 
 Route::get('companies','HomeController@index_companies')->name('index_companies');

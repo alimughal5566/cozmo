@@ -1,6 +1,32 @@
 @extends( 'admin.layouts.app' )
 
+
 @section( 'content' )
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.4.2.min.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <style>
+        .toggle {
+            background: #3094d1;
+            width: 90.476px !important;
+            height: 50px !important;
+        }
+        .toggle-off.btn {
+            color: #333;
+            background-color: #e6e6e6;
+            border-color: #adadad;
+        }
+        .toggle-handle {
+            background: #fff;
+        }
+        .toggle-on.btn {
+            padding-right: 24px;
+        }
+
+    </style>
+
     <div class="app-title">
 
         <ul class="app-breadcrumb breadcrumb">
@@ -38,15 +64,11 @@
                           <div class="col-sm-6 col-md-4 ">
                               <label for="comp">Blog Category</label>
                               <select name="blog_category_id" class="form-control"  required >
-
                                   @foreach ($blog_category as $bcat)
                                       <option value="{{ $bcat->id }}">{{ $bcat->title }}</option>
                                   @endforeach
                               </select>
-
                       </div>
-
-
 
 
                         <div class="col-sm-6">
@@ -56,14 +78,41 @@
                             </div>
                         </div>
 
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="title" style="width: 100%">Normal Blog</label>
+                                <input type="checkbox"   name="featured" value="0" id="normal" checked   class="example"  data-onstyle="danger">
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="title" style="width: 100%">Feature</label>
+                                <input type="checkbox" name="featured" id="feature" class="example"  value="2"  data-onstyle="success">
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label for="title" style="width: 100%">Main Feature</label>
+                                <input type="checkbox"   name="featured"  id="mainfeature"  value="1" class="example"  data-onstyle="warning">
+                            </div>
+                        </div>
+
+
+
                         <div class="col-lg-12" >
                             <div class="form-group">
                                 <label>Content</label>
-                                <textarea name="content" cols="8" id="txtEditor"  style="height: 35px;width: 100%;">
+                                <textarea name="content" cols="8" id="txtEditor" style="height: 35px;width: 100%;">
 
 						</textarea>
                             </div>
                         </div>
+
+
 
 
                         {{--                        <input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">--}}
@@ -82,6 +131,12 @@
 
         </div>
     </div>
+    <script>
+        $('input.example').on('change', function() {
+            $('input.example').not(this).prop('checked', false);
+        });
+
+    </script>
 
     <script src="//cdn.ckeditor.com/4.13.1/full-all/ckeditor.js"></script>
     <script>
@@ -90,6 +145,8 @@
         });
 
     </script>
+
+
 
 @endsection
 
