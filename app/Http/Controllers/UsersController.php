@@ -140,6 +140,7 @@ class UsersController extends Controller
 
     public function edit($id)
     {
+//        dd($id);
 //        $user = User::find($id);
 //        $companies = DB::table('companies')->get();
        // dd($user);

@@ -115,7 +115,7 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item">Update Property Type</li>
+            <li class="breadcrumb-item">Update Property Address</li>
         </ul>
     </div>
     <div class="row">
@@ -138,8 +138,72 @@
                         <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
-                                <label for="title">Name Of Street:</label>
+                                <label for="title">Name of Street:</label>
+                                <input required id="name_of_street"  type="text" value="{{$data[0]->name_of_street}}" placeholder="name_of_street" class="form-control" name="name_of">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">Country:</label>
+                                <input required id="country"  type="text" value="{{$data[0]->country}}" placeholder="country" class="form-control" name="country">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">State:</label>
+                                <input required id="state"  type="text" value="{{$data[0]->state}}" placeholder="state" class="form-control" name="state">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">City:</label>
+                                <input required id="city"  type="text" value="{{$data[0]->city}}" placeholder="city" class="form-control" name="city">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">Zip Code:</label>
+                                <input required id="zip_code"  type="text" value="{{$data[0]->zip_code}}" placeholder="zip_code" class="form-control" name="zip_code">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">County:</label>
+                                <input required id="county"  type="text" value="{{$data[0]->county}}" placeholder="county" class="form-control" name="county">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">Additional Info:</label>
                                 <input required id="name_of_street"  type="text" value="{{$data[0]->name_of_street}}" placeholder="name_of_street" class="form-control" name="name_of_street">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">Neighborhood:</label>
+                                <input required id="neighborhood"  type="text" value="{{$data[0]->neighborhood}}" placeholder="neighborhood" class="form-control" name="neighborhood">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">Boroughs:</label>
+                                <input required id="boroughs"  type="text" value="{{$data[0]->boroughs}}" placeholder="boroughs" class="form-control" name="boroughs">
                             </div>
                         </div>
                         <div class="col-sm-6">

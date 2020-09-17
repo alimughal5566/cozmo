@@ -75,7 +75,9 @@
                         <tbody>
                         <?php $counter = 1;?>
                         @foreach($blog_category as $row)
-
+                            <td>
+                                <img class=" img-circle img-size-32 mr-2 round_img"  height="15%" src="/images/cozmo/{{$row->image}}" style="height: 30px">
+                            </td>
                             <tr>
                                 <td style="display: none;"><?php echo $counter;?></td>
                                 <?php $counter++;?>

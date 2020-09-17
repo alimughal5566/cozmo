@@ -2398,7 +2398,7 @@ if(is_object($response) && isset($response->outcome->status) && $response->outco
     }
     public function index_companies()
     {
-dd();
+//dd();
         $users = DB::table('companies')->get();
 
 
