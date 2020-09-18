@@ -344,7 +344,7 @@
     </style>
 
 
-    <title>CoZmo-Web</title>
+    <title>@section('title')</title>
 
 
 
