@@ -478,14 +478,17 @@ Route::post('store-resource','ResourceController@storeResource')->name('storeRes
 
    // Front End Blog Portion
 Route::get('/UserBlog', 'frontend\BlogController@index')->name('UserblogHomeView');
-
-
-
    // End of BLog Portion
 
-Route::get('/', function () {
-    return view('frontend.home');
-});
+   // Front End Properties Portion
+Route::get('/', 'frontend\PropertiesController@index')->name('UserblogHomeView');
+Route::get('/UserSales', 'frontend\PropertiesController@index')->name('UserblogHomeView');
+Route::get('/property/detail/{id}', 'frontend\PropertiesController@propertyDetail')->name('propertyDetails');
+
+   // End of Properties Portion
+
+
+
 
 
 
@@ -493,9 +496,7 @@ Route::get('/', function () {
 Route::get('/UserRental', function () {
     return view('frontend.rentals');
 });
-Route::get('/UserSales', function () {
-    return view('frontend.home');
-});
+
 Route::get('/UserBuilding', function () {
     return view('frontend.building');
 });

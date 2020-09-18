@@ -18,10 +18,7 @@
 {{--<h1>Hello WOrd</h1>--}}
 
 <div class="Home-featuredContainer grid-container grid-container-9cols-984">
-
-
     <!-- Featured Buildings -->
-
     <ul class="Home-featuredBuildings grid-span-9 grid-container-9cols">
         <li class="Home-featuredBuildingLarge Home-featuredCard Home-featuredCard--large jsFranchiseBoxAd jsGoogleAd">
             <div class="TallCard TallCard--hoverable Home-featuredCardInner">
@@ -37,6 +34,8 @@
                 <div class="logoContainer"><div class="{{asset('assets/masterFrontend/img/lgo.png')}}"></div></div>
             </div>
         </li>
+
+        @foreach($random_feature_left as $row)
         <li id="listing_1458011_featured"
             class="Home-featuredCard grid-span-3-984 item listing featured"
             se:behavior="selectable hoverable clickable"
@@ -45,7 +44,7 @@
             data-id="1458011">
 
             <div class="TallCard TallCard--hoverable Home--absolutePosition u-height--full">
-                <div class="TallCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})">
+                <div class="TallCard-image" style="background-image: url(/images/cozmo/{{$row->main_image}})">
 
                     <div class="TallCard-listedBy">
                         Listed by Toll Brothers Real Estate Inc.
@@ -57,15 +56,15 @@
                 <div class="TallCard-content">
                     <div class="Title Title--secondarySmCaps u-color-koalaGrey TallCard--marginBottom3">
                         Sale in
-                        Waterfront
+                        {{$row->city}}
                     </div>
 
                     <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="featured_listing" data-gtm-event-label="clickslot=2" data-gtm-event-value="869995" href="#">10 Provost Street #2702</a>
+                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="featured_listing" data-gtm-event-label="clickslot=2" data-gtm-event-value="869995" href="{{ url('/property/detail/' . $row->id)}}">{{$row->name_of_street}}</a>
                     </div>
 
                     <div class="TallCard-largeBold">
-                        $869,995
+                        ${{$row->price}}
                         <span class="TallCard-largeBold--arrow">
             &uarr;
           </span>
@@ -74,73 +73,23 @@
                     <div class="TallCard-bottomStrip u-nowrap">
             <span class="TallCard-info">
               <span class="TallCard-info--bedIcon"></span>
-              1 Bed
+               {{$row->no_of_bedroom}} Bed
             </span>
                         <span class="TallCard-info">
               <span class="TallCard-info--bathIcon"></span>
-              1 Bath
+               {{$row->no_of_bathrooms}} Bath
             </span>
                         <span class="TallCard-info Home-featuredSqFt">
               <span class="TallCard-info--sizeIcon"></span>
-              704 ft&sup2;
+              {{$row->square_feet}} ft&sup2;
             </span>
                     </div>
 
                 </div>
             </div>
         </li>
-        <li id="listing_1458011_featured"
-            class="Home-featuredCard grid-span-3-984 item listing featured"
-            se:behavior="selectable hoverable clickable"
-            data-track="lt-hfclick-s-1458011"
-            data-imp="lt-hfimp-s-1458011"
-            data-id="1458011">
+            @endforeach
 
-            <div class="TallCard TallCard--hoverable Home--absolutePosition u-height--full">
-                <div class="TallCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})">
-
-                    <div class="TallCard-listedBy">
-                        Listed by Toll Brothers Real Estate Inc.
-                    </div>
-
-                    <div class="TallCard-imageTag">Featured</div>
-                </div>
-
-                <div class="TallCard-content">
-                    <div class="Title Title--secondarySmCaps u-color-koalaGrey TallCard--marginBottom3">
-                        Sale in
-                        Waterfront
-                    </div>
-
-                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="featured_listing" data-gtm-event-label="clickslot=2" data-gtm-event-value="869995" href="#">10 Provost Street #2702</a>
-                    </div>
-
-                    <div class="TallCard-largeBold">
-                        $869,995
-                        <span class="TallCard-largeBold--arrow">
-            &uarr;
-          </span>
-                    </div>
-
-                    <div class="TallCard-bottomStrip u-nowrap">
-            <span class="TallCard-info">
-              <span class="TallCard-info--bedIcon"></span>
-              1 Bed
-            </span>
-                        <span class="TallCard-info">
-              <span class="TallCard-info--bathIcon"></span>
-              1 Bath
-            </span>
-                        <span class="TallCard-info Home-featuredSqFt">
-              <span class="TallCard-info--sizeIcon"></span>
-              704 ft&sup2;
-            </span>
-                    </div>
-
-                </div>
-            </div>
-        </li>
     </ul>
 
 
@@ -149,6 +98,8 @@
     <!-- Featured Listings -->
 
     <ul class="Home-featuredListings Home-featuredListings--fourAd grid-span-3 grid-span-9-984 grid-container-9cols-984">
+
+       @foreach($random_feature_right as $row)
         <li id="listing_1401291_featured"
             class="Home-featuredCard grid-span-3-984 item listing featured"
             se:behavior="selectable hoverable clickable"
@@ -157,7 +108,7 @@
             data-id="1401291">
 
             <div class="TallCard TallCard--hoverable Home--absolutePosition u-height--full">
-                <div class="TallCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})">
+                <div class="TallCard-image" style="background-image: url(/images/cozmo/{{$row->main_image}})">
 
                     <div class="TallCard-listedBy">
                         Listed by Modern Spaces
@@ -169,15 +120,16 @@
                 <div class="TallCard-content">
                     <div class="Title Title--secondarySmCaps u-color-koalaGrey TallCard--marginBottom3">
                         Sale in
-                        Flushing
+{{--                        @dd($row);--}}
+                        {{$row->state}}
                     </div>
 
                     <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="featured_listing" data-gtm-event-label="clickslot=1" data-gtm-event-value="684592" href="#">134-37 35th Avenue #8M</a>
+                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="featured_listing" data-gtm-event-label="clickslot=1" data-gtm-event-value="684592" href="{{ url('/property/detail/' . $row->id)}}">{{$row->name_of_street}}  </a>
                     </div>
 
                     <div class="TallCard-largeBold">
-                        $684,592
+                        ${{$row->price}}
                         <span class="TallCard-largeBold--arrow">
             &uarr;
           </span>
@@ -186,178 +138,22 @@
                     <div class="TallCard-bottomStrip u-nowrap">
             <span class="TallCard-info">
               <span class="TallCard-info--bedIcon"></span>
-              1 Bed
+              {{$row->no_of_bedroom}} Bed
             </span>
                         <span class="TallCard-info">
               <span class="TallCard-info--bathIcon"></span>
-              1 Bath
+              {{$row->no_of_bathrooms}} Bath
             </span>
                         <span class="TallCard-info Home-featuredSqFt">
               <span class="TallCard-info--sizeIcon"></span>
-              569 ft&sup2;
+              {{$row->square_feet}} ft&sup2;
             </span>
                     </div>
 
                 </div>
             </div>
         </li>
-
-        <li id="listing_1458011_featured"
-            class="Home-featuredCard grid-span-3-984 item listing featured"
-            se:behavior="selectable hoverable clickable"
-            data-track="lt-hfclick-s-1458011"
-            data-imp="lt-hfimp-s-1458011"
-            data-id="1458011">
-
-            <div class="TallCard TallCard--hoverable Home--absolutePosition u-height--full">
-                <div class="TallCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})">
-
-                    <div class="TallCard-listedBy">
-                        Listed by Toll Brothers Real Estate Inc.
-                    </div>
-
-                    <div class="TallCard-imageTag">Featured</div>
-                </div>
-
-                <div class="TallCard-content">
-                    <div class="Title Title--secondarySmCaps u-color-koalaGrey TallCard--marginBottom3">
-                        Sale in
-                        Waterfront
-                    </div>
-
-                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="featured_listing" data-gtm-event-label="clickslot=2" data-gtm-event-value="869995" href="#">10 Provost Street #2702</a>
-                    </div>
-
-                    <div class="TallCard-largeBold">
-                        $869,995
-                        <span class="TallCard-largeBold--arrow">
-            &uarr;
-          </span>
-                    </div>
-
-                    <div class="TallCard-bottomStrip u-nowrap">
-            <span class="TallCard-info">
-              <span class="TallCard-info--bedIcon"></span>
-              1 Bed
-            </span>
-                        <span class="TallCard-info">
-              <span class="TallCard-info--bathIcon"></span>
-              1 Bath
-            </span>
-                        <span class="TallCard-info Home-featuredSqFt">
-              <span class="TallCard-info--sizeIcon"></span>
-              704 ft&sup2;
-            </span>
-                    </div>
-
-                </div>
-            </div>
-        </li>
-
-        <li id="listing_1411272_featured"
-            class="Home-featuredCard grid-span-3-984 item listing featured"
-            se:behavior="selectable hoverable clickable"
-            data-track="lt-hfclick-s-1411272"
-            data-imp="lt-hfimp-s-1411272"
-            data-id="1411272">
-
-            <div class="TallCard TallCard--hoverable Home--absolutePosition u-height--full">
-                <div class="TallCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})">
-
-                    <div class="TallCard-listedBy">
-                        Listed by Corcoran
-                    </div>
-
-                    <div class="TallCard-imageTag">Featured</div>
-                </div>
-
-                <div class="TallCard-content">
-                    <div class="Title Title--secondarySmCaps u-color-koalaGrey TallCard--marginBottom3">
-                        Sale in
-                        <a class="u-color-koalaGrey--important u-text--noDecoration" href="#">Gramercy Park</a>
-                    </div>
-
-                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="featured_listing" data-gtm-event-label="clickslot=3" data-gtm-event-value="1650000" href="#">385 First Avenue #9B</a>
-                    </div>
-
-                    <div class="TallCard-largeBold">
-                        $1,650,000
-                        <span class="TallCard-largeBold--arrow">
-            &darr;
-          </span>
-                    </div>
-
-                    <div class="TallCard-bottomStrip u-nowrap">
-            <span class="TallCard-info">
-              <span class="TallCard-info--bedIcon"></span>
-              2 Beds
-            </span>
-                        <span class="TallCard-info">
-              <span class="TallCard-info--bathIcon"></span>
-              2 Baths
-            </span>
-                        <span class="TallCard-info Home-featuredSqFt">
-              <span class="TallCard-info--sizeIcon"></span>
-              1,190 ft&sup2;
-            </span>
-                    </div>
-
-                </div>
-            </div>
-        </li>
-
-        <li id="listing_1462075_featured"
-            class="Home-featuredCard grid-span-3-984 item listing featured"
-            se:behavior="selectable hoverable clickable"
-            data-track="lt-hfclick-s-1462075"
-            data-imp="lt-hfimp-s-1462075"
-            data-id="1462075">
-
-            <div class="TallCard TallCard--hoverable Home--absolutePosition u-height--full">
-                <div class="TallCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})">
-
-                    <div class="TallCard-listedBy">
-                        Listed by Extell Marketing Group
-                    </div>
-
-                    <div class="TallCard-imageTag">Featured</div>
-                </div>
-
-                <div class="TallCard-content">
-                    <div class="Title Title--secondarySmCaps u-color-koalaGrey TallCard--marginBottom3">
-                        Sale in
-                        Hudson Square
-                    </div>
-
-                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="featured_listing" data-gtm-event-label="clickslot=4" data-gtm-event-value="5540000" href="#">70 Charlton Street #18E</a>
-                    </div>
-
-                    <div class="TallCard-largeBold">
-                        $5,540,000
-                    </div>
-
-                    <div class="TallCard-bottomStrip u-nowrap">
-            <span class="TallCard-info">
-              <span class="TallCard-info--bedIcon"></span>
-              4 Beds
-            </span>
-                        <span class="TallCard-info">
-              <span class="TallCard-info--bathIcon"></span>
-              4.5 Baths
-            </span>
-                        <span class="TallCard-info Home-featuredSqFt">
-              <span class="TallCard-info--sizeIcon"></span>
-              2,252 ft&sup2;
-            </span>
-                    </div>
-
-                </div>
-            </div>
-        </li>
-
+           @endforeach
     </ul>
 
     <!-- End Featured Listings -->
@@ -371,22 +167,25 @@
             </h2>
             <div class="Home-apartmentsForYouListContainer">
                 <ul class="Home-apartmentsForYouList flexBox-row flexBox-nowrap jsSlider" data-slider-type="Apartments for You">
+
+                   @foreach($appartment as $app)
                     <li class="Home-apartmentForYou"
                         se:behavior="selectable hoverable clickable">
                         <div class="LongCard LongCard--hoverable">
                             <div class="LongCard-inner">
-                                <div class="LongCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})"></div>
+                                <div class="LongCard-image" style="background-image: url({{ asset('images/cozmo/' . $app->main_image) }})"></div>
                                 <div class="LongCard-content">
                                     <div class="Title Title--secondarySmCaps u-color-koalaGrey">
-                                        <a class="u-color-koalaGrey--important u-text--noDecoration" href="#">Gramercy Park</a>
+{{--                                                                                                            location here        --}}
+                                        <a class="u-color-koalaGrey--important u-text--noDecoration" href="#">{{$app->city}}</a>
                                     </div>
 
                                     <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="recommended" data-gtm-event-label="listing_click" data-gtm-event-value="600000" href="#">210 East 15th Street #9D</a>
+                                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="recommended" data-gtm-event-label="listing_click" data-gtm-event-value="600000" href="{{ url('/property/detail/' . $app->id)}}">{{$app->name_of_street}}</a>
                                     </div>
 
                                     <div class="LongCard-largeBold">
-                                        $600,000
+                                        ${{$app->price}}
                                         <span class="LongCard-largeBold--arrow">
               ↓
             </span>
@@ -395,230 +194,18 @@
                                     <div class="LongCard-bottomStrip u-nowrap">
               <span class="LongCard-info">
                 <span class="LongCard-info--bedIcon"></span>
-                1
+                {{$app->no_of_bedroom}}
               </span>
                                         <span class="LongCard-info">
                 <span class="LongCard-info--bathIcon"></span>
-                1
+                {{$app->no_of_bathrooms}}
               </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
-
-                    <li class="Home-apartmentForYou Home-apartmentForYouAd jsCarouselAd-1 isLoaded"
-                        data-ad-slot="Carousel_1">
-                        <div class="LongCard LongCard--hoverable Home-apartmentForYouAdInner">
-                            <div class="Home-apartmentForYouAdContainer">
-                                <div id="Carousel_1" style="zoom: 1; opacity: 1;">
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="Home-apartmentForYou"
-                        se:behavior="selectable hoverable clickable">
-                        <div class="LongCard LongCard--hoverable">
-                            <div class="LongCard-inner">
-                                <div class="LongCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})"></div>
-                                <div class="LongCard-content">
-                                    <div class="Title Title--secondarySmCaps u-color-koalaGrey">
-                                        Lenox Hill
-                                    </div>
-
-                                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="recommended" data-gtm-event-label="listing_click" data-gtm-event-value="600000" href="#">205 East 63rd Street #15D</a>
-                                    </div>
-
-                                    <div class="LongCard-largeBold">
-                                        $600,000
-                                        <span class="LongCard-largeBold--arrow">
-              ↓
-            </span>
-                                    </div>
-
-                                    <div class="LongCard-bottomStrip u-nowrap">
-              <span class="LongCard-info">
-                <span class="LongCard-info--bedIcon"></span>
-                2
-              </span>
-                                        <span class="LongCard-info">
-                <span class="LongCard-info--bathIcon"></span>
-                2
-              </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="Home-apartmentForYou"
-                        se:behavior="selectable hoverable clickable">
-                        <div class="LongCard LongCard--hoverable">
-                            <div class="LongCard-inner">
-                                <div class="LongCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})"></div>
-                                <div class="LongCard-content">
-                                    <div class="Title Title--secondarySmCaps u-color-koalaGrey">
-                                        <a class="u-color-koalaGrey--important u-text--noDecoration" href="#">West Village</a>
-                                    </div>
-
-                                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="recommended" data-gtm-event-label="listing_click" data-gtm-event-value="899000" href="#">99 Bank Street #2F</a>
-                                    </div>
-
-                                    <div class="LongCard-largeBold">
-                                        $899,000
-                                        <span class="LongCard-largeBold--arrow">
-              ↓
-            </span>
-                                    </div>
-
-                                    <div class="LongCard-bottomStrip u-nowrap">
-              <span class="LongCard-info">
-                <span class="LongCard-info--bedIcon"></span>
-                1
-              </span>
-                                        <span class="LongCard-info">
-                <span class="LongCard-info--bathIcon"></span>
-                1
-              </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="Home-apartmentForYou Home-apartmentForYouAd jsCarouselAd-2 "
-                        data-ad-slot="Carousel_2">
-                        <div class="LongCard LongCard--hoverable Home-apartmentForYouAdInner">
-                            <div class="Home-apartmentForYouAdContainer">
-                                <div id="Carousel_2" style="zoom: 1; opacity: 1;">
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="Home-apartmentForYou"
-                        se:behavior="selectable hoverable clickable">
-                        <div class="LongCard LongCard--hoverable">
-                            <div class="LongCard-inner">
-                                <div class="LongCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})"></div>
-                                <div class="LongCard-content">
-                                    <div class="Title Title--secondarySmCaps u-color-koalaGrey">
-                                        <a class="u-color-koalaGrey--important u-text--noDecoration" href="#">Upper West Side</a>
-                                    </div>
-
-                                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="recommended" data-gtm-event-label="listing_click" data-gtm-event-value="1495000" href="#">470 West End Avenue #9C</a>
-                                    </div>
-
-                                    <div class="LongCard-largeBold">
-                                        $1,495,000
-                                    </div>
-
-                                    <div class="LongCard-bottomStrip u-nowrap">
-              <span class="LongCard-info">
-                <span class="LongCard-info--bedIcon"></span>
-                3
-              </span>
-                                        <span class="LongCard-info">
-                <span class="LongCard-info--bathIcon"></span>
-                2
-              </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="Home-apartmentForYou"
-                        se:behavior="selectable hoverable clickable">
-                        <div class="LongCard LongCard--hoverable">
-                            <div class="LongCard-inner">
-                                <div class="LongCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})"></div>
-                                <div class="LongCard-content">
-                                    <div class="Title Title--secondarySmCaps u-color-koalaGrey">
-                                        <a class="u-color-koalaGrey--important u-text--noDecoration" href="#">Greenwich Village</a>
-                                    </div>
-
-                                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="recommended" data-gtm-event-label="listing_click" data-gtm-event-value="1775000" href="#">69 W 9th Street #11CDE</a>
-                                    </div>
-
-                                    <div class="LongCard-largeBold">
-                                        $1,775,000
-                                        <span class="LongCard-largeBold--arrow">
-              ↓
-            </span>
-                                    </div>
-
-                                    <div class="LongCard-bottomStrip u-nowrap">
-              <span class="LongCard-info">
-                <span class="LongCard-info--bedIcon"></span>
-                2
-              </span>
-                                        <span class="LongCard-info">
-                <span class="LongCard-info--bathIcon"></span>
-                3
-              </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="Home-apartmentForYou Home-apartmentForYouAd jsCarouselAd-3 "
-                        data-ad-slot="Carousel_3">
-                        <div class="LongCard LongCard--hoverable Home-apartmentForYouAdInner">
-                            <div class="Home-apartmentForYouAdContainer">
-                                <div id="Carousel_3" style="zoom: 1; opacity: 1;">
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="Home-apartmentForYou"
-                        se:behavior="selectable hoverable clickable">
-                        <div class="LongCard LongCard--hoverable">
-                            <div class="LongCard-inner">
-                                <div class="LongCard-image" style="background-image: url({{asset('assets/masterFrontend/img/apartment.png')}})"></div>
-                                <div class="LongCard-content">
-                                    <div class="Title Title--secondarySmCaps u-color-koalaGrey">
-                                        <a class="u-color-koalaGrey--important u-text--noDecoration" href="#">Soho</a>
-                                    </div>
-
-                                    <div class="u-ellipsis u-color-brightBlue" data-listing-type="Sale">
-                                        <a se:clickable:target="true" class="Title Title--secondary u-color-classicBlue--important u-text--noDecoration" data-gtm-event-category="sales_homepage" data-gtm-event-action="recommended" data-gtm-event-label="listing_click" data-gtm-event-value="2500000" href="#">35 Wooster Street #4R</a>
-                                    </div>
-
-                                    <div class="LongCard-largeBold">
-                                        $2,500,000
-                                        <span class="LongCard-largeBold--arrow">
-              ↓
-            </span>
-                                    </div>
-
-                                    <div class="LongCard-bottomStrip u-nowrap">
-              <span class="LongCard-info">
-                <span class="LongCard-info--bedIcon"></span>
-                3
-              </span>
-                                        <span class="LongCard-info">
-                <span class="LongCard-info--bathIcon"></span>
-                2
-              </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                   @endforeach
 
                 </ul>
                 <a class="Home-apartmentsForYouListArrow Home-apartmentsForYouListArrow--prev jsSliderPrev"
@@ -654,37 +241,38 @@
         <div class="Home-topDivider Home--vertPadding24">
             <h2 class="Title Title--primaryMd Home-sectionTitle">One Block Over</h2>
 
+            {{--            Home Blog Portion--}}
+
             <div class="Home-blog">
+
+
                 <ul class="Home-blogFeed latest">
+
                     <li class="Home-blogPost">
                         <a class="Home-blogPostImage"
                            href="#"
 
-                           style="background-image:url({{asset('assets/masterFrontend/img/apartment.png')}})">
+                           style="background-image:url({{ asset('images/cozmo/' . $latestTopBlog->image) }})">
                         </a>
                         <div>
                             <h3 class="Home-blogFeedTitle Title Title--secondarySmCaps u-color-koalaGrey u-noMargin">The Latest</h3>
                             <div class="Home-blogPostLink">
-                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">5 Virtual Home Tours to Take From Your Sofa</a>
+                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">{{$latestTopBlog->title}}</a>
                             </div>
                         </div>
                     </li>
+                  @foreach($latestBlog as $lb)
                     <li class="Home-blogPost">
                         <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">Here&#39;s What $1.5M Gets You in NYC Right Now</a>
+                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">{{$lb->title}}</a>
                         </div>
                     </li>
-                    <li class="Home-blogPost">
-                        <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">NYC Apartments for $2400: What You Can Rent Right Now</a>
-                        </div>
-                    </li>
-                    <li class="Home-blogPost">
-                        <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">A Stylish Kips Bay Duplex for $465K</a>
-                        </div>
-                    </li>
+                    @endforeach
+
                 </ul>
+
+
+
                 <ul class="Home-blogFeed popular">
                     <li class="Home-blogPost">
                         <a class="Home-blogPostImage"
