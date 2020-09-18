@@ -251,7 +251,7 @@ else{
     }
     public function destroy(Request $request)
     {
-
+//        dd($request);
 //        $id = $request->input("id");
 //
 //        DB::table('freecomps')->where('user_id',$id)->delete();
@@ -259,19 +259,9 @@ else{
 //        DB::table('users')->where('id',$id)->delete();
 
         //soft delete code
-        $user_id = $request->input("id");
-        $user = DB::table('users')->where('id', $user_id)->first();
-
-
-
-        // passes all checks so hard delete in related tables
-        // soft delete competition
-        $user_email = User::find($user_id);
-        DB::table('user_activity')->where('user_email',$user_email->email)->update(['soft_delete'=>1]);
-        $response = DB::table('users')->where('id', $user_id)->update(['soft_delete' => 1, 'soft_delete_at' => date('Y-m-d H:i:s')]);
-        if($response){
-            echo "Successfully Deleted.";exit;
-        }
+//
+        $id = $request->input("id");
+        User::where("id", $id)->delete();
 
     }
 

@@ -23,7 +23,7 @@ class Blog_category extends Model
 //        dd($request);
         if($files=$request->file('image')) {
             $name = $files->getClientOriginalName();
-            $files->move('images\cozmo', $name);
+            $files->move(public_path('images\cozmo'), $name);
         }
       $data =   DB::table('blog_categories')->insert([
             'title' => $request['title'],

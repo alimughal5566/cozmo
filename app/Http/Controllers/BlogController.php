@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Blog_category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
-use DB;
+//use DB;
 use Lang;
 use Session;
-use App\Blog;
+
 use App\Package;
 use App\PaksageImage;
 use App\MC;
@@ -19,12 +22,14 @@ class BlogController extends Controller
 {
 
 
-    public function __construct()
-	{
+    private $blogg;
 
-		$this->middleware('auth');
-		$this->middleware('AdminAccess');
+    public function __construct(Blog $blogg)
+    {
 
+        $this->middleware('auth');
+        $this->middleware('AdminAccess');
+        $this->blogg = $blogg;
 
 
     }
@@ -32,205 +37,163 @@ class BlogController extends Controller
 	public function index()
 	{
 //		$blog = Blog::get();
-        $blog = DB::table('blogs')->get();
 
-//		return view('admin.blog.index',compact('blog'));
-        return view('admin.blog.homeBlog',compact('blog'));
+       $blg = $this->blogg->indexBlog();
+//       dd($blg);
+//       dd($blg);
+//        dd($blg);
+        return view('admin.blog.home',compact('blg'));
 
 	}
-	public function create()
-	{
-     // dd($request);
-	   // dd("create Page");
-//		if(Auth::user()) {
-//		    dd("im Admin");
-//           // return redirect()->back();
-//        }
-//		else{
-//		    dd("im user");
-//        }
-// 		$packages = Package::orderBy('id','DESC')->get();
-// 		$mc_info  = MC::whereIn('id', Package::all()->pluck('mc_id')->toArray())->get();
-/*
-	$packages = DB::table('packages')->join('multi_competition', 'packages.mc_id', '=', 'multi_competition.id')->get();*/
-//	$today = date('Y-m-d');
-//    $packages = Package::where('mc_id','!=',0)->where('status', 1)->where('packages.soft_delete', 0)->join('multi_competition', 'packages.mc_id', '=', 'multi_competition.id')->where('multi_competition.end_date', '>', $today)->select('packages.*')->get();
-//    $blog=Blog::find($id);
-/*$imgss =DB::table('package_images')->where('main_img',1)->get();*/
-
-
-
-	/*	$blog = Blog::orderBy('id','DESC')->get();*/
-		/*print_r($blog->sliders);exit();
-*/
-		return view('admin.blog.addBlog');//,compact('blog','packages'));
-	}
-	public function store(Request $request)
-	{
-
-     // dd($request);
-
-
-
-//     $packid = $request->package;
-//
-//    	// dd($request->all());exit();
-//    	$desc = $request->description;
-//    	if ($desc=="") {
-//    		 return redirect('blog/create')->with('alert', 'Please add some Description!')->withInput();
-//    	}
-//
-//    	if (Input::file('image'))
-//            {
-//            	$inputs = [
-//        	'image' => $request->image,
-//                ];
-//        $rules = [
-//        	'image' => 'dimensions:min_width=1140,height=550',
-//    		];
-//
-//    	$validation = \Validator::make( $inputs, $rules );
-//
-//    	if ( $validation->fails() ) {
-//          return redirect('blog/create')->with('alert', 'Upload Image size must be width>=1140,height=500!')->withInput();
-//      }
-//                $image =Input::file('image');
-//                $name = time().'.'.$image->getClientOriginalExtension();
-//                $destinationPath = public_path('/blogimages/');
-//                $image->move($destinationPath, $name);
-//                $images = $name;
-//            }
-//            else
-//            {
-//                $images = $request->noimage;
-//            }
-//		 $blog = new Blog;
-//		$pack=$request->status;
-//		if ($pack == "on") {
-//			$packs= 1;
-//			//$blog->sliderstatus = $packs;
-//// 			Blog::where('sliderstatus',1)->update(['sliderstatus'=>0]);
-//		}
-//		else{
-//               $packs= 0;
-//	}
-//		try{
-//            $blog->video_status = $request->video;
-//			$blog->title = $request->title;
-//			$blog->package_id = $packid;
-//			$blog->sliderstatus = $packs;
-//			$blog->description = $request->description;
-//			$blog->image = $images;
-//			$blog->sorting = $request->sorting;
-//			$success = $blog->save();
-//			if ($success) {
-//				return redirect()->route('blog.admin');
-//			}
-//			else{
-//				return view('admin.blog.add');
-//			}
-//
-//		}catch (\Exception $e) {
-//			DB::rollback();
-//			return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();
-//		}
-	}
-
-	public function edit($id, Request $request)
-	{
-		// $data = Blog::find($id);
-		$today = date('Y-m-d');
-    $packages = Package::where('mc_id','!=',0)->where('status', 1)->where('packages.soft_delete', 0)->join('multi_competition', 'packages.mc_id', '=', 'multi_competition.id')->where('multi_competition.end_date', '>', $today)->select('packages.*')->get();
-
-       $blog=Blog::find($id);
-		return view('admin.blog.edit',compact('packages','blog'));
-	}
-
-	public function update(Request $request)
-	{
-		// print_r($request->all());exit();
-
-
-		$packid = $request->package;
-		$pack=$request->status;
-		    if ($pack == "on") {
-			$packs= 1;
-                $sorting = $request->sorting;
-			 //  Blog::where('sliderstatus',1)->update(['sliderstatus'=>0]);
-		}
-		else{
-               $packs= 0;
-               $sorting = 0;
-	      }
-	      $image = $request->image;
-    	if($request->hasFile('image'))
-            {
-            	$inputs = [
-        	'image' => $request->image,
-                ];
-        $rules = [
-        	'image' => 'dimensions:min_width=1140,height=550',
-    		];
-
-    	$validation = \Validator::make( $inputs, $rules );
-
-    	if ( $validation->fails() ) {
-          return redirect('blog/edit/'.$request->id)->with('alert', 'Upload Image size must be width>=1140,height=550!')->withInput();
-      }
-                $image =Input::file('image');
-                $name = time().'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('/blogimages/');
-                $image->move($destinationPath, $name);
-                $images = $name;
-            }
-            else
-            {
-                $images = $request->noimage;
-            }
-
-		try{
-			$Update = Blog::whereId($request->id)->update([
-				'title' => request('title'),
-				'video_status' => request('video'),
-				'package_id'=> $packid,
-				'sliderstatus' => $packs,
-				'description' => request('description'),
-				'image' => $images,
-				'sorting' => $sorting
-			]);
-
-			if($Update){
-				return redirect()->route('blog.admin');
-			}
-			else
-			{
-				return redirect()->back();
-			}
-		}catch (\Exception $e) {
-			DB::rollback();
-			return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();
-		}
-	}
-
-	public function destroy(Request $request)
-	{
-		$id = $request->input("id");
-		Blog::where("id", $id)->delete();
-	}
-
-    public function apply_sorting_number($number, $blog_id)
+	public function blogAdd()
     {
-        $res = Blog::where('sliderstatus', 1)->where("sorting", $number)->first();
-        if($res){
-            if($res->id == $blog_id){
-                echo 'Success';
-            }else if($blog_id == 0){
-                echo 'Sorting number already assigned.';
-            }else{
-                echo 'Sorting number already assigned.';
+        $blog_category = $this->blogg->blogAdd();
+        return view('admin.blog.add' , compact('blog_category'));//,compact('blog','packages'));
+	}
+
+	public function blogStore(Request $request)
+	{
+//	    dd($request);
+        if($request->featured == '1'){
+             $check=DB::table('blog')->where('feature_flag' ,'=','1')->count();
+             if($check==1){
+                 Session::flash('Failed', 'You Can Add Only One Main Featured Blog ');
+                 return redirect()->route('blogHomeView');
+             }
+        }
+        if($request->featured == '2'){
+             $check=DB::table('blog')->where('feature_flag' ,'=','2')->count();
+//             dd($check);
+             if($check>=2){
+//                 dd('less than 3');
+                 Session::flash('Failed', 'You Can Add Only 2  Featured Blogs  ');
+                 return redirect()->route('blogHomeView');
+             }
+        }
+        if ($request->hasFile('image')){
+//            $data=$this->blog_cat->blogStoredata($request);
+            $data = $this->blogg->blogStoredata($request);
+//            dd($data);
+            if($data){
+                Session::flash('success', 'Successfully Added Blog ');
+                return redirect()->route('blogHomeView');
             }
-        }else{
-            echo 'Success';
+            else{
+                Session::flash('Failed', 'Some Went Wrong');
+                return redirect()->route('blogHomeView');
+            }
+
+
+//      dd($request);
+
+
+//			return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();
+		}
+	}
+
+	public function blogEdit($id)
+	{
+	    $blogg = DB::table('blog')->find($id);
+        $blog_category = DB::table('blog_categories')->get();
+		return view('admin.blog.edit',compact('blogg','blog_category'));
+	}
+
+	public function blogUpdate(Request $request)
+	{
+		dd($request);
+
+
+	}
+	public function removeFeature($id){
+        $data = DB::table('blog')->find($id);
+        if ($data->feature_flag == 1 || $data->feature_flag == 2){
+//            dd('updating Data');
+           $result = DB::table('blog')->where('id' , $id)->Update([
+              'feature_flag' => '0',
+                'date_updated' => carbon::now(),
+            ]);
+           if($result){
+               Session::flash('success', 'Successfully Removed Blog From Featured ');
+               return redirect()->route('blogHomeView');
+           }
+           else{
+               Session::flash('Failed', 'Something Went Wrong ');
+               return redirect()->route('blogHomeView');
+           }
+//           dd($result);
         }
     }
+    public function setToMainFeature($id){
+        $check=DB::table('blog')->where('feature_flag' ,'=','1')->count();
+        if($check==1){
+            Session::flash('Failed', 'You Can Add Only One Main Featured Blog ');
+            return redirect()->route('blogHomeView');
+        }
+        else{
+
+            $result = DB::table('blog')->where('id' , $id)->Update([
+                'feature_flag' => '1',
+                'date_updated' => carbon::now(),
+            ]);
+            if($result){
+                Session::flash('success', ' Blog Set to Main Featured ');
+                return redirect()->route('blogHomeView');
+            }
+            else{
+                Session::flash('Failed', 'Something Went Wrong ');
+                return redirect()->route('blogHomeView');
+            }
+
+        }
+    }
+
+    public function setToFeature($id){
+        $check=DB::table('blog')->where('feature_flag' ,'=','2')->count();
+        if($check>=2){
+            Session::flash('Failed', 'You Can Add Only Two Featured Blog ');
+            return redirect()->route('blogHomeView');
+        }
+        else{
+
+            $result = DB::table('blog')->where('id' , $id)->Update([
+                'feature_flag' => '2',
+                'date_updated' => carbon::now(),
+            ]);
+            if($result){
+                Session::flash('success', ' Blog Set to Featured ');
+                return redirect()->route('blogHomeView');
+            }
+            else{
+                Session::flash('Failed', 'Something Went Wrong ');
+                return redirect()->route('blogHomeView');
+            }
+
+        }
+
+    }
+	public function blogDestroy(Request $request)
+	{
+//	    dd($request);
+		$id = $request->input("id");
+//		Blog::where("id", $id)->delete();
+
+	   DB::table('blog')->where("id" , $id)->delete();
+	}
+
+
+//    public function apply_sorting_number($number, $blog_id)
+//    {
+//        $res = Blog::where('sliderstatus', 1)->where("sorting", $number)->first();
+//        if($res){
+//            if($res->id == $blog_id){
+//                echo 'Success';
+//            }else if($blog_id == 0){
+//                echo 'Sorting number already assigned.';
+//            }else{
+//                echo 'Sorting number already assigned.';
+//            }
+//        }else{
+//            echo 'Success';
+//        }
+//    }
 }
