@@ -19,7 +19,7 @@
         <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('users')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Agent Management</span></a></li>
 {{----}}
 {{--blogs          --}}
-          <li><a class="app-menu__item <?php  if(url()->current() == route('blogHomeView')) echo "active";  ?>" href="{{route('blogHomeView')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blog</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "Blogs") echo "active"; ?>" href="#"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blogs</span></a></li>
 
           {{--          --}}
 {{--          Blogs Categories--}}
@@ -28,7 +28,7 @@
           {{--          --}}
 
          <li><a class="app-menu__item <?php if(Request::segment(1) == "product") echo "active"; ?>" href="{{url('product')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Properties</span></a></li>
-        <li><a class="app-menu__item <?php if(Request::segment(1) == "MultiCompetitions") echo "active"; ?>" href="{{url('MultiCompetitions')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Multi Competitions</span></a></li>
+      <!--    <li><a class="app-menu__item <?php if(Request::segment(1) == "MultiCompetitions") echo "active"; ?>" href="{{url('MultiCompetitions')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Multi Competitions</span></a></li>-->
          <li><a class="app-menu__item <?php if(Request::segment(1) == "propertyHomeView") echo "active"; ?>" href="{{route('propertyHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Property Type</span></a></li>
          <li><a class="app-menu__item <?php if(Request::segment(1) == "saleHomeView") echo "active"; ?>" href="{{route('saleHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Property sale Type</span></a></li>
          <li><a class="app-menu__item <?php if(Request::segment(1) == "resourceCategoryHome") echo "active"; ?>" href="{{route('resourceCategoryHome')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Resources Category</span></a></li>
@@ -55,6 +55,7 @@
 
       <!--   <li><a class="app-menu__item <?php /*if(Request::segment(1) == "drivers")*/ /* echo "active"*/; ?>" href="{{route('iframe.admin')}}"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Iframe</span></a></li> -->
 
+		<!--<li><a class="app-menu__item <?php if(Request::segment(2) == "blog")  echo "active"; ?>" href="{{route('blog.admin')}}"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Slider</span></a></li>-->
 
 
 
@@ -68,7 +69,9 @@
     <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "article_category") echo "active"; ?>" href="{{url('article_category')}}"><i class="app-menu__icon fa fa-thumbs-up"></i><span class="app-menu__label">Article Category</span></a></li>-->
 
 
+        <!--  <li><a class="app-menu__item <?php /*if(Request::segment(1) == "drivers")*/ /* echo "active"*/; ?>" href="{{route('blog.admin')}}"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Slider</span></a></li> -->
 
+         <!--  <li><a class="app-menu__item <?php /*if(Request::segment(1) == "drivers")*/ /* echo "active"*/; ?>" href="{{route('blog.admin')}}"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Blogs</span></a></li> -->
 
         <!--<li><a class="app-menu__item <?php if(Request::segment(2) == "faqs") echo "active"; ?>" href="{{url('/admin/faqs')}}"><i class="app-menu__icon fa fa-car"></i><span class="app-menu__label">Faqs</span></a></li>-->
         <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "cars") echo "active"; ?>" href="{{url('/admin/pages')}}"><i class="app-menu__icon fa fa-file-text-o"></i><span class="app-menu__label">Pages</span></a></li> -->

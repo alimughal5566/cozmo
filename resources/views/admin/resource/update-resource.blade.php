@@ -115,7 +115,8 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item">New Resource</li>
+            <li class="breadcrumb-item"><a href="{{route('resourceHome')}}">New Resource</a></li>
+            <li class="breadcrumb-item">update Resource</li>
         </ul>
     </div>
     <div class="row">
@@ -124,7 +125,7 @@
                 {{ csrf_field() }}
                 <div class="tile">
 
-                    <h3 class="tile-title">New Resource</h3>
+                    <h3 class="tile-title">Update Resource</h3>
                     @if(Session::has('message'))
                         <div class="alert alert-success">
                             {{ Session::get('message') }}
