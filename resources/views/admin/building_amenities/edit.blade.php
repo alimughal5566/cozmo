@@ -8,7 +8,7 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item"><a href="{{url('building_amenities')}}">Edit Amenities</a>
+            <li class="breadcrumb-item"><a href="{{url('building_amenities')}}">Edit Amenity</a>
             </li>
             <li class="breadcrumb-item">Update</li>
         </ul>
@@ -17,7 +17,7 @@
         <div class="col-md-12">
 
             <div class="tile">
-                <h3 class="tile-title">Edit Amenities</h3>
+                <h3 class="tile-title">Edit Amenity</h3>
                 <form class="form-horizontal" method="POST" action="{{ url('building_amenities/update') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
@@ -37,8 +37,13 @@
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                 <label class="form-control-label">Type</label>
-                                <input id="type" type="text" class="form-control" name="type" value="{{$user[0]->type }}">
-                            </div>
+                                <select name="type" id="" class="form-control">
+                                    <option value="sales" selected>Sales  </option>
+                                    <option value="rentals" selected>Rentals</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>                            </div>
                         </div>
                     </div>
                     <input id="file" type="hidden" class="form-control" name="id" value="">

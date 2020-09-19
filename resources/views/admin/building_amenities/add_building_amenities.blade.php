@@ -102,6 +102,8 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
+            <li class="breadcrumb-item">Edit Amenities</li>
+
             <li class="breadcrumb-item">@lang('packages.add_new')</li>
         </ul>
 
@@ -120,7 +122,7 @@
 
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
-                                <label> Building_amenities_title</label>
+                                <label> Building Amenities Title</label>
                                 <input onkeyup="change_short()" id="name" type="text" placeholder="building_amenities_title" class="form-control" name="building_amenities_title"  value="{{ old('building_amenities_title') }}" required autofocus required="">
                             </div>
                         </div>
@@ -133,8 +135,13 @@
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>Type</label>
-                                <input onkeyup="change_short()" id="name" type="text" placeholder="Enter type" class="form-control" name="type"  value="{{ old('type') }}" required autofocus required="">
-                            </div>
+                                <select name="type" id="" class="form-control">
+                                    <option value="sales" selected>Sales  </option>
+                                    <option value="rentals" selected>Rentals</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>                            </div>
                         </div>
 
                     </div>

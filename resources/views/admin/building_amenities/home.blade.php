@@ -87,7 +87,7 @@
         <div class="col-md-12">
             <div class="tile">
                 <h3 class="tile-title">
-                    Building Documents
+                    Building Amenities
                     @if(Auth::check() && Auth::user()->user_role == 1)
                         <a href="{{url('/building_amenities/add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> @lang('Add New')</a>
                     @endif

@@ -12,7 +12,7 @@
 		</li>
 		<li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
 		</li>
-        <li class="breadcrumb-item">Property Address
+        <li class="breadcrumb-item">Property Listing Amenities
         </li>
 	</ul>
 </div>
@@ -21,9 +21,9 @@
 		<div class="tile">
 			<h3 class="tile-title">
 
-				Property Address
+                Property Listing Amenities
 				@if(Auth::check() && Auth::user()->user_role == 1)
-				<a href="{{ route('addPropertyAddress')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> @lang('packages.add_new')</a>
+				<a href="{{ route('property_listing_amenities.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> @lang('packages.add_new')</a>
 				@endif
 			</h3>
             @if(Session::has('message'))
@@ -36,19 +36,10 @@
 					<thead class="back_blue">
 						<tr>
 							<th>id</th>
-							<th>name_of_street</th>
-							<th>country</th>
-							<th>state</th>
-							<th>city</th>
-							<th>zip_code</th>
-							<th>county</th>
-							<th>additional_info</th>
-							<th>neighborhood</th>
-							<th>boroughs</th>
+							<th>listing_amenity</th>
 {{--							<th>date_created</th>--}}
 {{--							<th>date_updated</th>--}}
-
-
+							<th>listing_for</th>
 
 							<th width="130" class="text-center">@lang('packages.actions')</th>
 						</tr>
@@ -58,22 +49,16 @@
 
 						<tr>
                             <td>{{$key+1}}</td>
-                            <td>{{$row->name_of_street}}</td>
-                            <td>{{$row->country}}</td>
-                            <td>{{$row->state}}</td>
-                            <td>{{$row->city}}</td>
-                            <td>{{$row->zip_code}}</td>
-                            <td>{{$row->county}}</td>
-                            <td>{{$row->additional_info}}</td>
-                            <td>{{$row->neighborhood}}</td>
-                            <td>{{$row->boroughs}}</td>
-{{--                            <td>{{$row->date_created}}</td>--}}
-{{--                            <td>{{$row->date_updated}}</td>--}}
+                            <td>{{$row->listing_amenity}}</td>
+{{--                        <td>{{$row->date_created}}</td>--}}
+{{--                        <td>{{$row->date_updated}}</td>--}}
+                            <td>{{$row->listing_for}}</td>
+
 
                             <td class="text-center">
 								<div class="actions-btns " style="display: flex;">
 
-									<a href="{{route('property_address.edit',[$row->id])}}" class="back_color btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
+									<a href="{{route('property_listing_amenities.edit',[$row->id])}}" class="back_color btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
 									<a href="#" data-id="<?php echo $row->id; ?>" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>
 
 								</div>
@@ -116,7 +101,7 @@
 				$.ajax( {
 					type: 'POST',
 					headers: {'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )},
-					url: '<?php echo route("deletePropertyAddress"); ?>',
+					url: '<?php echo route("property_listing_amenities.delete"); ?>',
 					data: form_data,
 
 					success: function ( msg ) {

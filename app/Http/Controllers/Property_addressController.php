@@ -37,6 +37,7 @@ class Property_addressController extends Controller
 //            'Date_created' => $request->Date_created,
 //            'date_created' => $request->date_created,
         ]);
+
 //        dd('wwww');
         return redirect()->route('addressHomeView')->with('success', ' Create Successfuly');
 
