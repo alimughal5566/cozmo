@@ -29,7 +29,9 @@ class Blog_categoryController extends Controller
     }
 
     public function blogCategoryAdd(){
-       return view('admin.blog_category.add');
+        $data=DB::table('blog_categories')->get();
+//        dd($data);
+       return view('admin.blog_category.add',compact('data'));
     }
 
     public function blogCategoryStore(Request $request){

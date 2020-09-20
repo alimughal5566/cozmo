@@ -55,12 +55,13 @@
                               </div>
                           </div>
 
-                          <div class="col-sm-6 col-md-4">
-                              <div class="form-group">
-                                  <label class="form-control-label">Type</label>
-                                  <input id="type" type="text" class="form-control " name="type" required autofocus>
-                              </div>
-                          </div>
+                        <div class="col-sm-6 col-md-4 ">
+                            <label for="comp">Type</label>
+                            <select name="type" class="form-control"  required >
+                                    <option value="sales">Sales</option>
+                                    <option value="rentals">Rentals</option>
+                            </select>
+                        </div>
                           <div class="col-sm-6 col-md-4 ">
                               <label for="comp">Blog Category</label>
                               <select name="blog_category_id" class="form-control"  required >
@@ -68,7 +69,7 @@
                                       <option value="{{ $bcat->id }}">{{ $bcat->title }}</option>
                                   @endforeach
                               </select>
-                      </div>
+                            </div>
 
 
                         <div class="col-sm-6">

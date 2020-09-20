@@ -22,7 +22,7 @@ class Blog extends Model
         foreach ($normal_feature as $data3){
             $data3->blog_category=DB::table('blog_categories')->where('id',$data3->blog_category_id)->pluck('title')->first();
         }
-        $random_Blog = DB::table('blog')->where('feature_flag', '=' , '0')->inRandomOrder()->limit(5)->get();;
+        $random_Blog = DB::table('blog')->where('feature_flag', '=' , '0')->inRandomOrder()->limit(5)->get();
 //        dd($random_Blog);
 
         return [$normal_blog,$main_feature,$normal_feature,$random_Blog];
