@@ -576,12 +576,14 @@ Route::post('/property_listing_amenities/delete', 'Property_listing_amenitiesCon
 
 //Properties Options
 
-    Route::get('/property_options/home','Property_optionsController@propertyOptionsIndex')->name('property_options.home');
+Route::get('/property_options/home','Property_optionsController@propertyOptionsIndex')->name('property_options.home');
 Route::get('/property_options/add', 'Property_optionsController@optionsAdd')->name('property_options.add');
 Route::post('/property_options/store', 'Property_optionsController@optionsStore')->name('property_options.store');
 Route::get('/property_options/edit/{id}', 'Property_optionsController@edit')->name('property_options.edit');
 Route::post('/property_options/update', 'Property_optionsController@update')->name('property_options.update');
 Route::post('/property_options/delete', 'Property_optionsController@optionsDelete')->name('property_options.delete');
+
+//Properties Sale Price Changes
 
 Route::get('/listing_sale_price_changes/home','Listing_sale_price_changesController@listingSaleIndex')->name('listing_sale_price_changes.home');
 Route::get('/listing_sale_price_changes/add', 'Listing_sale_price_changesController@listingAdd')->name('listing_sale_price_changes.add');
@@ -590,6 +592,12 @@ Route::get('/listing_sale_price_changes/edit/{id}', 'Listing_sale_price_changesC
 Route::post('/listing_sale_price_changes/update', 'Listing_sale_price_changesController@listingUpdate')->name('listing_sale_price_changes.update');
 Route::post('/listing_sale_price_changes/delete', 'Listing_sale_price_changesController@listingDelete')->name('listing_sale_price_changes.delete');
 
+Route::get('/nearby_transit_lines/home','Nearby_transit_linesController@transitIndex')->name('nearby_transit_lines.home');
+Route::get('/nearby_transit_lines/add', 'Nearby_transit_linesController@transitAdd')->name('nearby_transit_lines.add');
+Route::post('/nearby_transit_lines/store', 'Nearby_transit_linesController@transitStore')->name('nearby_transit_lines.store');
+Route::get('/nearby_transit_lines/edit/{id}', 'Nearby_transit_linesController@transitEdit')->name('nearby_transit_lines.edit');
+Route::post('/nearby_transit_lines/update', 'Nearby_transit_linesController@transitUpdate')->name('nearby_transit_lines.update');
+//Route::post('/listing_sale_price_changes/delete', 'Listing_sale_price_changesController@listingDelete')->name('listing_sale_price_changes.delete');
 
 
 
