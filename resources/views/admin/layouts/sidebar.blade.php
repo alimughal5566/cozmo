@@ -19,7 +19,7 @@
         <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('users')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Agent Management</span></a></li>
 {{----}}
 {{--blogs          --}}
-          <li><a class="app-menu__item <?php if(Request::segment(1) == "Blogs") echo "active"; ?>" href="{{url('/blogs')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blogs</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "Blogs") echo "active"; ?>" href="#"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blogs</span></a></li>
 
           {{--          --}}
 {{--          Blogs Categories--}}
@@ -51,6 +51,9 @@
 
 
 
+
+
       </ul>
         </div>
+      </div>
     </aside>

@@ -37,6 +37,7 @@ class User extends Authenticatable
 
     public function  editUser($id){
         $user = User::find($id);
+//        dd($user);
         $companies = DB::table('companies')->get();
         return [$user , $companies];
     }

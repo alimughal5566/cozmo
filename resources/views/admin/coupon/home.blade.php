@@ -39,17 +39,6 @@
 			<h3 class="tile-title">Coupon
 			<a href="{{url('discount_coupon/add')}}" class="btn btn-sm btn-success pull-right cust_color">Add Coupon</a>
 			</h3>
-{{--            <div class="col-md-4 set_space">--}}
-{{--                <label>Source</label>--}}
-{{--                <select id="source" class="form-control">--}}
-{{--                    <option value="" selected>Select Filter</option>--}}
-{{--                    <option value="Imported">Used Coupons</option>--}}
-{{--                    <option value="Prizemaker">Un-Used Coupons</option>--}}
-{{--                    <option value="Zombie Game">Sent</option>--}}
-{{--                    <option value="Zombie Game">Un-Sent</option>--}}
-{{--                </select>--}}
-{{--                <button onclick="search()">Submit</button>--}}
-{{--            </div>--}}
 			<div class="table-responsive">
 				<table class="table" id = "example">
 					<thead class="back_blue">
@@ -67,8 +56,8 @@
 					</thead>
 					<tbody >
 						@foreach($coupon as $key =>$row)
-						@php $check = DB::table('coupon_data')->where('coupon_id',$row->id)->first(); 
-						     $used_count = DB::table('coupon_data')->where('coupon_id',$row->id)->count(); 
+						@php $check = DB::table('coupon_data')->where('coupon_id',$row->id)->first();
+						     $used_count = DB::table('coupon_data')->where('coupon_id',$row->id)->count();
 						@endphp
 						<tr>
 							<td>{{$key+1}}</td>
@@ -78,14 +67,14 @@
 							<td>{{$row->coupon}}</td>
 							<td>{{$row->percentage}}</td>
 							<td>{{$used_count}}</td>
-							
+
 							<td>{{$row->created_at}}</td>
 							<td class="text-center">
 								@if(!isset($check))
 								<a href="#" data-id="<?php echo $row->id; ?>" class="btn btn-sm btn-danger delete"  data-title="Delete"><i class="fa fa-trash"></i></a>
 								@endif
 								<a href="{{url('view_coupon_use/'.$row->id)}}" class="back_color btn btn-sm btn-info" data-title="View Coupon Used By"><i title="View Coupon Used By" class="fa fa-eye"></i></a>
-								
+
 							</td>
 						</tr>
 						@endforeach

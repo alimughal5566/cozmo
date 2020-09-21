@@ -69,7 +69,6 @@
                             <th>Title</th>
                             <th>Sub Categories</th>
                             <th>Date Created</th>
-{{--                            <th>Date Updated</th>--}}
 
                             <th width="130" class="text-center">Actions</th>
                         </tr>
@@ -77,20 +76,12 @@
                         <tbody>
                         <?php $counter = 1;?>
                         @foreach($blog_category as $row)
-
+                            <td>
+                                <img class=" img-circle img-size-32 mr-2 round_img"  height="15%" src="/images/cozmo/{{$row->image}}" style="height: 30px">
+                            </td>
                             <tr>
                                 <td style="display: none;"><?php echo $counter;?></td>
                                 <?php $counter++;?>
-                                {{--                                <td>{{$row->title}}</td>--}}
-
-                                {{--                                <td>--}}
-                                {{--                                    @foreach($companies as $comp)--}}
-                                {{--                                        @if($comp->id==$row->company_id)--}}
-                                {{--                                            {{$comp->title}}--}}
-                                {{--                                        @endif--}}
-                                {{--                                    @endforeach--}}
-                                {{--                                </td>--}}
-
 
                                 <td>
                                     <img class=" img-circle img-size-32 mr-2 round_img"  height="15%" src="/images/cozmo/{{$row->image}}" style="height: 30px">
@@ -107,9 +98,6 @@
                                         @endforeach
                                 </td>
                                 <td>{{ date('d-M-y', strtotime($row->date_created)) }}</td>
-{{--                                <td>{{ date('d-M-y', strtotime($row->date_updated)) }}</td>--}}
-
-
 
                                 <td class="text-center">
                                     <div class="actions-btns dule-btns float-lg-right">

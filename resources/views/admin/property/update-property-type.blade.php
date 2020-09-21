@@ -120,7 +120,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form class="form-horizontal" method="POST" action="{{ route('storeUpdatePropertyType') }}" enctype="multipart/form-data">
+            <form class="form-horizontal" method="POST" action="{{ route('updatePropertyAddress') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="tile">
 
@@ -138,8 +138,8 @@
                         <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
-                                <label for="title">Title:</label>
-                                <input required id="title"  type="text" value="{{$data[0]->title}}" placeholder="Title" class="form-control" name="title">
+                                <label for="title">Name Of Street:</label>
+                                <input required id="name_of_street"  type="text" value="{{$data[0]->name_of_street}}" placeholder="name_of_street" class="form-control" name="name_of_street">
                             </div>
                         </div>
                         <div class="col-sm-6">

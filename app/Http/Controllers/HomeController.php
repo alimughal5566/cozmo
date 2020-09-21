@@ -42,7 +42,7 @@ class HomeController extends Controller
      * @return void
      */
     public function __construct()
-    {   
+    {
         $this->middleware('DeleteLogout');
     }
 
@@ -129,7 +129,7 @@ class HomeController extends Controller
         $today = date('Y-m-d');
         $productsss = Package::where('mc_id','!=',0)->where('status', 1)->where('packages.soft_delete', 0)->join('multi_competition', 'packages.mc_id', '=', 'multi_competition.id')->where('multi_competition.end_date', '>', $today)->where('multi_competition.freeticket',1)->select('packages.*')->get();
 
-          $settings = DB::table('setting')->first(); 
+          $settings = DB::table('setting')->first();
 
          if(isset($check))
          {
@@ -141,7 +141,7 @@ class HomeController extends Controller
 
 
     }
-    
+
     public function articles(){
 
         $search = "";
@@ -179,9 +179,9 @@ class HomeController extends Controller
 
             $art = DB::table('setting')->select('*')->get();
             return view('articles')->with(['users'=>$users, 'art'=>$art, 'search'=>$search, 'cat'=>$cat]);
-        
+
     }
-    
+
     public function article_search(Request $request){
         // print_r($request->all());
         $search = $request->name;
@@ -230,14 +230,14 @@ class HomeController extends Controller
 
         return redirect('articles');
     }
-    
+
     public function article_detail(Request $request, $id){
 
         $users = DB::table('articles')->select('articles.*','writers.title as name')
         ->where('articles.id',$id)
         ->join('writers','articles.writer_id','writers.id')
         ->get();
-        
+
         return view('article_detail')->with('users',$users);
 
     }
@@ -248,7 +248,7 @@ class HomeController extends Controller
         ->where('articles.id',$id)
         ->join('writers','articles.writer_id','writers.id')
         ->get();
-        
+
         return view('article_write')->with('users',$users);
 
     }
@@ -2395,5 +2395,19 @@ if(is_object($response) && isset($response->outcome->status) && $response->outco
             $setting = DB::table('setting')->first();
             $message->from($setting->email,'Prize Maker');
         });
+    }
+    public function index_companies()
+    {
+//dd();
+        $users = DB::table('companies')->get();
+
+
+
+        return view('admin.companies.home', compact('users'));
+
+//        foreach ($users as $users) {
+//            echo $users;
+
+
     }
 }

@@ -48,11 +48,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        {{--                        <input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">--}}
-
-
                     </div>
                     @if(Auth::check())
                         <div class="tile-footer text-right " >

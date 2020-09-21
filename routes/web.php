@@ -125,9 +125,6 @@ Route::get('/blogs', 'BlogController@index')->name('blogHomeView');
 Route::get('/blog/add', 'BlogController@blogAdd')->name('blog.add');
 Route::post('/blog/store', 'BlogController@blogStore')->name('blog.store');
 Route::get('/blog/edit/{id}', 'BlogController@blogEdit')->name('blog.edit');
-Route::get('/blog/removeFeature/{id}', 'BlogController@removeFeature')->name('blog.removeFeature');
-Route::get('/blog/setToMainFeature/{id}', 'BlogController@setToMainFeature')->name('blog.setMainFeature');
-Route::get('/blog/setToFeature/{id}', 'BlogController@setToFeature')->name('blog.setFeature');
 Route::post('/blog/update', 'BlogController@blogUpdate')->name('blog.update');
 Route::post('/blog/delete', 'BlogController@blogDestroy')->name('blog.destroy');
 //Route::get('/blog/apply_sorting_number/{number}/{blog_id}', 'BlogController@apply_sorting_number');
@@ -438,7 +435,9 @@ Route::get('/profile-view','HomeController@profile_view');
 Route::post('profile-update','HomeController@profile_upd');
 
 
-
+Route::get('/', function () {
+    return view('layouts.master-frontend');
+});
 
 //property type
 
@@ -507,3 +506,106 @@ Route::get('/UserBuilding', function () {
 
 
 //
+
+//Company route
+
+Route::get('companies','HomeController@index_companies')->name('index_companies');
+Route::get('/companies/add', 'CompaniesController@companies');
+Route::post('/company/store', 'CompaniesController@store')->name('company.store');
+Route::get('/company/edit/{id}', 'CompaniesController@edit')->name('companies.edit');
+Route::post('/company/update', 'CompaniesController@update')->name('company.update');
+Route::get('/company/delete/{id}', 'CompaniesController@delete')->name('company.delete');
+
+//Building_info route
+
+Route::get('building_info','Building_infoController@index_building_info')->name('index_building_info');
+Route::get('/building_info/add', 'Building_infoController@building');
+Route::post('/building_info/store', 'Building_infoController@store')->name('building_info.store');
+Route::get('/building_info/edit/{id}', 'Building_infoController@edit')->name('building_info.edit');
+Route::post('/building_info/update', 'Building_infoController@update')->name('building_info.update');
+Route::get('/building_info/delete/{id}', 'Building_infoController@delete')->name('Building_info.delete');
+
+//Building_description route
+
+Route::get('building_documents','Building_documentController@index_building_documents')->name('index_building_documents');
+Route::get('/building_document/add', 'Building_documentController@building');
+Route::post('/building_document/store', 'Building_documentController@store')->name('building_document.store');
+Route::get('/building_document/edit/{id}', 'Building_documentController@edit')->name('building_document.edit');
+Route::post('/building_document/update', 'Building_documentController@update')->name('building_document.update');
+Route::get('/building_document/delete/{id}', 'Building_documentController@delete')->name('Building_document.delete');
+
+//Building_amenities
+
+Route::get('building_amenities','Building_amenitiesController@index_building_amenities')->name('index_building_amenities');
+Route::get('/building_amenities/add', 'Building_amenitiesController@building');
+Route::post('/building_amenities/store', 'Building_amenitiesController@store')->name('building_amenities.store');
+Route::get('/building_amenities/edit/{id}', 'Building_amenitiesController@edit')->name('building_amenities.edit');
+Route::post('/building_amenities/update', 'Building_amenitiesController@update')->name('building_amenities.update');
+Route::get('/building_amenities/delete/{id}', 'Building_amenitiesController@delete')->name('Building_amenities.delete');
+
+//Property Address
+
+Route::get('add-property-address','Property_addressController@addPropertyAddress')->name('addPropertyAddress');
+Route::get('address-home-view','Property_addressController@addressHomeView')->name('addressHomeView');
+Route::post('/property_address/store', 'Property_addressController@store')->name('propertyAddressStore');
+Route::get('/property_address/edit/{id}', 'Property_addressController@edit')->name('property_address.edit');
+Route::post('update-property-address','Property_addressController@updatePropertyAddress')->name('updatePropertyAddress');
+Route::post('delete-property-address','Property_addressController@delete')->name('deletePropertyAddress');
+
+//Property Images
+
+Route::get('property_image','Property_imagesController@index_property_image')->name('index_property_image');
+Route::get('/property_image/add', 'Property_imagesController@property');
+Route::post('/property_image/store', 'Property_imagesController@store')->name('property_image.store');
+Route::get('/property_image/edit/{id}', 'Property_imagesController@edit')->name('property_image.edit');
+Route::post('/property_image/update', 'Property_imagesController@update')->name('property_image.update');
+Route::get('/property_image/delete/{id}', 'Property_imagesController@delete')->name('property_image.delete');
+
+//Properties
+
+Route::get('/properties/home', 'PropertiesController@propertiesIndex')->name('properties.home');
+Route::get('/properties/add', 'PropertiesController@propertiesAdd')->name('properties.add');
+Route::post('/properties/store', 'PropertiesController@propertiesStore')->name('properties.store');
+Route::get('/properties/edit/{id}', 'PropertiesController@propertiesEdit')->name('properties.edit');
+Route::post('/properties/update', 'PropertiesController@propertiesUpdate')->name('properties.update');
+Route::post('/properties/delete', 'PropertiesController@delete')->name('properties.delete');
+
+//Properties Listing Amenities
+
+Route::get('/property_listing_amenities/home','Property_listing_amenitiesController@property_listing_amenities_index')->name('property_listing_amenities.home');
+Route::get('/property_listing_amenities/add', 'Property_listing_amenitiesController@amenitiesAdd')->name('property_listing_amenities.add');
+Route::post('/property_listing_amenities/store', 'Property_listing_amenitiesController@amenitiesStore')->name('property_listing_amenities.store');
+Route::get('/property_listing_amenities/edit/{id}', 'Property_listing_amenitiesController@amenitiesEdit')->name('property_listing_amenities.edit');
+Route::post('/property_listing_amenities/update', 'Property_listing_amenitiesController@amenitiesUpdate')->name('property_listing_amenities.update');
+Route::post('/property_listing_amenities/delete', 'Property_listing_amenitiesController@amenitiesDelete')->name('property_listing_amenities.delete');
+
+//Properties Options
+
+Route::get('/property_options/home','Property_optionsController@propertyOptionsIndex')->name('property_options.home');
+Route::get('/property_options/add', 'Property_optionsController@optionsAdd')->name('property_options.add');
+Route::post('/property_options/store', 'Property_optionsController@optionsStore')->name('property_options.store');
+Route::get('/property_options/edit/{id}', 'Property_optionsController@edit')->name('property_options.edit');
+Route::post('/property_options/update', 'Property_optionsController@update')->name('property_options.update');
+Route::post('/property_options/delete', 'Property_optionsController@optionsDelete')->name('property_options.delete');
+
+//Properties Sale Price Changes
+
+Route::get('/listing_sale_price_changes/home','Listing_sale_price_changesController@listingSaleIndex')->name('listing_sale_price_changes.home');
+Route::get('/listing_sale_price_changes/add', 'Listing_sale_price_changesController@listingAdd')->name('listing_sale_price_changes.add');
+Route::post('/listing_sale_price_changes/store', 'Listing_sale_price_changesController@listingStore')->name('listing_sale_price_changes.store');
+Route::get('/listing_sale_price_changes/edit/{id}', 'Listing_sale_price_changesController@listingEdit')->name('listing_sale_price_changes.edit');
+Route::post('/listing_sale_price_changes/update', 'Listing_sale_price_changesController@listingUpdate')->name('listing_sale_price_changes.update');
+Route::post('/listing_sale_price_changes/delete', 'Listing_sale_price_changesController@listingDelete')->name('listing_sale_price_changes.delete');
+
+Route::get('/nearby_transit_lines/home','Nearby_transit_linesController@transitIndex')->name('nearby_transit_lines.home');
+Route::get('/nearby_transit_lines/add', 'Nearby_transit_linesController@transitAdd')->name('nearby_transit_lines.add');
+Route::post('/nearby_transit_lines/store', 'Nearby_transit_linesController@transitStore')->name('nearby_transit_lines.store');
+Route::get('/nearby_transit_lines/edit/{id}', 'Nearby_transit_linesController@transitEdit')->name('nearby_transit_lines.edit');
+Route::post('/nearby_transit_lines/update', 'Nearby_transit_linesController@transitUpdate')->name('nearby_transit_lines.update');
+//Route::post('/listing_sale_price_changes/delete', 'Listing_sale_price_changesController@listingDelete')->name('listing_sale_price_changes.delete');
+
+
+
+
+
+
