@@ -30,11 +30,16 @@ class PropertiesController extends Controller
         return view('frontend.home' , compact('random_feature_right','random_feature_left' ,'appartment','latestTopBlog','latestBlog'));
     }
     public function propertyDetail($id){
-$data=DB::table('properties')->find($id);
-$address = DB::table('property_address')->where('id'  , $id)->first();
-//$data->addresses = $address;
-//dd($data);
-        return view('frontend.property.detail',compact('data', 'address'));
+        $data=DB::table('properties')->where('id',$id)->first();
+        $saleHistory=DB::table('listing_sale_price_changes')->where('id',$id)->latest('date_change')->first();
+
+        $address = DB::table('property_address')->where('id'  , $id)->first();
+
+//            dd($saleHistory);
+
+
+        return view('frontend.property.detail',compact('data', 'address','saleHistory'));
+
     }
 
 }

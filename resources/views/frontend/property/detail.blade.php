@@ -15,24 +15,11 @@
 
 
 <div id="site-content" class="SiteBlock-content ">
-
-
     <div id="content" >
-
-
-
-
-
-
-
-
-
         <main class="Container">
             <div id='header_print_info' class='only-print'>
                 Printed from CoZmo-web.com at 03:09 AM, Apr 29 2020
             </div>
-
-
             <div id="listingCorrection" class="modal fade in">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -174,21 +161,9 @@
                 <article class="left-three-fifths hdp_gallery_2018_box">
                     <div style="text-align:center;">
                         <div style="" class="html5gallery" data-skin="darkness" data-width="480" data-height="272" data-resizemode="fill" >
-{{--                            <a href=""><img src="{{ asset('images/cozmo/' . $data->main_image) }}" alt="Sakura Trees"></a>--}}
-                            <a href="img/b-1.jpg"><img src="img/b-1.jpg" alt="Tulips"></a>
-                            <a href="img/b-2.jpg"><img src="img/b-2.jpg" alt="Colourful Tulips"></a>
-                            <a href="img/b-3.png"><img src="img/b-3.png" alt="Swan on Lake"></a>
-                            <a href="img/ralph.png"><img src="img/ralph.png" alt="Red Tulips"></a>
-{{--                            <a href=""><img src="{{ asset('images/cozmo/' . $data->main_image) }}" alt="Sakura Trees"></a>--}}
-
-                            <a href="img/b-22.jpg"><img src="img/b-22.jpg" alt="Tulips"></a>
-                            <a href="img/b-33.jpg"><img src="img/b-33.jpg" alt="Colourful Tulips"></a>
-
-
+                            <img src="{{asset('/images/cozmo/'.$data->main_image)}}" alt="Tulips">
+                            <img src="{{asset('/images/cozmo/'.$data->video)}}" alt="Tulips">
                             <!-- Add Youtube video to Gallery -->
-                            <a href="https://www.youtube.com/watch?v=8-KsY22o4yg"><img src="img/b-1.jpg" alt="Youtube Video"></a>
-                            <a href="https://www.youtube.com/watch?v=TlMUknHQYLU"><img src="img/b-2.jpg" alt="Youtube Video"></a>
-                            <a href="https://www.youtube.com/watch?v=6iJ-ufcueWQ"><img src="img/b-3.png" alt="Youtube Video"></a>
 
                         </div>
 
@@ -448,27 +423,55 @@
                     <section>
                         <div class="Vitals">
                             <div class="Vitals-detailsInfo">
-                                <h6 class="Vitals-title">Available on</h6>
+                                <h6 class="Vitals-title">SALES LAUNCH DATE
+                                </h6>
                                 <div class="Vitals-data">
                                     {{$data->available_on}}
                                 </div>
                             </div>
 
                             <div class="Vitals-detailsInfo">
-                                <h6 class="Vitals-title">Days On Market</h6>
-                                <div class="Vitals-data">
-                                    "Counting Suspended"
+                                <h6 class="Vitals-title">LAST PRICE CHANGE
+                                </h6>
+                                <div class="Vitals-data font-weight-bold">
+                                    {{date("Y-m-d ", strtotime($data->date_created))}}
+
                                 </div>
                             </div>
 
                             <div class="Vitals-detailsInfo ">
-                                <h6 class="Vitals-title">Last Price Change</h6>
+                                <h6 class="Vitals-title">ESTIMATED PAYMENT
+                                </h6>
                                 <div class="Vitals-data u-capitalize" title="">
                                     No Recorded Changes
                                 </div>
                             </div>
                         </div>
+                        <div class="Vitals">
+                            <div class="Vitals-detailsInfo">
 
+                                <h6 class="Vitals-title">MONTHLY COMMON CHARGES</h6>
+                                <div class="Vitals-data">
+                                    {{$data->available_on}}
+                                </div>
+                            </div>
+
+                            <div class="Vitals-detailsInfo">
+                                <h6 class="Vitals-title">MONTHLY TAXES</h6>
+                                <div class="Vitals-data font-weight-bold">
+                                    {{date("Y-m-d ", strtotime($data->date_created))}}
+
+                                </div>
+                            </div>
+
+                            <div class="Vitals-detailsInfo ">
+                                <h6 class="Vitals-title">TAX ABATEMENT
+                                </h6>
+                                <div class="Vitals-data u-capitalize" title="">
+                                    No Recorded Changes
+                                </div>
+                            </div>
+                        </div>
                     </section>
 
                     <section class="DetailsPage-contentBlock">
