@@ -278,30 +278,22 @@
                         <a class="Home-blogPostImage"
                            href="#"
 
-                           style="background-image:url({{asset('assets/masterFrontend/img/apartment.png')}})">
+                           style="background-image:url({{ asset('images/cozmo/' . $TopmostPopular->image) }})">
                         </a>
                         <div>
                             <h3 class="Home-blogFeedTitle Title Title--secondarySmCaps u-color-koalaGrey u-noMargin">Most Popular</h3>
                             <div class="Home-blogPostLink">
-                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">Finished Netflix? 15 Ideas for What New Yorkers Should Watch Next!</a>
+                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">{{$TopmostPopular->title}}</a>
                             </div>
                         </div>
                     </li>
+                 @foreach($mostPopular as $mp)
                     <li class="Home-blogPost">
                         <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">A Quintessential Prewar UWS 1BR Asks $2,650</a>
+                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">{{$mp->title}}</a>
                         </div>
                     </li>
-                    <li class="Home-blogPost">
-                        <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">Your Guide to NYC Laundry Services (Plus COVID Tips!)</a>
-                        </div>
-                    </li>
-                    <li class="Home-blogPost">
-                        <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">Spa Bathrooms: Manhattan&#39;s 10 Most Luxe </a>
-                        </div>
-                    </li>
+                 @endforeach
                 </ul>
                 <ul class="Home-blogFeed trends">
                     <li class="Home-blogPost">

@@ -37,7 +37,10 @@ class BlogController extends Controller
 	public function index()
 	{
 //		$blog = Blog::get();
-
+//        $subCat = DB::table("subcategories")
+//            ->where("blog_cat_id", 38)
+//            ->pluck("title");
+//dd($subCat);
        $blg = $this->blogg->indexBlog();
 //       dd($blg);
 //       dd($blg);
@@ -179,6 +182,15 @@ class BlogController extends Controller
 
 	   DB::table('blog')->where("id" , $id)->delete();
 	}
+
+
+    public function blogSubCatLoad($country_id){
+        $subCat = DB::table("subcategories")
+            ->where("blog_cat_id",$country_id)->get();
+//        dd($subCat);
+        return json_encode($subCat);
+//            return response()->json($subCat);
+    }
 
 
 //    public function apply_sorting_number($number, $blog_id)

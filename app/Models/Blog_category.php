@@ -15,10 +15,25 @@ class Blog_category extends Model
     public function indexBlogCategory(){
 
          $blog_category = DB::table('blog_categories')->get();
-        // dd($blog_category);
-        return $blog_category;
+//         dd($data);
+         $sub_cat = DB::table('subcategories')->get();
+
+//         dd($blog_category);
+//        dd($sub_cat);
+        return [$blog_category,$sub_cat];
 
     }
+    public function blogSubCategoryStoredata($request){
+//        dd($request);
+        $data =   DB::table('subcategories')->insert([
+            'blog_cat_id' => $request->category,
+            'title' => $request->title,
+            'date_created' =>carbon::now() ,
+        ]);
+        return $data;
+
+    }
+
     public  function blogCategoryStoredata($request){
 //        dd($request);
         if($files=$request->file('image')) {

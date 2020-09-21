@@ -67,6 +67,7 @@
                             <th style="display: none;">#Sr</th>
                             <th>image</th>
                             <th>Title</th>
+                            <th>Sub Categories</th>
                             <th>Date Created</th>
 {{--                            <th>Date Updated</th>--}}
 
@@ -96,6 +97,14 @@
                                 </td>
                                 <td>
                                     {{$row->title}}
+                                </td>
+                                <td>
+                                    @foreach($sub_cat as $data)
+                                       @if($data->blog_cat_id == $row->id)
+                                        {{ $data->title }}
+                                            <hr>
+                                        @endif
+                                        @endforeach
                                 </td>
                                 <td>{{ date('d-M-y', strtotime($row->date_created)) }}</td>
 {{--                                <td>{{ date('d-M-y', strtotime($row->date_updated)) }}</td>--}}
@@ -157,6 +166,7 @@
             } );
         } );
     </script>
+
     <style>
         .sweet-alert h2 {
             font-size: 1.3rem !important;
