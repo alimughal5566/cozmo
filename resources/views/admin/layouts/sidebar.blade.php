@@ -70,30 +70,7 @@
 
         <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "title") echo "active"; ?>" href="{{url('/title')}}"><i class="app-menu__icon fa fa-hashtag"></i><span class="app-menu__label">Title</span></a></li>-->
 
-      <!--   <li><a class="app-menu__item <?php /*if(Request::segment(1) == "drivers")*/ /* echo "active"*/; ?>" href="{{route('iframe.admin')}}"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Iframe</span></a></li> -->
-
-		<!--<li><a class="app-menu__item <?php if(Request::segment(2) == "blog")  echo "active"; ?>" href="{{route('blog.admin')}}"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Slider</span></a></li>-->
-
-
-
-
-		<!--<li><a class="app-menu__item" href="{{url('subscribers')}}"><i class="app-menu__icon fa fa-sign-out"></i><span class="app-menu__label">Subscribers</span></a></li>-->
-		<!--<li><a class="app-menu__item <?php if(Request::segment(1) == "email_schedule") echo "active"; ?>" href="{{url('email_schedule')}}"><i class="app-menu__icon fa fa-thumbs-up"></i><span class="app-menu__label">Email Schedule</span></a></li>-->
-		<!--<li><a class="app-menu__item <?php if(Request::segment(1) == "subscribers") echo "active"; ?>" href="{{url('subscribers')}}"><i class="app-menu__icon fa fa-thumbs-up"></i><span class="app-menu__label">Subscribers</span></a></li>-->
-
     <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "purchase_Peers") echo "active"; ?>" href="{{url('purchase_Peers')}}"><i class="app-menu__icon fa fa-thumbs-up"></i><span class="app-menu__label">Purchase Peers</span></a></li>-->
-
-    <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "article_category") echo "active"; ?>" href="{{url('article_category')}}"><i class="app-menu__icon fa fa-thumbs-up"></i><span class="app-menu__label">Article Category</span></a></li>-->
-
-
-        <!--  <li><a class="app-menu__item <?php /*if(Request::segment(1) == "drivers")*/ /* echo "active"*/; ?>" href="{{route('blog.admin')}}"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Slider</span></a></li> -->
-
-         <!--  <li><a class="app-menu__item <?php /*if(Request::segment(1) == "drivers")*/ /* echo "active"*/; ?>" href="{{route('blog.admin')}}"><i class="app-menu__icon fa fa-book"></i><span class="app-menu__label">Blogs</span></a></li> -->
-
-        <!--<li><a class="app-menu__item <?php if(Request::segment(2) == "faqs") echo "active"; ?>" href="{{url('/admin/faqs')}}"><i class="app-menu__icon fa fa-car"></i><span class="app-menu__label">Faqs</span></a></li>-->
-        <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "cars") echo "active"; ?>" href="{{url('/admin/pages')}}"><i class="app-menu__icon fa fa-file-text-o"></i><span class="app-menu__label">Pages</span></a></li> -->
-         <!--<li><a class="app-menu__item <?php if(Request::segment(1) == "ip_address") echo "active"; ?>" href="{{url('freecompshow')}}"><i class="app-menu__icon fa fa-bars"></i><span class="app-menu__label">Free Entry</span></a></li>-->
-        <!--<li><a class="app-menu__item <?php if(Request::segment(2) == "ip_address") echo "active"; ?>" href="{{url('/admin/ip_address')}}"><i class="app-menu__icon fa fa-bars"></i><span class="app-menu__label">Site Visitor</span></a></li>-->
 
          <!--<li><a class="app-menu__item <?php if(Request::segment(2) == "setting") echo "active"; ?>" href="{{url('/admin/setting')}}"><i class="app-menu__icon fa fa-cog"></i><span class="app-menu__label">Setting</span></a></li>-->
 

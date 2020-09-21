@@ -512,7 +512,7 @@ Route::get('/company/edit/{id}', 'CompaniesController@edit')->name('companies.ed
 Route::post('/company/update', 'CompaniesController@update')->name('company.update');
 Route::get('/company/delete/{id}', 'CompaniesController@delete')->name('company.delete');
 
-//Building_info route
+//Building info route
 
 Route::get('building_info','Building_infoController@index_building_info')->name('index_building_info');
 Route::get('/building_info/add', 'Building_infoController@building');
@@ -521,7 +521,7 @@ Route::get('/building_info/edit/{id}', 'Building_infoController@edit')->name('bu
 Route::post('/building_info/update', 'Building_infoController@update')->name('building_info.update');
 Route::get('/building_info/delete/{id}', 'Building_infoController@delete')->name('Building_info.delete');
 
-//Building_description route
+//Building description route
 
 Route::get('building_documents','Building_documentController@index_building_documents')->name('index_building_documents');
 Route::get('/building_document/add', 'Building_documentController@building');
@@ -530,7 +530,7 @@ Route::get('/building_document/edit/{id}', 'Building_documentController@edit')->
 Route::post('/building_document/update', 'Building_documentController@update')->name('building_document.update');
 Route::get('/building_document/delete/{id}', 'Building_documentController@delete')->name('Building_document.delete');
 
-//Building_amenities
+//Building amenities
 
 Route::get('building_amenities','Building_amenitiesController@index_building_amenities')->name('index_building_amenities');
 Route::get('/building_amenities/add', 'Building_amenitiesController@building');
@@ -593,12 +593,14 @@ Route::get('/listing_sale_price_changes/edit/{id}', 'Listing_sale_price_changesC
 Route::post('/listing_sale_price_changes/update', 'Listing_sale_price_changesController@listingUpdate')->name('listing_sale_price_changes.update');
 Route::post('/listing_sale_price_changes/delete', 'Listing_sale_price_changesController@listingDelete')->name('listing_sale_price_changes.delete');
 
+//Nearby Transit Lines
+
 Route::get('/nearby_transit_lines/home','Nearby_transit_linesController@transitIndex')->name('nearby_transit_lines.home');
 Route::get('/nearby_transit_lines/add', 'Nearby_transit_linesController@transitAdd')->name('nearby_transit_lines.add');
 Route::post('/nearby_transit_lines/store', 'Nearby_transit_linesController@transitStore')->name('nearby_transit_lines.store');
 Route::get('/nearby_transit_lines/edit/{id}', 'Nearby_transit_linesController@transitEdit')->name('nearby_transit_lines.edit');
 Route::post('/nearby_transit_lines/update', 'Nearby_transit_linesController@transitUpdate')->name('nearby_transit_lines.update');
-//Route::post('/listing_sale_price_changes/delete', 'Listing_sale_price_changesController@listingDelete')->name('listing_sale_price_changes.delete');
+Route::post('/nearby_transit_lines/delete', 'Nearby_transit_linesController@transitDelete')->name('nearby_transit_lines.delete');
 
 
 
