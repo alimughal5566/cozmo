@@ -42,6 +42,7 @@ class Blog extends Model
             'type' => $request->type,
             'blog_category_id' => $request->blog_category_id,
             'content' => $request->content,
+            'sub_cate_id' => $request->subCate,
             'image' => $name,
             'feature_flag' =>$request->featured,
             'date_created' =>carbon::now() ,

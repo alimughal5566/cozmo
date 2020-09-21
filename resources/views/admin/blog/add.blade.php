@@ -7,6 +7,7 @@
     <script src="http://code.jquery.com/jquery-1.4.2.min.js" type="text/javascript"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+
     <style>
         .toggle {
             background: #3094d1;
@@ -64,11 +65,18 @@
                         </div>
                           <div class="col-sm-6 col-md-4 ">
                               <label for="comp">Blog Category</label>
-                              <select name="blog_category_id" class="form-control"  required >
-                                  @foreach ($blog_category as $bcat)
-                                      <option value="{{ $bcat->id }}">{{ $bcat->title }}</option>
+                              <select name="blog_category_id" id="blog_category_id" class="form-control " data-dependent="subCat" required >
+                                  <option value="">--- Select Blog Category ---</option>
+                                  @foreach ($blog_category as $data)
+                                      <option value="{{ $data->id }}">{{ $data->title }}</option>
                                   @endforeach
                               </select>
+                            </div>
+                        <div class="col-sm-6 col-md-4 ">
+                            <label for="comp">Sub Category</label>
+                             <select name="subCate" class="form-control">
+
+                             </select>
                             </div>
 
 
@@ -79,7 +87,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="title" style="width: 100%">Normal Blog</label>
                                 <input type="checkbox"   name="featured" value="0" id="normal" checked   class="example"  data-onstyle="danger">
@@ -87,7 +95,7 @@
 
                         </div>
 
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="title" style="width: 100%">Feature</label>
                                 <input type="checkbox" name="featured" id="feature" class="example"  value="2"  data-onstyle="success">
@@ -95,7 +103,7 @@
                         </div>
 
 
-                        <div class="col-md-2">
+                        <div class="col-md-4">
                             <div class="form-group">
                                 <label for="title" style="width: 100%">Main Feature</label>
                                 <input type="checkbox"   name="featured"  id="mainfeature"  value="1" class="example"  data-onstyle="warning">
@@ -138,6 +146,33 @@
         });
 
     </script>
+
+    <script type=text/javascript>
+        $(document).ready(function() {
+            $('select[name="blog_category_id"]').on('change', function() {
+                var cat_id = $(this).val();
+                alert(cat_id);
+                if(cat_id) {
+                    $.ajax({
+                        url: '/sub_category/load/'+cat_id,
+                        type: "GET",
+                        dataType: "json",
+                        success:function(data) {
+                            $('select[name="subCate"]').empty();
+                            $.each(data, function(key,value) {
+                                $('select[name="subCate"]').append('<option value='+value.id+'> '+value.title+' </option>');
+                            });
+
+
+                        }
+                    });
+                }else{
+                    $('select[name="subCate"]').empty();
+                }
+            });
+        });
+    </script>
+
 
     <script src="//cdn.ckeditor.com/4.13.1/full-all/ckeditor.js"></script>
     <script>

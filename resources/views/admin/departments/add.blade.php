@@ -65,7 +65,7 @@
 
 
 
-                        {{--                        <input id="file" type="hidden" class="form-control" name="id" value="{{$user->id}}">--}}
+
 
 
                         </div>

@@ -1,3 +1,5 @@
+
+
 @extends( 'layouts.app' )
 
 @section( 'content' )
@@ -34,7 +36,7 @@
 							<div class="form-group row">
 								<label class="col-sm-2 form-control-label">Name</label>
 								<div class="col-sm-10">
-									<input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus> 
+									<input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 								</div>
 							</div>
 							<div class="line"></div>
@@ -45,7 +47,7 @@
 								</div>
 							</div>
 							<div class="line"></div>
-							
+
 							<div class="form-group row">
 								<label class="col-sm-2 form-control-label">Phone</label>
 								<div class="col-sm-10">
@@ -53,8 +55,8 @@
 								</div>
 							</div>
 							<div class="line"></div>
-							
-							
+
+
 							<div class="form-group row">
 								<label class="col-sm-2 form-control-label">Password</label>
 								<div class="col-sm-10">
@@ -62,8 +64,8 @@
 								</div>
 							</div>
 							<div class="line"></div>
-							
-							
+
+
 							<div class="form-group row">
 								<div class="col-sm-12 text-right">
 									<a href="{{url('users')}}" class="btn btn-sm btn-secondary">@lang('general.cancel')</a>
