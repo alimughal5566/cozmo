@@ -1,4 +1,5 @@
- <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+
+<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
 
       @if(Auth::user()->image_name!="")
@@ -19,7 +20,7 @@
         <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('users')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Agent Management</span></a></li>
 {{----}}
 {{--blogs          --}}
-          <li><a class="app-menu__item <?php if(Request::segment(1) == "Blogs") echo "active"; ?>" href="#"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blogs</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "Blogs") echo "active"; ?>" href="{{route('blogHomeView')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Blogs</span></a></li>
 
           {{--          --}}
 {{--          Blogs Categories--}}
@@ -27,7 +28,7 @@
 
           {{--          --}}
 
-         <li><a class="app-menu__item <?php if(Request::segment(1) == "product") echo "active"; ?>" href="{{url('product')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Properties</span></a></li>
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "product") echo "active"; ?>" href="{{route('properties.home')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Properties</span></a></li>
       <!--    <li><a class="app-menu__item <?php if(Request::segment(1) == "MultiCompetitions") echo "active"; ?>" href="{{url('MultiCompetitions')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Multi Competitions</span></a></li>-->
          <li><a class="app-menu__item <?php if(Request::segment(1) == "propertyHomeView") echo "active"; ?>" href="{{route('propertyHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Property Type</span></a></li>
          <li><a class="app-menu__item <?php if(Request::segment(1) == "saleHomeView") echo "active"; ?>" href="{{route('saleHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Property sale Type</span></a></li>

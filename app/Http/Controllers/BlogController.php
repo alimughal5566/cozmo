@@ -50,8 +50,11 @@ class BlogController extends Controller
 	}
 	public function blogAdd()
     {
+
         $blog_category = $this->blogg->blogAdd();
-        return view('admin.blog.add' , compact('blog_category'));//,compact('blog','packages'));
+        $property = $blog_category->property;
+//        dd($property);
+        return view('admin.blog.add' , compact('blog_category' , 'property'));//,compact('blog','packages'));
 	}
 
 	public function blogStore(Request $request)
@@ -76,7 +79,7 @@ class BlogController extends Controller
         if ($request->hasFile('image')){
 //            $data=$this->blog_cat->blogStoredata($request);
             $data = $this->blogg->blogStoredata($request);
-//            dd($data);
+
             if($data){
                 Session::flash('success', 'Successfully Added Blog ');
                 return redirect()->route('blogHomeView');

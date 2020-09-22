@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+//        view()->share("layouts.header", [
+//            "data" => "123"
+//        ]);
+
+        view()->composer('layouts.header', function($view) {
+            $myvar=DB::table('blog')->get();
+            $myvar2=DB::table('blog')->get();
+            $rest = [$myvar,$myvar2];
+//            $myvar =  'cvbnm,';
+            $view->with('data' , $rest);
+        });
     }
 
     /**

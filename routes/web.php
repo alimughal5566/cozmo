@@ -127,12 +127,15 @@ Route::post('/blog/store', 'BlogController@blogStore')->name('blog.store');
 Route::get('/blog/edit/{id}', 'BlogController@blogEdit')->name('blog.edit');
 Route::post('/blog/update', 'BlogController@blogUpdate')->name('blog.update');
 Route::post('/blog/delete', 'BlogController@blogDestroy')->name('blog.destroy');
+
+Route::get('/blog/removeFeature/{id}', 'BlogController@removeFeature')->name('blog.removeFeature');
+Route::get('/blog/setToMainFeature/{id}', 'BlogController@setToMainFeature')->name('blog.setMainFeature');
+Route::get('/blog/setToFeature/{id}', 'BlogController@setToFeature')->name('blog.setFeature');
 //Route::get('/blog/apply_sorting_number/{number}/{blog_id}', 'BlogController@apply_sorting_number');
 Route::get('/sub_category/load/{id}', 'BlogController@blogSubCatLoad')->name('sub-cat-load');
 
+
 //end blog portion
-
-
     //blog_category
     Route::get('/blog_category/home', 'Blog_categoryController@blogCategoryIndex')->name('blog_category.home');
     Route::get('/blogCategory/add', 'Blog_categoryController@blogCategoryAdd')->name('blog_category.add');
@@ -481,6 +484,8 @@ Route::post('store-resource','ResourceController@storeResource')->name('storeRes
 
    // Front End Blog Portion
 Route::get('/UserBlog', 'frontend\BlogController@index')->name('UserblogHomeView');
+Route::get('/BlogDetail/{id}', 'frontend\BlogController@detail')->name('blog.detail');
+
    // End of BLog Portion
 
    // Front End Properties Portion
@@ -603,6 +608,11 @@ Route::post('/nearby_transit_lines/store', 'Nearby_transit_linesController@trans
 Route::get('/nearby_transit_lines/edit/{id}', 'Nearby_transit_linesController@transitEdit')->name('nearby_transit_lines.edit');
 Route::post('/nearby_transit_lines/update', 'Nearby_transit_linesController@transitUpdate')->name('nearby_transit_lines.update');
 //Route::post('/listing_sale_price_changes/delete', 'Listing_sale_price_changesController@listingDelete')->name('listing_sale_price_changes.delete');
+
+
+Route::get('/header', 'headerController@index')->name('header.data');
+
+
 
 
 
