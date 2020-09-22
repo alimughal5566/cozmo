@@ -37,7 +37,10 @@ class BlogController extends Controller
 	public function index()
 	{
 //		$blog = Blog::get();
-
+//        $subCat = DB::table("subcategories")
+//            ->where("blog_cat_id", 38)
+//            ->pluck("title");
+//dd($subCat);
        $blg = $this->blogg->indexBlog();
 //       dd($blg);
 //       dd($blg);
@@ -47,8 +50,11 @@ class BlogController extends Controller
 	}
 	public function blogAdd()
     {
+
         $blog_category = $this->blogg->blogAdd();
-        return view('admin.blog.add' , compact('blog_category'));//,compact('blog','packages'));
+        $property = $blog_category->property;
+//        dd($property);
+        return view('admin.blog.add' , compact('blog_category' , 'property'));//,compact('blog','packages'));
 	}
 
 	public function blogStore(Request $request)
@@ -73,7 +79,7 @@ class BlogController extends Controller
         if ($request->hasFile('image')){
 //            $data=$this->blog_cat->blogStoredata($request);
             $data = $this->blogg->blogStoredata($request);
-//            dd($data);
+
             if($data){
                 Session::flash('success', 'Successfully Added Blog ');
                 return redirect()->route('blogHomeView');
@@ -179,6 +185,15 @@ class BlogController extends Controller
 
 	   DB::table('blog')->where("id" , $id)->delete();
 	}
+
+
+    public function blogSubCatLoad($country_id){
+        $subCat = DB::table("subcategories")
+            ->where("blog_cat_id",$country_id)->get();
+//        dd($subCat);
+        return json_encode($subCat);
+//            return response()->json($subCat);
+    }
 
 
 //    public function apply_sorting_number($number, $blog_id)

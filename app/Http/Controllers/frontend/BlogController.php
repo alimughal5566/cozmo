@@ -31,5 +31,12 @@ class BlogController extends Controller
         return view('frontend.blog',compact('blg' , 'main_feature' , 'normal_feature', 'random_Blog'));
 
     }
+    public function detail($id){
+        $result = $this->blogg->detailBlog($id);
+
+//        dd($result);
+        return view('frontend.blog.detail' , compact('result'));
+
+    }
 
 }

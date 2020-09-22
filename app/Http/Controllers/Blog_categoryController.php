@@ -22,25 +22,48 @@ class Blog_categoryController extends Controller
 
     }
     public  function blogCategoryIndex(){
+
         $data=$this->blog_cat->indexBlogCategory();
         // dd($data);
-        $blog_category = $data;
-        return view('admin.blog_category.home' , compact('blog_category'));
+        $blog_category = $data[0];
+        $sub_cat = $data[1];
+        return view('admin.blog_category.home' , compact('blog_category','sub_cat'));
     }
 
     public function blogCategoryAdd(){
         $data=DB::table('blog_categories')->get();
 //        dd($data);
-       return view('admin.blog_category.add',compact('data'));
+        return view('admin.blog_category.add',compact('data'));
     }
 
+    public function blogSubCatAdd(Request $request){
+//     dd($request);
+       if(!($request->category)){
+           Session::flash('Failed', 'Select Blog Category');
+           return redirect()->route('blog_category.add');
+
+       }
+       else{
+           $data=$this->blog_cat->blogSubCategoryStoredata($request);
+           if($data){
+               Session::flash('success', 'Successfully Added Sub Category against');
+               return redirect()->route('blog_category.add');
+           }
+           else{
+               Session::flash('Failed', 'Something Wen Wrong');
+               return redirect()->route('blog_category.add');
+           }
+
+
+       }
+    }
     public function blogCategoryStore(Request $request){
 //        dd($request);
 if ($request->hasFile('image')){
     $data=$this->blog_cat->blogCategoryStoredata($request);
     if($data){
         Session::flash('success', 'Successfully Added Blog Category');
-        return redirect()->route('blog_category.home');
+        return redirect()->route('blog_category.add');
     }
     else{
         Session::flash('Failed', 'Some Went Wrong');

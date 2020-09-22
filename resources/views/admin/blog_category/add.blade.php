@@ -17,6 +17,16 @@
         <div class="col-md-12">
 
             <div class="tile">
+                @if (session('success'))
+                    <div class="alert alert-success" style="width: 100%">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                @if (session('Failed'))
+                    <div class="alert alert-danger" style="width: 100%">
+                        {{ session('Failed') }}
+                    </div>
+                @endif
                 <h3 class="tile-title ">Add New Blog Category</h3>
                 <form class="form-horizontal" method="POST" action="{{ url('/blog_category/store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
@@ -41,7 +51,6 @@
                     </div>
                     @if(Auth::check())
                         <div class="tile-footer text-right " >
-                            <a href="{{url('/blog_category/home')}}" class="btn btn-default">@lang('general.cancel')</a>
                             <button type="submit" class="btn btn-primary">@lang('general.save')</button>
                         </div>
                     @endif
@@ -55,14 +64,16 @@
 
             <div class="tile">
                 <h3 class="tile-title ">Add Sub Category</h3>
-                <form class="form-horizontal" method="POST" action="{{ url('/blog_category/store') }}" enctype="multipart/form-data">
+
+                <form class="form-horizontal" method="POST" action="{{ url('/sub_category/store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col-sm-6 col-md-4">
+
                             <div class="form-group">
                                 <label class="form-control-label">Title</label>
                                 <select name="category" id="" class="form-control">
-                                    <option value="" selected>Main Category</option>
+                                    <option value="" selected>Select Main Category</option>
                                   @foreach($data as $daum)
                                     <option value="{{$daum->id}}">{{$daum->title}}</option>
                                 @endforeach
@@ -78,7 +89,7 @@
                     </div>
                     @if(Auth::check())
                         <div class="tile-footer text-right " >
-                            <a href="{{url('/blog_category/home')}}" class="btn btn-default">@lang('general.cancel')</a>
+                            <a href="{{url('/blog_category/home')}}" class="btn btn-warning">Home</a>
                             <button type="submit" class="btn btn-primary">@lang('general.save')</button>
                         </div>
                     @endif

@@ -117,8 +117,6 @@ Route::post('ticket/remove_from_cart','ProductController@remove_from_cart');
 
     Route::post('/save_images','PackagesController@save_images')->name('save_images');
     Route::post('package/save_related_product','PackagesController@save_related_product');
-
-
     Route::get('/activate/{id}', 'PackagesController@activate');
     Route::get('/de_activate/{id}', 'PackagesController@de_activate');
 
@@ -129,11 +127,15 @@ Route::post('/blog/store', 'BlogController@blogStore')->name('blog.store');
 Route::get('/blog/edit/{id}', 'BlogController@blogEdit')->name('blog.edit');
 Route::post('/blog/update', 'BlogController@blogUpdate')->name('blog.update');
 Route::post('/blog/delete', 'BlogController@blogDestroy')->name('blog.destroy');
+
+Route::get('/blog/removeFeature/{id}', 'BlogController@removeFeature')->name('blog.removeFeature');
+Route::get('/blog/setToMainFeature/{id}', 'BlogController@setToMainFeature')->name('blog.setMainFeature');
+Route::get('/blog/setToFeature/{id}', 'BlogController@setToFeature')->name('blog.setFeature');
 //Route::get('/blog/apply_sorting_number/{number}/{blog_id}', 'BlogController@apply_sorting_number');
+Route::get('/sub_category/load/{id}', 'BlogController@blogSubCatLoad')->name('sub-cat-load');
+
 
 //end blog portion
-
-
     //blog_category
     Route::get('/blog_category/home', 'Blog_categoryController@blogCategoryIndex')->name('blog_category.home');
     Route::get('/blogCategory/add', 'Blog_categoryController@blogCategoryAdd')->name('blog_category.add');
@@ -141,9 +143,14 @@ Route::post('/blog/delete', 'BlogController@blogDestroy')->name('blog.destroy');
     Route::get('/blog_category/edit/{id}', 'Blog_categoryController@blogCategoryEdit')->name('blog_category.edit');
     Route::post('/blog_category/update', 'Blog_categoryController@blogCategoryUpdate')->name('blog_category.update');
     Route::post('/blog_category/delete', 'Blog_categoryController@blogCategoryDestroy')->name('blogCategoryDestroy');
+    //end of blog category
 
+    //Blog Sub Category Portion
+    // Note: blog sub category add view is in blog_category/add
+    Route::post('/sub_category/store', 'Blog_categoryController@blogSubCatAdd')->name('blog_sub_category.store');
 
-//end of blog category
+// End of blog sub category
+
 
 
     //Rental Price History
@@ -477,6 +484,8 @@ Route::post('store-resource','ResourceController@storeResource')->name('storeRes
 
    // Front End Blog Portion
 Route::get('/UserBlog', 'frontend\BlogController@index')->name('UserblogHomeView');
+Route::get('/BlogDetail/{id}', 'frontend\BlogController@detail')->name('blog.detail');
+
    // End of BLog Portion
 
    // Front End Properties Portion
@@ -601,6 +610,11 @@ Route::post('/nearby_transit_lines/store', 'Nearby_transit_linesController@trans
 Route::get('/nearby_transit_lines/edit/{id}', 'Nearby_transit_linesController@transitEdit')->name('nearby_transit_lines.edit');
 Route::post('/nearby_transit_lines/update', 'Nearby_transit_linesController@transitUpdate')->name('nearby_transit_lines.update');
 Route::post('/nearby_transit_lines/delete', 'Nearby_transit_linesController@transitDelete')->name('nearby_transit_lines.delete');
+
+
+Route::get('/header', 'headerController@index')->name('header.data');
+
+
 
 
 

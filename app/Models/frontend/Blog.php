@@ -28,4 +28,16 @@ class Blog extends Model
         return [$normal_blog,$main_feature,$normal_feature,$random_Blog];
 
     }
+
+    public function detailBlog($id){
+        $result=DB::table('blog')->find($id);
+//        dd($result);
+        $subCat = DB::table('subcategories')->where('id' , $result->sub_cate_id)->pluck('title')->first();
+//        dd($subCat);
+        DB::table('blog')->where('id' , $result->id)->update(['view_count' =>$result->view_count+1]);
+//       dd($result);
+        $result->sub_cate_title = $subCat;
+//        dd($result);
+        return $result;
+    }
 }

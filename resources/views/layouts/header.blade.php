@@ -21,6 +21,7 @@
                         <div class="container-fluid hide-print">
                             <div class="Logo">
                                 <a href="#">
+
                                     <img class="Logo-image" src="{{asset('assets/masterFrontend/img/lgo.png')}}">
                                 </a>
                             </div>
@@ -61,14 +62,18 @@
                 <div class="Container">
                     <ul class="MainNav-list isHoverable">
                         <li class="MainNav-listItem isTrackingMenuItem" data-trending-id="1461204" data-type="Sales">
-                            <a class="MainNav-text" data-toggle="nav_popup" href="{{url('/UserSales')}}">Sales</a>
+{{--                            --}}
+{{--                            --}}
+                            <a class="MainNav-text hover" data-toggle="nav_popup" href="{{url('/UserSales')}}">Sales</a>
                             <div class="MainNav-popup">
                                 <div class="Container">
                                     <div class="MainNav-popupColumn">
                                         <h6 class="MainNav-popupTitle">
                                             Areas
                                         </h6>
+
                                         <ul class="MainNav-popupList">
+
                                             <li class="MainNav-popupListItem">
                                                 <a data-gtm-header-menu="Sales" class="MainNav-popupColumnLink" href="#">Manhattan</a>
                                             </li>
@@ -95,69 +100,23 @@
                                     <div class="MainNav-popupColumn MainNav-popupColumn--last">
                                         <h6 class="MainNav-popupTitle">Popular neighborhoods</h6>
                                         <ul class="MainNav-popupList">
+                                            @foreach($data[0] as $datum)
                                             <li class="MainNav-popupListItem">
                                                 <a data-gtm-header-menu="Sales"
                                                    href="#"
                                                    class="MainNav-popupColumnLink">
-                                                    Upper East Side
+                                                    {{$datum->title}}
                                                 </a>
                                             </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a data-gtm-header-menu="Sales"
-                                                   href="#"
-                                                   class="MainNav-popupColumnLink">
-                                                    Tribeca
-                                                </a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a data-gtm-header-menu="Sales"
-                                                   href="#"
-                                                   class="MainNav-popupColumnLink">
-                                                    Williamsburg
-                                                </a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a data-gtm-header-menu="Sales"
-                                                   href="#"
-                                                   class="MainNav-popupColumnLink">
-                                                    Brooklyn Heights
-                                                </a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a data-gtm-header-menu="Sales"
-                                                   href="#"
-                                                   class="MainNav-popupColumnLink">
-                                                    Park Slope
-                                                </a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a data-gtm-header-menu="Sales"
-                                                   href="#"
-                                                   class="MainNav-popupColumnLink">
-                                                    Ditmas Park
-                                                </a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a data-gtm-header-menu="Sales"
-                                                   href="#"
-                                                   class="MainNav-popupColumnLink">
-                                                    Hoboken
-                                                </a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a data-gtm-header-menu="Sales"
-                                                   href="#"
-                                                   class="MainNav-popupColumnLink">
-                                                    Jersey City
-                                                </a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
+                                            @endforeach
+                                                <li class="MainNav-popupListItem">
                                                 <a data-gtm-header-menu="Sales"
                                                    href="#"
                                                    class="MainNav-popupColumnLink">
                                                     View All
                                                 </a>
                                             </li>
+
                                         </ul>
 
                                     </div>
@@ -199,24 +158,12 @@
                                             Areas
                                         </h6>
                                         <ul class="MainNav-popupList">
+                                            @foreach($data[1] as $row)
                                             <li class="MainNav-popupListItem">
-                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Manhattan</a>
+                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">{{$row->title}}</a>
                                             </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Brooklyn</a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Queens</a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Bronx</a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">Staten Island</a>
-                                            </li>
-                                            <li class="MainNav-popupListItem">
-                                                <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">New Jersey</a>
-                                            </li>
+                                            @endforeach
+
                                             <li class="MainNav-popupListItem">
                                                 <a class="MainNav-popupColumnLink" data-gtm-header-menu="Rentals" href="#">All NYC + NJ</a>
                                             </li>
@@ -804,8 +751,33 @@
         </div>
 
     </header>
+
 {{--    @include('layouts.flashmessage')--}}
+    <script>
+        $(document).ready(function(){
 
-
-
+            $('.hover').tooltip({
+                title: fetchData,
+                html: true,
+                placement: 'right'
+            });
+            function fetchData()
+            {
+                var fetch_data = '';
+                var element = $(this);
+                var id = element.attr("id");
+                $.ajax({
+                    url:"fetch.php",
+                    method:"POST",
+                    async: false,
+                    data:{id:id},
+                    success:function(data)
+                    {
+                        fetch_data = data;
+                    }
+                });
+                return fetch_data;
+            }
+        });
+    </script>
 
