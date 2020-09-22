@@ -42,10 +42,19 @@ class PropertiesController extends Controller
     public function propertyDetail($id){
         $data=DB::table('properties')->find($id);
         $address = DB::table('property_address')->where('id'  , $id)->first();
-        $saleHistory=DB::table('listing_sale_price_changes')->where('id',$id)->latest('date_change')->first();
-        //$data->addresses = $address;
-        //dd($data);
-        return view('frontend.property.detail',compact('data', 'address'));
+
+
+        $amenities=DB::table('building_amenities')->where('building_id',$data->id)
+            ->get();
+
+if ($amenities){
+    return view('frontend.property.detail',compact('data', 'address','amenities'));
+}else{
+    $amenities=0;
+    return view('frontend.property.detail',compact('data', 'address','amenities'));
+
+}
+
     }
 
 }

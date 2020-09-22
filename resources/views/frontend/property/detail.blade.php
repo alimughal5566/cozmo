@@ -163,6 +163,10 @@
                         <div style="" class="html5gallery" data-skin="darkness" data-width="480" data-height="272" data-resizemode="fill" >
                             <img src="{{asset('/images/cozmo/'.$data->main_image)}}" alt="Tulips">
                             <img src="{{asset('/images/cozmo/'.$data->video)}}" alt="Tulips">
+                            <video width="320" height="240" controls>
+                            <source src="{{asset('/images/cozmo/'.$data->video)}}" type="video/mp4">
+                            <source src="{{asset('/images/cozmo/'.$data->video)}}" type="video/ogg">
+                            </video>
                             <!-- Add Youtube video to Gallery -->
 
                         </div>
@@ -494,30 +498,33 @@
                             <div class="AmenitiesBlock-verifiedStatus">
                                 <span class="Text Text--sm">CoZmo-web Verified</span>
                             </div>
+                                @foreach($amenities as $amenitie)
+                            <h6 class="Title Title--secondarySmCaps">
+                                   @if($amenitie->sub_id == '')
+                                        {{$amenitie->building_amenities_title}}
+                                    @endif
 
-                            <h6 class="Title Title--secondarySmCaps">Highlights</h6>
-                            <ul class="AmenitiesBlock-highlights">
-                                <li class="AmenitiesBlock-highlightsItem">
-                                    <div class="AmenitiesBlock-highlightsIconBox">
-                                        <span class="AmenitiesBlock-highlightsIcon AmenitiesBlock-highlightsIcon--pets"></span>
-                                    </div>
-                                    <div class="AmenitiesBlock-highlightsLabel ">
-                                        <div class="Text">
-                                            Pets Allowed
+                            </h6>
+
+
+
+                                <ul class="AmenitiesBlock-highlights">
+                                    @foreach($amenities as $eachAmenitie  )
+                                        @if($eachAmenitie->sub_id !='' && $eachAmenitie->sub_id == $amenitie->id)
+                                        <li class="AmenitiesBlock-highlightsItem">
+                                        <div class="AmenitiesBlock-highlightsIconBox">
+                                            <span class="AmenitiesBlock-highlightsIcon AmenitiesBlock-highlightsIcon--pets"></span>
                                         </div>
-                                    </div>
-                                </li>
-                                <li class="AmenitiesBlock-highlightsItem">
-                                    <div class="AmenitiesBlock-highlightsIconBox">
-                                        <span class="AmenitiesBlock-highlightsIcon AmenitiesBlock-highlightsIcon--washer"></span>
-                                    </div>
-                                    <div class="AmenitiesBlock-highlightsLabel ">
-                                        <div class="Text">
-                                            Washer/Dryer In-Unit
+                                        <div class="AmenitiesBlock-highlightsLabel ">
+                                            <div class="Text">
+                                                {{ $eachAmenitie->building_amenities_title}}
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            </ul>
+                                    </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            @endforeach
                             <h6 class="Title Title--secondarySmCaps">Rental</h6>
                             <ul class="AmenitiesBlock-list ">
                                 <li class="AmenitiesBlock-item">
