@@ -43,7 +43,7 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">No Of Units</label>
-                                    <input id="no_of_units" type="text" class="form-control" name="no_of_units" value="{{$user[0]->no_of_units }}">
+                                    <input id="no_of_units" type="number" class="form-control" name="no_of_units" value="{{$user[0]->no_of_units }}">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4">

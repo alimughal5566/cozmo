@@ -172,6 +172,7 @@
     </div>
     <script src="{{url('backend/sweetalerts/sweetalert2.all.js')}}"></script>
     <script type="text/javascript">
+
         $( "body" ).on( "click", ".delete", function () {
             var task_id = $( this ).attr( "data-id" );
             var form_data = {
@@ -211,6 +212,7 @@
 
         } );
     </script>
+
     <style>
         .sweet-alert h2 {
             font-size: 1.3rem !important;

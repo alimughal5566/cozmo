@@ -120,8 +120,8 @@
 
                         <div class="col-sm-6">
                             <div class="form-group">
-                                <label for="title">Image</label>
-                                <input required id="image" type="file" placeholder="image" class="form-control" name="image">
+                                <label for="title">Images</label>
+                                <input required id="images" type="file" placeholder="image" class="form-control" name="images">
                             </div>
                         </div>
                     </div>

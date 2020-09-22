@@ -121,6 +121,7 @@
 {{--                                    <th>updated_date</th>--}}
                                     <th>listing_for</th>
                                     <th>type</th>
+                                    <th>images</th>
                                     <th width="130" class="text-center">@lang('packages.actions')</th>
                                 </tr>
                                 </thead>
@@ -137,7 +138,10 @@
 {{--                                        <td>{{$user->updated_date}}</td>--}}
                                         <td>{{$user->listing_for}}</td>
                                         <td>{{$user->type}}</td>
+                                        <td>
+                                            <img class=" img-circle img-size-32 mr-2 round_img"  height="15%" src="/images/cozmo/{{$user->images}}" style="height: 30px">
 
+                                        </td>
                                         <td class="text-right">
                                             <div class="actions-btns " style="display: flex; justify-content: center">
                                                 <a href="/building_amenities/edit/{{$user->id}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>

@@ -22,22 +22,35 @@ class Building_amenitiesController extends Controller
     public function building()
     {
 //        dd('document');
-        return view('admin.building_amenities.add_building_amenities');
+        $data=DB::table('building_amenities')->get();
+//        dd($data);
+        return view('admin.building_amenities.add_building_amenities',compact('data'));
     }
 
     public function store(Request $request)
     {
 //    dd($request);
-        DB::table('building_amenities')->insert([
-            'building_amenities_title' => $request->building_amenities_title,
-            'created_date' => $request->created_date,
-            'updated_date' => $request->updated_date,
-            'listing_for' => $request->listing_for,
-            'type' => $request->type,
-        ]);
+        if ($request->hasFile('images')) {
+            $image = $request->file('images');
+            $imageName = time() . "." . $image->getClientOriginalExtension();
+            $imagePath = public_path() . '/images/cozmo/';
+            $image->move($imagePath, $imageName);
+            $imagesDbPath = $imageName;
+        }
+
+            DB::table('building_amenities')->insert([
+                'building_amenities_title' => $request->building_amenities_title,
+                'created_date' => $request->created_date,
+                'updated_date' => $request->updated_date,
+                'listing_for' => $request->listing_for,
+                'type' => $request->type,
+                'images' => $imagesDbPath ?? '',
+                'parent_id' => $request->parent_id ?? '',
+            ]);
 //        dd('wwww');
-        return redirect()->route('index_building_amenities')->with('success', ' Create Successfuly');
-    }
+            return redirect()->route('index_building_amenities')->with('success', ' Create Successfuly');
+        }
+
 
     public function edit($id)
     {

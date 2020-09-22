@@ -24,7 +24,7 @@ class PropertiesController extends Controller
         $random_feature_left = DB::table('properties')->join('property_address', 'properties.id', '=', 'property_address.property_id')->where('feature_flag', '=' , '1')->limit(2)->get();
         $latestTopBlog = DB::table('blog')->where('feature_flag','0')->orderBy('date_created')->limit(1)->first();
 
-        $rt = $latestTopBlog->id;
+//        $rt = $latestTopBlog->id;
         $latestBlog = DB::table('blog')->where('id' ,'!=' , $rt)->where('feature_flag' , '0')->orderBy('date_created')->limit(3)->get();
 
         return view('frontend.home' , compact('random_feature_right','random_feature_left' ,'appartment','latestTopBlog','latestBlog'));

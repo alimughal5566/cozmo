@@ -83,7 +83,10 @@
             margin-top: -36px;
         }
         #add_attribs {
-            margin-left: 30px;
+         float: left;
+        }
+        .tile .tile-footer {
+            width: 100%;
         }
     </style>
 
@@ -104,21 +107,23 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item">@lang('packages.add_new')</li>
+            <li class="breadcrumb-item">New Company</li>
         </ul>
-
     </div>
     <div class="row main-top-row">
-        <div class="col-md-12">
             @if (session('alert'))
                 <div class="alert alert-danger" style="width: 40%">
                     {{ session('alert') }}
                 </div>
             @endif
 
-                <form action="{{ route('company.store') }}" method="POST">
+                <form action="{{ route('company.store') }}" method="POST"style="width: 100%;">
+                    <div class="tile">
+
+                        <h3 class="tile-title">New Company</h3>
                     @csrf
                     <div class="row">
+
 
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
@@ -139,9 +144,6 @@
                             </div>
                         </div>
 
-                    </div>
-                    <div class="row">
-
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>City</label>
@@ -157,7 +159,7 @@
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>Zip Code</label>
-                                <input onkeyup="change_second_short()" id="name"  type="text" placeholder="Enter zip code" class="form-control" name="zip code" value="{{ old('zip_code') }}" required autofocus required="">
+                                <input onkeyup="change_second_short()" id="name"  type="number" placeholder="Enter zip code" class="form-control" name="zip code" value="{{ old('zip_code') }}" required autofocus required="">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
@@ -166,14 +168,10 @@
                                 <input onkeyup="change_second_short()" id="name"  type="text" placeholder="Enter company address" class="form-control" name="company address" value="{{ old('company_address') }}" required autofocus required="">
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row">
-
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>Company Phone Number</label>
-                                <input onkeyup="change_short()" id="name" type="text" placeholder="Enter company phone number" class="form-control" name="company phone number"  value="{{ old('company_phone_number') }}" required autofocus required="">
+                                <input onkeyup="change_short()" id="name" type="number" placeholder="Enter company phone number" class="form-control" name="company phone number"  value="{{ old('company_phone_number') }}" required autofocus required="">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
@@ -182,9 +180,8 @@
                                 <input onkeyup="change_second_short()" id="name"  type="text" placeholder="Enter company email" class="form-control" name="company email" value="{{ old('company email') }}" required autofocus required="">
                             </div>
                         </div>
-
                     </div>
-                    <div class="col-lg-12" >
+                    <div class="text-section" >
                         <div class="form-group">
                             <label>Description</label>
                             <textarea name="description" cols="8" id="txtEditor" value="{{ old('description') }}" style="height: 35px;width: 100%;">
@@ -194,23 +191,16 @@
                     </div>
 
 
-
-        </div>
-
-        <input type="button" class="btn-primary btn" id="add_attribs" value="Add More"/>
-
-
-        <input id="ticket_1" type="hidden" name="data" class="form form-control" value="" required>
-
         <div class="tile-footer text-right">
+            <input type="button" class="btn-primary btn" id="add_attribs" value="Add More"/>
+
+
+            <input id="ticket_1" type="hidden" name="data" class="form form-control" value="" required>
             <a class="btn btn-default" href="{{url('companies')}}">Cancel</a>
             <button class="btn btn-primary" type="submit">Save</button>
         </div>
 
-    </div>
 
-
-                </form>
 
     <script>
         function change_sorting() {
