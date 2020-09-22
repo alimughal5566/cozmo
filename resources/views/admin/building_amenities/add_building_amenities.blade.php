@@ -116,10 +116,22 @@
                 </div>
             @endif
 
-                <form action="{{ route('building_amenities.store') }}" method="POST">
+                <form action="{{ route('building_amenities.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
 
+                        <div class="col-sm-6 col-md-3 col-lg-4">
+                            <div class="form-group">
+                                <label>Select Title</label>
+                                <select name="parent_id" id="" class="form-control">
+                                    <option value=""selected>Select Parent</option>
+                                    @foreach($data as $datum)
+                                    <option value="{{$datum->id}}">{{$datum->building_amenities_title}} </option>
+                                    @endforeach
+                                </select>
+
+                            </div>
+                        </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label> Building Amenities Title</label>
@@ -142,6 +154,12 @@
                                     {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
                                     {{--                            @endforeach--}}
                                 </select>                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="title">Images</label>
+                                <input required id="images" type="file" placeholder="image" class="form-control" name="images">
+                            </div>
                         </div>
 
                     </div>

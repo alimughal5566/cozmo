@@ -137,8 +137,8 @@
                                         </td>
 {{--                                        <td>{{$user->date_created}}</td>--}}
 
-                                        <td>
-                                            <div class="actions-btns dule-btns float-lg-right">
+                                        <td class="text-right">
+                                            <div class="actions-btns " style="display: flex; justify-content: center">
                                                 <a href="/property_image/edit/{{$user->id}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
 
                                                 <a href="/property_image/delete/{{$user->id}}" class="btn btn-sm btn-danger removePartner"><i class="fa fa-trash"></i></a>

@@ -50,7 +50,7 @@ class Nearby_transit_linesController extends Controller
 //dd($request);
         $success = DB::table('nearby_transit_lines')->where('id', $request->user_id)->update([
             'name' => $request->name,
-            'value' => $request->value  ,
+            'value' => $request->value,
             'sort_order' => $request->sort_order,
         ]);
 
@@ -58,5 +58,16 @@ class Nearby_transit_linesController extends Controller
             return redirect()->route('nearby_transit_lines.home')->with('success', 'Update Successfully');
         }
 
-
+    }
+    public function transitDelete(Request $request)
+    {
+        $user_id = $request->input("id");
+//        dd($user_id);
+        $response = DB::table('nearby_transit_lines')->where('id', $user_id)->delete();
+//        dd($response);
+        if ($response) {
+            echo "Successfully Deleted.";
+            exit;
+        }
+    }
 }

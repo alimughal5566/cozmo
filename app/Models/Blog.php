@@ -29,26 +29,51 @@ class Blog extends Model
     }
     public function blogAdd(){
         $data =   DB::table('blog_categories')->get();
+        $property = DB::table('properties')->get();
+        $data->property = $property;
         return $data;
     }
     public  function blogStoredata($request){
-//        dd($request);
+        dd($request);
         if($files=$request->file('image')) {
             $name = $files->getClientOriginalName();
             $files->move(public_path('images\cozmo'), $name);
         }
-        $data =   DB::table('blog')->insert([
-            'title' => $request->title,
-            'type' => $request->type,
-            'blog_category_id' => $request->blog_category_id,
-            'content' => $request->content,
-            'sub_cate_id' => $request->subCate,
-            'image' => $name,
-            'feature_flag' =>$request->featured,
-            'date_created' =>carbon::now() ,
+        if ($request->property == null){
+            $data =   DB::table('blog')->insert([
+                'title' => $request->title,
+                'type' => $request->type,
+                'blog_category_id' => $request->blog_category_id,
+                'content' => $request->content,
+                'sub_cate_id' => $request->subCate,
+                'image' => $name,
+                'property_id' => 'false',
+                'feature_flag' =>$request->featured,
+                'date_created' =>carbon::now() ,
 
-        ]);
-        return $data;
+            ]);
+            return $data;
+
+        }
+
+        if($request->property != null){
+            $data =   DB::table('blog')->insert([
+                'title' => $request->title,
+                'type' => $request->type,
+                'blog_category_id' => $request->blog_category_id,
+                'content' => $request->content,
+                'sub_cate_id' => $request->subCate,
+                'image' => $name,
+                'property_id' => $request->property,
+                'feature_flag' =>$request->featured,
+                'date_created' =>carbon::now() ,
+
+            ]);
+            return $data;
+
+        }
+
+
 //        dd($data);
     }
 

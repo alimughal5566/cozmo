@@ -1926,4 +1926,10 @@
 </div>
 
 
+<script>
+    setTimeout(function () {
+    var visitCount = document.getElementById('visitCount').
+    })
+</script>
+
 @endsection

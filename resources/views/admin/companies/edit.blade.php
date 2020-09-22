@@ -55,7 +55,7 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Zip Code</label>
-                                    <input id="zip_code" type="text" class="form-control" name="zip_code" value="{{$user[0]->zip_code }}">
+                                    <input id="zip_code" type="number" class="form-control" name="zip_code" value="{{$user[0]->zip_code }}">
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4">
@@ -67,7 +67,7 @@
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Company Phone Number</label>
-                                    <input id="company_phone_number" type="company_phone_number" class="form-control" name="company_phone_number" value="{{$user[0]->company_phone_number}}">
+                                    <input id="company_phone_number" type="number" class="form-control" name="company_phone_number" value="{{$user[0]->company_phone_number}}">
                                 </div>
                             </div>
                                 <div class="col-sm-6 col-md-4">

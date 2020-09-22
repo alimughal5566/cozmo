@@ -25,14 +25,12 @@ class PropertiesController extends Controller
         $random_feature_left = DB::table('properties')->join('property_address', 'properties.id', '=', 'property_address.property_id')->where('feature_flag', '=' , '1')->limit(2)->get();
         $latestTopBlog = DB::table('blog')->where('feature_flag','0')->orderBy('date_created')->limit(1)->first();
 
-        $rt = $latestTopBlog->id;
+//        $rt = $latestTopBlog->id;
         $latestBlog = DB::table('blog')->where('id' ,'!=' , $rt)->where('feature_flag' , '0')->orderBy('date_created')->limit(3)->get();
 
-        $cate = DB::table('subcategories')->where('title' , '=' , 'Most Popular')->first();
-//        dd($cate);
-        $TopmostPopular = DB::table('blog')->where('feature_flag' , '=' ,'0')->where('sub_cate_id' , '=' , $cate->id)->orderBy('date_created')->limit(1)->first();
+        $TopmostPopular = DB::table('blog')->where('feature_flag' , '=' ,'0')->where('view_count' , '!=' , '0')->orderBy('view_count' , 'desc')->limit(1)->first();
 //        dd($TopmostPopular);
-        $mostPopular = DB::table('blog')->where('id', '!=' ,$TopmostPopular->id )->where('feature_flag' , '=' ,'0')->where('sub_cate_id' , '=' , $cate->id)->orderBy('date_created')->limit(3)->get();
+        $mostPopular = DB::table('blog')->where('id', '!=' ,$TopmostPopular->id )->where('feature_flag' , '=' ,'0')->where('view_count' , '!=' , '0')->orderBy('view_count' , 'desc')->limit(3)->get();
 //        dd($mostPopular);
         $trendsData = DB::table('blog_categories')->where('title' , 'TRENDS AND DATA')->get();
 //        dd($trendsData);
@@ -41,6 +39,9 @@ class PropertiesController extends Controller
 
     public function propertyDetail($id){
         $data=DB::table('properties')->find($id);
+        $result = DB::table('properties')->where('id' , $data->id)->update(['view_count' =>$data->view_count+1]);
+//       $data->view_count++;
+//        dd($result);
         $address = DB::table('property_address')->where('id'  , $id)->first();
 
 

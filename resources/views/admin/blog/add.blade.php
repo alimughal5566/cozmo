@@ -63,6 +63,19 @@
                                     <option value="rentals">Rentals</option>
                             </select>
                         </div>
+
+                        <div class="col-sm-6 col-md-4 ">
+                            <label for="comp">Select Property</label>
+                            <select name="property" id="property" class="form-control "  >
+                                <option value="">Select Property</option>
+                                @foreach ($property as $data)
+                                    <option value="{{ $data->id }}">{{ $data->title }}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
+
+
                           <div class="col-sm-6 col-md-4 ">
                               <label for="comp">Blog Category</label>
                               <select name="blog_category_id" id="blog_category_id" class="form-control " data-dependent="subCat" required >

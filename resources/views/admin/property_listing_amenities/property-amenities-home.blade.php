@@ -56,7 +56,7 @@
 
 
                             <td class="text-center">
-								<div class="actions-btns " style="display: flex;">
+								<div class="actions-btns " style="display: flex; justify-content: center">
 
 									<a href="{{route('property_listing_amenities.edit',[$row->id])}}" class="back_color btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
 									<a href="#" data-id="<?php echo $row->id; ?>" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>

@@ -117,10 +117,11 @@
                                     <th>id</th>
                                     {{--                                    <th>property_id</th>--}}
                                     <th>building_amenities_title</th>
-                                    <th>created_date</th>
-                                    <th>updated_date</th>
+{{--                                    <th>created_date</th>--}}
+{{--                                    <th>updated_date</th>--}}
                                     <th>listing_for</th>
                                     <th>type</th>
+                                    <th>images</th>
                                     <th width="130" class="text-center">@lang('packages.actions')</th>
                                 </tr>
                                 </thead>
@@ -133,13 +134,16 @@
                                         <td>{{$key+1}}</td>
                                         {{--                                        <td>{{$user->property_id}}</td>--}}
                                         <td>{{$user->building_amenities_title}}</td>
-                                        <td>{{$user->created_date}}</td>
-                                        <td>{{$user->updated_date}}</td>
+{{--                                        <td>{{$user->created_date}}</td>--}}
+{{--                                        <td>{{$user->updated_date}}</td>--}}
                                         <td>{{$user->listing_for}}</td>
                                         <td>{{$user->type}}</td>
-
                                         <td>
-                                            <div class="actions-btns dule-btns float-lg-right">
+                                            <img class=" img-circle img-size-32 mr-2 round_img"  height="15%" src="/images/cozmo/{{$user->images}}" style="height: 30px">
+
+                                        </td>
+                                        <td class="text-right">
+                                            <div class="actions-btns " style="display: flex; justify-content: center">
                                                 <a href="/building_amenities/edit/{{$user->id}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
 
                                                 <a href="/building_amenities/delete/{{$user->id}}" class="btn btn-sm btn-danger removePartner"><i class="fa fa-trash"></i></a>

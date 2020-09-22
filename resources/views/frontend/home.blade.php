@@ -276,21 +276,21 @@
                 <ul class="Home-blogFeed popular">
                     <li class="Home-blogPost">
                         <a class="Home-blogPostImage"
-                           href="#"
+                           href="{{ url('/BlogDetail/' .$TopmostPopular->id)}}"
 
                            style="background-image:url({{ asset('images/cozmo/' . $TopmostPopular->image) }})">
                         </a>
                         <div>
                             <h3 class="Home-blogFeedTitle Title Title--secondarySmCaps u-color-koalaGrey u-noMargin">Most Popular</h3>
                             <div class="Home-blogPostLink">
-                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">{{$TopmostPopular->title}}</a>
+                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="{{ url('/BlogDetail/' .$TopmostPopular->id)}}">{{$TopmostPopular->title}}</a>
                             </div>
                         </div>
                     </li>
                  @foreach($mostPopular as $mp)
                     <li class="Home-blogPost">
                         <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">{{$mp->title}}</a>
+                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="{{ url('/BlogDetail/' . $mp->id)}}">{{$mp->title}}</a>
                         </div>
                     </li>
                  @endforeach
