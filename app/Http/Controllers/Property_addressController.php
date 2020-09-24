@@ -36,7 +36,7 @@ class Property_addressController extends Controller
             'additional_info' => $request->additional_info??'NULL',
             'neighborhood' => $request->neighborhood??'NULL',
             'boroughs' => $request->boroughs??'NULL',
-            'parent_id' => $request->parent_id ?? '',
+            'property_id' => $request->property_id ?? '',
 
 
 //            'Date_created' => $request->Date_created,

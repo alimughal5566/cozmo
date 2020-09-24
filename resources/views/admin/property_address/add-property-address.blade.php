@@ -137,7 +137,7 @@
                         <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Select Title</label>
-                                <select name="parent_id" id="" class="form-control">
+                                <select name="property_id" id="" class="form-control">
                                     <option value=""selected>Select property</option>
                                     @foreach($prop as $datum)
                                         <option value="{{$datum->id}}">{{$datum->title}} </option>
