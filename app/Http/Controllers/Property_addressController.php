@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Stmt\DeclareDeclare;
 
 class Property_addressController extends Controller
 {
@@ -16,7 +17,7 @@ class Property_addressController extends Controller
         if ($user->user_role == 0) {
             return redirect('/');
         }
-        $data = DB::table('property_address')->get();
+        $data = DB::table('property_address')->latest('date_created')->get();
 //  dd($data);
         return view('admin.property_address.property-address-home', compact('data'));
     }
@@ -25,15 +26,19 @@ class Property_addressController extends Controller
     {
 //    dd($request);
         DB::table('property_address')->insert([
-            'name_of_street' => $request->name_of_street,
-            'country' => $request->country,
-            'state' => $request->state,
-            'city' => $request->city,
-            'zip_code' => $request->zip_code,
-            'county' => $request->county,
-            'additional_info' => $request->additional_info,
-            'neighborhood' => $request->neighborhood,
-            'boroughs' => $request->boroughs,
+//            'property' => $request->property,
+            'name_of_street' => $request->name_of_street??'NULL',
+            'country' => $request->location_country??'NULL',
+            'state' => $request->location_state??'NULL',
+            'city' => $request->location_city??'NULL',
+            'zip_code' => $request->location_zip??'NULL',
+            'county' => $request->county??'NULL',
+            'additional_info' => $request->additional_info??'NULL',
+            'neighborhood' => $request->neighborhood??'NULL',
+            'boroughs' => $request->boroughs??'NULL',
+            'parent_id' => $request->parent_id ?? '',
+
+
 //            'Date_created' => $request->Date_created,
 //            'date_created' => $request->date_created,
         ]);
@@ -45,7 +50,10 @@ class Property_addressController extends Controller
 
     public function addPropertyAddress()
     {
-        return view('admin.property_address.add-property-address');
+        $data=DB::table('property_address')->get();
+        $prop=DB::table('properties')->get();
+
+        return view('admin.property_address.add-property-address', compact('data','prop'));
     }
 
     public function edit($id)
@@ -58,18 +66,21 @@ class Property_addressController extends Controller
 
     public function updatePropertyAddress(Request $request)
     {
-//dd($request->all());
+//        dd($request);
         $data = DB::table('property_address')->where('id', $request->user_id)->update([
-            "name_of_street" => $request['name_of'],
-            "country" => $request['country'],
-            "state" => $request['state'],
-            "city" => $request['city'],
-            "zip_code" => $request['zip_code'],
-            "county" => $request['county'],
-            "additional_info" => $request['additional_info'],
-            "neighborhood" => $request['neighborhood'],
-//            "boroughs	" => $request['boroughs	'],
+            'name_of_street' => $request->name_of_street??'NULL',
+            'country' => $request->location_country??'NULL',
+            'state' => $request->location_state??'NULL',
+            'city' => $request->location_city??'NULL',
+            'zip_code' => $request->location_zip??'NULL',
+            'county' => $request->county??'NULL',
+            'additional_info' => $request->additional_info??'NULL',
+            'neighborhood' => $request->neighborhood??'NULL',
+            'boroughs' => $request->boroughs??'NULL',
+//            'parent_id' => $request->parent_id ?? '',
+
         ]);
+//        dd($data);
         return redirect()->route('addressHomeView')->with('success', ' Update Successfuly..!');
     }
     public function delete(Request $request){

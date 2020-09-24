@@ -64,12 +64,12 @@
                         <tr>
                             <th style="display: none;">#Sr</th>
 
-                            <th>title</th>
-                            <th>short_description</th>
-                            <th>main_image</th>
-                            <th>price</th>
-                            <th>buildings</th>
-                            <th>property_for</th>
+                            <th>Title</th>
+                            <th>Short description</th>
+                            <th>Main image</th>
+                            <th>Price</th>
+                            <th>Buildings</th>
+                            <th>Property for</th>
                             <th width="130" class="text-center">Actions</th>
                         </tr>
                         </thead>

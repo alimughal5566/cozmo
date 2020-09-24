@@ -447,7 +447,7 @@ Route::get('/', function () {
 Route::get('add-property-type','ProprtyTypeController@addPropertyType')->name('addPropertyType');
 Route::post('create-property-type','ProprtyTypeController@createPropertyType')->name('createPropertyType');
 Route::get('update-property-type/{id}','ProprtyTypeController@updatePropertyType')->name('updatePropertyType');
-Route::get('property-home-view','ProprtyTypeController@propertyHomeView')->name('propertyHomeView');
+Route::get('x','ProprtyTypeController@propertyHomeView')->name('propertyHomeView');
 Route::post('delete-property-type','ProprtyTypeController@deletePropertyType')->name('deletePropertyType');
 Route::post('store-update-property-type','ProprtyTypeController@storeUpdatePropertyType')->name('storeUpdatePropertyType');
 
@@ -593,7 +593,7 @@ Route::get('/property_options/edit/{id}', 'Property_optionsController@edit')->na
 Route::post('/property_options/update', 'Property_optionsController@update')->name('property_options.update');
 Route::post('/property_options/delete', 'Property_optionsController@optionsDelete')->name('property_options.delete');
 
-//Properties Sale Price Changes
+//Listing Sale Price Changes
 
 Route::get('/listing_sale_price_changes/home','Listing_sale_price_changesController@listingSaleIndex')->name('listing_sale_price_changes.home');
 Route::get('/listing_sale_price_changes/add', 'Listing_sale_price_changesController@listingAdd')->name('listing_sale_price_changes.add');
@@ -614,7 +614,14 @@ Route::post('/nearby_transit_lines/delete', 'Nearby_transit_linesController@tran
 
 Route::get('/header', 'headerController@index')->name('header.data');
 
+// Property Saves
 
+Route::get('/property_saves/home','Property_savesController@savesIndex')->name('property_saves.home');
+Route::get('/property_saves/add', 'Property_savesController@savesAdd')->name('property_saves.add');
+Route::post('/property_saves/store', 'Property_savesController@savesStore')->name('property_saves.store');
+Route::get('/property_saves/edit/{id}', 'Property_savesController@savesEdit')->name('property_saves.edit');
+Route::post('/property_saves/update', 'Property_savesController@savesUpdate')->name('property_saves.update');
+Route::post('/property_saves/delete', 'Property_savesController@savesDelete')->name('property_saves.delete');
 
 
 

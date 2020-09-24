@@ -23,7 +23,7 @@
 
                     Property Options
                     @if(Auth::check() && Auth::user()->user_role == 1)
-                        <a href="{{ route('property_options.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> @lang('packages.add_new')</a>
+                        <a href="{{ route('property_saves.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> @lang('packages.add_new')</a>
                     @endif
                 </h3>
                 @if(Session::has('message'))
@@ -36,9 +36,9 @@
                         <thead class="back_blue">
                         <tr>
                             <th>id</th>
-                            <th>Option type</th>
-                            <th>Option key</th>
-                            <th>Option value</th>
+                            <th>User id</th>
+                            <th>Property id</th>
+                            <th>Date saved</th>
                             <th width="130" class="text-center">@lang('packages.actions')</th>
                         </tr>
                         </thead>
@@ -47,13 +47,13 @@
 
                             <tr>
                                 <td>{{$key+1}}</td>
-                                <td>{{$row->option_type}}</td>
-                                <td>{{$row->option_key}}</td>
-                                <td>{{$row->option_value}}</td>
+                                <td>{{$row->user_id}}</td>
+                                <td>{{$row->property_id}}</td>
+                                <td>{{$row->date_saved}}</td>
                                 <td class="text-center">
                                     <div class="actions-btns " style="display: flex; justify-content: center">
 
-                                        <a href="{{route('property_options.edit',[$row->id])}}" class="back_color btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
+                                        <a href="{{route('property_saves.edit',[$row->id])}}" class="back_color btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
                                         <a href="#" data-id="<?php echo $row->id; ?>" class="btn btn-sm btn-danger delete"><i class="fa fa-trash"></i></a>
 
                                     </div>
@@ -96,7 +96,7 @@
                     $.ajax( {
                         type: 'POST',
                         headers: {'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )},
-                        url: '<?php echo route("property_options.delete"); ?>',
+                        url: '<?php echo route("property_saves.delete"); ?>',
                         data: form_data,
 
                         success: function ( msg ) {
@@ -108,7 +108,7 @@
 
                             setTimeout( function () {
                                 location.reload();
-                            }, 4000 );
+                            }, 1000 );
                         }
                     } );
                 }

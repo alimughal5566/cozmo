@@ -79,7 +79,8 @@
                                 <div class="col-sm-6 col-md-4">
                                     <div class="form-group">
                                         <label class="form-control-label">Description</label>
-                                        <input id="description" type="text" class="form-control" name="description" value="{{$user[0]->description}}">
+                                        <textarea name="description" cols="8" id="txtEditor" value="{{ old('description') }}" style="height: 35px;width: 100%;">
+                                        </textarea>
                                     </div>
                                 </div>
                         </div>

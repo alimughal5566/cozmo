@@ -36,10 +36,10 @@
 					<thead class="back_blue">
 						<tr>
 							<th>id</th>
-							<th>date_change</th>
-							<th>old_price</th>
-							<th>updated_price</th>
-							<th>created_at</th>
+							<th>Date change</th>
+							<th>Old price</th>
+							<th>Updated price</th>
+							<th>Created at</th>
 							<th width="130" class="text-center">@lang('packages.actions')</th>
 						</tr>
 					</thead>

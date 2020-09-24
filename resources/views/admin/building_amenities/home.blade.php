@@ -116,12 +116,12 @@
                                 <!-- <th>@lang('packages.price')</th> -->
                                     <th>id</th>
                                     {{--                                    <th>property_id</th>--}}
-                                    <th>building_amenities_title</th>
+                                    <th>Building amenities title</th>
 {{--                                    <th>created_date</th>--}}
 {{--                                    <th>updated_date</th>--}}
-                                    <th>listing_for</th>
-                                    <th>type</th>
-                                    <th>images</th>
+                                    <th>Listing for</th>
+                                    <th>Type</th>
+                                    <th>Images</th>
                                     <th width="130" class="text-center">@lang('packages.actions')</th>
                                 </tr>
                                 </thead>

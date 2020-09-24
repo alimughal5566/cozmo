@@ -116,17 +116,17 @@
                                 <!-- <th>@lang('packages.price')</th> -->
                                     <th>id</th>
                                     {{--                                    <th>property_id</th>--}}
-                                    <th>name</th>
-                                    <th>unit_number</th>
-                                    <th>additional_info</th>
+                                    <th>Name</th>
+                                    <th>Unit number</th>
+                                    <th>Additional info</th>
                                     {{--                                    <th>created_date</th>--}}
                                     {{--                                    <th>updated_date</th>--}}
-                                    <th>no_of_units</th>
-                                    <th>no_of_stories</th>
-                                    <th>condos</th>
-                                    <th>co_ops</th>
-                                    <th>multi_families</th>
-                                    <th>rental_units</th>
+                                    <th>No of units</th>
+                                    <th>No of stories</th>
+                                    <th>Condos</th>
+                                    <th>Co ops</th>
+                                    <th>Multi families</th>
+                                    <th>Rental units</th>
                                     <th width="130" class="text-center">@lang('packages.actions')</th>
                                 </tr>
                                 </thead>

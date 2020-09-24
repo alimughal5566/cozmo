@@ -106,9 +106,7 @@ class BlogController extends Controller
 
 	public function blogUpdate(Request $request)
 	{
-		dd($request);
-
-
+//		dd($request);
 	}
 	public function removeFeature($id){
         $data = DB::table('blog')->find($id);

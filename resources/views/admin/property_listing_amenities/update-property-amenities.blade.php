@@ -138,7 +138,7 @@
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Listing Amenity:</label>
-                                <input required id="listing_amenity"  type="text" value="{{$data[0]->listing_amenity}}" placeholder="listing_amenity" class="form-control" name="listing_amenity">
+                                <input required id="listing_amenity"  type="text" value="{{$data[0]->listing_amenity}}" placeholder="Listing amenity" class="form-control" name="listing_amenity">
                             </div>
                         </div>
 

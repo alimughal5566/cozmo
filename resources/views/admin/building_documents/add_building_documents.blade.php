@@ -118,7 +118,7 @@
                     @csrf
                     <div class="row">
 
-                        <div class="col-sm-6 col-md-3 col-lg-4">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Document</label>
                                 <input onkeyup="change_short()" id="name" type="text" placeholder="Enter document" class="form-control" name="document"  value="{{ old('document') }}" required autofocus required="">
@@ -131,31 +131,25 @@
                                 <input required id="image" type="file" placeholder="image" class="form-control" name="image">
                             </div>
                         </div>
-
-
-                        <div class="col-sm-6 col-md-3 col-lg-4">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                     <label>Document Types</label>
-                                <input onkeyup="change_second_short()" id="name"  type="text" placeholder="Enter document_types" class="form-control" name="document_types" value="{{ old('document_types') }}" required autofocus required="">
+                                <input onkeyup="change_second_short()" id="name"  type="text" placeholder="Enter document types" class="form-control" name="document_types" value="{{ old('document_types') }}" required autofocus required="">
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row">
-
-                        <div class="col-sm-6 col-md-3 col-lg-4">
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Unit No</label>
-                                <input onkeyup="change_short()" id="name" type="text" placeholder="Enter unit_no" class="form-control" name="unit_no"  value="{{ old('unit_no') }}" required autofocus required="">
+                                <input onkeyup="change_short()" id="name" type="text" placeholder="Enter unit no" class="form-control" name="unit_no"  value="{{ old('unit_no') }}" required autofocus required="">
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-3 col-lg-4">
+                    <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Detail</label>
                                 <input onkeyup="change_short()" id="name" type="text" placeholder="Enter detail" class="form-control" name="detail"  value="{{ old('detail') }}" required autofocus required="">
                             </div>
                         </div>
-
+                    </div>
                 <input id="ticket_1" type="hidden" name="data" class="form form-control" value="" required>
 
                     @if(Auth::check())

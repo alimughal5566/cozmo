@@ -117,16 +117,16 @@
                                     <th>id</th>
 {{--                                    <th>property_id</th>--}}
                                     <th>name</th>
-                                    <th>street_no</th>
-                                    <th>street_name</th>
-                                    <th>city</th>
-                                    <th>state</th>
-                                    <th>zip_code</th>
-                                    <th>company_address</th>
-                                    <th>company_phone_number</th>
-                                    <th>company_email</th>
+                                    <th>Street no</th>
+                                    <th>Street name</th>
+                                    <th>City</th>
+                                    <th>State</th>
+                                    <th>Zip code</th>
+                                    <th>Company address</th>
+                                    <th>Company phone number</th>
+                                    <th>Company email</th>
 {{--                                    <th>created_date</th>--}}
-                                    <th>description</th>
+                                    <th>Description</th>
                                     <th width="130" class="text-center">@lang('packages.actions')</th>
                                 </tr>
                                 </thead>
@@ -162,10 +162,7 @@
                             </table>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
         </div>
     </div>

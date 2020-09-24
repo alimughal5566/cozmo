@@ -115,16 +115,16 @@
             </li>
             <li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
             </li>
-            <li class="breadcrumb-item">Nearby Transit Lines</li>
+            <li class="breadcrumb-item">Update Property Saves</li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form class="form-horizontal" method="POST" action="{{ route('nearby_transit_lines.update') }}" enctype="multipart/form-data">
+            <form class="form-horizontal" method="POST" action="{{ route('property_saves.update') }}">
                 {{ csrf_field() }}
                 <div class="tile">
 
-                    <h3 class="tile-title">Nearby Transit Lines</h3>
+                    <h3 class="tile-title">Update Property Saves</h3>
                     @if(Session::has('message'))
                         <div class="alert alert-success">
                             {{ Session::get('message') }}
@@ -137,31 +137,38 @@
                         <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$user[0]->id}}">
                             <div class="form-group">
-                                <label for="title">Name:</label>
-                                <input required id="name"  type="text" value="{{$user[0]->name}}" placeholder="Name" class="form-control" name="name">
+                                <label for="title">User id:</label>
+                                <input required id="user_id"  type="text" value="{{$user[0]->user_id}}" placeholder="User id" class="form-control" name="user_id">
                             </div>
                         </div>
-                            <div class="col-sm-6">
-                                <input type="hidden" name="user_id" value="{{$user[0]->id}}">
-                                <div class="form-group">
-                                    <label for="title">Value:</label>
-                                    <input required id="value"  type="text" value="{{$user[0]->value}}" placeholder="Value" class="form-control" name="value">
-                                </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Select Property Id:</label>
+                                <select name="property_id" id="" class="form-control">
+                                    <option value=""selected>Select Id</option>
+                                    @foreach($user as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->property_id}} </option>
+                                    @endforeach
+                                </select>
+
                             </div>
-                                <div class="col-sm-6">
-                                    <input type="hidden" name="user_id" value="{{$user[0]->id}}">
-                                    <div class="form-group">
-                                        <label for="title">Sort Order:</label>
-                                        <input required id="sort_order"  type="text" value="{{$user[0]->sort_order}}" placeholder="Sort order" class="form-control" name="sort_order">
-                                    </div>
-                                </div>
-                        <div class="col-sm-12 text-right">
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="hidden" name="user_id" value="{{$user[0]->id}}">
+                            <div class="form-group">
+                                <label for="title">Date Saved:</label>
+                                <input required id="date_saved"  type="text" value="{{$user[0]->date_saved}}" placeholder="Date saved" class="form-control" name="date_saved">
+                            </div>
+                        </div>
+                        <div class="col-sm-6 text-right" >
                             <div class="form-group" style="margin-top: 27px !important;">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </div>
                         </div>
-                        </div>
-                        </div>
+                    </div>
+                </div>
+
+
             </form>
         </div>
 

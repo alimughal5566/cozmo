@@ -228,23 +228,13 @@
                                 <input type="file" name="" value="{{old('main_image')}}" class="form-control" placeholder="Main Image">
                             </div>
                         </div>
-                        <div>
-                        <article class="left-three-fifths hdp_gallery_2018_box">
-                            <div style="text-align:center;">
-                                <div style="" class="html5gallery" data-skin="darkness" data-width="480" data-height="272" data-resizemode="fill" >
-                                    <img src="{{asset('/images/cozmo/'.$data->main_image)}}" alt="Tulips">
-                                    <img src="{{asset('/images/cozmo/'.$data->video)}}" alt="Tulips">
-                                    <video width="320" height="240" controls>
-                                        <source src="{{asset('/images/cozmo/'.$data->video)}}" type="video/mp4">
-                                        <source src="{{asset('/images/cozmo/'.$data->video)}}" type="video/ogg">
-                                    </video>
-                                    <!-- Add Youtube video to Gallery -->
 
-                                </div>
-
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label>Video</label>
+                                <input type="file" accept="video/*" name="video" value="{{old('video')}}" class="form-control" placeholder="Video">
                             </div>
-
-                        </article>
+                        </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
@@ -597,7 +587,7 @@
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Feature Flag</label>
-                                <input type="text" name="feature_flag" value="{{old('feature_flag')}}" class="form-control" placeholder="feature_flag">
+                                <input type="text" name="feature_flag" value="{{old('feature_flag')}}" class="form-control" placeholder="Feature flag">
                             </div>
 
                         </div>

@@ -139,7 +139,7 @@ input:checked + .slider:before {
 					<div class="form-group">
 
 						<label for="title">Name:</label>
-						<input required id="name"  type="text" placeholder="name" class="form-control" name="name">
+						<input required id="name"  type="text" placeholder="Name" class="form-control" name="name">
 
                     </div>
 				</div>
@@ -147,7 +147,7 @@ input:checked + .slider:before {
                     <div class="form-group">
 
                         <label for="title">Value:</label>
-                        <input required id="value"  type="text" placeholder="value" class="form-control" name="value">
+                        <input required id="value"  type="text" placeholder="Value" class="form-control" name="value">
 
                     </div>
                 </div>
@@ -155,13 +155,13 @@ input:checked + .slider:before {
                     <div class="form-group">
 
                         <label for="title">Sort Order:</label>
-                        <input required id="sort_order"  type="text" placeholder="sort_order" class="form-control" name="sort_order">
+                        <input required id="sort_order"  type="text" placeholder="Sort order" class="form-control" name="sort_order">
 
                     </div>
                 </div>
 
-				<div class="col-sm-6">
-					<div class="form-group" style="margin-top: 27px !important;">
+				<div class="col-sm-6 text-right">
+					<div class="form-group" style="margin-top: 27px !important; ">
                         <button class="btn btn-primary" type="submit">Save</button>
                     </div>
 				</div>

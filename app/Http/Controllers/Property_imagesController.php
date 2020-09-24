@@ -30,17 +30,18 @@ class Property_imagesController extends Controller
 //    dd($request);
 
 
-        if ($request->hasFile('image')) {
 
+        if ($request->hasFile('image')) {
+//            dd('ijhb');
             $image = $request->file('image');
-            $imageName = time() . "." .$image->getClientOriginalExtension();
+            $imageName = time() . "." . $image->getClientOriginalExtension();
             $imagePath = public_path() . '/images/cozmo/';
             $image->move($imagePath, $imageName);
-            $imagesDbPath = $imageName;
+            $imageDbPath = $imageName;
         }
         $data=DB::table('property_images')->insert([
 
-            'image' => $imagesDbPath,
+            'image' => $imageDbPath,
 //                'date_created' => carbon::now(),
 
         ]);

@@ -139,7 +139,7 @@ input:checked + .slider:before {
 					<div class="form-group">
 
 						<label for="title">Listing Amenity:</label>
-						<input required id="listing_amenity"  type="text" placeholder="listing_amenity" class="form-control" name="listing_amenity">
+						<input required id="listing_amenity"  type="text" placeholder="Listing amenity" class="form-control" name="listing_amenity">
 
                     </div>
 				</div>
@@ -156,8 +156,8 @@ input:checked + .slider:before {
                     </div>
 
                 </div>
-				<div class="col-sm-6">
-					<div class="form-group" style="margin-top: 27px !important;">
+				<div class="col-sm-12 text-right">
+					<div class="form-group" style="margin-top: 27px !important; justify-content: center">
                         <button class="btn btn-primary" type="submit">Save</button>
                     </div>
 				</div>

@@ -138,21 +138,21 @@
                             <input type="hidden" name="user_id" value="{{$user[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Option Type:</label>
-                                <input required id="option_type"  type="text" value="{{$user[0]->option_type}}" placeholder="option_type" class="form-control" name="option_type">
+                                <input required id="option_type"  type="text" value="{{$user[0]->option_type}}" placeholder="Option type" class="form-control" name="option_type">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$user[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Option Key:</label>
-                                <input required id="option_key"  type="text" value="{{$user[0]->option_key}}" placeholder="option_key" class="form-control" name="option_key">
+                                <input required id="option_key"  type="text" value="{{$user[0]->option_key}}" placeholder="Option key" class="form-control" name="option_key">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$user[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Option Value:</label>
-                                <input required id="option_value"  type="text" value="{{$user[0]->option_value}}" placeholder="option_value" class="form-control" name="option_value">
+                                <input required id="option_value"  type="text" value="{{$user[0]->option_value}}" placeholder="Option value" class="form-control" name="option_value">
                             </div>
                         </div>
                         <div class="col-sm-6">

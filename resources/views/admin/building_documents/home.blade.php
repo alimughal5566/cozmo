@@ -117,12 +117,12 @@
 
                                     <th>id</th>
                                     {{--                                    <th>property_id</th>--}}
-                                    <th>document</th>
-                                    <th>images</th>
-                                    <th>document_types</th>
-                                    <th>unit_no</th>
-                                    <th>detail</th>
-                                    <th>building_id</th>
+                                    <th>Document</th>
+                                    <th>Images</th>
+                                    <th>Document types</th>
+                                    <th>Unit no</th>
+                                    <th>Detail</th>
+                                    <th>Building id</th>
 {{--                                    <th>created_date</th>--}}
 
 

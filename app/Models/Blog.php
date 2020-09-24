@@ -34,7 +34,7 @@ class Blog extends Model
         return $data;
     }
     public  function blogStoredata($request){
-        dd($request);
+//        dd($request);
         if($files=$request->file('image')) {
             $name = $files->getClientOriginalName();
             $files->move(public_path('images\cozmo'), $name);

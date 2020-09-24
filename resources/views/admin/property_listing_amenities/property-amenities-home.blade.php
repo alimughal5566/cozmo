@@ -36,10 +36,10 @@
 					<thead class="back_blue">
 						<tr>
 							<th>id</th>
-							<th>listing_amenity</th>
+							<th>Listing amenity</th>
 {{--							<th>date_created</th>--}}
 {{--							<th>date_updated</th>--}}
-							<th>listing_for</th>
+							<th>Listing for</th>
 
 							<th width="130" class="text-center">@lang('packages.actions')</th>
 						</tr>

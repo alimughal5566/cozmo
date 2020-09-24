@@ -134,51 +134,37 @@ input:checked + .slider:before {
 			<div class="alert alert-danger">{{ $error }}</div>
 			@endforeach
 			<div class="row">
-
 				<div class="col-sm-6">
 					<div class="form-group">
-
 						<label for="title">Date Change:</label>
-						<input required id="date_change"  type="date" placeholder="date_change" class="form-control" name="date_change">
-
+						<input required id="date_change"  type="date" placeholder="Date change" class="form-control" name="date_change">
                     </div>
 				</div>
-
                 <div class="col-sm-6">
                     <div class="form-group">
-
                         <label for="title">Old Price:</label>
-                        <input required id="old_price"  type="number" placeholder="old_price" class="form-control" name="old_price">
-
+                        <input required id="old_price"  type="number" placeholder="Old price" class="form-control" name="old_price">
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="form-group">
-
                         <label for="title">Updated Price:</label>
-                        <input required id="updated_price"  type="number" placeholder="updated_price" class="form-control" name="updated_price">
-
+                        <input required id="updated_price"  type="number" placeholder="Updated price" class="form-control" name="updated_price">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-
                         <label for="title">Created At:</label>
-                        <input required id="created_at"  type="text" placeholder="created_at" class="form-control" name="created_at">
-
+                        <input required id="created_at"  type="text" placeholder="Created at" class="form-control" name="created_at">
                     </div>
                 </div>
-
-
 				<div class="col-md-12 text-right">
-					<div class="form-group" style="margin-top: 27px !important;">
+					<div class="form-group" style="margin-top: 27px !important; justify-content: center">
                         <button class="btn btn-primary" type="submit">Save</button>
                     </div>
 				</div>
 			</div>
 		</div>
-
-
     </form>
   </div>
 

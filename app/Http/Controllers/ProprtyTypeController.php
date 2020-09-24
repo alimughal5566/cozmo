@@ -86,6 +86,7 @@ class ProprtyTypeController extends Controller
     }
 
     public function createSaleType(Request $request){
+//        dd($request);
         $data=DB::table('property_sale_type')->insert([
             "title"=>$request['title'],
         ]);

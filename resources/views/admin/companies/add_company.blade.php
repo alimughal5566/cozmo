@@ -184,7 +184,7 @@
                     <div class="text-section" >
                         <div class="form-group">
                             <label>Description</label>
-                            <textarea name="description" cols="8" id="txtEditor" value="{{ old('description') }}" style="height: 35px;width: 100%;">
+                                <textarea name="description" cols="8" id="txtEditor" value="{{ old('description') }}" style="height: 35px;width: 100%;">
 
 						</textarea>
                         </div>

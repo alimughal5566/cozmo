@@ -115,16 +115,16 @@ input:checked + .slider:before {
 		</li>
 		<li class="breadcrumb-item"><a href="{{url('/')}}">Dashboard</a>
 	</li>
-	<li class="breadcrumb-item">New Property Options</li>
+	<li class="breadcrumb-item">New Property Save</li>
 </ul>
 </div>
 <div class="row">
 <div class="col-md-12">
-	<form class="form-horizontal" method="POST" action="{{ route('property_options.store') }}" enctype="multipart/form-data">
+	<form class="form-horizontal" method="POST" action="{{ route('property_saves.store') }}" enctype="multipart/form-data">
 		{{ csrf_field() }}
 		<div class="tile">
 
-			<h3 class="tile-title">New Property Options</h3>
+			<h3 class="tile-title">New Property Save</h3>
 			@if(Session::has('message'))
 			<div class="alert alert-success">
 				{{ Session::get('message') }}
@@ -138,24 +138,28 @@ input:checked + .slider:before {
 				<div class="col-sm-6">
 					<div class="form-group">
 
-                        <label for="title">Option Type:</label>
-						<input required id="option_type"  type="text" placeholder="Option type" class="form-control" name="option_type">
+                        <label for="title">User Id:</label>
+						<input required id="user_id"  type="text" placeholder="User id" class="form-control" name="user_id">
 
                     </div>
 				</div>
                 <div class="col-sm-6">
-                    <div class="form-group">
+                <div class="form-group">
+                    <label>Select Property Id:</label>
+                    <select name="property_id" id="" class="form-control">
+                        <option value=""selected>Select Id</option>
+                        @foreach($data as $datum)
+                            <option value="{{$datum->id}}">{{$datum->property_id}} </option>
+                        @endforeach
+                    </select>
 
-                        <label for="title">Option Key:</label>
-                        <input required id="option_key"  type="text" placeholder="Option key" class="form-control" name="option_key">
-
-                    </div>
                 </div>
+            </div>
                 <div class="col-sm-6">
                     <div class="form-group">
 
-                        <label for="title">Option Value:</label>
-                        <input required id="option_value"  type="text" placeholder="Option value" class="form-control" name="option_value">
+                        <label for="title">Date Saved:</label>
+                        <input required id="date_saved"  type="date" placeholder="Date saved" class="form-control" name="date_saved">
 
                     </div>
                 </div>

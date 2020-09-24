@@ -17,7 +17,7 @@
         <div class="col-md-12">
 
             <div class="tile">
-                <h3 class="tile-title ">Add New Rental Price History</h3>
+                <h3 class="tile-title ">Add New Department</h3>
                 <form class="form-horizontal" method="POST" action="{{ route('department.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
@@ -28,7 +28,6 @@
                                 <input id="name" type="text" min="1" class="form-control "  name="name" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 ">
                             <label for="comp">Select Property</label>
                             <select name="property_id" class="form-control"  required >
@@ -40,12 +39,10 @@
                         </div>
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
-
                                 <label class="form-control-label">Rental Price</label>
                                 <input id="rentalPrice" type="number" min="1" class="form-control "  name="rental_price" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4">
                             <div class="form-group">
 
@@ -53,24 +50,7 @@
                                 <input id="uniqueNumber" type="number" min="1" class="form-control "  name="unique_no" required >
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </div>
-
-
                     @if(Auth::check())
                         <div class="tile-footer text-right ">
                             <a href="{{url('/blog_category/home')}}" class="btn btn-default">@lang('general.cancel')</a>

@@ -129,19 +129,18 @@
                                     <option value="{{$datum->id}}">{{$datum->building_amenities_title}} </option>
                                     @endforeach
                                 </select>
-
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label> Building Amenities Title</label>
-                                <input onkeyup="change_short()" id="name" type="text" placeholder="building_amenities_title" class="form-control" name="building_amenities_title"  value="{{ old('building_amenities_title') }}" required autofocus required="">
+                                <input onkeyup="change_short()" id="name" type="text" placeholder="Building amenities title" class="form-control" name="building_amenities_title"  value="{{ old('building_amenities_title') }}" required autofocus required="">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                     <label>Listing For Types</label>
-                                <input onkeyup="change_second_short()" id="name"  type="text" placeholder="Enter listing_for" class="form-control" name="listing_for" value="{{ old('listing_for') }}" required autofocus required="">
+                                <input onkeyup="change_second_short()" id="name"  type="text" placeholder="Enter listing for" class="form-control" name="listing_for" value="{{ old('listing_for') }}" required autofocus required="">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
@@ -155,7 +154,7 @@
                                     {{--                            @endforeach--}}
                                 </select>                            </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label for="title">Images</label>
                                 <input required id="images" type="file" placeholder="image" class="form-control" name="images">

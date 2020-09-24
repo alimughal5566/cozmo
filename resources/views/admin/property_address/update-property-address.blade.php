@@ -124,7 +124,7 @@
                 {{ csrf_field() }}
                 <div class="tile">
 
-                    <h3 class="tile-title">Update Property Type</h3>
+                    <h3 class="tile-title">Update Property Address</h3>
                     @if(Session::has('message'))
                         <div class="alert alert-success">
                             {{ Session::get('message') }}
@@ -139,7 +139,7 @@
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Name of Street:</label>
-                                <input required id="name_of_street"  type="text" value="{{$data[0]->name_of_street}}" placeholder="name_of_street" class="form-control" name="name_of">
+                                <input required id="default_location"  type="text" value="{{$data[0]->name_of_street}}" placeholder="name_of_street" class="form-control" name="name_of_street">
                             </div>
                         </div>
 
@@ -147,7 +147,7 @@
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Country:</label>
-                                <input required id="country"  type="text" value="{{$data[0]->country}}" placeholder="country" class="form-control" name="country">
+                                <input required id="default_location"  type="text" value="{{$data[0]->country}}" placeholder="country" class="form-control" name="location_country">
                             </div>
                         </div>
 
@@ -155,7 +155,7 @@
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">State:</label>
-                                <input required id="state"  type="text" value="{{$data[0]->state}}" placeholder="state" class="form-control" name="state">
+                                <input required id="default_location"  type="text" value="{{$data[0]->state}}" placeholder="state" class="form-control" name="location_state">
                             </div>
                         </div>
 
@@ -163,7 +163,7 @@
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">City:</label>
-                                <input required id="city"  type="text" value="{{$data[0]->city}}" placeholder="city" class="form-control" name="city">
+                                <input required id="default_location"  type="text" value="{{$data[0]->city}}" placeholder="city" class="form-control" name="location_city">
                             </div>
                         </div>
 
@@ -171,7 +171,7 @@
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Zip Code:</label>
-                                <input required id="zip_code"  type="text" value="{{$data[0]->zip_code}}" placeholder="zip_code" class="form-control" name="zip_code">
+                                <input required id="default_location"  type="text" value="{{$data[0]->zip_code}}" placeholder="zip_code" class="form-control" name="location_zip">
                             </div>
                         </div>
 
@@ -187,7 +187,7 @@
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Additional Info:</label>
-                                <input required id="name_of_street"  type="text" value="{{$data[0]->name_of_street}}" placeholder="name_of_street" class="form-control" name="name_of_street">
+                                <input required id="additional_info"  type="text" value="{{$data[0]->additional_info}}" placeholder="additional_info" class="form-control" name="additional_info">
                             </div>
                         </div>
 
@@ -206,15 +206,13 @@
                                 <input required id="boroughs"  type="text" value="{{$data[0]->boroughs}}" placeholder="boroughs" class="form-control" name="boroughs">
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 text-right">
                             <div class="form-group" style="margin-top: 27px !important;">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </form>
         </div>
 
@@ -223,207 +221,87 @@
         <link href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
         <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-        <script src="{{url('backend/sweetalerts/sweetalert2.all.js')}}"></script>
-        <!-- <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script> -->
-        <!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>-->
-        <!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>-->
 
         <script>
-            $(document).ready(function() {
-                $('#example').DataTable( {
-                    initComplete: function () {
-                        this.api().columns().every( function () {
-                            var column = this;
-                            var select = $('<select><option value="">Select</option></select>')
-                                .appendTo( $(column.footer()).empty() )
-                                .on( 'change', function () {
-                                    var val = $.fn.dataTable.util.escapeRegex(
-                                        $(this).val()
-                                    );
 
-                                    column
-                                        .search( val ? '^'+val+'$' : '', true, false )
-                                        .draw();
-                                } );
+            function initMap() {
 
-                            column.data().unique().sort().each( function ( d, j ) {
-                                select.append( '<option value="'+d+'">'+d+'</option>' )
-
-                            } );
-
-                        } );
-                    },
-                    "order": [[ 0, "desc" ]]
-                } );
-            } );
-
-        </script>
-
-        <script>
-            $(document).ready(function() {
-//var table = $('#example').DataTable();
-                $('#competitions').change(function (){
-                    var comp_id = $('#competitions').find(":selected").val();
-//alert(comp_id);
-                    data={
-                        id:comp_id,
-                    };
-// if(comp_id == ""){
-// }
-                    if(comp_id != '')
-                    {
-                        $.ajax({
-                            headers: {
-                                'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )
-                            },
-                            type:'POST',
-                            url: '<?php echo route("mc.spcomp"); ?>',
-                            data: data,
-                            success: function(msg){
-//console.log(table.columns(2).data()[0]);
-                                var msg = JSON.parse(msg);
-                                $("#example td:nth-child("+8+")").html(msg[0].image);
-                                $("#example td:nth-child("+9+")").html(msg[0].name);
-//alert(msg)
-                            }
-                        })
-                    }
-                    else {
-                        $("#example td:nth-child("+8+")").html('');
-                        $("#example td:nth-child("+9+")").html('');
-                    }
-
-                });
-            });
-        </script>
-        <!--<script src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.js"></script>
-        <script src="https://cdn.datatables.net/rowreorder/1.0.0/js/dataTables.rowReorder.js"></script>
-        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/rowreorder/1.0.0/css/rowReorder.dataTables.css">
-        <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.0/css/jquery.dataTables.css">-->
-        <script type="text/javascript">
-            $(document).ready(function() {
+                let autocomplete_location;
+                let input_field = document.getElementById('default_location');
+                // geographical location types.
+                autocomplete_location = new google.maps.places.Autocomplete(input_field, {types: ['geocode']});
+                // Set initial restrict to the greater list of countries.
+                // autocomplete_location.setComponentRestrictions({'country': ['de']});
+                autocomplete_location.setFields(['geometry']);
 
 
 
-                $(document).on('click','.delete_element',function() {
-                    $(this).parents('.row.elments').remove();
-                });
-                $(".chosen").chosen();
-                $('#images').change(function(){
-                    $('#images_form').submit();
-                });
-                $( "body" ).on( "click", ".delete", function () {
-                    var id = $( this ).data( "id" );
-                    var form_data = {
-                        id: id
-                    };
-                    swal({
-                        title: "Do you want to delete this?",
-                        // text: "@lang('packages.delete_package_msg')",
-                        type: 'info',
-                        showCancelButton: true,
-                        confirmButtonColor: '#F79426',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Yes',
-                        showLoaderOnConfirm: true
-                    }).then( ( result ) => {
-                        if ( result.value == true ) {
-                            $.ajax( {
-                                type: 'POST',
-                                headers: {
-                                    'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )
-                                },
-                                url: '<?php echo route("mc.delete"); ?>',
-                                data: form_data,
-                                context:this,
-                                success: function ( msg ) {
-                                    $(this).parents('tr').remove();
-                                    document.getElementById("attribute_form").reset();
+                let latitude;
+                let longitude;
+                let country;
 
+                google.maps.event.addListener(autocomplete_location, 'place_changed', function () {
+                    let location = autocomplete_location.getPlace();
+                    latitude = location.geometry.location.lat();
+                    longitude = location.geometry.location.lng();
+                    $('input[name="location_lat"]').val(latitude);
+                    $('input[name="location_long"]').val(longitude);
+
+
+                    codeLatLng(latitude,longitude);
+
+                    function codeLatLng(lat, lng) {
+
+                        var latlng = new google.maps.LatLng(lat, lng);
+                        let geocoder = new google.maps.Geocoder;
+                        geocoder.geocode({'latLng': latlng}, function(results, status) {
+                            if (status === google.maps.GeocoderStatus.OK) {
+                                let length = results.length - 1;
+                                country = results[length].formatted_address;
+                                console.log(results);
+
+                                if (results[1]) {
+                                    //formatted address
+                                    //find country name
+                                    for (var i=0; i<results[0].address_components.length; i++) {
+                                        for (var b=0;b<results[0].address_components[i].types.length;b++) {
+                                            //there are different types that might hold a city admin_area_lvl_1 usually does in come cases looking for sublocality type will be more appropriate
+                                            if (results[0].address_components[i].types[b] === "administrative_area_level_1") {
+                                                state = results[0].address_components[i];
+                                                break;
+                                            }
+
+                                            if (results[0].address_components[i].types[b] === "locality") {
+                                                //this is the object you are looking for
+                                                city = results[0].address_components[i];
+                                                break;
+                                            }
+                                            var Zip;
+                                            if (results[0].address_components[i].types[b] === 'postal_code'){
+                                                Zip  = results[0].address_components[i].short_name;
+                                            }
+
+                                        }
+                                    }
+                                    //city data
+                                    $('input[name="location_city"]').val(city.long_name);
+                                    $('input[name="location_country"]').val(country);
+                                    $('input[name="location_state"]').val(state.long_name);
+                                    $('input[name="location_zip"]').val(Zip);
+
+                                } else {
+                                    console.log("No results found");
                                 }
-                            } );
+                            } else {
+                                console.log("Geocoder failed due to: " + status);
+                            }})}
 
-                        }
-                    });
                 });
-// for before competition start
-                var before_comp_start = $('#reminder-date').datetimepicker({
-                    format: 'YYYY-MM-DD',
-                    minDate: "<?php echo date('Y-m-d'); ?>",
-//format: 'DD-MM-YYYY',
-//minDate: "<?php //echo date('d-m-Y'); ?>",
-                });
-                var competition_date = $('.datepicker').datepicker({
-                    format: 'yyyy-mm-dd',
-                    startDate: new Date(),
-                    autoclose: true
-                });
-
-                $('.datepicker').change(function(){
-                    var comp_date = $(this).val();
-//console.log(before_comp_start.data());
-                    before_comp_start.data().DateTimePicker.maxDate(moment(comp_date, 'YYYY-MM-DD'));
-                });
-            });
-
+            }
         </script>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker4').datetimepicker();
-            });
-        </script>
-        <script type="text/javascript">
-            $( "body" ).on( "click", ".delete_winner", function () {
-                var task_id = $( this ).attr( "data-id" );
-                var form_data = {
-                    id: task_id
-                };
-                swal({
-                    title: "Do you want to delete this Winner",
-                    text: "@lang('packages.delete_package_msg')",
-                    type: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: '#F79426',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes',
-                    showLoaderOnConfirm: true
-                }).then( ( result ) => {
-                    if ( result.value == true ) {
-                        $.ajax( {
-                            type: 'POST',
-                            headers: {
-                                'X-CSRF-TOKEN': $( 'meta[name="csrf-token"]' ).attr( 'content' )
-                            },
-                            url: '<?php echo url("packages/delete_winner"); ?>',
-                            data: form_data,
-                            success: function ( msg ) {
-                                swal( "@lang('packages.success_delete')", '', 'success' )
-                                setTimeout( function () {
-                                    location.reload();
-                                }, 1000 );
-                            }
-                        } );
-                    }
-                } );
-            } );
-        </script>
-        <!-- <script >
-            var table = $('#love').DataTable({
-        dom : 'l<"#add">frtip'
-        })
-        $('<label/>').text('Search Column:').appendTo('#add')
-        $select = $('<select/>').appendTo('#add')
-            $('<option/>').val('All').text('All').appendTo($select);
-                $('<option/>').val('0').text('Seq').appendTo($select);
-                    $('input[type="search"]').on( 'keyup change', function () {
-                    var searchValue = $(this).val();
-                    var columnSearch = $select.val();
+        <script src="{{asset('js/jquery-simple-validator.min.js')}}"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBgV-mkhz5pqHJrtexHQXJdV12D8nGefoI&libraries=places&callback=initMap" async defer></script>
+        @endsection
 
-                    if(columnSearch == 'All'){
-                        table.search(searchValue).draw();
-                    } else {
-                    table.columns(columnSearch).search(searchValue).draw();
-                    }
-                    });
-                    </script> -->
-@endsection
+
+        x

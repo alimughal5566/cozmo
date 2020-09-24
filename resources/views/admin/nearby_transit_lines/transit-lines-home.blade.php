@@ -38,7 +38,7 @@
 							<th>id</th>
 							<th>name</th>
 							<th>value</th>
-							<th>sort_order</th>
+							<th>Sort order</th>
 {{--						<th>date_created</th>--}}
 {{--						<th>date_updated</th>--}}
 							<th width="130" class="text-center">@lang('packages.actions')</th>
