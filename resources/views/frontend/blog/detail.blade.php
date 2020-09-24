@@ -57,18 +57,13 @@
         }
 
     </style>
-    <link rel='stylesheet' id='resp-video-style-css'  href='https://streeteasy.com/blog/wp-content/plugins/responsive-video-shortcodes/assets/respvid.css?ver=5.5.1' type='text/css' media='all' />
-    <link rel='stylesheet' id='wpbp-styles-css'  href='https://streeteasy.com/blog/wp-content/themes/se-blog-2017/dist/styles/wpbp.css?ver=1599866209' type='text/css' media='all' />
-    <link rel='stylesheet' id='wpbp-icons-css'  href='https://streeteasy.com/blog/wp-content/themes/se-blog-2017/dist/icons/wpbp.css?ver=1599866190' type='text/css' media='all' />
-    <link rel='stylesheet' id='easy_table_style-css'  href='https://streeteasy.com/blog/wp-content/plugins/easy-table/themes/default/style.css?ver=1.8' type='text/css' media='all' />
-    <script type='text/javascript' src='https://streeteasy.com/blog/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp' id='jquery-core-js'></script>
-    <script type='text/javascript' src='https://streeteasy.com/blog/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-form-move-tracker.js?ver=1.11.2' id='gtm4wp-form-move-tracker-js'></script>
-    <script type='text/javascript' src='https://streeteasy.com/blog/wp-content/plugins/duracelltomi-google-tag-manager/js/analytics-talk-content-tracking.js?ver=1.11.2' id='gtm4wp-scroll-tracking-js'></script>
-    <link rel="https://api.w.org/" href="https://streeteasy.com/blog/wp-json/" /><link rel="alternate" type="application/json" href="https://streeteasy.com/blog/wp-json/wp/v2/posts/102823" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://streeteasy.com/blog/xmlrpc.php?rsd" />
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://streeteasy.com/blog/wp-includes/wlwmanifest.xml" />
-    <link rel='shortlink' href='https://streeteasy.com/blog/?p=102823' />
-    <link rel="alternate" type="application/json+oembed" href="https://streeteasy.com/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fstreeteasy.com%2Fblog%2Fnyc-open-houses-september-19-and-20%2F" />
-    <link rel="alternate" type="text/xml+oembed" href="https://streeteasy.com/blog/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fstreeteasy.com%2Fblog%2Fnyc-open-houses-september-19-and-20%2F&#038;format=xml" />
+    <link rel='stylesheet' id='resp-video-style-css'  href='{{asset('assets/masterFrontend/css/detail4.css.css')}}' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpbp-styles-css'  href='{{asset('assets/masterFrontend/css/detail1.css')}}' type='text/css' media='all' />
+    <link rel='stylesheet' id='wpbp-icons-css'  href='{{asset('assets/masterFrontend/css/detail2.css')}}' type='text/css' media='all' />
+    <link rel='stylesheet' id='easy_table_style-css'  href='{{asset('assets/masterFrontend/css/detail3.css')}}' type='text/css' media='all' />
+    <script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail1.js')}}' id='jquery-core-js'></script>
+    <script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail2.js')}}' id='gtm4wp-form-move-tracker-js'></script>
+    <script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail3.js')}}' id='gtm4wp-scroll-tracking-js'></script>
 
     <!-- Google Tag Manager for WordPress by gtm4wp.com -->
     <script data-cfasync="false" data-pagespeed-no-defer type="text/javascript">//<![CDATA[
@@ -83,9 +78,7 @@
         })(window,document,'script','dataLayer','GTM-5856M6N');//]]>
     </script>
     <!-- End Google Tag Manager -->
-    <!-- End Google Tag Manager for WordPress by gtm4wp.com --><link rel="amphtml" href="https://streeteasy.com/blog/nyc-open-houses-september-19-and-20/amp/"><link rel="icon" href="{{asset('assets/masterFrontend/img/lgo.png')}}" sizes="32x32" />
-    <link rel="icon" href="https://wp-tid.zillowstatic.com/streeteasy/2/cropped-favicon512-23604c-d33187-192x192.png" sizes="192x192" />
-    <link rel="apple-touch-icon" href="https://wp-tid.zillowstatic.com/streeteasy/2/cropped-favicon512-23604c-d33187-180x180.png" />
+    <!-- End Google Tag Manager for WordPress by gtm4wp.com --><link rel="icon" href="{{asset('assets/masterFrontend/img/lgo.png')}}" sizes="32x32" />
 
 <div class="navigation collapsed">
     <div class="navigation-mobile-top-banner">
@@ -138,43 +131,43 @@
                         <a href="#" class="">Trends & Data</a>
                         <ul class="sub-navigation">
                             <li class="sub-navigation-mobile-link"><a href="https://streeteasy.com/blog/research/" target="" class="">See all Trends & Data</a></li>
-                            <li><a href="https://streeteasy.com/blog/research/affordability/" target="" class="">Affordability</a></li>
-                            <li><a href="https://streeteasy.com/blog/research/market-reports/" target="" class="">Market Reports</a></li>
-                            <li><a href="https://streeteasy.com/blog/research/neighborhoods/" target="" class="">Neighborhoods</a></li>
-                            <li><a href="https://streeteasy.com/blog/research/rentals/" target="" class="">Rentals</a></li>
-                            <li><a href="https://streeteasy.com/blog/research/sales/" target="" class="">Sales</a></li>
-                            <li><a href="https://streeteasy.com/blog/data-dashboard/" target="" class="">Data Dashboard</a></li>
+                            <li><a href="" target="" class="">Affordability</a></li>
+                            <li><a href="" target="" class="">Market Reports</a></li>
+                            <li><a href="" target="" class="">Neighborhoods</a></li>
+                            <li><a href="" target="" class="">Rentals</a></li>
+                            <li><a href="" target="" class="">Sales</a></li>
+                            <li><a href="" target="" class="">Data Dashboard</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="https://streeteasy.com/blog/good-deals/" class="">Good Deals</a>
+                        <a href="" class="">Good Deals</a>
                         <ul class="sub-navigation">
-                            <li class="sub-navigation-mobile-link"><a href="https://streeteasy.com/blog/good-deals/" target="" class="">See all Good Deals</a></li>
-                            <li><a href="https://streeteasy.com/blog/good-deals/sales-deals/" target="" class="">Sales Deals</a></li>
-                            <li><a href="https://streeteasy.com/blog/good-deals/rental-deals/" target="" class="">Rental Deals</a></li>
-                            <li><a href="https://streeteasy.com/blog/good-deals/most-popular/" target="" class="">Most Popular</a></li>
-                            <li><a href="https://streeteasy.com/blog/good-deals/open-houses/" target="" class="selected">Open Houses</a></li>
-                            <li><a href="https://streeteasy.com/blog/good-deals/deal-of-the-week/" target="" class="">Deal of the Week</a></li>
-                            <li><a href="https://streeteasy.com/blog/good-deals/housing-lotteries/" target="" class="">Housing Lotteries</a></li>
+                            <li class="sub-navigation-mobile-link"><a href="" target="" class="">See all Good Deals</a></li>
+                            <li><a href="" target="" class="">Sales Deals</a></li>
+                            <li><a href="" target="" class="">Rental Deals</a></li>
+                            <li><a href="" target="" class="">Most Popular</a></li>
+                            <li><a href="" target="" class="selected">Open Houses</a></li>
+                            <li><a href="" target="" class="">Deal of the Week</a></li>
+                            <li><a href="" target="" class="">Housing Lotteries</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="https://streeteasy.com/blog/nyc-living/" class="">NYC Living</a>
+                        <a href="" class="">NYC Living</a>
                         <ul class="sub-navigation">
-                            <li class="sub-navigation-mobile-link"><a href="https://streeteasy.com/blog/nyc-living/" target="" class="">See all NYC Living</a></li>
-                            <li><a href="https://streeteasy.com/blog/nyc-living/design/" target="" class="">Design</a></li>
-                            <li><a href="https://streeteasy.com/blog/nyc-living/celebrity-homes/" target="" class="">Celebrity Homes</a></li>
-                            <li><a href="https://streeteasy.com/blog/nyc-living/exploring-nyc/" target="" class="">Exploring NYC</a></li>
-                            <li><a href="https://streeteasy.com/blog/nyc-living/new-developments/" target="" class="">New Developments</a></li>
-                            <li><a href="https://streeteasy.com/blog/nyc-living/streeteasyfinds/" target="" class="">#StreetEasyFinds</a></li>
+                            <li class="sub-navigation-mobile-link"><a href="" target="" class="">See all NYC Living</a></li>
+                            <li><a href="" target="" class="">Design</a></li>
+                            <li><a href="" target="" class="">Celebrity Homes</a></li>
+                            <li><a href="" target="" class="">Exploring NYC</a></li>
+                            <li><a href="" target="" class="">New Developments</a></li>
+                            <li><a href="" target="" class="">#StreetEasyFinds</a></li>
                         </ul>
                     </li>
                     <li>
-                        <a href="https://streeteasy.com/blog/tips-advice/" class="">Tips & Advice</a>
+                        <a href="" class="">Tips & Advice</a>
                         <ul class="sub-navigation">
-                            <li class="sub-navigation-mobile-link"><a href="https://streeteasy.com/blog/tips-advice/" target="" class="">See all Tips & Advice</a></li>
-                            <li><a href="https://streeteasy.com/blog/tips-advice/ask-us/" target="" class="">Ask Us</a></li>
-                            <li><a href="https://streeteasy.com/blog/tips-advice/nyc-explained/" target="" class="">NYC Explained</a></li>
+                            <li class="sub-navigation-mobile-link"><a href="" target="" class="">See all Tips & Advice</a></li>
+                            <li><a href="" target="" class="">Ask Us</a></li>
+                            <li><a href="" target="" class="">NYC Explained</a></li>
                             <li><a href="/talk" target="_blank" class="">Discussions</a></li>
                         </ul>
                     </li>
@@ -250,7 +243,7 @@
                 <div class="row justify-content-center">
                     <div class="col-12">
                         <div class="post-masthead__container">
-                            <div class="post-masthead__intro-text">
+                            <div class="post-masthead__intro-text text-center">
                                 {!!  $result->content !!}
                             </div>
                         </div>
@@ -269,31 +262,34 @@
                                         <div class="listing__wrapper">
                                             <div class="listing__image-container">
                                                 <div class="listing__image-inner-container">
-                                                    <a href="#" target="_blank">
-                                                        <img class="listing__image" src="{{asset('/images/cozmo/'.$result->image)}}" alt="nyc open houses september 19 and 20">
+                                                    <a href="@if($sliderFlag == 'true') {{ url('/property/detail/' . $result->thisProperty->id)}} @endif" target="_blank">
+                                                        <img class="listing__image" src=" {{asset('/images/cozmo/'.$result->image)}}" alt="nyc open houses september 19 and 20">
                                                     </a>
                                                 </div>
                                             </div>
+                                            @if($sliderFlag == 'true')
                                             <div class="listing__address-container">
-                                                <h4 class="listing__address"><a href="#" target="_blank">781 Union St. #4R</a></h4>
+                                                <h4 class="listing__address"><a href="#" target="_blank">{{$result->thisProperty->address->name_of_street}},  {{$result->thisProperty->address->city}}</a></h4>
                                             </div>
                                             <div class="listing__info-container">
                                                 <div class="listing__details">
                                                     <div class="listing__detail-item">
-                                                        <span class="listing__detail-item-label">Space</span> 1 bed,
+                                                        <span class="listing__detail-item-label">Space</span> {{$result->thisProperty->no_of_bedroom}} bed,
                                                         1 bath                </div>
                                                     <div class="listing__detail-item">
-                                                        <span class="listing__detail-item-label">Price</span> $650,000                </div>
+                                                        <span class="listing__detail-item-label">Price</span> ${{$result->thisProperty->price}}                </div>
                                                     <div class="listing__detail-item">
                                                         <span class="listing__detail-item-label">Neighborhood</span>
-                                                        <a href="#"> Park Slope </a>
+                                                        <a href="#"> {{$result->thisProperty->address->neighborhood}} </a>
                                                     </div>
                                                 </div>
                                                 <div class="listing__description-container">
-                                                    <div class="listing__description"><p>We kick off our top NYC open houses for September 19 and 20 in Park Slope, where buyers can hit the jackpot with this prewar co-op. It&#8217;s a 1-bedroom-plus-home-office that features super-low monthlies, inspiring views, and a bright new eat-in kitchen with dishwasher. There&#8217;s a lot of upside here, given the price, space, and location close to 7th Avenue and <a href="#" target="_blank" rel="noopener">Prospect Park</a>. <a href="#">Evan Duby</a> at Compass is the listing agent.</p>
+                                                    <div class="listing__description">
+                                                        {!! $result->thisProperty->description !!}
                                                     </div>
                                                 </div>
                                             </div>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -339,26 +335,36 @@
 
                                     <div class="block-listings">
                                         <p class="block-listings__continue d-block">Article continues below</p>
-                                        <p class="block-listings__header">
-                                            <strong>Brooklyn 1-2BRs Under $1M on StreetEasy</strong>
-                                        </p>
+
+                                    @if($sliderFlag == 'true')
+                                            <p class="block-listings__header">
+
+                                            <strong>{{$result->thisProperty->address->city}} 1-{{$result->thisProperty->no_of_bedroom}}BRs Under ${{$result->thisProperty->price}} on Cozmo</strong>
+                                            </p>
+                                  @endif
+
+
+
+
                                         <div class="se-carousel" data-slides="3" data-arrows="1">
                                             <div class="block-listings__list" data-element="list">
+                                           @foreach($slider as $Slider)
                                                 <div>
                                                     <div class="block-listings__card">
                                                         <a class="block-listings__card-link ga-event"
                                                            data-event-action="card_click"
                                                            data-event-label="sales"
                                                            target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
+                                                           href="{{ url('/property/detail/' . $Slider->id)}}"> </a>
+{{--                                                        @dd($Slider->main_image);--}}
+                                                        <div class="block-listings__card-image" style="background-image: url('/images/cozmo/{{$Slider->main_image}}')"></div>
                                                         <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Park Slope</span>
+                                                            <span class="block-listings__card-eyebrow">{{$Slider->neighborhood}}</span>
                                                             <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">376 15th Street</span>
+                                                                <span class="block-listings__card-title">{{$Slider->name_of_street}}</span>
                                                             </div>
                                                             <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$850,000</span>
+                                                                <span class="block-listings__card-price">${{$Slider->price}}</span>
                                                             </div>
                                                             <div class="block-listings__card-rooms">
                                                                 <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
@@ -372,314 +378,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="https://streeteasy.com/building/st-george-tower/18e"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Brooklyn Heights</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">111 Hicks Street</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$795,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Vinegar Hill</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">102 Gold Street</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$999,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Brooklyn Heights</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">57 Montague Street</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$895,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Park Slope</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">343 Fourth Avenue</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$725,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="https:#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Prospect Heights</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">415 Saint John's Place</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$825,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										2									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Bedford-Stuyvesant</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">210 Pulaski Street</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$559,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Carroll Gardens</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">342 Bond Street</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$848,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										2									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Prospect Heights</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">21 Butler Place</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$599,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Williamsburg</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">34 North Seventh Street</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$795,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Brighton Beach</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">35 Sea Coast Terrace</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$500,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <div class="block-listings__card">
-                                                        <a class="block-listings__card-link ga-event"
-                                                           data-event-action="card_click"
-                                                           data-event-label="sales"
-                                                           target="_blank"
-                                                           href="#"> </a>
-                                                        <div class="block-listings__card-image" style="background-image: url('img/apartment.png')"></div>
-                                                        <div class="block-listings__card-body">
-                                                            <span class="block-listings__card-eyebrow">Park Slope</span>
-                                                            <div class="block-listings__card-title-wrapper">
-                                                                <span class="block-listings__card-title">209 Lincoln Place</span>
-                                                            </div>
-                                                            <div class="block-listings__card-price-line">
-                                                                <span class="block-listings__card-price">$735,000</span>
-                                                            </div>
-                                                            <div class="block-listings__card-rooms">
-                                                                <img class="block-listings__card-icon" width="20" height="12" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/beds@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bedrooms">
-										1									</span>
-                                                                <span class="block-listings__card-divider">|</span>
-                                                                <img class="block-listings__card-icon" width="17" height="13" src="https://streeteasy.com/blog/wp-content/themes/se-blog-2017/assets/images/bath@1.5x.svg" alt="">
-                                                                <span class="block-listings__card-bathrooms">
-										1									</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        @endforeach
                                             </div>
                                         </div>
                                     </div>
@@ -697,7 +396,7 @@
 
         </div>
     </div>
-    </div>
+
 
     <div class="email-horizontal-band__wrapper">
         <div class="container">
@@ -750,96 +449,14 @@
             </div>
         </div>
     </div>
-    <footer>
-        <div class="sefooter container">
-            <div class="se-footer-top">
-                <div class="se-footer-col">
-                    <li><a href="https://streeteasy.com/hamptons">The Hamptons Site</a></li>
-                    <li><a href="https://streeteasy.com/new_jersey">New Jersey Site</a></li>
-                </div>
-                <hr class="footer-hr">
-                <div class="se-footer-col">
-                    <li><a href="https://streeteasy.com/blog/"><b>BLOG</b></a></li>
-                    <li><a href="https://streeteasy.com/blog/company-news/"><b>COMPANY NEWS</b></a></li>
-                    <li><a href="https://streeteasy.com/jobs"><b>WE'RE HIRING!</b></a></li>
-                    <br>
-                    <li class="se-footer-hide-mobile"><a href="https://streeteasy.com/nyc/submit_your_listings?lct=footer&prd=submit_your_listing"><b>SUBMIT YOUR LISTINGS</b></a></li>
-                    <li class="se-footer-hide-mobile"><a href="/agent-resources/advertise"><b>ADVERTISE</b></a></li>
-                    <li class="se-footer-hide-mobile"><a href="http://press.streeteasy.com" target="_blank"><b>PRESS</b></a></li>
-                </div>
-                <div class="se-footer-col se-footer-hide-mobile">
-                    <li><a href="https://support.streeteasy.com/?_ga=1.229755228.1721436671.1441405484" target="_blank">Help</li>
-                    <li><a href="//www.zillow.com/corp/Terms.htm">Terms of Use & Privacy Policy</a></li>
-                    <li><a href="//www.zillow.com/corp/Privacy.htm#behavioralAdvertising">Ad Choice</a></li>
-                </div>
-                <div class="se-footer-col se-footer-mobile-links">
-                    <li><a href="//www.zillow.com/corp/Terms.htm">Terms of Use & Privacy Policy</a></li>
-                    <li><a href="https://support.streeteasy.com/?_ga=1.229755228.1721436671.1441405484" target="_blank">Help</li>
-                </div>
-                <div class="se-footer-col se-footer-mobile-badges">
-                    <ul>
-                        <li id="app_store_link">
-                            <a class="mobile-link" href="https://handler.fiksu.com/click?adid=c8b968c0-2fab-0132-8d30-22000b2ca05d&amp;adnet=XVT7PFS3&amp;appid=660363289&amp;b=10l3Ik&amp;device_class=ios&amp;s=00001">
-                            </a>
-                        </li>
-                        <li id="android_link">
-                            <a class="mobile-link" href="https://play.google.com/store/apps/details?id=com.zillow.android.streeteasy&amp;referrer=utm_fiksu_adid%3D930995">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+<script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail4.js')}}' id='seglobalcomponents-js'></script>
+<script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail5.js')}}' id='zchimp-widget-js'></script>
 
-            <div class="se-footer-lower">
-                <div class="se-footer-trademark">
-                    StreetEasy is a brand and registered trademark of Zillow, Inc. Zillow, Inc. has a real estate brokerage license in multiple states. A list of these real estate licenses can be found <a class="" target="_blank" rel="noopener noreferrer" href="https://www.zillow.com/info/real-estate-licenses/">here</a>.
-                </div>
+<script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail6.js')}}' id='wp-polls-js'></script>
+<script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail7.js')}}' id='comment-reply-js'></script>
 
-                <div class="se-footer-links">
-                    <a href="https://www.zillow.com/">Zillow</a>
-                    <span>·</span>
-                    <a href="https://www.trulia.com/">Trulia</a>
-                    <span>·</span>
-                    <a href="https://hotpads.com/">Hotpads</a>
-                    <span>·</span>
-                    <a href="https://www.nakedapartments.com/">Naked apartments</a>
-                    <span class="Footer-dot dFooter-dot--zgBrands">·</span>
-                    <a href="https://outeast.com">Out East</a>
-                </div>
+<script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail8.js')}}' id='wpbp-scripts-js'></script>
+<script type='text/javascript' src='{{asset('assets/masterFrontend/js/detail9.js')}}' id='wp-embed-js'></script>
 
-                <div class="se-footer-copyright">
-                    Zillow Inc. Sites © 2006-2020 Zillow
-                    <span class="hidden-xs">
-                    <span class="se-footer-dot">·</span>
-                    <a href="http://nytm.org/made" rel="nofollow">Made In NYC</a>
-                    <span class="se-footer-dot">·</span>
-                    Powered by Bikes, Coffee and Doughnuts.
-                </span>
-                </div>
-            </div>
-
-            <img class="se-footer-city-graphic" src="https://streeteasy.com/blog/wp-content/plugins/se-global-components/svgs/Footer-Illo-D.svg" alt="" />
-
-        </div>
-        <script type='text/javascript' src='https://streeteasy.com/blog/wp-content/plugins/se-global-components/js/seglobalcomponents.js?ver=1599862736' id='seglobalcomponents-js'></script>
-        <script type='text/javascript' src='https://streeteasy.com/blog/wp-content/plugins/zchimp-widget/js/ajax.js?ver=5.5.1' id='zchimp-widget-js'></script>
-        <script type='text/javascript' id='wp-polls-js-extra'>
-            /* <![CDATA[ */
-            var pollsL10n = {"ajax_url":"https:\/\/streeteasy.com\/blog\/wp-admin\/admin-ajax.php","text_wait":"Your last request is still being processed. Please wait a while ...","text_valid":"Please choose a valid poll answer.","text_multiple":"Maximum number of choices allowed: ","show_loading":"1","show_fading":"1"};
-            /* ]]> */
-        </script>
-        <script type='text/javascript' src='https://streeteasy.com/blog/wp-content/plugins/wp-polls/polls-js.js?ver=2.75.3' id='wp-polls-js'></script>
-        <script type='text/javascript' src='https://streeteasy.com/blog/wp-includes/js/comment-reply.min.js?ver=5.5.1' id='comment-reply-js'></script>
-        <script type='text/javascript' id='wpbp-scripts-js-extra'>
-            /* <![CDATA[ */
-            var wpbp = {"ajax_url":"https:\/\/streeteasy.com\/blog\/wp-admin\/admin-ajax.php","ajax_nonce":"0c6eb9d54c"};
-            /* ]]> */
-        </script>
-        <script type='text/javascript' src='https://streeteasy.com/blog/wp-content/themes/se-blog-2017/dist/scripts/wpbp.js?ver=1599866209' id='wpbp-scripts-js'></script>
-        <script type='text/javascript' src='https://streeteasy.com/blog/wp-includes/js/wp-embed.min.js?ver=5.5.1' id='wp-embed-js'></script>
-    </footer>
-
-    <script async defer src="//assets.pinterest.com/js/pinit.js" data-pin-build="parsePins"></script>
-    <script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam.nr-data.net","licenseKey":"05c5d4f20c","applicationID":"86136257","transactionName":"M1RaZEMDXhJUUEFdWAoeeVNFC18PGkBcWlAIVA==","queueTime":0,"applicationTime":323,"atts":"HxNZEgsZTRw=","errorBeacon":"bam.nr-data.net","agent":""}</script><script type="text/javascript" id="d__inj" class="d__inj_delayed" src="/dstlstrt.js" defer></script><style type="text/css">#d__fFH{position:absolute;top:-5000px;left:-5000px}#d__fF{font-family:serif;font-size:200px;visibility:hidden}#ubbfccwz{display:none!important}</style>
 
     @endsection

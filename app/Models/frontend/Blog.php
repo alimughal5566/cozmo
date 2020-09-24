@@ -31,13 +31,27 @@ class Blog extends Model
 
     public function detailBlog($id){
         $result=DB::table('blog')->find($id);
-//        dd($result);
-        $subCat = DB::table('subcategories')->where('id' , $result->sub_cate_id)->pluck('title')->first();
-//        dd($subCat);
-        DB::table('blog')->where('id' , $result->id)->update(['view_count' =>$result->view_count+1]);
-//       dd($result);
-        $result->sub_cate_title = $subCat;
-//        dd($result);
-        return $result;
+        if($result->property_id != 'false'){
+            DB::table('blog')->where('id' , $result->id)->update(['view_count' =>$result->view_count+1]);
+            $thisProperty = DB::table('properties')->where('id', $result->property_id)->first();
+            $address = DB::table('property_address')->where('property_id', $thisProperty->id)->first();
+            $thisProperty->address = $address;
+            $subCat = DB::table('subcategories')->where('id' , $result->sub_cate_id)->pluck('title')->first();
+            $cat = DB::table('blog_categories')->where('id' , $result->blog_category_id)->pluck('title')->first();
+            $result->sub_cate_title = $subCat;
+            $result->cate_title = $cat;
+            $result->thisProperty  = $thisProperty;
+//            dd($result);
+            return $result;
+        }
+        else{
+            DB::table('blog')->where('id' , $result->id)->update(['view_count' =>$result->view_count+1]);
+            $subCat = DB::table('subcategories')->where('id' , $result->sub_cate_id)->pluck('title')->first();
+            $cat = DB::table('blog_categories')->where('id' , $result->blog_category_id)->pluck('title')->first();
+            $result->sub_cate_title = $subCat;
+            $result->cate_title = $cat;
+            return $result;
+        }
+
     }
 }

@@ -40,6 +40,7 @@ class Blog extends Model
             $files->move(public_path('images\cozmo'), $name);
         }
         if ($request->property == null){
+//            dd('null');
             $data =   DB::table('blog')->insert([
                 'title' => $request->title,
                 'type' => $request->type,
@@ -57,6 +58,7 @@ class Blog extends Model
         }
 
         if($request->property != null){
+//            dd('not null');
             $data =   DB::table('blog')->insert([
                 'title' => $request->title,
                 'type' => $request->type,

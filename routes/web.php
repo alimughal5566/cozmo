@@ -491,6 +491,7 @@ Route::get('/BlogDetail/{id}', 'frontend\BlogController@detail')->name('blog.det
    // Front End Properties Portion
 Route::get('/', 'frontend\PropertiesController@index')->name('UserblogHomeView');
 Route::get('/UserSales', 'frontend\PropertiesController@index')->name('UserblogHomeView');
+Route::get('/UserRentals', 'frontend\PropertiesController@rentalsIndex')->name('UserblogHomeView-rentals');
 Route::get('/property/detail/{id}', 'frontend\PropertiesController@propertyDetail')->name('propertyDetails');
 
    // End of Properties Portion
