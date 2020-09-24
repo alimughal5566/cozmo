@@ -167,9 +167,6 @@ input:checked + .slider:before {
                     </div>
 				</div>
 			</div>
-		</div>
-
-
     </form>
   </div>
 

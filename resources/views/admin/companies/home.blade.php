@@ -125,7 +125,7 @@
                                     <th>company_address</th>
                                     <th>company_phone_number</th>
                                     <th>company_email</th>
-                                    <th>created_date</th>
+{{--                                    <th>created_date</th>--}}
                                     <th>description</th>
                                     <th width="130" class="text-center">@lang('packages.actions')</th>
                                 </tr>
@@ -146,13 +146,15 @@
                                         <td>{{$user->company_address}}</td>
                                         <td>{{$user->company_phone_number}}</td>
                                         <td>{{$user->company_email}}</td>
-                                        <td>{{$user->created_date}}</td>
+{{--                                        <td>{{$user->created_date}}</td>--}}
                                         <td>{{$user->description}}</td>
-                                       <td>
+                                       <td class="text-center">
+                                           <div class="actions-btns " style="display: flex; justify-content: center">
+
                                            <a href="/company/edit/{{$user->id}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
 
                                            <a href="/company/delete/{{$user->id}}" class="btn btn-sm btn-danger removePartner"><i class="fa fa-trash"></i></a>
-
+                                           </div>
                                        </td>
                                 </tr>
                                 @endforeach

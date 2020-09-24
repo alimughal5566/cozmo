@@ -119,8 +119,8 @@
                                     <th>name</th>
                                     <th>unit_number</th>
                                     <th>additional_info</th>
-                                    <th>created_date</th>
-                                    <th>updated_date</th>
+                                    {{--                                    <th>created_date</th>--}}
+                                    {{--                                    <th>updated_date</th>--}}
                                     <th>no_of_units</th>
                                     <th>no_of_stories</th>
                                     <th>condos</th>
@@ -140,16 +140,16 @@
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->unit_number}}</td>
                                         <td>{{$user->additional_info}}</td>
-                                        <td>{{$user->created_date}}</td>
-                                        <td>{{$user->updated_date}}</td>
+                                        {{--                                        <td>{{$user->created_date}}</td>--}}
+                                        {{--                                        <td>{{$user->updated_date}}</td>--}}
                                         <td>{{$user->no_of_units}}</td>
                                         <td>{{$user->no_of_stories}}</td>
                                         <td>{{$user->condos}}</td>
                                         <td>{{$user->co_ops}}</td>
                                         <td>{{$user->multi_families}}</td>
                                         <td>{{$user->rental_units}}</td>
-                                        <td>
-                                            <div class="actions-btns dule-btns float-lg-right">
+                                        <td class="text-right">
+                                            <div class="actions-btns " style="display: flex; justify-content: center">
                                                 <a href="/building_info/edit/{{$user->id}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
 
                                                 <a href="/building_info/delete/{{$user->id}}" class="btn btn-sm btn-danger removePartner"><i class="fa fa-trash"></i></a>
@@ -172,6 +172,7 @@
     </div>
     <script src="{{url('backend/sweetalerts/sweetalert2.all.js')}}"></script>
     <script type="text/javascript">
+
         $( "body" ).on( "click", ".delete", function () {
             var task_id = $( this ).attr( "data-id" );
             var form_data = {
@@ -211,6 +212,7 @@
 
         } );
     </script>
+
     <style>
         .sweet-alert h2 {
             font-size: 1.3rem !important;

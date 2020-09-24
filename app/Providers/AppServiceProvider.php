@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,10 +13,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-//        view()->share("layouts.header", [
-//            "data" => "123"
-//        ]);
 
+        view()->composer('layouts.top-bar', function($view) {
+            $data=DB::table('property_address')->get();
+            $view->with('data', $data);
+        });
         view()->composer('layouts.header', function($view) {
             $myvar=DB::table('blog')->get();
             $myvar2=DB::table('blog')->limit(4)->get();

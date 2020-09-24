@@ -1,5 +1,4 @@
-
-<div class="app-sidebar__overlay" data-toggle="sidebar"></div>
+ <div class="app-sidebar__overlay" data-toggle="sidebar"></div>
     <aside class="app-sidebar">
 
       @if(Auth::user()->image_name!="")
@@ -28,7 +27,17 @@
 
           {{--          --}}
 
-         <li><a class="app-menu__item <?php if(Request::segment(1) == "product") echo "active"; ?>" href="{{route('properties.home')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Properties</span></a></li>
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "product") echo "active"; ?>" href="{{route('addressHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">property address </span></a></li>
+{{--          --}}
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('companies')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Company</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('building_info')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Building Info</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('building_documents')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Building Documents</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "users") echo "active"; ?>" href="{{url('building_amenities')}}"><i class="app-menu__icon fa fa-users"></i><span class="app-menu__label">Building Amenities</span></a></li>
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "nearby_transit_lines.home") echo "active"; ?>" href="{{route('nearby_transit_lines.home')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Nearby Transit Lines</span></a></li>
+
+
+          <li><a class="app-menu__item <?php if(Request::segment(1) == "properties") echo "active"; ?>" href="{{url('/properties/home')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Properties</span></a></li>
+         <li><a class="app-menu__item <?php if(Request::segment(1) == "MultiCompetitions") echo "active"; ?>" href="{{url('MultiCompetitions')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Multi Competitions</span></a></li>
       <!--    <li><a class="app-menu__item <?php if(Request::segment(1) == "MultiCompetitions") echo "active"; ?>" href="{{url('MultiCompetitions')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Multi Competitions</span></a></li>-->
          <li><a class="app-menu__item <?php if(Request::segment(1) == "propertyHomeView") echo "active"; ?>" href="{{route('propertyHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Property Type</span></a></li>
          <li><a class="app-menu__item <?php if(Request::segment(1) == "saleHomeView") echo "active"; ?>" href="{{route('saleHomeView')}}"><i class="app-menu__icon fa fa-gift"></i><span class="app-menu__label">Property sale Type</span></a></li>

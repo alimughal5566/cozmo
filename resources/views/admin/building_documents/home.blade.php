@@ -123,7 +123,7 @@
                                     <th>unit_no</th>
                                     <th>detail</th>
                                     <th>building_id</th>
-                                    <th>created_date</th>
+{{--                                    <th>created_date</th>--}}
 
 
                                     <th width="130" class="text-center">@lang('packages.actions')</th>
@@ -147,12 +147,12 @@
                                         <td>{{$user->unit_no}}</td>
                                         <td>{{$user->detail}}</td>
                                         <td>{{$user->detail}}</td>
-                                        <td>{{$user->create_date}}</td>
+{{--                                        <td>{{$user->create_date}}</td>--}}
 
 
 
-                                        <td>
-                                            <div class="actions-btns dule-btns float-lg-right">
+                                        <td class="text-right">
+                                            <div class="actions-btns " style="display: flex; justify-content: center">
                                                 <a href="/building_document/edit/{{$user->id}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
 
                                                 <a href="/building_document/delete/{{$user->id}}" class="btn btn-sm btn-danger removePartner"><i class="fa fa-trash"></i></a>

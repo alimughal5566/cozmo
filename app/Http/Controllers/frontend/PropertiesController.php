@@ -46,10 +46,10 @@ class PropertiesController extends Controller
         $appartment= DB::table('properties')->where('property_type' , 'appartment')->where('property_for' , 'rentals')->where('feature_flag', '=' , '0')->join('property_address', 'properties.id', '=', 'property_address.property_id')->get();
         $random_feature_right = DB::table('properties')->where('feature_flag', '=' , '1')->inRandomOrder()->orderBy('title' , 'asc')->limit(3)->join('property_address', 'properties.id', '=', 'property_address.property_id')->get();
         $random_feature_left = DB::table('properties')->join('property_address', 'properties.id', '=', 'property_address.property_id')->where('feature_flag', '=' , '1')->limit(2)->get();
-        $latestTopBlog = DB::table('blog')->where('type' , 'rentals')->where('feature_flag','0')->orderBy('date_created')->limit(1)->first();
+        $latestTopBlog = DB::table('blog')->where('type' , 'rentals')->where('feature_flag','0')->orderBy('date_created' , 'desc')->limit(1)->first();
 
         $rt = $latestTopBlog->id;
-        $latestBlog = DB::table('blog')->where('type' , 'rentals')->where('id' ,'!=' , $rt)->where('feature_flag' , '0')->orderBy('date_created')->limit(3)->get();
+        $latestBlog = DB::table('blog')->where('type' , 'rentals')->where('id' ,'!=' , $rt)->where('feature_flag' , '0')->orderBy('date_created','desc')->limit(3)->get();
 
         $TopmostPopular = DB::table('blog')->where('type' , 'rentals')->where('feature_flag' , '=' ,'0')->orderBy('view_count' , 'desc')->limit(1)->first();
 //        dd($TopmostPopular);
@@ -65,15 +65,21 @@ class PropertiesController extends Controller
     }
 
     public function propertyDetail($id){
-//        dd($id);
         $data=DB::table('properties')->find($id);
-//        dd($data);
         $result = DB::table('properties')->where('id' , $data->id)->update(['view_count' =>$data->view_count+1]);
         $address = DB::table('property_address')->where('id'  , $id)->first();
-//        $saleHistory=DB::table('listing_sale_price_changes')->where('id',$id)->latest('date_change')->first();
-        //$data->addresses = $address;
-        //dd($data);
-        return view('frontend.property.detail',compact('data', 'address'));
+
+
+        $amenities=DB::table('building_amenities')->where('building_id',$data->id)
+            ->get();
+
+if ($amenities){
+    return view('frontend.property.detail',compact('data', 'address','amenities'));
+}else{
+    $amenities=0;
+    return view('frontend.property.detail',compact('data', 'address','amenities'));
+
+}
 
     }
 

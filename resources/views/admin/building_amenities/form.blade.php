@@ -137,6 +137,10 @@
 {{--                        <label>Detail</label>--}}
 {{--                        <input id="detail" value="{{ old('detail')}}" type="text" placeholder="Enter detail" class="form-control" name="detail" required autofocus required="">--}}
 {{--                    </div>--}}
+                    <div class="form-group">
+                        <label>Images</label>
+                        <input id="images" value="{{ old('images')}}" type="text" placeholder="Enter image" class="form-control" name="images" required autofocus required="">
+                    </div>
                 </div>
 
                     <div class="col-md-4 mt-4">

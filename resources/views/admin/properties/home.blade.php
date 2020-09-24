@@ -39,8 +39,6 @@
             <li class="breadcrumb-item">Properties</li>
         </ul>
     </div>
-
-
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
@@ -92,11 +90,8 @@
 
                                 <td class="text-center">
                                     <div class="actions-btns dule-btns float-lg-right">
-
                                         <a href="{{ url('/properties/edit/' . $row->id)}}" class="btn btn-sm btn-info" style="float: left;"><i class="fa fa-edit"></i></a>
                                         <a href="javascript:void(0)"   data-id="{{$row->id}}" class="btn btn-sm btn-danger delete "><i class="fa fa-trash"></i></a>
-
-
                                     </div>
                                 </td>
                             </tr>

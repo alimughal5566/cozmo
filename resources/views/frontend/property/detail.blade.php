@@ -163,7 +163,6 @@
                         <div style="" class="html5gallery" data-skin="darkness" data-width="480" data-height="272" data-resizemode="fill" >
                             <img src="{{asset('/images/cozmo/'.$data->main_image)}}" alt="Tulips">
                             <img src="{{asset('/images/cozmo/'.$data->video)}}" alt="Tulips">
-
                             <!-- Add Youtube video to Gallery -->
                             <video width="320" height="240" controls>
                                 <source src="{{asset('/images/cozmo/'.$data->video)}}" type="video/mp4">

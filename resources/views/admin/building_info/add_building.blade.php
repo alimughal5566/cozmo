@@ -143,7 +143,7 @@
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>No of Units</label>
-                                <input onkeyup="change_short()" id="name" type="text" placeholder="Enter no_of_units" class="form-control" name="no_of_units"  value="{{ old('no_of_units') }}" required autofocus required="">
+                                <input onkeyup="change_short()" id="name" type="number" placeholder="Enter no_of_units" class="form-control" name="no_of_units"  value="{{ old('no_of_units') }}" required autofocus required="">
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">

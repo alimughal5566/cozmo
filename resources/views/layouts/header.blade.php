@@ -11,7 +11,7 @@
 
             <div class="Container">
                 <div class="Header-logoDesktop">
-                    <a href="#" class="Logo">
+                    <a href="{{url('/')}}" class="Logo">
                         <img class="Logo-image" src="{{asset('assets/masterFrontend/img/lgo.png   ')}}">
                     </a>
                 </div>

@@ -141,30 +141,27 @@
                                 <input required id="name"  type="text" value="{{$user[0]->name}}" placeholder="name" class="form-control" name="name">
                             </div>
                         </div>
-                        <div class="row">
                             <div class="col-sm-6">
-                                <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                                <input type="hidden" name="user_id" value="{{$user[0]->id}}">
                                 <div class="form-group">
                                     <label for="title">Value:</label>
-                                    <input required id="value"  type="text" value="{{$data[0]->value}}" placeholder="value" class="form-control" name="value">
+                                    <input required id="value"  type="text" value="{{$user[0]->value}}" placeholder="value" class="form-control" name="value">
                                 </div>
                             </div>
-                            <div class="row">
                                 <div class="col-sm-6">
-                                    <input type="hidden" name="user_id" value="{{$data[0]->id}}">
+                                    <input type="hidden" name="user_id" value="{{$user[0]->id}}">
                                     <div class="form-group">
                                         <label for="title">Sort Order:</label>
-                                        <input required id="sort_order"  type="text" value="{{$data[0]->sort_order}}" placeholder="sort_order" class="form-control" name="sort_order">
+                                        <input required id="sort_order"  type="text" value="{{$user[0]->sort_order}}" placeholder="sort_order" class="form-control" name="sort_order">
                                     </div>
                                 </div>
-
-                        <div class="col-sm-6">
+                        <div class="col-sm-12 text-right">
                             <div class="form-group" style="margin-top: 27px !important;">
                                 <button class="btn btn-primary" type="submit">Save</button>
                             </div>
                         </div>
-                    </div>
-                </div>
+                        </div>
+                        </div>
             </form>
         </div>
 
