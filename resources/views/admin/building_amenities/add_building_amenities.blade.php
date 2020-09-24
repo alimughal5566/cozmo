@@ -123,10 +123,10 @@
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>Select Title</label>
-                                <select name="parent_id" id="" class="form-control">
-                                    <option value=""selected>Select Parent</option>
+                                <select name="building_id" id="" class="form-control">
+                                    <option value=""selected>Select building</option>
                                     @foreach($data as $datum)
-                                    <option value="{{$datum->id}}">{{$datum->building_amenities_title}} </option>
+                                    <option value="{{$datum->id}}">{{$datum->name}} </option>
                                     @endforeach
                                 </select>
                             </div>

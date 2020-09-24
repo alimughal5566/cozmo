@@ -22,7 +22,7 @@ class Building_amenitiesController extends Controller
     public function building()
     {
 //        dd('document');
-        $data=DB::table('building_amenities')->get();
+        $data=DB::table('building_info')->get();
 //        dd($data);
         return view('admin.building_amenities.add_building_amenities',compact('data'));
     }
@@ -45,7 +45,7 @@ class Building_amenitiesController extends Controller
                 'listing_for' => $request->listing_for,
                 'type' => $request->type,
                 'images' => $imagesDbPath ?? '',
-                'parent_id' => $request->parent_id ?? '',
+                'building_id' => $request->building_id ?? '',
             ]);
 //        dd('wwww');
             return redirect()->route('index_building_amenities')->with('success', ' Create Successfuly');

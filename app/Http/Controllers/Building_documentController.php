@@ -22,7 +22,8 @@ class Building_documentController extends Controller
     public function building()
     {
 //        dd('document');
-        return view('admin.building_documents.add_building_documents');
+        $data=DB::table('building_info')->get();
+        return view('admin.building_documents.add_building_documents',compact('data'));
     }
 
     public function store(Request $request)

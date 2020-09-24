@@ -119,6 +119,18 @@
                     <div class="row">
 
                         <div class="col-sm-6">
+                        <div class="form-group">
+                                <label>Select Building</label>
+                                <select name="building_id" id="" class="form-control">
+                                    <option value=""selected>Select building</option>
+                                    @foreach($data as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->name}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
                             <div class="form-group">
                                 <label>Document</label>
                                 <input onkeyup="change_short()" id="name" type="text" placeholder="Enter document" class="form-control" name="document"  value="{{ old('document') }}" required autofocus required="">
