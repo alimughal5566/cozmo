@@ -20,9 +20,9 @@ class AppServiceProvider extends ServiceProvider
 
         view()->composer('layouts.header', function($view) {
             $myvar=DB::table('blog')->get();
-            $myvar2=DB::table('blog')->get();
-            $rest = [$myvar,$myvar2];
-//            $myvar =  'cvbnm,';
+            $myvar2=DB::table('blog')->limit(4)->get();
+            $mostPopularBlog=DB::table('blog')->orderBy('date_created' , 'desc')->limit(3)->get();
+            $rest = [$myvar,$myvar2,$mostPopularBlog ];
             $view->with('data' , $rest);
         });
     }

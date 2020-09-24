@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Models\frontend\Blog;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -32,10 +33,28 @@ class BlogController extends Controller
 
     }
     public function detail($id){
+        $sliderFlag = true;
         $result = $this->blogg->detailBlog($id);
+//        dd($result);
+        if($result->property_id == 'false'){
+            $sliderFlag = false;
+        }
+        if($sliderFlag== 'true'){
+            $slider= DB::table('properties')->where('feature_flag', '=' , '0')->where('price' , '<=' , $result->thisProperty->price)->where('no_of_bedroom', '<=' , $result->thisProperty->no_of_bedroom)->join('property_address', 'properties.id', '=', 'property_address.property_id')->where('city' , '=' , $result->thisProperty->address->city)->get();
+//               $slider=DB::table('properties')->join('property_address', 'properties.id', '=', 'property_address.property_id')->get();
+        }
+         else{
+             $slider= DB::table('properties')->where('feature_flag', '=' , '0')->join('property_address', 'properties.id', '=', 'property_address.property_id')->limit(10)->get();
+             dd($slider);
+//             dd($slider);
+//             $slider=DB::table('properties')->get();
+
+         }
+
 
 //        dd($result);
-        return view('frontend.blog.detail' , compact('result'));
+//        dd($slider);
+        return view('frontend.blog.detail' , compact('result' , 'slider' , 'sliderFlag'));
 
     }
 

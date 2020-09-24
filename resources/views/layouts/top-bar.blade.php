@@ -1,13 +1,14 @@
 @include('layouts.flashmessage')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <section class="">
     <div class="u-width--984 u-centered">
 
         <div class="Home-searchTypeContainer">
 
-            <span class="Home-searchType Title Title--primaryMd isCurrent">Sales</span>
-            <a class="Home-searchType Title Title--primaryMd"
-               href='#'>Rentals</a>
+          <a href="{{url('/UserSales')}}">  <span class="Home-searchType Title Title--primaryMd isCurrent" >Sales</span> </a>
+            <a class="Home-searchType Title Title--primaryMd top_active  "
+               href='{{url('/UserRentals')}}'>Rentals</a>
 
         </div>
 
@@ -4931,3 +4932,9 @@
         <!-- End Recent Searches / Explore NYC -->
     </div>
 </section>
+{{--<script>--}}
+{{--    // $('.Home-searchType').click(function(){--}}
+{{--    //    $('.Home-searchType').removeClass('isCurrent');--}}
+{{--    //    $(this).addClass('isCurrent');--}}
+{{--    // });--}}
+{{--</script>--}}

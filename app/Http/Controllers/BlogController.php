@@ -60,41 +60,49 @@ class BlogController extends Controller
 	public function blogStore(Request $request)
 	{
 //	    dd($request);
-        if($request->featured == '1'){
-             $check=DB::table('blog')->where('feature_flag' ,'=','1')->count();
-             if($check==1){
-                 Session::flash('Failed', 'You Can Add Only One Main Featured Blog ');
-                 return redirect()->route('blogHomeView');
-             }
-        }
-        if($request->featured == '2'){
-             $check=DB::table('blog')->where('feature_flag' ,'=','2')->count();
-//             dd($check);
-             if($check>=2){
-//                 dd('less than 3');
-                 Session::flash('Failed', 'You Can Add Only 2  Featured Blogs  ');
-                 return redirect()->route('blogHomeView');
-             }
-        }
-        if ($request->hasFile('image')){
-//            $data=$this->blog_cat->blogStoredata($request);
-            $data = $this->blogg->blogStoredata($request);
 
-            if($data){
-                Session::flash('success', 'Successfully Added Blog ');
-                return redirect()->route('blogHomeView');
+//        dd($request);
+
+            if ($request->featured == '1') {
+                $check = DB::table('blog')->where('feature_flag', '=', '1')->count();
+                if ($check == 1) {
+                    Session::flash('Failed', 'You Can Add Only One Main Featured Blog  ');
+                    return redirect()->route('blogHomeView');
+                }
             }
-            else{
-                Session::flash('Failed', 'Some Went Wrong');
-                return redirect()->route('blogHomeView');
+            if ($request->featured == '2') {
+                $check = DB::table('blog')->where('feature_flag', '=', '2')->count();
+//             dd($check);
+                if ($check >= 2) {
+//                 dd('less than 3');
+                    Session::flash('Failed', 'You Can Add Only 2  Featured Blogs  ');
+                    return redirect()->route('blogHomeView');
+                }
             }
+
+
+
+            if ($request->hasFile('image')) {
+//            $data=$this->blog_cat->blogStoredata($request);
+                $data = $this->blogg->blogStoredata($request);
+
+                if ($data) {
+                    Session::flash('success', 'Successfully Added Blog ');
+                    return redirect()->route('blogHomeView');
+                } else {
+                    Session::flash('Failed', 'Some Went Wrong');
+                    return redirect()->route('blogHomeView');
+                }
 
 
 //      dd($request);
 
 
 //			return redirect()->back()->withErrors(['error' => $e->getMessage()])->withInput();
-		}
+            }
+
+
+
 	}
 
 	public function blogEdit($id)

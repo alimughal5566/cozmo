@@ -164,7 +164,6 @@
         $(document).ready(function() {
             $('select[name="blog_category_id"]').on('change', function() {
                 var cat_id = $(this).val();
-                alert(cat_id);
                 if(cat_id) {
                     $.ajax({
                         url: '/sub_category/load/'+cat_id,

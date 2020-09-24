@@ -87,7 +87,7 @@
 
 
 
-
+                    @include('layouts.footer')
 
                 </main>
             </div>
@@ -108,7 +108,7 @@
 {{----}}
 
 {{--Footer Here--}}
-@include('layouts.footer')
+
 {{----}}
 
 <!--    <div id="costumModal12" class="modal" data-easein="bounceDownIn"  tabindex="-1" role="dialog" aria-labelledby="costumModalLabel" aria-hidden="true">

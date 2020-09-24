@@ -250,21 +250,21 @@
 
                     <li class="Home-blogPost">
                         <a class="Home-blogPostImage"
-                           href="#"
+                           href="{{ url('/BlogDetail/' .$latestTopBlog->id)}}"
 
                            style="background-image:url({{ asset('images/cozmo/' . $latestTopBlog->image) }})">
                         </a>
                         <div>
                             <h3 class="Home-blogFeedTitle Title Title--secondarySmCaps u-color-koalaGrey u-noMargin">The Latest</h3>
                             <div class="Home-blogPostLink">
-                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">{{$latestTopBlog->title}}</a>
+                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="{{ url('/BlogDetail/' .$latestTopBlog->id)}}">{{$latestTopBlog->title}}</a>
                             </div>
                         </div>
                     </li>
                   @foreach($latestBlog as $lb)
                     <li class="Home-blogPost">
                         <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">{{$lb->title}}</a>
+                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="{{ url('/BlogDetail/' .$lb->id)}}">{{$lb->title}}</a>
                         </div>
                     </li>
                     @endforeach
@@ -298,32 +298,24 @@
                 <ul class="Home-blogFeed trends">
                     <li class="Home-blogPost">
                         <a class="Home-blogPostImage"
-                           href="#"
+                           href="{{ url('/BlogDetail/' .$topTrnd->id)}}"
 
-                           style="background-image:url({{asset('assets/masterFrontend/img/apartment.png')}})">
+                           style="background-image:url({{ asset('images/cozmo/' . $topTrnd->image) }})">
                         </a>
                         <div>
                             <h3 class="Home-blogFeedTitle Title Title--secondarySmCaps u-color-koalaGrey u-noMargin">Trends &amp; Data</h3>
                             <div class="Home-blogPostLink">
-                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">Sales and Inventory Fall as COVID-19 Disrupts Shopping Season</a>
+                                <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="{{ url('/BlogDetail/' .$topTrnd->id)}}">{{$topTrnd->title}}</a>
                             </div>
                         </div>
                     </li>
+                @foreach($trnd as $trd)
                     <li class="Home-blogPost">
                         <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">How Will COVID-19 Impact NYC Home Prices?</a>
+                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="{{ url('/BlogDetail/' .$trd->id)}}">{{$trd->title}}</a>
                         </div>
                     </li>
-                    <li class="Home-blogPost">
-                        <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">What Happens to NYC Rents During a Recession?</a>
-                        </div>
-                    </li>
-                    <li class="Home-blogPost">
-                        <div class="Home-blogPostLink">
-                            <a class="u-color-whaleGrey--important" rel="noopener noreferrer" href="#">COVID-19 Cuts New Inventory, But Prices Stay Flat</a>
-                        </div>
-                    </li>
+                  @endforeach
                 </ul>
             </div>
 
@@ -336,3 +328,4 @@
 </div>
 
    @endsection
+

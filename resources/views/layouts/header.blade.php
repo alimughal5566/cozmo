@@ -150,7 +150,7 @@
                         <li class="MainNav-listItem isTrackingMenuItem"
                             data-trending-id="3025820"
                             data-type="Rentals">
-                            <a class="MainNav-text" data-toggle="nav_popup" href="{{url('/UserRental')}}">Rentals</a>
+                            <a class="MainNav-text on_active" data-toggle="nav_popup" href="{{url('/UserRentals')}}">Rentals</a>
                             <div class="MainNav-popup">
                                 <div class="Container">
                                     <div class="MainNav-popupColumn">
@@ -779,5 +779,8 @@
                 return fetch_data;
             }
         });
+        // $('.on_active').click(function () {
+        //     $('.top_active').addClass('isCurrent');
+        // });
     </script>
 

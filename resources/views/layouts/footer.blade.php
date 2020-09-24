@@ -428,11 +428,11 @@
                     <div class="Footer-separator"></div>
                     <div class="Footer-socialIcons">
                         <a class="Footer-linkIcon" href="#">
-                            <img srcset="" alt="CoZmo-web twitter" class="Footer-icon" src="img/twitter.png" />
+                            <img srcset="" alt="CoZmo-web twitter" class="Footer-icon" src="{{asset('assets/masterFrontend/img/twitter.png')}}" />
                         </a>              <a class="Footer-linkIcon" href="#">
-                            <img srcset="" alt="CoZmo-web facebook" class="Footer-icon" src="img/facebook.png" />
+                            <img srcset="" alt="CoZmo-web facebook" class="Footer-icon" src="{{asset('assets/frontend/img/facebook.png')}}" />
                         </a>              <a class="Footer-linkIcon" href="#">
-                            <img srcset="" alt="CoZmo-web instagram" class="Footer-icon Footer-icon--withoutMargin" src="img/instagram.png">
+                            <img srcset="" alt="CoZmo-web instagram" class="Footer-icon Footer-icon--withoutMargin" src="{{asset('assets/frontend/img/instagram.png')}}">
                         </a>            </div>
                     <div class="Footer-zgBrands">
                         <a class="Footer-text Footer-text--large" href="#">Zillow</a>
