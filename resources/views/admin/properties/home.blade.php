@@ -81,11 +81,12 @@
                                 <td>{{$row->title}}</td>
                                 <td>{{$row->short_description}}</td>
                                 <td>
+{{--                                    @dd($row->main_image);--}}
                                     <img class=" img-circle img-size-32 mr-2 round_img"  height="15%" src="/images/cozmo/{{$row->main_image}}" style="height: 30px">
 
                                 </td>
                                 <td>{{$row->price}}</td>
-                                <td>{{$row->buildings}}</td>
+                                <td>{{$row->building_name}}</td>
                                 <td>{{$row->property_for}}</td>
 
                                 <td class="text-center">

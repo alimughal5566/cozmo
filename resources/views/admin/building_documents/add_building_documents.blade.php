@@ -107,7 +107,7 @@
 
     </div>
     <div class="row main-top-row">
-        <div class="col-md-12">
+        <div class="col- cmd-12">
             @if (session('alert'))
                 <div class="alert alert-danger" style="width: 40%">
                     {{ session('alert') }}

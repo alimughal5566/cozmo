@@ -13,33 +13,48 @@ class PropertiesController extends Controller
         public  function propertiesIndex(){
 
         $properties = DB::table('properties')->get();
+
 //        dd($properties);
+            foreach ($properties as $property){
+                     if($property->buildings != 'false') {
+                         $dta = DB::table('building_info')->where('id', $property->buildings)->pluck('name')->first();
+//                dd($dta);
+                         $property->building_name = $dta;
+                     }
+
+            }
+//            dd($properties);
+//            $building = DB::table('building_info')->get();
+//        dd($building);
         return view('admin.properties.home' , compact('properties'));
     }
-    public function propertiesAdd()
-    {
-        return view('admin.properties.add_property');
-    }
+        public function propertiesAdd()
+        {
+            $building = DB::table('building_info')->get();
+
+            return view('admin.properties.add_property', compact('building'));
+
+
+        }
 
 
     public  function propertiesStore(Request $request ){
 //        dd($request);
 
-        if ($request->hasFile('main_image')) {
+        if($files=$request->file('main_image')) {
 //            dd('well');
+            $name = $files->getClientOriginalName();
+            $files->move(public_path('images\cozmo'), $name);
+//            dd($name);
 
-            $image = $request->file('main_image');
-            $imageName = time() . "." . $image->getClientOriginalExtension();
-            $imagePath = public_path() . '/images/cozmo/';
-            $image->move($imagePath, $imageName);
-            $imageDbPath = $imageName;
         }
 //        dd($request);
         $data=DB::table('properties')->insert([
+            'buildings' => $request->buildings ?? 'false',
             'title' => $request['Title'],
             'short_title' => $request['short_title'],
             'short_description' => $request['short_description'],
-            'main_image' => $imageDbPath,
+            'main_image' => $name ?? 'no image',
             'video' => $request['video'],
             'price' => $request['price'],
             'virtual_view_video' => $request['virtual_view_video'],
@@ -89,6 +104,7 @@ class PropertiesController extends Controller
             'sponsor_unit' => $request['sponsor_unit'],
             'feature_flag' => $request['feature_flag'],
         ]);
+        dd('homepage');
         return redirect()->route('properties.home')->with('success', ' Create Successfuly');
     }
     public function propertiesEdit ($id)
@@ -102,17 +118,18 @@ class PropertiesController extends Controller
 //dd($request);
 
         if ($request->hasFile('main_image')) {
-            $image = $request->file('main_image');
-            $imageName = time() . "." .$image->getClientOriginalExtension();
-            $imagePath = public_path() . '/images/cozmo/';
-            $image->move($imagePath, $imageName);
-            $imageDbPath = $imageName;
+//            dd('well');
+            if($files=$request->file('main_image')) {
+                $name = $files->getClientOriginalName();
+                $files->move(public_path('images\cozmo'), $name);
+            }
+
         }
         $success = DB::table('properties')->where('id', $request->user_id)->update([
             'title' => $request['Title'],
             'short_title' => $request['short_title'],
             'short_description' => $request['short_description'],
-            'main_image' => $imageDbPath,
+            'main_image' => $name,
             'video' => $request['video'],
             'price' => $request['price'],
             'virtual_view_video' => $request['virtual_view_video'],

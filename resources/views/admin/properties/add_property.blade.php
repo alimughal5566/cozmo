@@ -200,6 +200,17 @@
                 @endforeach
                 <!-- {{ print_r(old())}} -->
                     <div class="row" id="main_row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Select Building  </label> <small>optional</small>
+                                <select name="buildings" id="" class="form-control">
+                                    <option value="">Select </option>
+                                    @foreach($building as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->name}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
@@ -225,7 +236,7 @@
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Main Image</label>
-                                <input type="file" name="" value="{{old('main_image')}}" class="form-control" placeholder="Main Image">
+                                <input type="file" name="main_image" value="{{old('main_image')}}" class="form-control" placeholder="Main Image">
                             </div>
                         </div>
 
@@ -242,19 +253,6 @@
                                 <input type="number" name="price" value="{{old('price')}}" class="form-control" placeholder="Price" min="0">
                             </div>
                         </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label>Buildings</label>
-                                <select name="building" id="" class="form-control">
-                                    <option value="yes" selected>Yes</option>
-                                    <option value="no" selected>No</option>
-                                    {{--                            @foreach($data as $daum)--}}
-                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
-                                    {{--                            @endforeach--}}
-                                </select>                            </div>
-                        </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Virtual View Video</label>
@@ -318,8 +316,8 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>No Of Bathroom</label>
-                                <input type="number" name="no_of_bathroom" value="{{old('no_of_bathroom')}}" class="form-control" placeholder="No Of Bathroom" min="1">
+                                <label>No Of Bathrooms</label>
+                                <input type="number" name="no_of_bathrooms" value="{{old('no_of_bathrooms')}}" class="form-control" placeholder="No Of Bathrooms" min="1">
                             </div>
                         </div>
 
@@ -340,7 +338,7 @@
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Video Chat</label>
-                                <select name="property_for" id="" class="form-control">
+                                <select name="video_chat" id="" class="form-control">
                                     <option value="no" selected>Yes  </option>
                                     <option value="yes" selected>No</option>
                                     {{--                            @foreach($data as $daum)--}}
@@ -387,14 +385,14 @@
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Taxes</label>
-                                <input type="text" name="taxes" value="{{old('taxes')}}" class="form-control" placeholder="Taxes">
+                                <input type="number" name="taxes" value="{{old('taxes')}}" class="form-control" placeholder="Taxes">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Year Built Form</label>
-                                <input type="number" name="year_built_form" value="{{old('year_built_form')}}" class="form-control" placeholder="Year Built Form">
+                                <label>Year Built From</label>
+                                <input type="number" name="year_built_from" value="{{old('year_built_from')}}" class="form-control" placeholder="Year Built From">
                             </div>
                         </div>
 
@@ -407,16 +405,10 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Include Unknown</label>
-                                <select name="property_for" id="" class="form-control">
-                                    <option value="yes" selected>Yes</option>
-                                    <option value="no" selected>No</option>
-                                    {{--                            @foreach($data as $daum)--}}
-                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
-                                    {{--                            @endforeach--}}
-                                </select>                            </div>
+                                <label>Include Unknow</label>
+                                <input type="text" name="include_unknow" value="{{old('include_unknow')}}" class="form-control" placeholder="Include unknow" min="0">
+                            </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Zoned For School</label>
@@ -447,8 +439,8 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Data Updated</label>
-                                <input type="text" name="data_updated" value="{{old('data_updated')}}" class="form-control" placeholder="Data Updated">
+                                <label>Date Updated</label>
+                                <input type="date" name="date_updated" value="{{old('date_updated')}}" class="form-control" placeholder="Date updated">
                             </div>
                         </div>
 
@@ -456,6 +448,7 @@
                             <div class="form-group">
                                 <label>Buying Price</label>
                                 <input type="number" name="buying_price" value="{{old('buying_price')}}" class="form-control" placeholder="Buying Price" min="0">
+
                             </div>
                         </div>
 
@@ -510,8 +503,8 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>condons</label>
-                                <input type="text" name="condons" value="{{old('condons')}}" class="form-control" placeholder="condons">
+                                <label>condos</label>
+                                <input type="text" name="condos" value="{{old('condos')}}" class="form-control" placeholder="condos">
                             </div>
                         </div>
 
@@ -524,8 +517,8 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Multi Families</label>
-                                <input type="text" multiple name="multi_families" value="{{old('multi_families')}}" class="form-control" placeholder="multi families" min="0">
+                                <label>Multi Familes</label>
+                                <input type="text" multiple name="multi_familes" value="{{old('multi_familes')}}" class="form-control" placeholder="multi familes" min="0">
                             </div>
                         </div>
 
@@ -559,8 +552,8 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Cozmo Real State Verified</label>
-                                <input type="text" name="cozmo_real_state_verified" value="{{old('cozmo_real_state_verified')}}" class="form-control" placeholder="cozmo real state verified">
+                                <label>Cozmo Real Estate Verified</label>
+                                <input type="text" name="cozmo_real_estate_verified" value="{{old('cozmo_real_estate_verified')}}" class="form-control" placeholder="cozmo real estate verified">
                             </div>
                         </div>
 
@@ -573,8 +566,8 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>estimated monthly payments</label>
-                                <input type="number" name="estimated_monthly_payments" value="{{old('estimated_monthly_payments')}}" class="form-control" placeholder="estimated monthly payments" min="0">
+                                <label>estimated monthly payment</label>
+                                <input type="number" name="estimated_monthly_payment" value="{{old('estimated_monthly_payment')}}" class="form-control" placeholder="estimated monthly payment" min="0">
                             </div>
                         </div>
 

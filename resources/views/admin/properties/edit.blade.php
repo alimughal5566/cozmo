@@ -491,8 +491,8 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Condons</label>
-                                <input id="condos" type="text" class="form-control is-invalid" value="{{$user->condos	}}"name="condos" required >
+                                <label>Condos</label>
+                                <input id="condos" type="text" class="form-control is-invalid" value="{{$user->condos	}}"name=f"condos" required >
                             </div>
                         </div>
 
@@ -505,8 +505,8 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Multi Families</label>
-                                <input type="file" multiple name="multi_families" value="" class="form-control" placeholder="multi families">
+                                <label>Multi Familes</label>
+                                <input type="file" multiple name="multi_familes" value="" class="form-control" placeholder="multi familes">
                             </div>
                         </div>
 

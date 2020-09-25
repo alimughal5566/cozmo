@@ -20,6 +20,7 @@ class Building_infoController extends Controller
 
     public function building()
     {
+
 //        dd('building');
         return view('admin.building_info.add_building');
     }
