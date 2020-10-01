@@ -294,7 +294,31 @@
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Property Type</label>
-                                <input type="text" name="property_type" value="{{old('property_type')}}" class="form-control" placeholder="Property Type">
+                                <select name="property_types" id="mfcheck" class="form-control">
+                                    <option value="" selected>Select Type</option>
+                                    <option value="multi_familes" >Multi Familes</option>
+                                    <option value="land">Land</option>
+                                    <option value="co_ops" >Co_Ops</option>
+                                    <option value="house" >House</option>
+                                    <option value="condos" >Condos</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label>Multi Familes</label>
+                                <select name="multi_familes" id="textInput" class="form-control">
+                                    <option value="" >Select Multi Familes</option>
+                                    <option value="one" >One</option>
+                                    <option value="two" >Two</option>
+                                    <option value="three" >Three</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>
                             </div>
                         </div>
 
@@ -503,33 +527,20 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label>Condos</label>
-                                <input type="text" name="condos" value="{{old('condos')}}" class="form-control" placeholder="condos">
-                            </div>
-                        </div>
+{{--                        <div class="col-sm-6 col-md-4 col-lg-4">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>Condos</label>--}}
+{{--                                <input type="text" name="condos" value="{{old('condos')}}" class="form-control" placeholder="condos">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
 
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label>Co Ops</label>
-                                <input type="text" name="co_ops" value="{{old('co_ops')}}" class="form-control" placeholder="co ops">
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label>Multi Familes</label>
-                                <select name="multi_familes" id="" class="form-control">
-                                    <option value="no" selected>No</option>
-                                    <option value="1" selected>1</option>
-                                    <option value="2" selected>2</option>
-                                    <option value="3" selected>3</option>
-                                    {{--                            @foreach($data as $daum)--}}
-                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
-                                    {{--                            @endforeach--}}
-                                </select>
-                            </div>
-                        </div>
+{{--                        <div class="col-sm-6 col-md-4 col-lg-4">--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>Co Ops</label>--}}
+{{--                                <input type="text" name="co_ops" value="{{old('co_ops')}}" class="form-control" placeholder="co ops">--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Building New Development Opts</label>
@@ -980,6 +991,13 @@
             $('#preview_text_second_short').html($('#get_preview_text_second_short').val());
         }
     </script>
+    <script>$('#mfcheck').change(function() {
+            if( $(this).val() == 'multi_familes') {
+                $('#textInput').prop( "disabled", false );
+            } else {
+                $('#textInput').prop( "disabled", true );
+            }
+        });</script>
 
 @endsection
 
