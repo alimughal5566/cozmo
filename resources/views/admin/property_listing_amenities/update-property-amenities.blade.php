@@ -135,6 +135,18 @@
                     @endforeach
                     <div class="row">
                         <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Select Title</label>
+                                <select name="property_id" id="" class="form-control">
+                                    <option value=""selected>Select property</option>
+                                    {{--                                    @dd($prop);--}}
+                                    @foreach($prop as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->title}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Listing Amenity:</label>

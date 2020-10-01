@@ -123,8 +123,18 @@
                         <h3 class="tile-title">New Company</h3>
                     @csrf
                     <div class="row">
-
-
+                        <div class="col-sm-6 col-md-3 col-lg-4">
+                            <div class="form-group">
+                                <label>Select Title</label>
+                                <select name="property_id" id="" class="form-control">
+                                    <option value=""selected>Select property</option>
+{{--                                    @dd($prop);--}}
+                                    @foreach($prop as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->title}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>Name</label>

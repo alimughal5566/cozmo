@@ -134,17 +134,17 @@
                         <div class="alert alert-danger">{{ $error }}</div>
                     @endforeach
                     <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Select Title</label>
-                                <select name="property_id" id="" class="form-control">
-                                    <option value=""selected>Select property</option>
-                                    @foreach($prop as $datum)
-                                        <option value="{{$datum->id}}">{{$datum->title}} </option>
-                                    @endforeach
-                                </select>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Select Title</label>
+                                    <select name="property_id" id="" class="form-control">
+                                        <option value=""selected>Select property</option>
+                                        @foreach($prop as $datum)
+                                            <option value="{{$datum->id}}">{{$datum->title}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
-                        </div>
                         <div class="col-sm-6">
                         <div class="form-group">
                                 <label for="title">Name Of Street:</label>

@@ -15,8 +15,11 @@ class Property_savesController extends Controller
             return redirect('/');
         }
         $data = DB::table('property_saves')->get();
-//  dd($data);
-        return view('admin.property_saves.property-saves-home', compact('data'));
+        $ikek = DB::table('users')->get();
+        $prop = DB::table('properties')->get();
+
+//  dd($ikek);
+        return view('admin.property_saves.property-saves-home', compact('data','ikek','prop'));
     }
 
     public function savesStore(Request $request)
@@ -41,16 +44,18 @@ class Property_savesController extends Controller
     {
 //        dd('document');
         $data=DB::table('property_saves')->get();
+        $user=DB::table('properties')->get();
+        $prop=DB::table('users')->get();
 //        dd($data);
-        return view('admin.property_saves.add-property-saves',compact('data'));
+        return view('admin.property_saves.add-property-saves',compact('data','user','prop'));
     }
     public function savesEdit($id)
     {
         $user = DB::table('property_saves')->where('id', $id)->get();
-
-//        dd($user);
-        return view('admin.property_saves.update-property-saves', compact("user"));
-
+        $prop=DB::table('properties')->get();
+        $data=DB::table('users')->get();
+//       dd($data);
+        return view('admin.property_saves.update-property-saves', compact('user','prop','data'));
     }
     public
     function savesUpdate(Request $request)

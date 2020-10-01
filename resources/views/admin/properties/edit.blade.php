@@ -186,8 +186,6 @@
             </li>
             <li class="breadcrumb-item">Edit Blog Category</li>        </ul>
     </div>
-
-
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal" method="POST" action="{{ route('properties.update') }}" enctype="multipart/form-data">
@@ -195,69 +193,69 @@
                 <div class="tile">
                     <h3 class="tile-title">Edit Property</h3>
                     @foreach ($errors->all() as $error)
-
                         <div class="alert alert-danger">{{ $error }}</div>
-
                 @endforeach
                 <!-- {{ print_r(old())}} -->
                     <div class="row" id="main_row">
-
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label>Select Building  </label> <small>optional</small>
+                                <select name="buildings" id="" class="form-control">
+                                    <option value="">Select </option>
+                                    @foreach($building as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->name}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label>Feature flag</label>
+                                <input id="feature_flag" type="text" class="form-control is-invalid" value="{{$user->feature_flag}}" name="feature_flag" >
+                            </div>
+                        </div>
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Title</label>
-                                <input id="title" type="text" class="form-control is-invalid" value="{{$user->title}}" name="title" required >
+                                <input id="title" type="text" class="form-control is-invalid" value="{{$user->title}}" name="title" >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Short Title</label>
                                 <input id="short_title" type="text" class="form-control is-invalid" value="{{$user->short_title}}" name="short_title" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Short Description</label>
                                 <input id="short_description	" type="text" class="form-control is-invalid" value="{{$user->short_description	}}" name="short_description	" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Main Image</label>
                                 <input type="file" name="main_image" value="" class="form-control" placeholder="Main Image">
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Video</label>
                                 <input type="file" accept="video/*" name="video" value="" class="form-control" placeholder="Video">
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Price</label>
                                 <input id="price	" type="number" class="form-control is-invalid" value="{{$user->price	}}" name="price	" required >
                             </div>
                         </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label>Buildings</label>
-                                <input id="buildings	" type="number" class="form-control is-invalid" value="{{$user->buildings	}}" name="buildings	" required >
-                            </div>
-                        </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Virtual View Video</label>
                                 <input type="file" accept="video/*" name="virtual_view_video" value="" class="form-control" placeholder="Virtual View Video">
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Virtual View 3d</label>
@@ -271,84 +269,83 @@
                                 <input type="url" name="virtual_view_3d_url" value="{{$user->virtual_view_3d_url}}" class="form-control" placeholder="Virtual View 3d Url">
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Virtual View Video Url</label>
                                 <input type="url" name="virtual_view_video_url" value="{{$user->virtual_view_video_url}}" class="form-control" placeholder="virtual_view_video_url">
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Studio</label>
                                 <input id="studio" type="text" class="form-control is-invalid" value="{{$user->studio}}" name="studio" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Property Type</label>
                                 <input id="property_type" type="text" class="form-control is-invalid" value="{{$user->property_type	}}" name="property_type	" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Property For</label>
-                                <input id="property_for" type="text" class="form-control is-invalid" value="{{$user->property_for	}}" name="property_for	" required >
-                            </div>
+                                <select name="property_for" id="" class="form-control">
+                                    <option value="rentals" selected>Rentals  </option>
+                                    <option value="sales" selected>Sales</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>                            </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>No Of Bedroom</label>
                                 <input id="no_of_bedroom" type="number" class="form-control is-invalid" value="{{$user->no_of_bedroom	}}" name="no_of_bedroom	" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>No Of Bathroom</label>
                                 <input id="no_of_bathrooms" type="number" class="form-control is-invalid" value="{{$user->no_of_bathrooms	}}" name="no_of_bathrooms	" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Status</label>
                                 <input id="status" type="text" class="form-control is-invalid" value="{{$user->status	}}" name="status	" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Square Feet</label>
                                 <input id="square_feet" type="number" class="form-control is-invalid" value="{{$user->square_feet	}}" name="square_feet	" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Video Chat</label>
-                                <input type="file" accept="video/*" name="video_chat" value="" class="form-control" placeholder="Video Chat">
+                                <select name="video_chat" id="" class="form-control">
+                                    <option value="no" selected>Yes  </option>
+                                    <option value="yes" selected>No</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Description</label>
                                 <input id="description" type="text" class="form-control is-invalid" value="{{$user->description	}}" name="description	" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Preware Property Type</label>
                                 <input id="preware_property_type" type="text" class="form-control is-invalid" value="{{$user->preware_property_type		}}" name="preware_property_type		" required >
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>New Developments</label>
@@ -380,7 +377,7 @@
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Year Built Form</label>
-                                <input id="year_built_from" type="number" class="form-control is-invalid" value="{{$user->year_built_from		}}" name="year_built_from		" required >
+                                <input id="year_built_from" type="number" class="form-control is-invalid" value="{{$user->year_built_from}}" name="year_built_from" required min="1" >
                             </div>
                         </div>
 
@@ -505,10 +502,17 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Multi Familes</label>
-                                <input type="file" multiple name="multi_familes" value="" class="form-control" placeholder="multi familes">
+                                <label>Multi Families</label>
+                                <select name="video_chat" id="" class="form-control">
+                                    <option value="no" selected>Yes  </option>
+                                    <option value="yes" selected>No</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>
                             </div>
                         </div>
+
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
@@ -545,10 +549,17 @@
                             </div>
                         </div>
 
+
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>No Fee Rentals</label>
-                                <input id="no_fee_rentals" type="text" class="form-control is-invalid" value="{{$user->no_fee_rentals	}}"name="no_fee_rentals" required >
+                                <label>No Fee</label>
+                                <select name="no_fee" id="" class="form-control">
+                                    <option value="no" selected>No</option>
+                                    <option value="yes" selected>Yes</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>
                             </div>
                         </div>
 
@@ -711,224 +722,14 @@
 
                     </div>
 
-                    <div class="submit_btn">
-                        <button type="button">Update</button>
+                    <div class="col-sm-12 text-right">
+                        <div class="form-group" style="margin-top: 27px !important; ">
+                            <button class="btn btn-primary" type="submit">Update</button>
+                        </div>
                     </div>
-
-                    <!--<h3 class="tile-title">Competition Statistics</h3>-->
-
-                    <!--<div id="add_attrib">-->
-                    <!--	<div id="append_it">-->
-                <!--		@if(old('label'))-->
-                <!--		@foreach(old('label') as $key => $val)-->
-                    <!--	<div class="row elments">-->
-                    <!--		<div class="col-sm-6 col-md-4 col-lg-4">-->
-                    <!--			<div class="form-group">-->
-                    <!--			<label>Label</label>-->
-                <!--			<input type="text" name="label[]" value="{{ $val }}" class="form-control" placeholder="Enter Label">		-->
-                    <!--		</div>-->
-                    <!--		</div>-->
-                    <!--		<div class="col-sm-6 col-md-4 col-lg-4">-->
-                    <!--			<div class="form-group">-->
-                    <!--			<label>Attribute</label>-->
-                <!--			<input type="text" name="attribute[]" value="{{ old('attribute')[$key] }}" class="form-control" placeholder="Enter Attribute">		-->
-                    <!--		</div>-->
-                    <!--		</div>-->
-                    <!--		<div class="col-sm-6 col-md-2 col-lg-2">-->
-                    <!--			<div class="form-group">-->
-                    <!--			<label style="visibility:hidden;display: block;">Delete button</label>-->
-                    <!--			<a href="javascript:void(0)"  class="delete_element btn btn-primary btn-sm"><i class="fa fa-trash"></i></a>-->
-                    <!--		</div>-->
-                    <!--		</div>-->
-                    <!--	</div>-->
-                    <!--	@endforeach-->
-                    <!--	@else-->
-                    <!--	<div class="row">-->
-                    <!--		<div class="col-sm-6 col-md-4 col-lg-4">-->
-                    <!--			<div class="form-group">-->
-                    <!--			<label>Label</label>-->
-                    <!--			<input type="text" name="label[]" value="" class="form-control" placeholder="Enter Label">		-->
-                    <!--		</div>-->
-                    <!--		</div>-->
-                    <!--		<div class="col-sm-6 col-md-4 col-lg-4">-->
-                    <!--			<div class="form-group">-->
-                    <!--			<label>Attribute</label>-->
-                    <!--			<input type="text" name="attribute[]" value="" class="form-control" placeholder="Enter Attribute">		-->
-                    <!--		</div>-->
-                    <!--		</div>-->
-                    <!--	</div>-->
-                    <!--	@endif-->
-                    <!--	</div>-->
-                    <!--</div>-->
-
-                    <!--<input type="button" class="btn-primary btn" id="add_attribs" value="Add More"/>-->
-
-                    <!--<hr>-->
-                    <!--                <h3 style="margin-top:15px;">Discount Offers</h3>-->
-                    <!--<button type="button" onclick="add()">Add</button>-->
-                    <!--<button type="button" onclick="remove()">Remove</button>-->
-                    <!--                <div id="new_chq">-->
-                    <!--    				<div class="row">-->
-                    <!--    				    <div class="col-md-4">-->
-                    <!--    				        <label>No of Tickets</label>-->
-                    <!--<input id="ticket_1" type="hidden" name="data" class="form form-control" value="" required>-->
-                    <!--    				    </div>-->
-
-                    <!--    				    <h5 style="margin-top:35px;">Purchased will get :</h5>-->
-
-                    <!--    				    <div class="col-md-4">-->
-                    <!--    				        <label>Discount Percentage</label>-->
-                    <!--    				        <input id="discount_1" type="number" name="discount_percentage[]" class="form form-control">-->
-                    <!--    				    </div>-->
-
-                    <!--    				    <div class="col-md-4">-->
-                    <!--    				        <label>No of Tickets</label>-->
-                    <!--    				        <input id="ticket_1" type="number" name="no_of_tickets[]" class="form form-control">-->
-                    <!--    				    </div>-->
-
-                    <!--    				    <h5 style="margin-top:35px;">Purchased will get :</h5>-->
-
-                    <!--    				    <div class="col-md-4">-->
-                    <!--    				        <label>Discount Percentage</label>-->
-                    <!--    				        <input id="discount_1" type="number" name="discount_percentage[]" class="form form-control">-->
-                    <!--    				    </div>-->
-
-                    <!--<input type="hidden" value="1" id="total_chq">-->
-                    <!--    				</div>-->
-                    <!--				</div>-->
-                    <!--				<hr>-->
-                    <!--				<h3 style="margin-top:15px;">Email Scheduling Options</h3>-->
-
-                    <!--				<div class="row">-->
-
-                    <!--					<div class="col-sm-6 col-md-4 col-lg-4">-->
-                    <!--						<div class="form-group">-->
-                    <!--							<input type="checkbox" name="enable-email" id="enable-email" /> <span>Send Email Information to Subscribers</span>-->
-                    <!--						</div>-->
-                    <!--						<div class="email-fields-area hidden">-->
-                    <!--							<div class="form-group">-->
-                    <!--								<label>Time</label>-->
-                    <!--
-<!--								<input type="text" name="email-time" id="email-time" value="" class="form-control" placeholder="Email Timmings">-->
-                    <!--								-->
-                    <!--								<div class="input-group bootstrap-timepicker timepicker">-->
-                <!--									<input type="text" id="email-time" name="email-time" value="<?php echo date('H:i A') ; ?>" class="form-control" />-->
-                    <!--								</div>-->
-
-                    <!--							</div>-->
-                    <!--							<div class="form-group">-->
-                <!--{{--								<input type="radio" name="email-interval" id="email-interval-once"    value="once"    val="1" /> Once (After set time)<br>							--}}-->
-                    <!--								<input type="radio" name="email-interval" id="email-interval-daily"   value="daily"   val="2" checked /> Daily <br>-->
-                <!--{{--								<input type="radio" name="email-interval" id="email-interval-weekly"  value="weekly"  val="3" /> Weekly <br>--}}-->
-                <!--{{--								<input type="radio" name="email-interval" id="email-interval-bf-cmpt" value="bf-cmpt" val="4" /> Before Competition Start (At fixed date) <br>--}}-->
-
-                    <!--							</div>-->
-                    <!--							<div class="form-group hidden" id="email-weekly-day">-->
-                    <!--								<div>-->
-                    <!--								<label>Select Day</label>-->
-                    <!--								</div>-->
-                    <!--								<select id ="day-lst" name ="day-lst" class="form-control">-->
-                    <!--									<option value="1">Saturday</option>-->
-                    <!--									<option value="2">Sunday</option>-->
-                    <!--									<option value="3">Monday</option>-->
-                    <!--									<option value="4">Tuesday</option>-->
-                    <!--									<option value="5">Wednesday</option>-->
-                    <!--									<option value="6">Thursday</option>-->
-                    <!--									<option value="7">Friday</option>-->
-
-                    <!--								</select>-->
-                    <!--							</div>-->
-
-                    <!--							<div class="form-group hidde" id="num-of-days-area">-->
-                    <!--								<div>-->
-                    <!--								<label>Select Day</label>-->
-                    <!--								</div>-->
-                    <!--<input type="number" name="num-of-days" class="form form-control" id="num-of-days" value="7" min="1" step="1" />-->
-                <!--								<input type="text" id="reminder-date" name="reminder-date" value="<?php echo date('Y-m-d'); ?>" class="form form-control" />-->
-                    <!--							</div>-->
-
-                    <!--						</div>-->
-                    <!--					</div>-->
-                    <!--				</div>-->
-
-                    <!--				<div class="row">-->
-                    <!--				    <div class="col-md-4">-->
-                    <!--				    <label>Meta Title</label>-->
-                    <!--				    <input type="text" name="meta_title" class="form form-control" />-->
-                    <!--				    </div>-->
-                    <!--				    <div class="col-md-4">-->
-                    <!--				    <label>Meta Description</label>-->
-                    <!--				    <textarea class="form-control" name="meta_description"></textarea>-->
-                    <!--				    </div>-->
-                    <!--				    <div class="col-md-4">-->
-                    <!--				    <label>Image Tags <small> (Single image use first tag)</small></label>-->
-                    <!--				    <textarea class="form-control" name="meta_keyword"></textarea>-->
-                    <!--				    </div>-->
-
-                    <!--				    <div class="col-md-4">-->
-                    <!--				    <label>Facebook Free Entry Card Line One</label>-->
-                    <!--				    <input type="text" name="fem_box_line1" class="form form-control" />-->
-                    <!--				    </div>-->
-                    <!--				    <div class="col-md-4">-->
-                    <!--				    <label>Facebook Free Entry Card Line Two</label>-->
-                    <!--				    <input type="text" name="fem_box_line2" class="form form-control" />-->
-                    <!--				    </div>-->
-                    <!--				    <div class="col-md-4">-->
-                    <!--				    <label>Facebook Free Entry Card Line Three</label>-->
-                    <!--				    <input type="text" name="fem_box_line3" class="form form-control" />-->
-                    <!--				    </div>-->
-                    <!--				</div>-->
-
-                    <!--<div class="tile-footer text-right">-->
-                <!--	<a class="btn btn-default" href="{{url('product')}}">Cancel</a>-->
-                    <!--	<button class="btn btn-primary" type="submit">Save</button>-->
-                    <!--</div>-->
 
                 </div>
             </form>
-
-            <!--	<section class="cust_back_color">-->
-
-            <!--	<div class="container">-->
-            <!--		<h3>Competition Images</h3>-->
-            <!--		<div class="img_dlt">-->
-            <!--			<a class="btn btn-primary" id="delete_all_images" href="#">delete all</a>-->
-            <!--			<a class="btn btn-primary" id="add_images" href="#">Upload images</a>-->
-        <!--			<form id="images_form" action="{{ url('package/add_images')}}" action="multipart/form-data" method="post">-->
-            <!--				<label style="display: none;">-->
-            <!--				<input id="images" type="file" multiple name="images[]">-->
-            <!--					<input  type="hidden" required class="form-control" name="package_id" id="package_id_images" value="">-->
-            <!--			</label>-->
-            <!--               </form>-->
-
-            <!--		</div>-->
-
-            <!--		<div class="view_img">-->
-            <!--			<ul>-->
-        <!--				<?php $package_image = DB::table('package_images')->where('package_id',0)->get(); ?>-->
-        <!--				@if($package_image=="")-->
-            <!--				@else-->
-        <!--				@foreach($package_image as $img)-->
-            <!--				<li>-->
-            <!--					<a href="#">-->
-            <!--						<div class="img_sec">-->
-            <!--							<div class="img">-->
-        <!--								<img class="img-fluid" src="<?php echo url("products/$img->package_id/$img->name");?>">-->
-            <!--							</div>-->
-            <!--							<div class="view_img_btn">-->
-            <!--								<button class="btn btn-primary" type="button">View</button>-->
-        <!--								<button class="delet_image btn btn-primary" data-id="{{ $img->id }}" type="button">Delete</button>-->
-        <!--								<button class="main_img btn btn-primary" data-id="{{ $img->id }}" type="button" style="margin-left: 2px; margin-top: 5px;">Set Main Image</button>-->
-            <!--							</div>-->
-            <!--						</div>-->
-            <!--					</a>-->
-            <!--				</li>-->
-            <!--				@endforeach-->
-            <!--				@endif-->
-            <!--			</ul>-->
-            <!--		</div>-->
-            <!--	</div>-->
-            <!--</section>-->
         </div>
     </div>
 

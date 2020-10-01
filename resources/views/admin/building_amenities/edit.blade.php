@@ -21,17 +21,15 @@
                 <form class="form-horizontal" method="POST" action="{{ url('building_amenities/update') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
-
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>Select Title</label>
-                                <select name="parent_id" id="" class="form-control">
-                                    <option value=""selected>Select Parent</option>
-                                    @foreach($user as $datum)
-                                        <option value="{{$datum->id}}">{{$datum->building_amenities_title}} </option>
+                                <select name="building_id" id="" class="form-control">
+                                    <option value=""selected>Select building</option>
+                                    @foreach($data as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->name}} </option>
                                     @endforeach
                                 </select>
-
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4">
@@ -59,7 +57,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 col-md-4">
                             <div class="form-group">
                                 <label for="title">Image</label>
                                 <input required id="image" type="file" placeholder="image" class="form-control" name="images">

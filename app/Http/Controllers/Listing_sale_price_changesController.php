@@ -26,6 +26,8 @@ class Listing_sale_price_changesController extends Controller
            'old_price' => $request->old_price,
           'updated_price' => $request->updated_price,
           'created_at' => $request->created_at,
+          'property_id' => $request->property_id,
+
 
         ]);
 
@@ -34,13 +36,18 @@ class Listing_sale_price_changesController extends Controller
 
     }
     public function listingAdd()
+
     {
-        return view('admin.listing_sale_price_changes.add-listing-sale');
+        $prop=DB::table('properties')->get();
+
+        return view('admin.listing_sale_price_changes.add-listing-sale',compact('prop'));
     }
     public function listingEdit($id)
     {
         $data = DB::table('listing_sale_price_changes')->where('id', $id)->get();
-        return view('admin.listing_sale_price_changes.update-listing-sale', compact('data'));
+        $prop=DB::table('properties')->get();
+
+        return view('admin.listing_sale_price_changes.update-listing-sale', compact('data','prop'));
 
 
     }
@@ -51,8 +58,9 @@ class Listing_sale_price_changesController extends Controller
         $data = DB::table('listing_sale_price_changes')->where('id', $request->user_id)->update([
 //            "date_change" => $request['date_change'],
             "old_price" => $request['old_price'],
-            "updated_price	" => $request['updated_price'],
-            "created_at	" => $request['created_at'],
+            "updated_price" => $request['updated_price'],
+            "created_at" => $request['created_at'],
+            "property_id" => $request['property_id'],
         ]);
         return redirect()->route('listing_sale_price_changes.home')->with('success', ' Update Successfuly..!');
     }

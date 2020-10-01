@@ -25,6 +25,8 @@ class Nearby_transit_linesController extends Controller
             'name' => $request->name,
             'value' => $request->value  ,
             'sort_order' => $request->sort_order,
+            'property_id' => $request->property_id,
+
 
         ]);
 
@@ -35,13 +37,17 @@ class Nearby_transit_linesController extends Controller
 
     public function transitAdd()
     {
-        return view('admin.nearby_transit_lines.add-transit');
+        $data=DB::table('properties')->get();
+
+        return view('admin.nearby_transit_lines.add-transit', compact('data'));
     }
     public function transitEdit($id)
     {
         $user = DB::table('nearby_transit_lines')->where('id', $id)->get();
+        $data=DB::table('properties')->get();
+
 //        dd($user);
-        return view('admin.nearby_transit_lines.update-transit-lines', compact("user"));
+        return view('admin.nearby_transit_lines.update-transit-lines', compact("user",'data'));
 
     }
     public
@@ -52,6 +58,8 @@ class Nearby_transit_linesController extends Controller
             'name' => $request->name,
             'value' => $request->value,
             'sort_order' => $request->sort_order,
+            'property_id' => $request->property_id,
+
         ]);
 
         if ($success) {

@@ -135,29 +135,41 @@
                     @endforeach
                     <div class="row">
                         <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Select Title</label>
+                                <select name="property_id" id="" class="form-control">
+                                    <option value=""selected>Select property</option>
+                                    {{--                                    @dd($prop);--}}
+                                    @foreach($prop as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->title}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Old Price:</label>
-                                <input required id="old_price"  type="text" value="{{$data[0]->old_price}}" placeholder="Old price" class="form-control" name="old_price">
+                                <input required id="old_price"  type="number" value="{{$data[0]->old_price}}" placeholder="Old price" class="form-control" name="old_price">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Updated Price:</label>
-                                <input required id="updated_price"  type="text" value="{{$data[0]->updated_price}}" placeholder="Updated price" class="form-control" name="updated_price">
+                                <input required id="updated_price"  type="number" value="{{$data[0]->updated_price}}" placeholder="Updated price" class="form-control" name="updated_price">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$data[0]->id}}">
                             <div class="form-group">
                                 <label for="title">Created At:</label>
-                                <input required id="created_at"  type="text" value="{{$data[0]->created_at}}" placeholder="Created at" class="form-control" name="created_at">
+                                <input required id="created_at"  type="date " value="{{$data[0]->created_at}}" placeholder="Created at" class="form-control" name="created_at">
                             </div>
                         </div>
-                        <div class="col-sm-6 text-right ">
+                        <div class="col-sm-12 text-right ">
                             <div class="form-group" style="margin-top: 27px !important; justify-content: center">
-                                <button class="btn btn-primary" type="submit">Save</button>
+                                <button class="btn btn-primary" type="submit">Update</button>
                             </div>
                         </div>
                     </div>

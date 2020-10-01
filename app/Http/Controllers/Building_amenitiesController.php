@@ -56,8 +56,10 @@ class Building_amenitiesController extends Controller
     {
 //        dd($id);
         $user = DB::table('building_amenities')->where('id', $id)->get();
+        $data=DB::table('building_info')->get();
+
 //        dd($user);
-        return view('admin.building_amenities.edit', compact("user"));
+        return view('admin.building_amenities.edit', compact("user",'data'));
 
     }
 
@@ -78,7 +80,7 @@ class Building_amenitiesController extends Controller
             'listing_for' => $request->listing_for,
             'type' => $request->type,
             'images' => $imagesDbPath ?? '',
-            'parent_id' => $request->parent_id ?? '',
+            'building_id' => $request->building_id ?? '',
 
         ]);
 

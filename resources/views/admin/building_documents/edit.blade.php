@@ -21,7 +21,18 @@
                     <form class="form-horizontal" method="POST" action="{{ url('building_document/update') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Select Building</label>
+                                    <select name="building_id" id="" class="form-control">
+                                        <option value=""selected>Select building</option>
+                                        @foreach($data as $datum)
+                                            <option value="{{$datum->id}}">{{$datum->name}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Document</label>
                                     <input type="hidden" name="user_id" value="{{$user[0]->id}}">
@@ -35,19 +46,19 @@
                                 </div>
                             </div>
 
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Document Types</label>
                                     <input id="document_types" type="text" class="form-control" name="document_types" value="{{$user[0]->document_types }}">
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Unit No</label>
                                     <input id="unit_no" type="text" class="form-control" name="unit_no" value="{{$user[0]->unit_no }}">
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="form-control-label">Detail</label>
                                     <input id="detail" type="text" class="form-control" name="detail" value="{{$user[0]->detail }}">

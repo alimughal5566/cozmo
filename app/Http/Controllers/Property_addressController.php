@@ -59,7 +59,9 @@ class Property_addressController extends Controller
     public function edit($id)
     {
         $data = DB::table('property_address')->where('id', $id)->get();
-        return view('admin.property_address.update-property-address', compact('data'));
+        $prop=DB::table('properties')->get();
+
+        return view('admin.property_address.update-property-address', compact('data','prop'));
 
 
     }

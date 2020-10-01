@@ -23,6 +23,7 @@ class Building_documentController extends Controller
     {
 //        dd('document');
         $data=DB::table('building_info')->get();
+
         return view('admin.building_documents.add_building_documents',compact('data'));
     }
 
@@ -44,6 +45,7 @@ class Building_documentController extends Controller
                 'document_types' => $request->document_types,
                 'unit_no' => $request->unit_no,
                 'detail' => $request->detail,
+                'building_id' => $request->building_id,
 //                'date_created' => carbon::now(),
 
             ]);
@@ -55,8 +57,9 @@ class Building_documentController extends Controller
     public function edit($id)
     {
         $user = DB::table('building_documents')->where('id', $id)->get();
+        $data=DB::table('building_info')->get();
 //        dd($user);
-        return view('admin.building_documents.edit', compact("user"));
+        return view('admin.building_documents.edit', compact("user",'data'));
 
     }
     public function update(Request $request)
@@ -77,6 +80,7 @@ class Building_documentController extends Controller
             'unit_no' => $request->unit_no,
             'detail' => $request->detail,
             'create_date' => $request->create_date,
+            'building_id' => $request->building_id,
 
         ]);
 

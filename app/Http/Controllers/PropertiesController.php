@@ -50,6 +50,7 @@ class PropertiesController extends Controller
         }
 //        dd($request);
         $data=DB::table('properties')->insert([
+            'feature_flag' => $request['feature_flag'],
             'buildings' => $request->buildings ?? 'false',
             'title' => $request['Title'],
             'short_title' => $request['short_title'],
@@ -99,10 +100,9 @@ class PropertiesController extends Controller
             'sales_launch_date' => $request['sales_launch_date'],
             'availability' => $request['availability'],
             'cozmo_real_estate_verified' => $request['cozmo_real_estate_verified'],
-            'no_fee_rentals' => $request['no_fee_rentals'],
+            'no_fee' => $request['no_fee'] ?? 'NO FEE',
             'estimated_monthly_payment' => $request['estimated_monthly_payment'],
             'sponsor_unit' => $request['sponsor_unit'],
-            'feature_flag' => $request['feature_flag'],
         ]);
         dd('homepage');
         return redirect()->route('properties.home')->with('success', ' Create Successfuly');
@@ -110,26 +110,27 @@ class PropertiesController extends Controller
     public function propertiesEdit ($id)
     {
         $user = DB::table('properties')->where('id',$id)->first();
+        $building = DB::table('building_info')->get();
 //        dd($user);
-        return view('admin.properties.edit',compact("user"));
+        return view('admin.properties.edit',compact("user",'building'));
     }
-    public function propertiesUpdate(Request $request)
+    public function update(Request $request)
     {
 //dd($request);
 
-        if ($request->hasFile('main_image')) {
+        if($files=$request->file('main_image')) {
 //            dd('well');
-            if($files=$request->file('main_image')) {
-                $name = $files->getClientOriginalName();
-                $files->move(public_path('images\cozmo'), $name);
-            }
+            $name = $files->getClientOriginalName();
+            $files->move(public_path('images\cozmo'), $name);
+//            dd($name);
 
         }
         $success = DB::table('properties')->where('id', $request->user_id)->update([
+            'feature_flag' => $request['feature_flag'],
             'title' => $request['Title'],
             'short_title' => $request['short_title'],
             'short_description' => $request['short_description'],
-            'main_image' => $name,
+            'main_image' => $name ?? 'no image',
             'video' => $request['video'],
             'price' => $request['price'],
             'virtual_view_video' => $request['virtual_view_video'],
@@ -174,13 +175,14 @@ class PropertiesController extends Controller
             'sales_launch_date' => $request['sales_launch_date'],
             'availability' => $request['availability'],
             'cozmo_real_estate_verified' => $request['cozmo_real_estate_verified'],
-            'no_fee_rentals' => $request['no_fee_rentals'],
+            'no_fee' => $request['no_fee'] ?? 'NO FEE',
             'estimated_monthly_payment' => $request['estimated_monthly_payment'],
             'sponsor_unit' => $request['sponsor_unit'],
-            'feature_flag' => $request['feature_flag'],
+
         ]);
 
         if ($success) {
+//            dd('homepage');
             return redirect()->route('properties.home')->with('success', 'Update Successfuly');
         }
         }

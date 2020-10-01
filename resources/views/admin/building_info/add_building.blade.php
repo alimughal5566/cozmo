@@ -122,14 +122,13 @@
                             <div class="form-group">
                                 <label>Select Title</label>
                                 <select name="building_id" id="" class="form-control">
-                                    <option value=""selected>Select building</option>
+                                        <option value=""selected>Select building</option>
                                     @foreach($data as $datum)
                                         <option value="{{$datum->id}}">{{$datum->name}} </option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>Name</label>
@@ -148,9 +147,6 @@
                                 <input onkeyup="change_second_short()" id="name"  type="text" placeholder="Enter additional_info" class="form-control" name="additional_info" value="{{ old('additional_info') }}" required autofocus required="">
                             </div>
                         </div>
-
-                    </div>
-                    <div class="row">
 
                         <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
@@ -171,22 +167,24 @@
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
-
-                        </div>
-
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-3 col-lg-4">
                             <div class="form-group">
                                 <label>Co Ops</label>
                                 <input onkeyup="change_short()" id="name" type="text" placeholder="Enter co_ops" class="form-control" name="co_ops"  value="{{ old('co_ops') }}" required autofocus required="">
                             </div>
                         </div>
-
-                        <div class="col-sm-6 col-md-3 col-lg-4">
+                        <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>Multi Families</label>
-                                <input onkeyup="change_short()" id="name" type="text" placeholder="Enter multi_families" class="form-control" name="multi_families"  value="{{ old('multi_families') }}" required autofocus required="">
+                                <label>Multi Familes</label>
+                                <select name="multi_familes" id="" class="form-control">
+                                    <option value="no" selected>No</option>
+                                    <option value="1" selected>1</option>
+                                    <option value="2" selected>2</option>
+                                    <option value="3" selected>3</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+
+                                </select>
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-3 col-lg-4">
@@ -196,7 +194,6 @@
                             </div>
                         </div>
 
-                    </div>
                 <input id="ticket_1" type="hidden" name="data" class="form form-control" value="" required>
 
                     @if(Auth::check())

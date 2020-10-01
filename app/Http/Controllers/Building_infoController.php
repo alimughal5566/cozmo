@@ -20,9 +20,10 @@ class Building_infoController extends Controller
 
     public function building()
     {
+        $data = DB::table('building_info')->get();
 
 //        dd('building');
-        return view('admin.building_info.add_building');
+        return view('admin.building_info.add_building',compact('data'));
     }
 
     public function store(Request $request)
@@ -47,8 +48,10 @@ class Building_infoController extends Controller
     public function edit ($id)
     {
         $user = DB::table('building_info')->where('id',$id)->get();
+        $data = DB::table('building_info')->get();
+
 //        dd($user);
-        return view('admin.building_info.edit',compact("user"));
+        return view('admin.building_info.edit',compact("user",'data'));
 
     }
     public function update(Request $request)

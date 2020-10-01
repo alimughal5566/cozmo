@@ -135,26 +135,28 @@ input:checked + .slider:before {
 			@endforeach
 			<div class="row">
 
-				<div class="col-sm-6">
-					<div class="form-group">
-
-                        <label for="title">User Id:</label>
-						<input required id="user_id"  type="text" placeholder="User id" class="form-control" name="user_id">
-
-                    </div>
-				</div>
                 <div class="col-sm-6">
-                <div class="form-group">
-                    <label>Select Property Id:</label>
-                    <select name="property_id" id="" class="form-control">
-                        <option value=""selected>Select Id</option>
-                        @foreach($data as $datum)
-                            <option value="{{$datum->id}}">{{$datum->property_id}} </option>
-                        @endforeach
-                    </select>
-
+                    <div class="form-group">
+                        <label>Select Name</label>
+                        <select name="user_id" id="" class="form-control">
+                            <option value=""selected>Select User</option>
+                            @foreach($prop as $datum)
+                                <option value="{{$datum->id}}">{{$datum->name}} </option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-            </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Select Title</label>
+                        <select name="property_id" id="" class="form-control">
+                            <option value=""selected>Select property</option>
+                            @foreach($user as $datum)
+                                <option value="{{$datum->id}}">{{$datum->title}} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
                 <div class="col-sm-6">
                     <div class="form-group">
 

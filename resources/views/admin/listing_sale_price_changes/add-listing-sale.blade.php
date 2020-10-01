@@ -134,6 +134,18 @@ input:checked + .slider:before {
 			<div class="alert alert-danger">{{ $error }}</div>
 			@endforeach
 			<div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label>Select Title</label>
+                        <select name="property_id" id="" class="form-control">
+                            <option value=""selected>Select property</option>
+                            {{--                                    @dd($prop);--}}
+                            @foreach($prop as $datum)
+                                <option value="{{$datum->id}}">{{$datum->title}} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
 				<div class="col-sm-6">
 					<div class="form-group">
 						<label for="title">Date Change:</label>
@@ -155,7 +167,7 @@ input:checked + .slider:before {
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="title">Created At:</label>
-                        <input required id="created_at"  type="text" placeholder="Created at" class="form-control" name="created_at">
+                        <input required id="created_at"  type="date" placeholder="Created at" class="form-control" name="created_at">
                     </div>
                 </div>
 				<div class="col-md-12 text-right">

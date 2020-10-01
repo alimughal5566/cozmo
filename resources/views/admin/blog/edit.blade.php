@@ -1,6 +1,4 @@
 @extends( 'admin.layouts.app' )
-@extends( 'admin.layouts.app' )
-
 @section( 'content' )
     <div class="app-title">
 
@@ -11,14 +9,14 @@
             </li>
             <li class="breadcrumb-item"><a href="{{route('blog_category.home')}}">All Blog Categories</a>
             </li>
-            <li class="breadcrumb-item">Edit Blog Category</li>
+            <li class="breadcrumb-item">Edit Blog </li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
 
             <div class="tile">
-                <h3 class="tile-title">Edit Blog Category</h3>
+                <h3 class="tile-title">Edit Blog</h3>
                 <form class="form-horizontal" method="POST" action="{{ route('blog.update') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
 
@@ -31,11 +29,22 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-                                <label class="form-control-label">Type</label>
-                                <input id="type" type="text" class="form-control " value="{{$blogg->type}}" name="type" required >
-                            </div>
+                        <div class="col-sm-6 col-md-4 ">
+                            <label for="comp">Type</label>
+                            <select name="type" class="form-control"  required >
+                                <option value="sales">Sales</option>
+                                <option value="rentals">Rentals</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4 ">
+                            <label for="comp">Select Property</label>
+                            <select name="property" id="property" class="form-control "  >
+                                <option value="">Select Property</option>
+                                @foreach ($property as $data)
+                                    <option value="{{ $data->id }}">{{ $data->title }}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                         <div class="col-sm-6 col-md-4 ">
                             <label for="comp">Blog Category</label>
@@ -47,6 +56,13 @@
                             </select>
 
                         </div>
+                        <div class="col-sm-6 col-md-4 ">
+                            <label for="comp">Sub Category</label>
+                            <select name="subCate" class="form-control">
+
+                            </select>
+                        </div>
+
 
                         <div class="col-sm-6">
                             <div class="form-group">

@@ -117,6 +117,18 @@
                 <form action="{{ route('property_image.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Select Title</label>
+                                <select name="property_id" id="" class="form-control">
+                                    <option value=""selected>Select property</option>
+                                    {{--                                    @dd($prop);--}}
+                                    @foreach($data as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->title}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
 
                         <div class="col-sm-6">
                             <div class="form-group">

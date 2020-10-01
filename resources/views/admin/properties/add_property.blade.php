@@ -185,8 +185,6 @@
             <li class="breadcrumb-item">@lang('packages.add_new')</li>
         </ul>
     </div>
-
-
     <div class="row">
         <div class="col-md-12">
             <form class="form-horizontal" method="POST" action="{{ route('properties.store') }}" enctype="multipart/form-data">
@@ -211,7 +209,12 @@
                                 </select>
                             </div>
                         </div>
-
+                        <div class="col-sm-6 col-md-4 col-lg-4">
+                            <div class="form-group">
+                                <label>Feature Flag</label>
+                                <input type="text" name="feature_flag" value="{{old('feature_flag')}}" class="form-control" placeholder="Feature flag">
+                            </div>
+                        </div>
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Title</label>
@@ -334,7 +337,6 @@
                                 <input type="number" name="square_feet" value="{{old('square_feet')}}" class="form-control" placeholder="Square Feet" min="0">
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Video Chat</label>
@@ -344,9 +346,9 @@
                                     {{--                            @foreach($data as $daum)--}}
                                     {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
                                     {{--                            @endforeach--}}
-                                </select>                            </div>
+                                </select>
+                            </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Description</label>
@@ -475,35 +477,35 @@
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>unit options</label>
+                                <label>Unit Options</label>
                                 <input type="text" name="unit_options" value="{{old('unit_options')}}" class="form-control" placeholder="unit options">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>by owner</label>
+                                <label>By Owner</label>
                                 <input type="text" name="by_owner" value="{{old('by_owner')}}" class="form-control" placeholder="by owner">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>available on</label>
+                                <label>Available On</label>
                                 <input type="text" name="available_on" value="{{old('available_on')}}" class="form-control" placeholder="available on">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>available before</label>
+                                <label>Available Before</label>
                                 <input type="text" name="available_before" value="{{old('available_before')}}" class="form-control" placeholder="available on">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>condos</label>
+                                <label>Condos</label>
                                 <input type="text" name="condos" value="{{old('condos')}}" class="form-control" placeholder="condos">
                             </div>
                         </div>
@@ -514,38 +516,44 @@
                                 <input type="text" name="co_ops" value="{{old('co_ops')}}" class="form-control" placeholder="co ops">
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Multi Familes</label>
-                                <input type="text" multiple name="multi_familes" value="{{old('multi_familes')}}" class="form-control" placeholder="multi familes" min="0">
+                                <select name="multi_familes" id="" class="form-control">
+                                    <option value="no" selected>No</option>
+                                    <option value="1" selected>1</option>
+                                    <option value="2" selected>2</option>
+                                    <option value="3" selected>3</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>
                             </div>
                         </div>
-
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>building new development opts</label>
+                                <label>Building New Development Opts</label>
                                 <input type="text" name="building_new_development_opts" value="{{old('building_new_development_opts')}}" class="form-control" placeholder="building new development opts">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>floor plan image</label>
+                                <label>Floor Plan Image</label>
                                 <input type="file" name="floor_plan_image" value="{{old('floor_plan_image')}}" class="form-control" placeholder="floor plan image">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>sales launch date</label>
+                                <label>Sales Launch Date</label>
                                 <input type="date" name="sales_launch_date" value="{{old('sales_launch_date')}}" class="form-control" placeholder="sales launch date">
                             </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>availability</label>
+                                <label>Availability</label>
                                 <input type="text" name="availability" value="{{old('availability')}}" class="form-control" placeholder="availability">
                             </div>
                         </div>
@@ -553,20 +561,30 @@
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
                                 <label>Cozmo Real Estate Verified</label>
-                                <input type="text" name="cozmo_real_estate_verified" value="{{old('cozmo_real_estate_verified')}}" class="form-control" placeholder="cozmo real estate verified">
-                            </div>
+                                <select name="cozmo_real_estate_verified" id="" class="form-control">
+                                    <option value="no" selected>No</option>
+                                    <option value="yes" selected>Yes</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>                            </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>No Fee Rentals</label>
-                                <input type="text" name="no_fee_rentals" value="{{old('no_fee_rentals')}}" class="form-control" placeholder="no fee rentals">
-                            </div>
+                                <label>No Fee</label>
+                                <select name="no_fee" id="" class="form-control">
+                                    <option value="no" selected>No</option>
+                                    <option value="yes" selected>Yes</option>
+                                    {{--                            @foreach($data as $daum)--}}
+                                    {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                    {{--                            @endforeach--}}
+                                </select>                            </div>
                         </div>
 
                         <div class="col-sm-6 col-md-4 col-lg-4">
                             <div class="form-group">
-                                <label>estimated monthly payment</label>
+                                <label>Estimated Monthly Payment</label>
                                 <input type="number" name="estimated_monthly_payment" value="{{old('estimated_monthly_payment')}}" class="form-control" placeholder="estimated monthly payment" min="0">
                             </div>
                         </div>
@@ -577,14 +595,6 @@
                                 <input type="number" name="sponsor_unit" value="{{old('sponsor_unit')}}" class="form-control" placeholder="sponsor unit">
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-4 col-lg-4">
-                            <div class="form-group">
-                                <label>Feature Flag</label>
-                                <input type="text" name="feature_flag" value="{{old('feature_flag')}}" class="form-control" placeholder="Feature flag">
-                            </div>
-
-                        </div>
-
                     </div>
 
                     @if(Auth::check())

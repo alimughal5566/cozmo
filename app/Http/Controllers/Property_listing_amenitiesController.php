@@ -27,6 +27,8 @@ class Property_listing_amenitiesController extends Controller
 //           'Date_created' => $request->Date_created,
 //          'date_created' => $request->date_created,
             'listing_for' => $request->listing_for,
+            'property_id' => $request->property_id,
+
 
         ]);
 
@@ -37,12 +39,16 @@ class Property_listing_amenitiesController extends Controller
 
     public function amenitiesAdd()
     {
-        return view('admin.property_listing_amenities.add-property-amenities');
+        $prop=DB::table('properties')->get();
+
+        return view('admin.property_listing_amenities.add-property-amenities', compact('prop'));
     }
     public function amenitiesEdit($id)
     {
         $data = DB::table('property_listing_amenities')->where('id', $id)->get();
-        return view('admin.property_listing_amenities.update-property-amenities', compact('data'));
+        $prop=DB::table('properties')->get();
+
+        return view('admin.property_listing_amenities.update-property-amenities', compact('data','prop'));
 
 
     }
@@ -54,6 +60,9 @@ class Property_listing_amenitiesController extends Controller
             "listing_amenity" => $request['listing_amenity'],
             "listing_for" => $request['listing_for'],
 //            "boroughs	" => $request['boroughs	'],
+            "property_id" => $request['property_id'],
+
+
         ]);
         return redirect()->route('property_listing_amenities.home')->with('success', ' Update Successfuly..!');
     }

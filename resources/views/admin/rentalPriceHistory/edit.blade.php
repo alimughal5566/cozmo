@@ -22,14 +22,6 @@
                     {{ csrf_field() }}
 
                     <div class="row">
-                        <div class="col-sm-6 col-md-4">
-                            <div class="form-group">
-
-                                <label class="form-control-label">Rent</label>
-                                <input id="rent" type="number" min="1" class="form-control " value="{{$data->rent}}" name="rent" required >
-                            </div>
-                        </div>
-
                         <div class="col-sm-6 col-md-4 ">
                             <label for="comp">Select Property</label>
                             <select name="property_id" class="form-control"  required >
@@ -39,12 +31,14 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="form-group">
 
-
+                                <label class="form-control-label">Rent</label>
+                                <input id="rent" type="number" min="1" class="form-control " value="{{$data->rent}}" name="rent" required >
+                            </div>
+                        </div>
                         <input id="file" type="hidden" class="form-control" name="id" value="{{$data->id}}">
-
-
-
                     </div>
 
 

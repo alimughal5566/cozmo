@@ -135,24 +135,27 @@
                     @endforeach
                     <div class="row">
                         <div class="col-sm-6">
-                            <input type="hidden" name="user_id" value="{{$user[0]->id}}">
                             <div class="form-group">
-                                <label for="title">User id:</label>
-                                <input required id="user_id"  type="text" value="{{$user[0]->user_id}}" placeholder="User id" class="form-control" name="user_id">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label>Select Property Id:</label>
-                                <select name="property_id" id="" class="form-control">
-                                    <option value=""selected>Select Id</option>
-                                    @foreach($user as $datum)
-                                        <option value="{{$datum->id}}">{{$datum->property_id}} </option>
+                                <label>Select Name</label>
+                                <select name="user_id" id="" class="form-control">
+                                    <option value=""selected>Select User</option>
+                                    @foreach($data as $datum)
+                                        <option value="{{$datum->id}}">{{$datum->name}} </option>
                                     @endforeach
                                 </select>
-
                             </div>
                         </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Select Title</label>
+                                    <select name="property_id" id="" class="form-control">
+                                        <option value=""selected>Select property</option>
+                                        @foreach($prop as $datum)
+                                            <option value="{{$datum->id}}">{{$datum->title}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                         <div class="col-sm-6">
                             <input type="hidden" name="user_id" value="{{$user[0]->id}}">
                             <div class="form-group">
@@ -160,15 +163,13 @@
                                 <input required id="date_saved"  type="text" value="{{$user[0]->date_saved}}" placeholder="Date saved" class="form-control" name="date_saved">
                             </div>
                         </div>
-                        <div class="col-sm-6 text-right" >
-                            <div class="form-group" style="margin-top: 27px !important;">
+                        <div class="col-sm-12 text-right" >
+                            <div class="form-group" style="margin-top: 27px !important; justify-content: center ">
                                 <button class="btn btn-primary" type="submit">Update</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </form>
         </div>
 

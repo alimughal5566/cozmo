@@ -515,8 +515,8 @@ Route::get('/UserBuilding', function () {
 
 //Company route
 
-Route::get('companies','HomeController@index_companies')->name('index_companies');
-Route::get('/companies/add', 'CompaniesController@companies');
+Route::get('companies','CompaniesController@index_companies')->name('index_companies');
+Route::get('/companies/add', 'CompaniesController@companies')->name('addCompanies');
 Route::post('/company/store', 'CompaniesController@store')->name('company.store');
 Route::get('/company/edit/{id}', 'CompaniesController@edit')->name('companies.edit');
 Route::post('/company/update', 'CompaniesController@update')->name('company.update');
@@ -573,7 +573,7 @@ Route::get('/properties/home', 'PropertiesController@propertiesIndex')->name('pr
 Route::get('/properties/add', 'PropertiesController@propertiesAdd')->name('properties.add');
 Route::post('/properties/store', 'PropertiesController@propertiesStore')->name('properties.store');
 Route::get('/properties/edit/{id}', 'PropertiesController@propertiesEdit')->name('properties.edit');
-Route::post('/properties/update', 'PropertiesController@propertiesUpdate')->name('properties.update');
+Route::post('/properties/update', 'PropertiesController@update')->name('properties.update');
 Route::post('/properties/delete', 'PropertiesController@delete')->name('properties.delete');
 
 //Properties Listing Amenities

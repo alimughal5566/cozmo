@@ -21,6 +21,17 @@
                     <form class="form-horizontal" method="POST" action="{{ url('building_info/update') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="row">
+                            <div class="col-sm-6 col-md-3 col-lg-4">
+                                <div class="form-group">
+                                    <label>Select Title</label>
+                                    <select name="building_id" id="" class="form-control">
+                                        <option value=""selected>Select building</option>
+                                        @foreach($data as $datum)
+                                            <option value="{{$datum->id}}">{{$datum->name}} </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Name</label>
@@ -64,10 +75,18 @@
                                     <input id="co_ops" type="text" class="form-control" name="co_ops" value="{{$user[0]->co_ops}}">
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-4">
+                            <div class="col-sm-6 col-md-4 col-lg-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Multi Families</label>
-                                    <input id="multi_families" type="text" class="form-control" name="multi_families" value="{{$user[0]->multi_families}}">
+                                    <label>Multi Familes</label>
+                                    <select name="multi_familes" id="" class="form-control">
+                                        <option value="no" selected>No</option>
+                                        <option value="1" selected>1</option>
+                                        <option value="2" selected>2</option>
+                                        <option value="3" selected>3</option>
+                                        {{--                            @foreach($data as $daum)--}}
+                                        {{--                                <option value="{{$daum->id}}">{{$daum->title}}</option>--}}
+                                        {{--                            @endforeach--}}
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4">

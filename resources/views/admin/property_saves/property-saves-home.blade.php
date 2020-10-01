@@ -23,7 +23,7 @@
 
                     Property Options
                     @if(Auth::check() && Auth::user()->user_role == 1)
-                        <a href="{{ route('property_saves.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> @lang('packages.add_new')</a>
+{{--                        <a href="{{ route('property_saves.add')}}" class="btn btn-sm btn-success pull-right cust_color"><i class="fa fa-plus"></i> @lang('packages.add_new')</a>--}}
                     @endif
                 </h3>
                 @if(Session::has('message'))
@@ -35,9 +35,9 @@
                     <table class="table" id = "example">
                         <thead class="back_blue">
                         <tr>
-                            <th>id</th>
-                            <th>User id</th>
-                            <th>Property id</th>
+{{--                            <th>id</th>--}}
+                            <th>Name</th>
+                            <th>Title</th>
                             <th>Date saved</th>
                             <th width="130" class="text-center">@lang('packages.actions')</th>
                         </tr>
@@ -46,9 +46,26 @@
                         @foreach($data as $key=> $row)
 
                             <tr>
-                                <td>{{$key+1}}</td>
-                                <td>{{$row->user_id}}</td>
-                                <td>{{$row->property_id}}</td>
+{{--                                <td>{{$key+1}}</td>--}}
+                                <td>
+                                    @foreach($ikek as $users)
+
+                                        @if($row->user_id==$users->id)
+                                            {{$users->name}}
+                                        @endif
+
+                                    @endforeach
+                                </td>
+
+                                <td>
+                                    @foreach($prop as $users)
+
+                                        @if($row->property_id==$users->id)
+                                            {{$users->title}}
+                                        @endif
+
+                                    @endforeach
+                                </td>
                                 <td>{{$row->date_saved}}</td>
                                 <td class="text-center">
                                     <div class="actions-btns " style="display: flex; justify-content: center">

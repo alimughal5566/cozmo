@@ -108,7 +108,7 @@
 
                             setTimeout( function () {
                                 location.reload();
-                            }, 4000 );
+                            }, 1000 );
                         }
                     } );
                 }

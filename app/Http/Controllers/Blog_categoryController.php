@@ -81,14 +81,36 @@ else{
     public function blogCategoryEdit($id){
         $data=$this->blog_cat->blogCategoryEditData($id);
         $blog_category = $data;
+        $data=DB::table('blog_categories')->get();
+
 
 //        dd($blog_category);
 //        dd($data);
 //        dd($blog_category);
-        return view('admin.blog_category.edit' , compact("blog_category" ));
+        return view('admin.blog_category.edit' , compact("blog_category",'data' ));
 
     }
 
+    public function blogSubCatEdit(Request $request)
+    {
+//     dd($request);
+        if (!($request->category)) {
+            Session::flash('Failed', 'Select Blog Category');
+            return redirect()->route('blog_category.add');
+
+        } else {
+            $data = $this->blog_cat->blogSubCategoryStoredata($request);
+            if ($data) {
+                Session::flash('success', 'Successfully Added Sub Category against');
+                return redirect()->route('blog_category.add');
+            } else {
+                Session::flash('Failed', 'Something Wen Wrong');
+                return redirect()->route('blog_category.add');
+            }
+
+
+        }
+    }
     public function blogCategoryUpdate(Request $request){
 //        dd($request);
 //        dd($request->id);

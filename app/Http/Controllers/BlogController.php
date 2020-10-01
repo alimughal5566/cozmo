@@ -109,7 +109,10 @@ class BlogController extends Controller
 	{
 	    $blogg = DB::table('blog')->find($id);
         $blog_category = DB::table('blog_categories')->get();
-		return view('admin.blog.edit',compact('blogg','blog_category'));
+
+        $blog_category = $this->blogg->blogAdd();
+        $property = $blog_category->property;
+		return view('admin.blog.edit',compact('blogg','blog_category','property'));
 	}
 
 	public function blogUpdate(Request $request)

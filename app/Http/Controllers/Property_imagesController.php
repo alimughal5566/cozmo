@@ -21,8 +21,10 @@ class Property_imagesController extends Controller
     }
     public function property()
     {
+        $data=DB::table('properties')->get();
+
 //        dd('property');
-        return view('admin.property_images.add_image');
+        return view('admin.property_images.add_image', compact('data'));
     }
 
     public function store(Request $request)
@@ -43,6 +45,8 @@ class Property_imagesController extends Controller
 
             'image' => $imageDbPath,
 //                'date_created' => carbon::now(),
+            'property_id' => $request->property_id,
+
 
         ]);
 
@@ -54,10 +58,12 @@ class Property_imagesController extends Controller
     {
         $id=$id;
 //        dd($id);
+        $data=DB::table('properties')->get();
+
 
 //        $user = DB::table('property_images')->where('id', $id)->get();
 //        dd($user);
-        return view('admin.property_images.edit', compact('id'));
+        return view('admin.property_images.edit', compact('id','data'));
 
     }
     public function update(Request $request)
@@ -76,6 +82,8 @@ class Property_imagesController extends Controller
 
             'image' => $imageDbPath,
             'date_created' => $request->date_created,
+            'property_id' => $request->property_id,
+
 
         ]);
 //        dd($success);

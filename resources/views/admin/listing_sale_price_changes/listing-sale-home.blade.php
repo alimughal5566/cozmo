@@ -35,7 +35,7 @@
 				<table class="table" id = "example">
 					<thead class="back_blue">
 						<tr>
-							<th>id</th>
+{{--							<th>id</th>--}}
 							<th>Date change</th>
 							<th>Old price</th>
 							<th>Updated price</th>
@@ -113,7 +113,7 @@
 
                         setTimeout( function () {
                             location.reload();
-                        }, 4000 );
+                        }, 1000 );
 					}
 				} );
 			}
