@@ -44,6 +44,8 @@ class Building_documentController extends Controller
                 'document_types' => $request->document_types,
                 'unit_no' => $request->unit_no,
                 'detail' => $request->detail,
+                'building_id' => $request->building_id,
+
 //                'date_created' => carbon::now(),
 
             ]);

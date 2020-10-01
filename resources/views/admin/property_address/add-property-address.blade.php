@@ -234,7 +234,7 @@
                 let longitude;
                 let country;
 
-                google.maps.event.addListener(autocomplete_location, 'place_changed', function () {
+                njbbgoogle.maps.event.addListener(autocomplete_location, 'place_changed', function () {
                     let location = autocomplete_location.getPlace();
                     latitude = location.geometry.location.lat();
                     longitude = location.geometry.location.lng();
@@ -298,4 +298,4 @@
 @endsection
 
 
-x
+

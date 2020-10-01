@@ -124,6 +124,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        MarkVilludo\CountryStateCities\ServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -149,6 +150,7 @@ return [
 	    Laravel\Socialite\SocialiteServiceProvider::class,
         Stevebauman\Location\LocationServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
+//        Khsing\World\WorldServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -163,6 +165,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
+//        Khsing\World\WorldServiceProvider::class,
+
+
 
     ],
 

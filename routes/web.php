@@ -626,6 +626,9 @@ Route::post('/property_saves/delete', 'Property_savesController@savesDelete')->n
 
 
 
+// Top Bar section
+Route::get('/top_bar', 'frontend\topbarController@normalSearch')->name('search.simple');
 
+// end pf top bar section
 
 

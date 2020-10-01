@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
 
+<script src="{{asset('assets/masterFrontend/js/search2.js')}}"></script>
+<script src="{{asset('assets/masterFrontend/js/search.js')}}"></script>
+
+
+
 <style>
     .bootstrap-select {
         width: 100% !important;
@@ -15,7 +20,31 @@
     .filter-option-inner-inner {
         margin-top: 5px;
     }
+    .load {display:none;}
+    .preload { width:100px;
+        height: 100px;
+        position: fixed;
+        top: 50%;
+        left: 50%;}
+    .bg {
+        /* The image used */
+        {{--background-image: url("{{asset('images/cozmo/loading.gif')}}");--}}
+
+        /* Full height */
+        height: 100%;
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
 </style>
+<div class="preload">
+    <img  class="bg" src="{{asset('images/cozmo/loading.gif')}}">
+</div>
+<div class="load">
+
 
 <section class="">
     <div class="u-width--984 u-centered">
@@ -30,7 +59,9 @@
 
         <!-- Search -->
 
-        <form class="u-noMargin criteria large"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="85xA6oxOEOcaYkMVTSch6uXNkkf8vWzQ62kMAPfCdprYFHDG1Jh3mnSwdtuv8vlnmC8oBSvjBfc9Wsm8mH256Q==" />
+        <form class="u-noMargin criteria large" method="get" action="{{ route('search.simple') }}" enctype="multipart/form-data">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="authenticity_token" value="85xA6oxOEOcaYkMVTSch6uXNkkf8vWzQ62kMAPfCdprYFHDG1Jh3mnSwdtuv8vlnmC8oBSvjBfc9Wsm8mH256Q==" />
 
             <div class="Home-searchFieldsContainer">
                 <div class="Home-searchFields">
@@ -38,25 +69,398 @@
                     <div class="Home-searchAreaWrapper">
                         <div class="Home-searchAreaEnhanced Home-searchField">
 
+                            <div class="SearchAreasDropdown jsSearchAreaDropdown">
+                                <div class="SearchAreasDropdown-textInputContainer jsSearchAreaInputContainer">
+                                    <div class="SearchAreasDropdown-selectedAreas jsSearchAreaSelectedAreas">
+                                        <input
+                                            class="SearchAreasDropdown-textInput jsSearchAreaInput"
+                                            type="text"
+                                            placeholder="Neighborhood, Address, Building, Keyword"
+                                            autocomplete="off"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="SearchAreasDropdown-areasListContainer">
+                                    <ul class="Collapsible jsCollapsible">
+                                        <li class="jsTrigger">
+                                            <div class="Collapsible-checkbox jsSearchAreaItem jsSearchAllItem">
+                                                <label
+                                                    class="Collapsible-checkboxLabel"
+                                                    for="area-1">
+                                                    <input type="checkbox" name="area[]" id="area-1" value="1" class="Checkbox jsSearchAreaCheckbox jsCheckAll" data-area="1" data-area-name="All NYC and NJ" />
+                                                    Search All (NYC and NJ&nbsp;<span class="u-color-brightBlue u-italic">New!</span>)
+                                                </label>
+                                            </div>
+                                        </li>
+
+
+
+
+                                        <li class="jsTrigger">
+                                            <div
+                                                class="Collapsible-trigger jsCollapsibleTrigger jsSearchAreaItem"
+                                                data-collapsible-trigger-area="Staten Island">
+                                                Staten Island
+                                                <span class="Collapsible-triggerIcon">
+          <i class="fa fa-angle-down u-text--bold"></i>
+        </span>
+                                            </div>
+                                            <div class="Collapsible-body">
+                                                <ul>
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem">
+                                                            <label
+                                                                class="Collapsible-checkboxLabel u-text--bold"
+                                                                for="area-500">
+                                                                <input type="checkbox" name="area[]" id="area-500" value="500" class="Checkbox jsSearchAreaCheckbox" data-area="500" data-area-name="All Staten Island" data-children-ids="503,505,501,502,504" />
+                                                                All Staten Island
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-503">
+                                                                <input type="checkbox" name="area[]" id="area-503" value="503" class="Checkbox jsSearchAreaCheckbox" data-area="503" data-area-name="East Shore" data-parent-id="500" data-children-ids="510,511,522,523,526,527,529,530,540,546,548,591,550,592,551,561,568,575" />
+                                                                East Shore
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+
+
+
+
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-505">
+                                                                <input type="checkbox" name="area[]" id="area-505" value="505" class="Checkbox jsSearchAreaCheckbox" data-area="505" data-area-name="Mid-Island" data-parent-id="500" data-children-ids="514,516,528,543,545,549,573,582,583" />
+                                                                Mid-Island
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-501">
+                                                                <input type="checkbox" name="area[]" id="area-501" value="501" class="Checkbox jsSearchAreaCheckbox" data-area="501" data-area-name="North Shore" data-parent-id="500" data-children-ids="509,519,524,533,537,544,547,553,556,562,569,565,566,571,576,580" />
+                                                                North Shore
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-502">
+                                                                <input type="checkbox" name="area[]" id="area-502" value="502" class="Checkbox jsSearchAreaCheckbox" data-area="502" data-area-name="South Shore" data-parent-id="500" data-children-ids="507,508,517,525,531,532,538,554,557,560,563,577,584" />
+                                                                South Shore
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-504">
+                                                                <input type="checkbox" name="area[]" id="area-504" value="504" class="Checkbox jsSearchAreaCheckbox" data-area="504" data-area-name="West Shore" data-parent-id="500" data-children-ids="512,518,578" />
+                                                                West Shore
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="jsTrigger">
+                                            <div
+                                                class="Collapsible-trigger jsCollapsibleTrigger jsSearchAreaItem"
+                                                data-collapsible-trigger-area="New Jersey">
+          <span>
+            New Jersey <span class="u-color-brightBlue u-italic u-text--normal u-capitalize">New!</span>
+          </span>
+                                                <span class="Collapsible-triggerIcon">
+          <i class="fa fa-angle-down u-text--bold"></i>
+        </span>
+                                            </div>
+                                            <div class="Collapsible-body">
+                                                <ul>
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem">
+                                                            <label
+                                                                class="Collapsible-checkboxLabel u-text--bold"
+                                                                for="area-1000000">
+                                                                <input type="checkbox" name="area[]" id="area-1000000" value="1000000" class="Checkbox jsSearchAreaCheckbox" data-area="1000000" data-area-name="All New Jersey" data-children-ids="1003000,856000,1005000,862000,869000,1009000,1010000,1004000,1001000,1011000,1007000,1012000,1006000,1008000,1013000" />
+                                                                All New Jersey
+                                                            </label>
+                                                        </div>
+                                                    </li>
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1003000">
+                                                                <input type="checkbox" name="area[]" id="area-1003000" value="1003000" class="Checkbox jsSearchAreaCheckbox" data-area="1003000" data-area-name="Bayonne" data-parent-id="1000000" data-children-ids="" />
+                                                                Bayonne
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-856000">
+                                                                <input type="checkbox" name="area[]" id="area-856000" value="856000" class="Checkbox jsSearchAreaCheckbox" data-area="856000" data-area-name="Cliffside Park" data-parent-id="1000000" data-children-ids="" />
+                                                                Cliffside Park
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1005000">
+                                                                <input type="checkbox" name="area[]" id="area-1005000" value="1005000" class="Checkbox jsSearchAreaCheckbox" data-area="1005000" data-area-name="East Newark" data-parent-id="1000000" data-children-ids="" />
+                                                                East Newark
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-862000">
+                                                                <input type="checkbox" name="area[]" id="area-862000" value="862000" class="Checkbox jsSearchAreaCheckbox" data-area="862000" data-area-name="Edgewater" data-parent-id="1000000" data-children-ids="" />
+                                                                Edgewater
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-869000">
+                                                                <input type="checkbox" name="area[]" id="area-869000" value="869000" class="Checkbox jsSearchAreaCheckbox" data-area="869000" data-area-name="Fort Lee" data-parent-id="1000000" data-children-ids="" />
+                                                                Fort Lee
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1009000">
+                                                                <input type="checkbox" name="area[]" id="area-1009000" value="1009000" class="Checkbox jsSearchAreaCheckbox" data-area="1009000" data-area-name="Guttenberg" data-parent-id="1000000" data-children-ids="" />
+                                                                Guttenberg
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1010000">
+                                                                <input type="checkbox" name="area[]" id="area-1010000" value="1010000" class="Checkbox jsSearchAreaCheckbox" data-area="1010000" data-area-name="Harrison" data-parent-id="1000000" data-children-ids="" />
+                                                                Harrison
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1004000">
+                                                                <input type="checkbox" name="area[]" id="area-1004000" value="1004000" class="Checkbox jsSearchAreaCheckbox" data-area="1004000" data-area-name="Hoboken" data-parent-id="1000000" data-children-ids="" />
+                                                                Hoboken
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1001000">
+                                                                <input type="checkbox" name="area[]" id="area-1001000" value="1001000" class="Checkbox jsSearchAreaCheckbox" data-area="1001000" data-area-name="Jersey City" data-parent-id="1000000" data-children-ids="1117008,1001150,1001600,1117007,1001400,1001250,1002100" />
+                                                                Jersey City
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1117008">
+                                                                <input type="checkbox" name="area[]" id="area-1117008" value="1117008" class="Checkbox jsSearchAreaCheckbox" data-area="1117008" data-area-name="Bergen/Lafayette" data-parent-id="1001000" data-children-ids="" />
+                                                                Bergen/Lafayette
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1001150">
+                                                                <input type="checkbox" name="area[]" id="area-1001150" value="1001150" class="Checkbox jsSearchAreaCheckbox" data-area="1001150" data-area-name="Historic Downtown" data-parent-id="1001000" data-children-ids="" />
+                                                                Historic Downtown
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1001600">
+                                                                <input type="checkbox" name="area[]" id="area-1001600" value="1001600" class="Checkbox jsSearchAreaCheckbox" data-area="1001600" data-area-name="Journal Square" data-parent-id="1001000" data-children-ids="" />
+                                                                Journal Square
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1117007">
+                                                                <input type="checkbox" name="area[]" id="area-1117007" value="1117007" class="Checkbox jsSearchAreaCheckbox" data-area="1117007" data-area-name="Newport" data-parent-id="1001000" data-children-ids="" />
+                                                                Newport
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1001400">
+                                                                <input type="checkbox" name="area[]" id="area-1001400" value="1001400" class="Checkbox jsSearchAreaCheckbox" data-area="1001400" data-area-name="The Heights" data-parent-id="1001000" data-children-ids="" />
+                                                                The Heights
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1001250">
+                                                                <input type="checkbox" name="area[]" id="area-1001250" value="1001250" class="Checkbox jsSearchAreaCheckbox" data-area="1001250" data-area-name="Waterfront" data-parent-id="1001000" data-children-ids="1001270" />
+                                                                Waterfront
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level4">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1001270">
+                                                                <input type="checkbox" name="area[]" id="area-1001270" value="1001270" class="Checkbox jsSearchAreaCheckbox" data-area="1001270" data-area-name="Paulus Hook" data-parent-id="1001250" data-children-ids="" />
+                                                                Paulus Hook
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1002100">
+                                                                <input type="checkbox" name="area[]" id="area-1002100" value="1002100" class="Checkbox jsSearchAreaCheckbox" data-area="1002100" data-area-name="West Side" data-parent-id="1001000" data-children-ids="" />
+                                                                West Side
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1011000">
+                                                                <input type="checkbox" name="area[]" id="area-1011000" value="1011000" class="Checkbox jsSearchAreaCheckbox" data-area="1011000" data-area-name="Kearny" data-parent-id="1000000" data-children-ids="" />
+                                                                Kearny
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1007000">
+                                                                <input type="checkbox" name="area[]" id="area-1007000" value="1007000" class="Checkbox jsSearchAreaCheckbox" data-area="1007000" data-area-name="North Bergen" data-parent-id="1000000" data-children-ids="" />
+                                                                North Bergen
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1012000">
+                                                                <input type="checkbox" name="area[]" id="area-1012000" value="1012000" class="Checkbox jsSearchAreaCheckbox" data-area="1012000" data-area-name="Secaucus" data-parent-id="1000000" data-children-ids="" />
+                                                                Secaucus
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1006000">
+                                                                <input type="checkbox" name="area[]" id="area-1006000" value="1006000" class="Checkbox jsSearchAreaCheckbox" data-area="1006000" data-area-name="Union City" data-parent-id="1000000" data-children-ids="" />
+                                                                Union City
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1008000">
+                                                                <input type="checkbox" name="area[]" id="area-1008000" value="1008000" class="Checkbox jsSearchAreaCheckbox" data-area="1008000" data-area-name="Weehawken" data-parent-id="1000000" data-children-ids="" />
+                                                                Weehawken
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                    <li class="jsCollapsibleChild">
+                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">
+                                                            <label class="Collapsible-checkboxLabel" for="area-1013000">
+                                                                <input type="checkbox" name="area[]" id="area-1013000" value="1013000" class="Checkbox jsSearchAreaCheckbox" data-area="1013000" data-area-name="West New York" data-parent-id="1000000" data-children-ids="" />
+                                                                West New York
+                                                            </label>
+                                                        </div>
+
+                                                    </li>
+
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+
+                                <button
+                                    class="SearchAreasDropdown-searchButton u-hidden jsSearchAreaDropdownSearchButton"
+                                    type="button">
+                                    Search for <span class="SearchAreasDropdown-searchButtonText jsSearchAreaDropdownSearchButtonText"></span>
+                                </button>
+                            </div>
+
+
+
 {{--                            <div class="SearchAreasDropdown jsSearchAreaDropdown">--}}
-{{--                                <div class="SearchAreasDropdown-textInputContainer jsSearchAreaInputContainer fa fa-map-marker" style="width: 100%;">--}}
+{{--                                <div class="SearchAreasDropdown-textInputContainer jsSearchAreaInputContainer">--}}
 {{--                                    <div class="SearchAreasDropdown-selectedAreas jsSearchAreaSelectedAreas">--}}
-{{--                                        <select--}}
+{{--                                        <input--}}
 {{--                                            class="SearchAreasDropdown-textInput jsSearchAreaInput"--}}
 {{--                                            type="text"--}}
 {{--                                            placeholder="Neighborhood, Address, Building, Keyword"--}}
 {{--                                            autocomplete="off"--}}
-{{--                                        >--}}
-{{--                                            <option value="" selected> slectone</option>--}}
-
-{{--                                            @foreach($data as $datum)--}}
-{{--                                            <option value="">{{$datum->country}}</option>--}}
-{{--                                            @endforeach--}}
-{{--                                        </select>--}}
+{{--                                        />--}}
 {{--                                    </div>--}}
 {{--                                </div>--}}
-{{--                                @dd($data)--}}
-
 {{--                                <div class="SearchAreasDropdown-areasListContainer">--}}
 {{--                                    <ul class="Collapsible jsCollapsible">--}}
 {{--                                        <li class="jsTrigger">--}}
@@ -64,33 +468,362 @@
 {{--                                                <label--}}
 {{--                                                    class="Collapsible-checkboxLabel"--}}
 {{--                                                    for="area-1">--}}
-{{--                                                    <input type="checkbox" name="area[]" id="area-1" value="1" class="Checkbox jsSearchAreaCheckbox jsCheckAll" data-area="1" data-area-name="All NYC and NJ" />--}}
+{{--                                                    <input type="checkbox"class="Checkbox jsSearchAreaCheckbox jsCheckAll"  data-area-name="All States" />--}}
 {{--                                                    Search All (NYC and NJ&nbsp;<span class="u-color-brightBlue u-italic">New!</span>)--}}
 {{--                                                </label>--}}
 {{--                                            </div>--}}
 {{--                                        </li>--}}
-{{--                                    </ul>--}}
 
-{{--                                    <button--}}
-{{--                                        class="SearchAreasDropdown-searchButton u-hidden jsSearchAreaDropdownSearchButton"--}}
-{{--                                        type="button">--}}
-{{--                                        Search for <span class="SearchAreasDropdown-searchButtonText jsSearchAreaDropdownSearchButtonText"></span>--}}
-{{--                                    </button>--}}
-{{--                                    <a rel="nofollow" data-modal-class="modal-location" data-modal-live="true" data-analytics-type="click" data-analytics-name="clickOnAreaMapSelector" tabindex="-1" class="SearchAreasDropdown-showAllLink u-noOutline hidden-xs hidden-sm" data-toggle="modal" data-modal-source="/area/-/area_map_selector_dialog" href="#"><i class='SearchAreasDropdown-icon fa fa-map-o'></i>&nbsp;&nbsp; View Map</a>--}}
+{{--                                        <?php--}}
+{{--                                        $count = 0;--}}
+{{--                                        $count2 = 0;--}}
+{{--                                        ?>--}}
+
+
+{{--                                        @foreach($data as $datum)--}}
+{{--                                        <li class="jsTrigger">--}}
+
+{{--                                            <div--}}
+
+{{--                                                class="Collapsible-trigger jsCollapsibleTrigger jsSearchAreaItem"--}}
+{{--                                                data-collapsible-trigger-area="{{$datum->state}}">--}}
+{{--                                                {{$datum->state}}--}}
+{{--                                                <span class="Collapsible-triggerIcon">--}}
+{{--          <i class="fa fa-angle-down u-text--bold"></i>--}}
+{{--        </span>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="Collapsible-body">--}}
+{{--                                                <ul>--}}
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <?php--}}
+{{--                                                                $count++;--}}
+{{--                                                            ?>--}}
+{{--                                                            <label--}}
+{{--                                                                class="Collapsible-checkboxLabel"--}}
+{{--                                                                for="area-{{$count}}">--}}
+{{--                                                                <input type="checkbox" name="state[]" id="checkall{{$count}}" value="500" class="Checkbox jsSearchAreaCheckbox " data-area="{{$count}}" data-area-name="All {{$datum->state}}" />--}}
+{{--                                                                All {{$datum->state}}--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+{{--                                                    </li>--}}
+{{--                                                    @foreach($datum->city as $citt)--}}
+{{--                                                        <?php--}}
+{{--                                                        $count2++;--}}
+{{--                                                        ?>--}}
+{{--                                                        <li class="jsCollapsibleChild">--}}
+{{--                                                            <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">--}}
+{{--                                                                <label class="Collapsible-checkboxLabel" for="">--}}
+{{--                                                                    <input type="checkbox" name="area[]" id="checkall{{$count2}}" value="514" class="Checkbox jsSearchAreaCheckbox" data-area="{{$count2}}" data-area-name="{{$citt}}" data-parent-id="checkall{{$count}}">--}}
+{{--                                                                    {{$citt}}--}}
+{{--                                                                </label>--}}
+{{--                                                            </div>--}}
+
+{{--                                                        </li>--}}
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel"--}}
+{{--                                                                   for="area-1">--}}
+{{--                                                                <input type="checkbox" name="city[]" value="{{$citt}}" class="Checkbox{{$count}} jsSearchAreaCheckbox " data-area="503" data-area-name="East Shore" data-parent-id="{{$count}}"  />--}}
+{{--                                                                {{$citt}}--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+{{--                                                          @endforeach--}}
+
+
+
+
+
+
+
+{{--                                                </ul>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                        @endforeach--}}
+{{--                                        <input type="hidden" value="{{$count}}" id="cont">--}}
+{{--                                        <li class="jsTrigger">--}}
+{{--                                            <div--}}
+{{--                                                class="Collapsible-trigger jsCollapsibleTrigger jsSearchAreaItem"--}}
+{{--                                                data-collapsible-trigger-area="New Jersey">--}}
+{{--          <span>--}}
+{{--            New Jersey <span class="u-color-brightBlue u-italic u-text--normal u-capitalize">New!</span>--}}
+{{--          </span>--}}
+{{--                                                <span class="Collapsible-triggerIcon">--}}
+{{--          <i class="fa fa-angle-down u-text--bold"></i>--}}
+{{--        </span>--}}
+{{--                                            </div>--}}
+{{--                                            <div class="Collapsible-body">--}}
+{{--                                                <ul>--}}
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem">--}}
+{{--                                                            <label--}}
+{{--                                                                class="Collapsible-checkboxLabel u-text--bold"--}}
+{{--                                                                for="area-1000000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1000000" value="1000000" class="Checkbox jsSearchAreaCheckbox" data-area="1000000" data-area-name="All New Jersey" data-children-ids="1003000,856000,1005000,862000,869000,1009000,1010000,1004000,1001000,1011000,1007000,1012000,1006000,1008000,1013000" />--}}
+{{--                                                                All New Jersey--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+{{--                                                    </li>--}}
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1003000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1003000" value="1003000" class="Checkbox jsSearchAreaCheckbox" data-area="1003000" data-area-name="Bayonne" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Bayonne--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-856000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-856000" value="856000" class="Checkbox jsSearchAreaCheckbox" data-area="856000" data-area-name="Cliffside Park" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Cliffside Park--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1005000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1005000" value="1005000" class="Checkbox jsSearchAreaCheckbox" data-area="1005000" data-area-name="East Newark" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                East Newark--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-862000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-862000" value="862000" class="Checkbox jsSearchAreaCheckbox" data-area="862000" data-area-name="Edgewater" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Edgewater--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-869000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-869000" value="869000" class="Checkbox jsSearchAreaCheckbox" data-area="869000" data-area-name="Fort Lee" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Fort Lee--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1009000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1009000" value="1009000" class="Checkbox jsSearchAreaCheckbox" data-area="1009000" data-area-name="Guttenberg" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Guttenberg--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1010000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1010000" value="1010000" class="Checkbox jsSearchAreaCheckbox" data-area="1010000" data-area-name="Harrison" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Harrison--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1004000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1004000" value="1004000" class="Checkbox jsSearchAreaCheckbox" data-area="1004000" data-area-name="Hoboken" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Hoboken--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1001000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1001000" value="1001000" class="Checkbox jsSearchAreaCheckbox" data-area="1001000" data-area-name="Jersey City" data-parent-id="1000000" data-children-ids="1117008,1001150,1001600,1117007,1001400,1001250,1002100" />--}}
+{{--                                                                Jersey City--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1117008">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1117008" value="1117008" class="Checkbox jsSearchAreaCheckbox" data-area="1117008" data-area-name="Bergen/Lafayette" data-parent-id="1001000" data-children-ids="" />--}}
+{{--                                                                Bergen/Lafayette--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1001150">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1001150" value="1001150" class="Checkbox jsSearchAreaCheckbox" data-area="1001150" data-area-name="Historic Downtown" data-parent-id="1001000" data-children-ids="" />--}}
+{{--                                                                Historic Downtown--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1001600">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1001600" value="1001600" class="Checkbox jsSearchAreaCheckbox" data-area="1001600" data-area-name="Journal Square" data-parent-id="1001000" data-children-ids="" />--}}
+{{--                                                                Journal Square--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1117007">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1117007" value="1117007" class="Checkbox jsSearchAreaCheckbox" data-area="1117007" data-area-name="Newport" data-parent-id="1001000" data-children-ids="" />--}}
+{{--                                                                Newport--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1001400">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1001400" value="1001400" class="Checkbox jsSearchAreaCheckbox" data-area="1001400" data-area-name="The Heights" data-parent-id="1001000" data-children-ids="" />--}}
+{{--                                                                The Heights--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1001250">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1001250" value="1001250" class="Checkbox jsSearchAreaCheckbox" data-area="1001250" data-area-name="Waterfront" data-parent-id="1001000" data-children-ids="1001270" />--}}
+{{--                                                                Waterfront--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level4">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1001270">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1001270" value="1001270" class="Checkbox jsSearchAreaCheckbox" data-area="1001270" data-area-name="Paulus Hook" data-parent-id="1001250" data-children-ids="" />--}}
+{{--                                                                Paulus Hook--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level3">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1002100">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1002100" value="1002100" class="Checkbox jsSearchAreaCheckbox" data-area="1002100" data-area-name="West Side" data-parent-id="1001000" data-children-ids="" />--}}
+{{--                                                                West Side--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1011000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1011000" value="1011000" class="Checkbox jsSearchAreaCheckbox" data-area="1011000" data-area-name="Kearny" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Kearny--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1007000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1007000" value="1007000" class="Checkbox jsSearchAreaCheckbox" data-area="1007000" data-area-name="North Bergen" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                North Bergen--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1012000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1012000" value="1012000" class="Checkbox jsSearchAreaCheckbox" data-area="1012000" data-area-name="Secaucus" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Secaucus--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1006000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1006000" value="1006000" class="Checkbox jsSearchAreaCheckbox" data-area="1006000" data-area-name="Union City" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Union City--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1008000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1008000" value="1008000" class="Checkbox jsSearchAreaCheckbox" data-area="1008000" data-area-name="Weehawken" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                Weehawken--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                    <li class="jsCollapsibleChild">--}}
+{{--                                                        <div class="Collapsible-checkbox jsSearchAreaItem Collapsible-level2">--}}
+{{--                                                            <label class="Collapsible-checkboxLabel" for="area-1013000">--}}
+{{--                                                                <input type="checkbox" name="area[]" id="area-1013000" value="1013000" class="Checkbox jsSearchAreaCheckbox" data-area="1013000" data-area-name="West New York" data-parent-id="1000000" data-children-ids="" />--}}
+{{--                                                                West New York--}}
+{{--                                                            </label>--}}
+{{--                                                        </div>--}}
+
+{{--                                                    </li>--}}
+
+{{--                                                </ul>--}}
+{{--                                            </div>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
 {{--                                </div>--}}
 
-{{--                                <input id="area-selector-perf-mark-prefix" type="hidden" value="home.sales">--}}
+
+
+{{--                                <button--}}
+{{--                                    class="SearchAreasDropdown-searchButton u-hidden jsSearchAreaDropdownSearchButton"--}}
+{{--                                    type="button" style="display: none !important;">--}}
+{{--                                    Search for <span class="SearchAreasDropdown-searchButtonText jsSearchAreaDropdownSearchButtonText"></span>--}}
+{{--                                </button>--}}
 {{--                            </div>--}}
-                            <select class="selectpicker" multiple>
-                                @foreach($data as $datum)--}}
-                              <option value="">{{$datum->country}}</option>
-                                 @endforeach
-                            </select>
+
+
+
+
+
+                            <input type="hidden" name="beds" id="beds" value="" class="jsBedsValue" />
+
+
+
+
                         </div>
                     </div>
 
                     <div class="Home-searchRange Home-searchField">
-
                         <div class="Home-searchRangeInput">
                             <select
                                 id="price_from"
@@ -98,9 +831,9 @@
                                 name="price_from"
                                 se:behavior="support_custom_value"
                                 data-nochangeonload>
-                                <option disabled="disabled" selected="selected" value="">$ Minimum</option>
-                                <option value="">Any</option>
-                                <option value="Custom">&raquo; Custom</option>
+                                <option disabled="disabled" selected="selected" name="price" value="">$ Minimum</option>
+                                <option value="any">Any</option>
+                                <option value="Custom" class="show_input">&raquo; Custom</option>
                                 <option value="100000">$100,000</option>
                                 <option value="150000">$150,000</option>
                                 <option value="200000">$200,000</option>
@@ -149,7 +882,6 @@
                                 style="display: none;"
                             />
                         </div>
-
                         <div class="Home-searchRangeInput">
                             <select
                                 class="Home-searchRangeSelect jsPriceSelect isEmpty"
@@ -208,51 +940,54 @@
                                 style="display: none"
                             />
                         </div>
-
                     </div>
 
                     <div class="Home-searchBeds Home-searchField">
                         <div class="CheckboxGroup Home-searchBedsSelects jsBedsSelection">
 
-                            <input id="search-studio"
-                                   class="CheckboxGroup-input jsBedsInput"
-                                   value="&lt;1"
-                                   type="checkbox"
-                            />
                             <label class="CheckboxGroup-label Home-searchBedsLabel" for="search-studio">
                                 <span class="CheckboxGroup-copy">Studio</span>
                             </label>
                             <input id="search-1"
-                                   class="CheckboxGroup-input jsBedsInput"
+                                   class="CheckboxGroup-input jsBedsInput isLeft"
                                    value="1"
                                    type="checkbox"
+                                   name="studio[]"
+
+
                             />
-                            <label class="CheckboxGroup-label Home-searchBedsLabel" for="search-1">
+                            <label class="CheckboxGroup-label Home-searchBedsLabel  " for="search-1">
                                 <span class="CheckboxGroup-copy">1</span>
                             </label>
                             <input id="search-2"
-                                   class="CheckboxGroup-input jsBedsInput"
+                                   class="CheckboxGroup-input jsBedsInput isRight"
                                    value="2"
                                    type="checkbox"
+                                   name="studio[]"
+
                             />
                             <label class="CheckboxGroup-label Home-searchBedsLabel" for="search-2">
                                 <span class="CheckboxGroup-copy">2</span>
                             </label>
                             <input id="search-3"
-                                   class="CheckboxGroup-input jsBedsInput"
+                                   class="CheckboxGroup-input jsBedsInput isRight"
                                    value="3"
+                                   name="studio[]"
                                    type="checkbox"
+
                             />
                             <label class="CheckboxGroup-label Home-searchBedsLabel" for="search-3">
                                 <span class="CheckboxGroup-copy">3</span>
                             </label>
                             <input id="search-4+"
-                                   class="CheckboxGroup-input jsBedsInput"
-                                   value="&gt;=4"
+                                   class="CheckboxGroup-input jsBedsInput isRight"
+                                   value="4"
+                                   name="studio[]"
                                    type="checkbox"
+
                             />
                             <label class="CheckboxGroup-label Home-searchBedsLabel" for="search-4+">
-                                <span class="CheckboxGroup-copy">4+</span>
+                                <span class="CheckboxGroup-copy" >4+</span>
                             </label>
 
                         </div>
@@ -1433,9 +2168,43 @@
         <!-- End Recent Searches / Explore NYC -->
     </div>
 </section>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.show_input').click(function(){
+            $('#price_from_ignore').slideDown();
+        });
+</script>
+<script>
+        //  var cnt = document.getElementById('#cont').value;
+        //
+        // console.log(cnt);
+        for(var i=1; i<='<?php $count ?>'; i++){
+            $("#checkall"+i).click(function () {
+                $(".Checkbox"+i).prop('checked', $(this).prop('checked'),function(){
+                    this.value=this.checked  ? 1:0;
+                }) .change() ;
+            });
+    }
+</script>
 {{--<script>--}}
 {{--    // $('.Home-searchType').click(function(){--}}
 {{--    //    $('.Home-searchType').removeClass('isCurrent');--}}
 {{--    //    $(this).addClass('isCurrent');--}}
 {{--    // });--}}
 {{--</script>--}}
+<script>
+    $(function() {
+        $(".preload").fadeOut(2000, function() {
+            $(".load").fadeIn(1000);
+        });
+    });
+
+</script>
+<script>
+    $(document).ready(function(){
+        $(".show_input").click(function(){
+            $(".Home-searchRangeCustom").slideDown();
+        });
+</script>

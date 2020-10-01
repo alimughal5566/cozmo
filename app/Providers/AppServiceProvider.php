@@ -16,7 +16,26 @@ class AppServiceProvider extends ServiceProvider
     {
 
         view()->composer('layouts.top-bar', function($view) {
-            $data=DB::table('property_address')->get();
+            $data=DB::table('property_address')->select('property_id','state')
+                ->groupBy('state')
+                ->get();
+            foreach ($data as $datum){
+//      dd($datum);
+                foreach ($datum as $row){
+//          dd($datum);
+                    $cities = DB::table('property_address')->where('state' , '=' , $datum->state)->pluck('city', 'property_id');
+//      dd($cities);
+                }
+                $datum->city = $cities;
+//      dd($datum);
+
+            }
+//            $data=DB::table('property_address')->select('id','state', 'city')
+//                ->groupBy('state')
+//                ->get();
+//            $data=DB::table('property_address')->distinct(['state'])->get();
+
+//            dd($data);
             $view->with('data', $data);
         });
         view()->composer('layouts.header', function($view) {

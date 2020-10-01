@@ -146,7 +146,7 @@
                                         <td>{{$user->document_types}}</td>
                                         <td>{{$user->unit_no}}</td>
                                         <td>{{$user->detail}}</td>
-                                        <td>{{$user->detail}}</td>
+                                        <td>{{$user->building_id}}</td>
 {{--                                        <td>{{$user->create_date}}</td>--}}
 
 
