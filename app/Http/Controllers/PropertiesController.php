@@ -13,6 +13,7 @@ class PropertiesController extends Controller
         public  function propertiesIndex(){
 
         $properties = DB::table('properties')->get();
+//        dd($properties);
 
 //        dd($properties);
             foreach ($properties as $property){
@@ -21,8 +22,12 @@ class PropertiesController extends Controller
 //                dd($dta);
                          $property->building_name = $dta;
                      }
+                     else{
+                         $property->building_name = 0;
+                     }
 
             }
+
 //            dd($properties);
 //            $building = DB::table('building_info')->get();
 //        dd($building);

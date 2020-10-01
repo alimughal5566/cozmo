@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 //use App\Models\PropertyType;
+use DipeshSukhia\LaravelCountryStateCityData\LaravelCountryStateCityData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,7 @@ class Property_addressController extends Controller
 
     public function addressHomeView()
     {
+
         $user = Auth::user();
         if ($user->user_role == 0) {
             return redirect('/');

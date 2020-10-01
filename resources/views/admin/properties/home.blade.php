@@ -77,7 +77,6 @@
                         <?php $counter = 1;?>
                         @foreach($properties as $row)
                             <tr>
-
                                 <td>{{$row->title}}</td>
                                 <td>{{$row->short_description}}</td>
                                 <td>
@@ -85,8 +84,9 @@
                                     <img class=" img-circle img-size-32 mr-2 round_img"  height="15%" src="/images/cozmo/{{$row->main_image}}" style="height: 30px">
 
                                 </td>
+
                                 <td>{{$row->price}}</td>
-                                <td>{{$row->building_name}}</td>
+                                <td>@if($row->building_name ) {{$row->building_name}} @endif  </td>
                                 <td>{{$row->property_for}}</td>
 
                                 <td class="text-center">

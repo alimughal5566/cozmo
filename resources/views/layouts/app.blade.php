@@ -41,6 +41,25 @@
     <style>
         .modal.animate .a-zoomDown{-webkit-animation:zoomOutDown .5s;animation:zoomOutDown .5s}
         .modal.animate.show .a-zoomDown{-webkit-animation:zoomInDown .5s;animation:zoomInDown .5s}
+
+        .load {display:none;}
+        .preload { width:100px;
+            height: 100px;
+            position: fixed;
+            top: 50%;
+            left: 50%;}
+        .bg {
+            /* The image used */
+            background-image: url("{{asset('images/cozmo/loading.gif')}}");
+
+            /* Full height */
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
 
 
@@ -49,6 +68,12 @@
 
 </head>
 <body id="application" class="windows_platform webkit_engine chrome_browser desktop site_nyc site_home sales_home isFullbleed">
+<div class="preload">
+{{--    <h1 class="bg">Loading...</h1>--}}
+    <img  class="bg" src="{{asset('images/cozmo/loading.gif')}}">
+</div>
+<div class="load">
+
 
 <div id="site-wrapper" class="SiteBlock ">
     <div id="site-canvas" class="SiteBlock-canvas">
@@ -181,6 +206,7 @@
         </div>
     </div>
 </div>
+</div>
 <script>
     $(function(){
         $('[role=dialog]')
@@ -198,6 +224,14 @@
         $('.Home-advancedSearch').click(function() {
             /* Act on the event */
             $('.Home-advancedSearchLink').toggle();
+        });
+    });
+</script>
+<script>
+    $(function() {
+        $(".preload").fadeOut(2000, function() {
+
+            $(".load").fadeIn(1000);
         });
     });
 </script>
