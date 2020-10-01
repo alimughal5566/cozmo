@@ -295,8 +295,7 @@
                             <div class="form-group">
                                 <label>Property Type</label>
                                 <select name="property_types" id="mfcheck" class="form-control">
-                                    <option value="" selected>Select Type</option>
-                                    <option value="multi_familes" >Multi Familes</option>
+                                    <option value="multi_familes" selected>Multi Familes</option>
                                     <option value="land">Land</option>
                                     <option value="co_ops" >Co_Ops</option>
                                     <option value="house" >House</option>
